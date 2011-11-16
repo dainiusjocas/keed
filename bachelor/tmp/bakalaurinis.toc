@@ -1,5 +1,5 @@
 \select@language {lithuanian}
-\contentsline {section}{\begingroup \let \relax \relax \endgroup [Pleaseinsert\PrerenderUnicode {Į}intopreamble]VADAS}{2}
+\contentsline {section}{\IeC {\k I}VADAS}{2}
 \contentsline {section}{\numberline {1}Teorinis darbo pagrindas}{2}
 \contentsline {subsection}{\numberline {1.1}Pri\IeC {\v z}i\IeC {\=u}rimas ir nepri\IeC {\v z}i\IeC {\=u}rimas mokymasis}{2}
 \contentsline {subsubsection}{\numberline {1.1.1}Pri\IeC {\v z}i\IeC {\=u}rimas mokymasis}{3}
@@ -20,5 +20,5 @@
 \contentsline {section}{\numberline {3}Klasifikavimo metod\IeC {\k u} palyginimo karkasas}{4}
 \contentsline {section}{\numberline {4}Klasifikavimo metod\IeC {\k u} palyginimo rezultatai}{4}
 \contentsline {section}{REZULTATAI IR I\IeC {\v S}VADOS}{4}
-\contentsline {section}{LITERAT\IeC {\=U}RA}{4}
 \contentsline {section}{S\IeC {\k A}VOK\IeC {\k U} APIBR\IeC {\.E}\IeC {\v Z}IMAI}{4}
+\contentsline {section}{LITERAT\IeC {\=U}RA}{4}
