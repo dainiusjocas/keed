@@ -1,14 +1,30 @@
+\subsection{Prižiūrimas ir neprižiūrimas mokymasis}
+Šiame skyriuje stengsiuosi atsakyti į klausimą kuo skiriasi prižiūrimas mokymasis
+(angl. supervised learning) nuo neprižiūrimo mokymosi (angl. unsupervised
+learning). Mokymasis, duomenų klasifikavimo kontekste, reiškia modelių
+(klasifikatorių) kūrimo metodus (algoritmus), kurie naudoja informaciją iš
+mokymosi duomenų\footnote{Mokymosi duomenys (angl. sample data)- duomenys,
+kurie yra paruošti darbui programų, kurios kurs klasifikatorius.}.
+
 \subsubsection{Prižiūrimas mokymasis}
 
+Prižiūrimas mokymasis tai toks mokymasis, kai turime iš anksto nustatytas
+klases bei mokymosi duomenis, kuriems jau yra priskirtos tam tikros
+teisingos klasės. Tikslas yra pagal mokymosi duomenis sukurti klasifikatorių,
+kuriuo remiantis būtų galima identifikuoti naujų objektų priklausomybę vienai iš
+žinomų klasių.\cite{markhall99}
+
+\begin{comment}
 Prižiūrimojo mokymosi esmė: turime aibę duomenų, kurios objektai yra vadinami
 įėjimo duomenimis (angl. Input) arba nepriklausomais kintamaisiais (angl.
 Independent variables), jų reikšmės yra išmatuotos arba nustatytos. Darome prielaidą, 
 kad nepriklausomi kintamieji turi įtakos vienam ar daugiau rezultato kintamųjų 
 (angl. Output) arba priklausomų kintamųjų (angl. Dependent variables). Paėmus dar vieną 
 duomenų objektą (angl. Tuple), tikslas yra pagal nepriklausomus kintamuosius nuspėti priklausomus kintamuosius.
+\end{comment}
 
-Prižiūrėtų mokymosi metodų pagrindinė prielaida yra ta, kad kontekstas suteikia pakankamai 
-informacijos. Kitaip tariant - jei žinai pakankamai daug objektų priklausančių kažkokioms tai 
+Prižiūrimo mokymosi metodų pagrindinė prielaida yra ta, kad kontekstas suteikia
+pakankamai informacijos. Kitaip tariant - jei žinai pakankamai daug objektų priklausančių kažkokioms tai 
 klasėms, tai naujiems objektams pakankamai tiksliai gali priskirti tas klases.
 
 Prižiūrėtasis mokymasis turi du pagrindinius būdus:
@@ -33,10 +49,10 @@ mokymusi be mokytojo. Patogumo dėlei, toliau naudosiu klasterizavimo sąvoką k
 ekvivalentą neprižiūrimojo makymosi sąvokai.
 
 Klasterizavimas (angl.  clustering) - tai viena iš duomenų gavybos sričių. Klasterizavimo 
-algoritmo užduotis – objektų suskirstymas  į prasmingas\cite{martisiute08} 
+algoritmo užduotis – objektų suskirstymas  į prasmingas 
 grupes – klasterius, kai jokia papildoma informacija apie tas grupes (jų dydį, kiekį, grupavimo požymius) nėra iš anksto žinoma. 
 Klasterizavimo algoritmas pats, pagal pasirinktus algoritmo parametrus, turi nurodyti, kokioms 
-grupėms priklauso atitinkami įvesties duomenys. 
+grupėms priklauso atitinkami įvesties duomenys.\cite{martisiute08}
 
 Klasterizavimo algoritmų pagrindinis privalumas – gebėjimas atpažinti grupavimo
 struktūrą be jokios išankstinės informacijos.  

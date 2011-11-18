@@ -1,24 +1,24 @@
 \select@language {lithuanian}
-\contentsline {section}{\IeC {\k I}VADAS}{2}
+\contentsline {section}{{\c I}VADAS}{2}
 \contentsline {section}{\numberline {1}Teorinis darbo pagrindas}{2}
-\contentsline {subsection}{\numberline {1.1}Pri\IeC {\v z}i\IeC {\=u}rimas ir nepri\IeC {\v z}i\IeC {\=u}rimas mokymasis}{2}
+\contentsline {subsection}{\numberline {1.1}Pri\IeC {\v z}i\IeC {\=u}rimas ir nepri\IeC {\v z}i\IeC {\=u}rimas mokymasis}{3}
 \contentsline {subsubsection}{\numberline {1.1.1}Pri\IeC {\v z}i\IeC {\=u}rimas mokymasis}{3}
 \contentsline {subsubsection}{\numberline {1.1.2}Nepri\IeC {\v z}i\IeC {\=u}rimas mokymasis}{3}
-\contentsline {subsection}{\numberline {1.2}Bayesian decision theory}{4}
-\contentsline {subsection}{\numberline {1.3}Klasifikavimas ``artimiausio kaimyno'' metodu}{4}
-\contentsline {subsection}{\numberline {1.4}Klasifikavimas ``ma\IeC {\v z}iausi\IeC {\k u} kvadrat\IeC {\k u} metou''}{4}
-\contentsline {subsection}{\numberline {1.5}Naive Bayesian classifier}{4}
-\contentsline {subsection}{\numberline {1.6}Bias and variance tradeoff}{4}
-\contentsline {subsection}{\numberline {1.7}Klasifikavimo metodo \IeC {\k i}vertinimas}{4}
-\contentsline {subsubsection}{\numberline {1.7.1}Klasifikavimo metodo \IeC {\k i}vertinimas ``cross-validation'' metodu}{4}
-\contentsline {subsubsection}{\numberline {1.7.2}Klasifikavimo metodo \IeC {\k i}vertinimas ``bootstrapping'' metodu}{4}
-\contentsline {subsection}{\numberline {1.8}Support Vector Machines}{4}
-\contentsline {subsection}{\numberline {1.9}Random forests}{4}
-\contentsline {subsection}{\numberline {1.10}Kuo ypatingas daugiama\IeC {\v c}i\IeC {\k u} duomen\IeC {\k u} klasifikavimas}{4}
-\contentsline {subsubsection}{\numberline {1.10.1}the curse of dimensionality}{4}
-\contentsline {section}{\numberline {2}Susij\IeC {\k e} darbai}{4}
-\contentsline {section}{\numberline {3}Klasifikavimo metod\IeC {\k u} palyginimo karkasas}{4}
-\contentsline {section}{\numberline {4}Klasifikavimo metod\IeC {\k u} palyginimo rezultatai}{4}
-\contentsline {section}{REZULTATAI IR I\IeC {\v S}VADOS}{4}
-\contentsline {section}{S\IeC {\k A}VOK\IeC {\k U} APIBR\IeC {\.E}\IeC {\v Z}IMAI}{4}
-\contentsline {section}{LITERAT\IeC {\=U}RA}{4}
+\contentsline {subsection}{\numberline {1.2}Bayesian decision theory}{5}
+\contentsline {subsection}{\numberline {1.3}Klasifikavimas ``artimiausio kaimyno'' metodu}{5}
+\contentsline {subsection}{\numberline {1.4}Klasifikavimas ``ma\IeC {\v z}iausi\IeC {\k u} kvadrat\IeC {\k u} metotu''}{5}
+\contentsline {subsection}{\numberline {1.5}Naive Bayesian classifier}{5}
+\contentsline {subsection}{\numberline {1.6}Bias and variance tradeoff}{5}
+\contentsline {subsection}{\numberline {1.7}Klasifikavimo metodo \IeC {\k i}vertinimas}{5}
+\contentsline {subsubsection}{\numberline {1.7.1}Klasifikavimo metodo \IeC {\k i}vertinimas ``cross-validation'' metodu}{5}
+\contentsline {subsubsection}{\numberline {1.7.2}Klasifikavimo metodo \IeC {\k i}vertinimas ``bootstrapping'' metodu}{5}
+\contentsline {subsection}{\numberline {1.8}Atramini\IeC {\k u} vektori\IeC {\k u} metodai}{6}
+\contentsline {subsection}{\numberline {1.9}Random forests}{7}
+\contentsline {subsection}{\numberline {1.10}Kuo ypatingas daugiama\IeC {\v c}i\IeC {\k u} duomen\IeC {\k u} klasifikavimas}{7}
+\contentsline {subsubsection}{\numberline {1.10.1}the curse of dimensionality}{7}
+\contentsline {section}{\numberline {2}Susij\IeC {\k e} darbai}{7}
+\contentsline {section}{\numberline {3}Klasifikavimo metod\IeC {\k u} palyginimo karkasas}{7}
+\contentsline {section}{\numberline {4}Klasifikavimo metod\IeC {\k u} palyginimo rezultatai}{7}
+\contentsline {section}{REZULTATAI IR I\IeC {\v S}VADOS}{7}
+\contentsline {section}{S\IeC {\k A}VOK\IeC {\k U} APIBR\IeC {\.E}\IeC {\v Z}IMAI}{7}
+\contentsline {section}{LITERAT\IeC {\=U}RA}{7}

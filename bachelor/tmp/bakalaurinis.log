@@ -1,21 +1,14 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2011.11.16)  17 NOV 2011 10:36
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=latex 2011.11.15)  18 NOV 2011 01:29
 entering extended mode
 **bakalaurinis.tex
-(C:\Users\dj\workspace\keed\bachelor\bakalaurinis.tex
-LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
-abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
-croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
-ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
-vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
-an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
-romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
-sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
-senglishmax, welsh, loaded.
-("C:\Program Files (x86)\miktex\tex\latex\base\article.cls"
+("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.tex
+"
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman, ngerman, german-x-2009-06-19, ngerman-x-2009-06-19, french, loaded.
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\miktex\tex\latex\base\size10.clo"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\base\size10.clo"
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -30,18 +23,18 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\miktex\tex\latex\base\inputenc.sty"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-("C:\Program Files (x86)\miktex\tex\latex\unicode\utf8x.def"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\utf8x.def"
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 ))
-("C:\Program Files (x86)\miktex\tex\latex\unicode\ucs.sty"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\ucs.sty"
 Package: ucs 2004/10/17 UCS: Unicode input support
 
-("C:\Program Files (x86)\miktex\tex\latex\unicode\data\uni-global.def"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\data\uni-global.def"
 File: uni-global.def 2004/10/17 UCS: Unicode global data
 )
 \uc@secondtry=\count87
@@ -49,27 +42,33 @@ File: uni-global.def 2004/10/17 UCS: Unicode global data
 \uc@combtoksb=\toks17
 \uc@temptokena=\toks18
 )
-("C:\Program Files (x86)\miktex\tex\generic\babel\babel.sty"
-Package: babel 2008/07/08 v3.8m The Babel package
+("C:\Program Files (x86)\MiKTeX 2.8\tex\generic\babel\babel.sty"
+Package: babel 2008/07/06 v3.8l The Babel package
 
 *************************************
 * Local config file bblopts.cfg used
 *
-("C:\Program Files (x86)\miktex\tex\latex\00miktex\bblopts.cfg"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\00miktex\bblopts.cfg"
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
-("C:\Program Files (x86)\miktex\tex\generic\babel\lithuanian.ldf"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\generic\babel\lithuanian.ldf"
 Language: lithuanian 2006/09/20 v0.5 Lithuanian support from the babel system
 
-("C:\Program Files (x86)\miktex\tex\generic\babel\babel.def"
-File: babel.def 2008/07/08 v3.8m Babel common definitions
+("C:\Program Files (x86)\MiKTeX 2.8\tex\generic\babel\babel.def"
+File: babel.def 2008/07/06 v3.8l Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
-)))
-("C:\Program Files (x86)\miktex\tex\latex\base\fontenc.sty"
+)
+
+Package babel Warning: No hyphenation patterns were loaded for
+(babel)                the language `Lithuanian'
+(babel)                I will use the patterns loaded for \language=0 instead.
+
+\l@lithuanian = a dialect from \language0
+)) ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\base\fontenc.sty"
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-("C:\Program Files (x86)\miktex\tex\latex\ltfonts\l7xenc.def"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\ltfonts\l7xenc.def"
 File: l7xenc.def 2008/10/14 v1.96 LaTeX-LT file
 LaTeX Info: Redefining \selectfont on input line 30.
 )
@@ -78,10 +77,10 @@ LaTeX Font Info:    Failed loading font information for L7x+cmr. on input line
 LaTeX Font Info:    Try loading font information for L7x+lmr on input line 100.
 
 
-("C:\Program Files (x86)\miktex\tex\latex\lm\l7xlmr.fd"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\lm\l7xlmr.fd"
 File: l7xlmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ))
-("C:\Program Files (x86)\miktex\tex\latex\lm\lmodern.sty"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\lm\lmodern.sty"
 Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
@@ -116,15 +115,18 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
 )
-("C:\Program Files (x86)\miktex\tex\latex\tools\verbatim.sty"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\tools\verbatim.sty"
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks19
 \verbatim@line=\toks20
 \verbatim@in@stream=\read1
 )
-("C:\Program Files (x86)\miktex\tex\latex\tocloft\tocloft.sty"
-Package: tocloft 2010/10/13 v2.3e parameterised ToC, etc., typesetting
-Package tocloft Info: The document has section divisions on input line 43.
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\tocloft\tocloft.sty"
+Package: tocloft 2009/09/04 v2.3d parameterised ToC, etc., typesetting
+
+
+Package tocloft Note: The document has section divisions.
+
 \cftparskip=\skip43
 \cftbeforetoctitleskip=\skip44
 \cftaftertoctitleskip=\skip45
@@ -159,9 +161,12 @@ Package tocloft Info: The document has section divisions on input line 43.
 \cfttabindent=\skip72
 \cfttabnumwidth=\skip73
 )
-(C:\Users\dj\workspace\keed\bachelor\bakalaurinis.aux
-(C:\Users\dj\workspace\keed\bachelor\priziurimas_ir_nepriziurimas_mokymasis.aux
-))
+("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.aux
+"
+("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\priziurimas_ir_n
+epriziurimas_mokymasis.aux")
+("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\support_vector_m
+achines.aux"))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
@@ -176,31 +181,28 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for L7x/lmr/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
- ("C:\Program Files (x86)\miktex\tex\latex\unicode\ucsencs.def"
+ ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\ucsencs.def"
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
 )
-(C:\Users\dj\workspace\keed\bachelor\bakalaurinis.toc
-("C:\Program Files (x86)\miktex\tex\latex\unicode\data\uni-1.def"
-File: uni-1.def 2004/10/17 UCS: Unicode data U+0100..U+01FF
-)
+("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.toc
+"
 LaTeX Font Info:    Try loading font information for OT1+lmr on input line 2.
-
-("C:\Program Files (x86)\miktex\tex\latex\lm\ot1lmr.fd"
+ ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Try loading font information for OML+lmm on input line 2.
 
-("C:\Program Files (x86)\miktex\tex\latex\lm\omllmm.fd"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 2.
 
-("C:\Program Files (x86)\miktex\tex\latex\lm\omslmsy.fd"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Try loading font information for OMX+lmex on input line 2.
 
-("C:\Program Files (x86)\miktex\tex\latex\lm\omxlmex.fd"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -214,32 +216,59 @@ LaTeX Font Info:    External font `lmex10' loaded for size
  [1
 
 ]
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\data\uni-1.def"
+File: uni-1.def 2004/10/17 UCS: Unicode data U+0100..U+01FF
+) [2]
+("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\priziurimas_ir_n
+epriziurimas_mokymasis.tex"
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 33.
+(Font)              <8> on input line 7.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 33.
- [2]
-(C:\Users\dj\workspace\keed\bachelor\priziurimas_ir_nepriziurimas_mokymasis.tex
-("C:\Program Files (x86)\miktex\tex\latex\unicode\data\uni-32.def"
+(Font)              <6> on input line 7.
+
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\data\uni-32.def"
 File: uni-32.def 2004/10/17 UCS: Unicode data U+2000..U+20FF
-)) [3
+))
+[3
+
+] [4] [5
 
 ]
-(C:\Users\dj\workspace\keed\bachelor\rezultatai_ir_isvados.tex)
-(C:\Users\dj\workspace\keed\bachelor\savoku_apibrezimai.tex)
-(C:\Users\dj\workspace\keed\bachelor\bakalaurinis.bbl) [4
+("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\support_vector_m
+achines.tex") [6
 
 ]
-(C:\Users\dj\workspace\keed\bachelor\bakalaurinis.aux
-(C:\Users\dj\workspace\keed\bachelor\priziurimas_ir_nepriziurimas_mokymasis.aux
-)) ) 
+("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\savoku_apibrezim
+ai.tex"
+Overfull \hbox (5.74895pt too wide) in paragraph at lines 5--7
+[][]\L7x/lmr/m/n/10 Maðininis[[]] (kom-pi-u-teri-nis, sistemos[[]]) moky-ma-sis
+ (an-gl. ma-
+ []
+
+)
+("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.bbl
+"
+Underfull \hbox (badness 3386) in paragraph at lines 9--13
+[][]\L7x/lmr/m/n/10 Jelena Mamèenko.  Duomen[] gavy-bos technologij[] taiky-mas
+
+ []
+
+) [7
+
+]
+("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.aux
+"
+("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\priziurimas_ir_n
+epriziurimas_mokymasis.aux")
+("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\support_vector_m
+achines.aux")) ) 
 Here is how much of TeX's memory you used:
- 2469 strings out of 494046
- 32307 string characters out of 3147612
- 82367 words of memory out of 3000000
- 5735 multiletter control sequences out of 15000+200000
- 39269 words of font info for 40 fonts, out of 3000000 for 9000
- 715 hyphenation exceptions out of 8191
- 25i,8n,25p,342b,597s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 2478 strings out of 495286
+ 33479 string characters out of 3179843
+ 79822 words of memory out of 3000000
+ 5648 multiletter control sequences out of 15000+200000
+ 36951 words of font info for 39 fonts, out of 3000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 27i,8n,25p,342b,474s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on bakalaurinis.dvi (4 pages, 14992 bytes).
+Output written on bakalaurinis.dvi (7 pages, 17632 bytes).
