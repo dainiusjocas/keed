@@ -2,9 +2,10 @@
 Šiame skyriuje stengsiuosi atsakyti į klausimą kuo skiriasi prižiūrimas mokymasis
 (angl. supervised learning) nuo neprižiūrimo mokymosi (angl. unsupervised
 learning). Mokymasis, duomenų klasifikavimo kontekste, reiškia modelių
-(klasifikatorių) kūrimo metodus (algoritmus), kurie naudoja informaciją iš
-mokymosi duomenų\footnote{Mokymosi duomenys (angl. sample data)- duomenys,
-kurie yra paruošti darbui programų, kurios kurs klasifikatorius.}.
+(klasifikatorių) kūrimo metodus (algoritmus), kurie naudoja
+mokymosi duomenis\footnote{Mokymosi duomenys (angl. sample data)- duomenys,
+kurie yra paruošti darbui programų, kurios kurs klasifikatorius.}, kitaip
+tariant, tai mokymasis iš pavyzdžių.
 
 \subsubsection{Prižiūrimas mokymasis}
 
@@ -59,3 +60,34 @@ struktūrą be jokios išankstinės informacijos.
 
 Klasterizavimo principas - maksimizuoti objektų, esančių vienoje grupėje,
 tarpusavio panašumą ir minimizuoti tarpgrupinį objektų panašumą.
+
+\subsubsection{Prižiūrimojo ir neprižiūrimojo mokymosi skirtumai}
+Ppagrindinis skirtumas tarp prižiūrimojo ir neprižiūrimojo mokymosi slypi
+mokymosi duomenyse: prižiūrimojo mokymosi algoritmų įeities duomenyse yra
+išreikštinai pasakyta, kokio rezultato mes laukiame, o neprižiūrimojo mokymosi duomenyse tokios
+papildomos informacijos nėra. Aptarkime pavyzdį: mums reikia sukurti
+klasifikatorių, kuris pasakytų, ar nuotraukoje yra žmogaus veidas. 
+
+Prižiūrimojo mokymosi programai kaip įeities duomenis paduotume keletą 
+nuotraukų su žymėmis pasakančiomis, ar nuotraukoje yra žmogaus veidas ar jo ten
+nėra, kitaip tariant, duotume keletą pavyzdžių su teisingais atsakymais.
+Programa peržvelgs visas nuotraukas ir susikurs klasifikatorių (modelį), kuris
+kažkokiu tikslumu galės atskirti nuotraukas su žmogaus veidu. Tokiu būdu mūsų
+prižiūrimojo mokymosi programa ``išmoks'', kas yra veidas.
+
+Neprižiūrimojo mokymosi programai kaip įeities duomenis paduotume keletą
+nuotraukų be jokių papildomų žymių. Žinoma, mūsų programa pati nesugebės
+``išrasti'', kas yra žmogaus veidas, tačiau ji tikriausiai sugrupuos nuotraukas
+su žmonių veidais ir tarkim peizažais į skirtingas grupes. Kitaip tariant,
+nuotraukos su žmonių veidais mūsų neprižiūrimo mokymosi programai bus nepanašios
+į nuotraukas su peizažais, todėl ji į vieną klasterį susidės nuotraukas, kurios
+jai atrodo tarpusavyje panašiausios: viename klasteryje nuotraukos su žmonių
+veidais, o kitoje su gamtos peizažais.
+
+Apibendrinant galime pasakyti, kad abi mokymosi rūšys siekia to paties tikslo,
+tik skitingomis priemonėmis. Pvz. atskirti nuotraukas su žmonių
+veidais nuo kitų nuotraukų su ar be teisingos žymės apie konkrečią nuotrauką.
+Bendras bruožas yra tai, kad jos mokymosi procese naudoja pavyzdžius, tik tie pavyzdžiai 
+skiriasi programai suteikiama informacija. % TODO Kuris daugiamatei analizei
+% svarbiau
+

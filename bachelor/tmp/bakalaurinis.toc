@@ -4,6 +4,7 @@
 \contentsline {subsection}{\numberline {1.1}Pri\IeC {\v z}i\IeC {\=u}rimas ir nepri\IeC {\v z}i\IeC {\=u}rimas mokymasis}{3}
 \contentsline {subsubsection}{\numberline {1.1.1}Pri\IeC {\v z}i\IeC {\=u}rimas mokymasis}{3}
 \contentsline {subsubsection}{\numberline {1.1.2}Nepri\IeC {\v z}i\IeC {\=u}rimas mokymasis}{3}
+\contentsline {subsubsection}{\numberline {1.1.3}Pri\IeC {\v z}i\IeC {\=u}rimojo ir nepri\IeC {\v z}i\IeC {\=u}rimojo mokymosi skirtumai}{4}
 \contentsline {subsection}{\numberline {1.2}Bayesian decision theory}{5}
 \contentsline {subsection}{\numberline {1.3}Klasifikavimas ``artimiausio kaimyno'' metodu}{5}
 \contentsline {subsection}{\numberline {1.4}Klasifikavimas ``ma\IeC {\v z}iausi\IeC {\k u} kvadrat\IeC {\k u} metotu''}{5}

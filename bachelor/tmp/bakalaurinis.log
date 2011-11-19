@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=latex 2011.11.15)  19 NOV 2011 00:28
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=latex 2011.11.15)  19 NOV 2011 15:30
 entering extended mode
 **bakalaurinis.tex
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.tex
@@ -231,14 +231,44 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\data\uni-32.def"
 File: uni-32.def 2004/10/17 UCS: Unicode data U+2000..U+20FF
-))
+)
 [3
 
-] [4] [5
+]
+Overfull \hbox (3.97084pt too wide) in paragraph at lines 65--70
+[]\L7x/lmr/m/n/10 Ppagrindinis skir-tu-mas tarp priþiû-ri-mo-jo ir nepriþiû-ri-
+mo-jo moky-mosi slypi moky-
+ []
+
+
+Overfull \hbox (8.58237pt too wide) in paragraph at lines 65--70
+\L7x/lmr/m/n/10 mosi duomenyse: priþiû-ri-mo-jo moky-mosi al-go-rit-mø áeities 
+duomenyse yra iðreikðti-
+ []
+
+
+Overfull \hbox (11.30522pt too wide) in paragraph at lines 65--70
+\L7x/lmr/m/n/10 nai pasaky-ta, kokio rezul-ta-to mes lauki-ame, o nepriþiû-ri-m
+o-jo moky-mosi duomenyse
+ []
+
+
+Overfull \hbox (1.3681pt too wide) in paragraph at lines 71--77
+[][]\L7x/lmr/m/n/10 Priþiûrimojo moky-mosi pro-gra-mai kaip áeities duome-nis p
+aduo-tume keletà
+ []
+
+) [4] [5
 
 ]
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\support_vector_m
-achines.tex") [6
+achines.tex"
+Overfull \hbox (10.10558pt too wide) in paragraph at lines 17--20
+[][]\L7x/lmr/m/n/10 Gali bûti ir taip, kad ieðko-ma hiper-plokð-tu-ma gali ir n
+eegzis-tuoti pavyzdþiui,
+ []
+
+) [6
 
 ]
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\savoku_apibrezim
@@ -251,42 +281,42 @@ Overfull \hbox (5.74895pt too wide) in paragraph at lines 5--12
 )
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.bbl
 "
-LaTeX Font Info:    Try loading font information for L7x+lmtt on input line 8.
+LaTeX Font Info:    Try loading font information for L7x+lmtt on input line 9.
  ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\lm\l7xlmtt.fd"
 File: l7xlmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 11--18
+Underfull \hbox (badness 10000) in paragraph at lines 19--26
 [][]\L7x/lmr/m/n/10 Jelena Mamèenko.  \L7x/lmr/m/it/10 Duomen[] gavy-bos techno
 logij[] taiky-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 11--18
+Underfull \hbox (badness 10000) in paragraph at lines 19--26
 \L7x/lmr/m/it/10 mas iðskirstyt[] serveri[] dar-bui ger-in-ti\L7x/lmr/m/n/10 . 
  PhD the-sis, Vil-ni-
  []
 
 
-Underfull \hbox (badness 3942) in paragraph at lines 11--18
+Underfull \hbox (badness 3942) in paragraph at lines 19--26
 \L7x/lmr/m/n/10 aus Ged-imi-no tech-nikos uni-ver-site-tas, 2008.  Prieiga in-t
 er-ne-tu:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 11--18
+Underfull \hbox (badness 10000) in paragraph at lines 19--26
 \L7x/lmtt/m/n/10 http : / / vddb . laba . lt / fedora / get / LT-[]eLABa-[]0001
  : E . 02~2008~D _
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--26
+Underfull \hbox (badness 10000) in paragraph at lines 28--34
 \L7x/lmtt/m/n/10 get / LT-[]eLABa-[]0001 : E . 02~2008~D _ 20090908 _ 201754-[]
 37094 / DS . 005 .
  []
 
-) [7
+[7
 
-]
+]) [8]
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.aux
 "
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\priziurimas_ir_n
@@ -294,12 +324,12 @@ epriziurimas_mokymasis.aux")
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\support_vector_m
 achines.aux")) ) 
 Here is how much of TeX's memory you used:
- 2594 strings out of 495286
- 35115 string characters out of 3179843
+ 2595 strings out of 495286
+ 35133 string characters out of 3179843
  80822 words of memory out of 3000000
- 5755 multiletter control sequences out of 15000+200000
+ 5756 multiletter control sequences out of 15000+200000
  39581 words of font info for 41 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  27i,8n,25p,342b,474s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on bakalaurinis.dvi (7 pages, 18700 bytes).
+Output written on bakalaurinis.dvi (8 pages, 23712 bytes).
