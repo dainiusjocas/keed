@@ -2,23 +2,34 @@
 
 \bibitem[Hal99]{markhall99}
 Mark~A. Hall.
-\newblock Correlation-based feature selection for machine learning.
-\newblock 1999.
+\newblock {\em Correlation-based Feature Selection for Machine Learning}.
+\newblock PhD thesis, University of Waikato, 1999.
+\newblock Prieiga internetu:
+  \url{http://www.cs.waikato.ac.nz/~ml/publications/1999/99MH-Thesis.ps}.
 
 \bibitem[Mam08]{mamcenko08}
 Jelena Mam\v{c}enko.
-\newblock Duomen\c{u} gavybos technologij\c{u} taikymas i\v{s}skirstyt\c{u}
-  serveri\c{u} darbui gerinti.
-\newblock 2008.
+\newblock {\em Duomen\c{u} gavybos technologij\c{u} taikymas
+  i\v{s}skirstyt\c{u} serveri\c{u} darbui gerinti}.
+\newblock PhD thesis, Vilniaus Gedimino technikos universitetas, 2008.
+\newblock Prieiga internetu:
+  \url{http://vddb.laba.lt/fedora/get/LT-eLABa-0001:E.02~2008~D_20090105_15012%
+4-79076/DS.005.0.02.ETD}.
 
 \bibitem[Mar08]{martisiute08}
 Dalia Marti{\v s}i{\= u}t\.{e}.
 \newblock Vaizd\c{u} klasterizavimas.
-\newblock 2008.
+\newblock Master's thesis, Vilniaus universitetas, 2008.
+\newblock Prieiga internetu:
+  \url{http://vddb.laba.lt/fedora/get/LT-eLABa-0001:E.02~2008~D_20090908_20175%
+4-37094/DS.005.1.01.ETD}.
 
 \bibitem[\v{S}06]{simkevicius06}
 Simonas \v{S}imkevi\v{c}ius.
 \newblock Klasifikavimo su mokytoju metod\c{u} lyginamoji analiz\.{e}.
-\newblock 2006.
+\newblock Master's thesis, Kauno technologijos universitetas, 2006.
+\newblock Prieiga internetu:
+  \url{http://vddb.laba.lt/fedora/get/LT-eLABa-0001:E.02~2006~D_20060605_09283%
+2-93331/DS.005.0.02.ETD}.
 
 \end{thebibliography}

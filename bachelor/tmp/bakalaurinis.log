@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=latex 2011.11.15)  18 NOV 2011 01:29
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=latex 2011.11.15)  19 NOV 2011 00:28
 entering extended mode
 **bakalaurinis.tex
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.tex
@@ -160,6 +160,9 @@ Package tocloft Note: The document has section divisions.
 \cftbeforetabskip=\skip71
 \cfttabindent=\skip72
 \cfttabnumwidth=\skip73
+) ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.aux
 "
@@ -167,20 +170,20 @@ Package tocloft Note: The document has section divisions.
 epriziurimas_mokymasis.aux")
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\support_vector_m
 achines.aux"))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for L7x/lmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for L7x/lmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
  ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\ucsencs.def"
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
 )
@@ -240,7 +243,7 @@ achines.tex") [6
 ]
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\savoku_apibrezim
 ai.tex"
-Overfull \hbox (5.74895pt too wide) in paragraph at lines 5--7
+Overfull \hbox (5.74895pt too wide) in paragraph at lines 5--12
 [][]\L7x/lmr/m/n/10 Maðininis[[]] (kom-pi-u-teri-nis, sistemos[[]]) moky-ma-sis
  (an-gl. ma-
  []
@@ -248,9 +251,37 @@ Overfull \hbox (5.74895pt too wide) in paragraph at lines 5--7
 )
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.bbl
 "
-Underfull \hbox (badness 3386) in paragraph at lines 9--13
-[][]\L7x/lmr/m/n/10 Jelena Mamèenko.  Duomen[] gavy-bos technologij[] taiky-mas
+LaTeX Font Info:    Try loading font information for L7x+lmtt on input line 8.
+ ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\lm\l7xlmtt.fd"
+File: l7xlmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Underfull \hbox (badness 10000) in paragraph at lines 11--18
+[][]\L7x/lmr/m/n/10 Jelena Mamèenko.  \L7x/lmr/m/it/10 Duomen[] gavy-bos techno
+logij[] taiky-
+ []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--18
+\L7x/lmr/m/it/10 mas iðskirstyt[] serveri[] dar-bui ger-in-ti\L7x/lmr/m/n/10 . 
+ PhD the-sis, Vil-ni-
+ []
+
+
+Underfull \hbox (badness 3942) in paragraph at lines 11--18
+\L7x/lmr/m/n/10 aus Ged-imi-no tech-nikos uni-ver-site-tas, 2008.  Prieiga in-t
+er-ne-tu:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--18
+\L7x/lmtt/m/n/10 http : / / vddb . laba . lt / fedora / get / LT-[]eLABa-[]0001
+ : E . 02~2008~D _
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--26
+\L7x/lmtt/m/n/10 get / LT-[]eLABa-[]0001 : E . 02~2008~D _ 20090908 _ 201754-[]
+37094 / DS . 005 .
  []
 
 ) [7
@@ -263,12 +294,12 @@ epriziurimas_mokymasis.aux")
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\support_vector_m
 achines.aux")) ) 
 Here is how much of TeX's memory you used:
- 2478 strings out of 495286
- 33479 string characters out of 3179843
- 79822 words of memory out of 3000000
- 5648 multiletter control sequences out of 15000+200000
- 36951 words of font info for 39 fonts, out of 3000000 for 9000
+ 2594 strings out of 495286
+ 35115 string characters out of 3179843
+ 80822 words of memory out of 3000000
+ 5755 multiletter control sequences out of 15000+200000
+ 39581 words of font info for 41 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  27i,8n,25p,342b,474s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on bakalaurinis.dvi (7 pages, 17632 bytes).
+Output written on bakalaurinis.dvi (7 pages, 18700 bytes).
