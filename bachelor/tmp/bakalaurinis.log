@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=latex 2011.11.15)  19 NOV 2011 15:30
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2011.11.15)  21 NOV 2011 14:04
 entering extended mode
 **bakalaurinis.tex
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.tex
@@ -218,47 +218,41 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 \tf@toc=\write3
  [1
 
-]
-("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\data\uni-1.def"
-File: uni-1.def 2004/10/17 UCS: Unicode data U+0100..U+01FF
-) [2]
+{C:/ProgramData/MiKTeX/2.8/pdftex/config/pdftex.map}]
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\priziurimas_ir_n
 epriziurimas_mokymasis.tex"
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\data\uni-1.def"
+File: uni-1.def 2004/10/17 UCS: Unicode data U+0100..U+01FF
+)
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 7.
+(Font)              <8> on input line 13.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 7.
+(Font)              <6> on input line 13.
 
 ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\data\uni-32.def"
 File: uni-32.def 2004/10/17 UCS: Unicode data U+2000..U+20FF
 )
-[3
+[2
 
 ]
-Overfull \hbox (3.97084pt too wide) in paragraph at lines 65--70
-[]\L7x/lmr/m/n/10 Ppagrindinis skir-tu-mas tarp priþiû-ri-mo-jo ir nepriþiû-ri-
-mo-jo moky-mosi slypi moky-
- []
-
-
-Overfull \hbox (8.58237pt too wide) in paragraph at lines 65--70
+Overfull \hbox (8.58237pt too wide) in paragraph at lines 71--76
 \L7x/lmr/m/n/10 mosi duomenyse: priþiû-ri-mo-jo moky-mosi al-go-rit-mø áeities 
 duomenyse yra iðreikðti-
  []
 
 
-Overfull \hbox (11.30522pt too wide) in paragraph at lines 65--70
+Overfull \hbox (11.30522pt too wide) in paragraph at lines 71--76
 \L7x/lmr/m/n/10 nai pasaky-ta, kokio rezul-ta-to mes lauki-ame, o nepriþiû-ri-m
 o-jo moky-mosi duomenyse
  []
 
 
-Overfull \hbox (1.3681pt too wide) in paragraph at lines 71--77
+Overfull \hbox (1.3681pt too wide) in paragraph at lines 77--83
 [][]\L7x/lmr/m/n/10 Priþiûrimojo moky-mosi pro-gra-mai kaip áeities duome-nis p
 aduo-tume keletà
  []
 
-) [4] [5
+) [3] [4
 
 ]
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\support_vector_m
@@ -268,7 +262,7 @@ Overfull \hbox (10.10558pt too wide) in paragraph at lines 17--20
 eegzis-tuoti pavyzdþiui,
  []
 
-) [6
+) [5
 
 ]
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\savoku_apibrezim
@@ -314,9 +308,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--34
 37094 / DS . 005 .
  []
 
-[7
+[6
 
-]) [8]
+]) [7]
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.aux
 "
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\priziurimas_ir_n
@@ -324,12 +318,24 @@ epriziurimas_mokymasis.aux")
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\support_vector_m
 achines.aux")) ) 
 Here is how much of TeX's memory you used:
- 2595 strings out of 495286
- 35133 string characters out of 3179843
+ 2596 strings out of 495285
+ 35143 string characters out of 3179820
  80822 words of memory out of 3000000
  5756 multiletter control sequences out of 15000+200000
  39581 words of font info for 41 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  27i,8n,25p,342b,474s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.8/fonts/enc/dvips/lm/lm-l7x.en
+c}<C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/lm/lmbx10.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.8/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files (x
+86)/MiKTeX 2.8/fonts/type1/public/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2
+.8/fonts/type1/public/lm/lmr6.pfb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type
+1/public/lm/lmr7.pfb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/lm/l
+mr8.pfb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/lm/lmri10.pfb><C:
+/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/lm/lmtt10.pfb>
+Output written on bakalaurinis.pdf (7 pages, 223768 bytes).
+PDF statistics:
+ 59 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-Output written on bakalaurinis.dvi (8 pages, 23712 bytes).
