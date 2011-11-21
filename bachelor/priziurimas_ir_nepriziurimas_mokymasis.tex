@@ -1,4 +1,5 @@
 \subsection{Prižiūrimas ir neprižiūrimas mokymasis}
+
 Šiame skyriuje stengsiuosi atsakyti į klausimą kuo skiriasi prižiūrimas mokymasis
 (angl. supervised learning) nuo neprižiūrimo mokymosi (angl. unsupervised
 learning). Mokymasis, duomenų klasifikavimo kontekste, reiškia modelių
@@ -14,6 +15,8 @@ klases bei mokymosi duomenis, kuriems jau yra priskirtos tam tikros
 teisingos klasės. Tikslas yra pagal mokymosi duomenis sukurti klasifikatorių,
 kuriuo remiantis būtų galima identifikuoti naujų objektų priklausomybę vienai iš
 žinomų klasių.\cite{markhall99}
+
+%% JG: Paragrafas netikslus, nes be klasifikavimo dar yra regresija, apie kurią kalbi žemiau.
 
 \begin{comment}
 Prižiūrimojo mokymosi esmė: turime aibę duomenų, kurios objektai yra vadinami
@@ -43,17 +46,27 @@ Išskiriami trys pagrindiniai klasifikavimo etapai:
   \item klasifikavimo kokybės įvertinimas.
 \end{enumerate}
 
+%% JG: Pateik vizualų klasifikavimo pavyzdį iliustruojanti visus 3 etapus.
+
+%% JG: Reikia kitaip struktūrizuoti šitą skyrių. Pradžioj pasakyk, kad yra klasifikavimas ir regresija ir po sakinį kiekvienam. Tada aptark klasifikavimą ir pateik pavyzdį. Tada pateik regresijos pavyzdį. Tada parašyk, kad šiame darbe studijuojama klasifikavimo problema.
+
 \subsubsection{Neprižiūrimas mokymasis}
 
 Neprižiūrimas mokymasis dar vadinamas klasterizavimu (angl. clustering) arba
 mokymusi be mokytojo. Patogumo dėlei, toliau naudosiu klasterizavimo sąvoką kaip
 ekvivalentą neprižiūrimojo makymosi sąvokai.
 
+%% JG: neprižiūrimų mokymosi metodų yra visokių: association rule mining, clustering, ir t.t. Zr ESL knygos 14 skyrių.
+
 Klasterizavimas (angl.  clustering) - tai viena iš duomenų gavybos sričių. Klasterizavimo 
 algoritmo užduotis – objektų suskirstymas  į prasmingas 
-grupes – klasterius, kai jokia papildoma informacija apie tas grupes (jų dydį, kiekį, grupavimo požymius) nėra iš anksto žinoma. 
+grupes – klasterius, kai jokia papildoma informacija apie tas grupes (jų dydį, kiekį, grupavimo požymius) nėra iš anksto žinoma.
+%
+%% Kartais šiokia tokia informacija žinoma. Pvz., klasterių kiekis nurodomas k-means algoritme. Arba galima daryti prielaidas apie klasterių struktūrą: k-means ieško apvalių klasterių. Esminis dalykas yra tas, kad teisingas atsakymas nėra žinomas.
+% 
 Klasterizavimo algoritmas pats, pagal pasirinktus algoritmo parametrus, turi nurodyti, kokioms 
 grupėms priklauso atitinkami įvesties duomenys.\cite{martisiute08}
+%% JG: algoritmas turi atrasti grupes duomenyse, jos nėra iš anksto žinomos.
 
 Klasterizavimo algoritmų pagrindinis privalumas – gebėjimas atpažinti grupavimo
 struktūrą be jokios išankstinės informacijos.  
@@ -91,3 +104,8 @@ Bendras bruožas yra tai, kad jos mokymosi procese naudoja pavyzdžius, tik tie 
 skiriasi programai suteikiama informacija. % TODO Kuris daugiamatei analizei
 % svarbiau
 
+%% JG: aš nesutinku, kad abiem procesais siekiama tų pačių tikslų. Vienu atveju siekiama išmokti iš pavyzdžių. Kitu atveju siekiama atrasti nežinomas struktūras turimuose duomenyse. Procesai yra panašūs savo esme, bet jų panaudojimas skiriasi iš esmės.
+
+%% JG: iš vikipedijos: In machine learning, unsupervised learning refers to the problem of trying to find hidden structure in unlabeled data. Since the examples given to the learner are unlabeled, there is no error or reward signal to evaluate a potential solution. This distinguishes unsupervised learning from supervised learning and reinforcement learning.
+
+%% JG: visą šitą skyrių reikia pateikti koncentruotai. Esminiai teiginiai ir grafiniai pavyzdžiai. 
