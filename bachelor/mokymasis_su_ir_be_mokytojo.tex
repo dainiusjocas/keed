@@ -1,0 +1,118 @@
+\section{Teorinis darbo pagrindas}
+Ðiame skyriuje apraðysiu teoriná darbo pagrindà.
+\begin{comment}
+TODO Pakeisti priþiûrimà mokymasi á mokymasi su mokytoju
+TODO Pakiesti nepriþiûrimà mokymasi á mokymasi be mokytojo
+\end{comment}
+\subsection{Priþiûrimas ir nepriþiûrimas mokymasis}
+
+Ðiame skyriuje stengsiuosi atsakyti á klausimà kuo skiriasi priþiûrimas mokymasis
+(angl. supervised learning) nuo nepriþiûrimo mokymosi (angl. unsupervised
+learning). Mokymasis, duomenø klasifikavimo kontekste, reiðkia modeliø
+(klasifikatoriø) kûrimo metodus (algoritmus), kurie naudoja
+mokymosi duomenis\footnote{Mokymosi duomenys (angl. sample data)- duomenys,
+kurie yra paruoðti darbui programø, kurios kurs klasifikatorius.}, kitaip
+tariant, tai mokymasis ið pavyzdþiø.
+
+\subsubsection{Priþiûrimas mokymasis}
+
+Priþiûrimas mokymasis tai toks mokymasis, kai turime ið anksto nustatytas
+klases bei mokymosi duomenis, kuriems jau yra priskirtos tam tikros
+teisingos klasës. Tikslas yra pagal mokymosi duomenis sukurti klasifikatoriø,
+kuriuo remiantis bûtø galima identifikuoti naujø objektø priklausomybæ vienai ið
+þinomø klasiø.\cite{markhall99}
+
+%% JG: Paragrafas netikslus, nes be klasifikavimo dar yra regresija, apie kurià kalbi þemiau.
+
+\begin{comment}
+Priþiûrimojo mokymosi esmë: turime aibæ duomenø, kurios objektai yra vadinami
+áëjimo duomenimis (angl. Input) arba nepriklausomais kintamaisiais (angl.
+Independent variables), jø reikðmës yra iðmatuotos arba nustatytos. Darome prielaidà, 
+kad nepriklausomi kintamieji turi átakos vienam ar daugiau rezultato kintamøjø 
+(angl. Output) arba priklausomø kintamøjø (angl. Dependent variables). Paëmus dar vienà 
+duomenø objektà (angl. Tuple), tikslas yra pagal nepriklausomus kintamuosius nuspëti priklausomus kintamuosius.
+\end{comment}
+
+Priþiûrimo mokymosi metodø pagrindinë prielaida yra ta, kad kontekstas suteikia
+pakankamai informacijos. Kitaip tariant - jei þinai pakankamai daug objektø priklausanèiø kaþkokioms tai 
+klasëms, tai naujiems objektams pakankamai tiksliai gali priskirti tas klases.
+
+Priþiûrëtasis mokymasis turi du pagrindinius bûdus:
+\begin{enumerate}
+  \item Klasifikavimas (angl. classification) - pagal nepriklausomus
+  kintamuosius bandome nuspëti kokybinius (kategorinius) priklausomus kintamuosius. 
+  \item Regresija (angl. regression) - pagal nepriklausomus kintamuosius bandome
+  nuspëti kiekybinius priklausomus kintamuosius.
+\end{enumerate}
+
+Iðskiriami trys pagrindiniai klasifikavimo etapai:
+\begin{enumerate}
+  \item diskriminavimo (atskirianèiøjø) kintamøjø parinkimas,
+  \item klasifikavimo taisykliø sudarymas,
+  \item klasifikavimo kokybës ávertinimas.
+\end{enumerate}
+
+%% JG: Pateik vizualø klasifikavimo pavyzdá iliustruojanti visus 3 etapus.
+
+%% JG: Reikia kitaip struktûrizuoti ðità skyriø. Pradþioj pasakyk, kad yra klasifikavimas ir regresija ir po sakiná kiekvienam. Tada aptark klasifikavimà ir pateik pavyzdá. Tada pateik regresijos pavyzdá. Tada paraðyk, kad ðiame darbe studijuojama klasifikavimo problema.
+
+\subsubsection{Nepriþiûrimas mokymasis}
+
+Nepriþiûrimas mokymasis dar vadinamas klasterizavimu (angl. clustering) arba
+mokymusi be mokytojo. Patogumo dëlei, toliau naudosiu klasterizavimo sàvokà kaip
+ekvivalentà nepriþiûrimojo makymosi sàvokai.
+
+%% JG: nepriþiûrimø mokymosi metodø yra visokiø: association rule mining, clustering, ir t.t. Zr ESL knygos 14 skyriø.
+
+Klasterizavimas (angl.  clustering) - tai viena ið duomenø gavybos srièiø. Klasterizavimo 
+algoritmo uþduotis – objektø suskirstymas  á prasmingas 
+grupes – klasterius, kai jokia papildoma informacija apie tas grupes (jø dydá, kieká, grupavimo poþymius) nëra ið anksto þinoma.
+%
+%% Kartais ðiokia tokia informacija þinoma. Pvz., klasteriø kiekis nurodomas k-means algoritme. Arba galima daryti prielaidas apie klasteriø struktûrà: k-means ieðko apvaliø klasteriø. Esminis dalykas yra tas, kad teisingas atsakymas nëra þinomas.
+% 
+Klasterizavimo algoritmas pats, pagal pasirinktus algoritmo parametrus, turi nurodyti, kokioms 
+grupëms priklauso atitinkami ávesties duomenys.\cite{martisiute08}
+%% JG: algoritmas turi atrasti grupes duomenyse, jos nëra ið anksto þinomos.
+
+Klasterizavimo algoritmø pagrindinis privalumas – gebëjimas atpaþinti grupavimo
+struktûrà be jokios iðankstinës informacijos.  
+
+Klasterizavimo principas - maksimizuoti objektø, esanèiø vienoje grupëje,
+tarpusavio panaðumà ir minimizuoti tarpgrupiná objektø panaðumà.
+
+\subsubsection{Priþiûrimojo ir nepriþiûrimojo mokymosi skirtumai}
+Pagrindinis skirtumas tarp priþiûrimojo ir nepriþiûrimojo mokymosi slypi
+mokymosi duomenyse: priþiûrimojo mokymosi algoritmø áeities duomenyse yra
+iðreikðtinai pasakyta, kokio rezultato mes laukiame, o nepriþiûrimojo mokymosi duomenyse tokios
+papildomos informacijos nëra. Aptarkime pavyzdá: mums reikia sukurti
+klasifikatoriø, kuris pasakytø, ar nuotraukoje yra þmogaus veidas. 
+
+Priþiûrimojo mokymosi programai kaip áeities duomenis paduotume keletà 
+nuotraukø su þymëmis pasakanèiomis, ar nuotraukoje yra þmogaus veidas ar jo ten
+nëra, kitaip tariant, duotume keletà pavyzdþiø su teisingais atsakymais.
+Programa perþvelgs visas nuotraukas ir susikurs klasifikatoriø (modelá), kuris
+kaþkokiu tikslumu galës atskirti nuotraukas su þmogaus veidu. Tokiu bûdu mûsø
+priþiûrimojo mokymosi programa ``iðmoks'', kas yra veidas.
+
+Nepriþiûrimojo mokymosi programai kaip áeities duomenis paduotume keletà
+nuotraukø be jokiø papildomø þymiø. Þinoma, mûsø programa pati nesugebës
+``iðrasti'', kas yra þmogaus veidas, taèiau ji tikriausiai sugrupuos nuotraukas
+su þmoniø veidais ir tarkim peizaþais á skirtingas grupes. Kitaip tariant,
+nuotraukos su þmoniø veidais mûsø nepriþiûrimo mokymosi programai bus nepanaðios
+á nuotraukas su peizaþais, todël ji á vienà klasterá susidës nuotraukas, kurios
+jai atrodo tarpusavyje panaðiausios: viename klasteryje nuotraukos su þmoniø
+veidais, o kitoje su gamtos peizaþais.
+
+Apibendrinant galime pasakyti, kad abi mokymosi rûðys siekia to paties tikslo,
+tik skitingomis priemonëmis. Pvz. atskirti nuotraukas su þmoniø
+veidais nuo kitø nuotraukø su ar be teisingos þymës apie konkreèià nuotraukà.
+Bendras bruoþas yra tai, kad jos mokymosi procese naudoja pavyzdþius, tik tie pavyzdþiai 
+skiriasi programai suteikiama informacija. % TODO Kuris daugiamatei analizei
+% svarbiau
+
+%% JG: að nesutinku, kad abiem procesais siekiama tø paèiø tikslø. Vienu atveju siekiama iðmokti ið pavyzdþiø. Kitu atveju siekiama atrasti neþinomas struktûras turimuose duomenyse. Procesai yra panaðûs savo esme, bet jø panaudojimas skiriasi ið esmës.
+
+%% JG: ið vikipedijos: In machine learning, unsupervised learning refers to the problem of trying to find hidden structure in unlabeled data. Since the examples given to the learner are unlabeled, there is no error or reward signal to evaluate a potential solution. This distinguishes unsupervised learning from supervised learning and reinforcement learning.
+
+%% JG: visà ðità skyriø reikia pateikti koncentruotai. Esminiai teiginiai ir grafiniai pavyzdþiai. 
+

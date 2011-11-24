@@ -1,99 +1,59 @@
 \section{Teorinis darbo pagrindas}
+
 Šiame skyriuje aprašysiu teorinį darbo pagrindą.
-\begin{comment}
-TODO Pakeisti prižiūrimą mokymasi į mokymasi su mokytoju
-TODO Pakiesti neprižiūrimą mokymasi į mokymasi be mokytojo
-\end{comment}
-\subsection{Prižiūrimas ir neprižiūrimas mokymasis}
-Šiame skyriuje stengsiuosi atsakyti į klausimą kuo skiriasi prižiūrimas mokymasis
-(angl. supervised learning) nuo neprižiūrimo mokymosi (angl. unsupervised
-learning). Mokymasis, duomenų klasifikavimo kontekste, reiškia modelių
-(klasifikatorių) kūrimo metodus (algoritmus), kurie naudoja
+
+\subsection{Mokymasis su ir be mokytojo}
+
+Šiame skyriuje stengsiuosi atsakyti į klausimą kuo skiriasi mokymas su
+mokytoju (angl. supervised learning) nuo mokymo be mokytojo (angl.
+unsupervised learning). Mokymasis, duomenų klasifikavimo kontekste, reiškia modelių
+(pvz. klasifikatorių) kūrimo metodus (algoritmus), kurie naudoja
 mokymosi duomenis\footnote{Mokymosi duomenys (angl. sample data)- duomenys,
-kurie yra paruošti darbui programų, kurios kurs klasifikatorius.}, kitaip
-tariant, tai mokymasis iš pavyzdžių.
+kurie yra paruošti darbui programų, kurios kurs modelius (pvz.
+klasifikatorius).}, kitaip tariant, tai mokymasis iš pavyzdžių.
 
-\subsubsection{Prižiūrimas mokymasis}
+\subsubsection{Mokymas su mokytoju}
 
-Prižiūrimas mokymasis tai toks mokymasis, kai turime iš anksto nustatytas
-klases bei mokymosi duomenis, kuriems jau yra priskirtos tam tikros
-teisingos klasės. Tikslas yra pagal mokymosi duomenis sukurti klasifikatorių,
-kuriuo remiantis būtų galima identifikuoti naujų objektų priklausomybę vienai iš
-žinomų klasių.\cite{markhall99}
-
-\begin{comment}
-Prižiūrimojo mokymosi esmė: turime aibę duomenų, kurios objektai yra vadinami
-įėjimo duomenimis (angl. Input) arba nepriklausomais kintamaisiais (angl.
-Independent variables), jų reikšmės yra išmatuotos arba nustatytos. Darome prielaidą, 
-kad nepriklausomi kintamieji turi įtakos vienam ar daugiau rezultato kintamųjų 
-(angl. Output) arba priklausomų kintamųjų (angl. Dependent variables). Paėmus dar vieną 
-duomenų objektą (angl. Tuple), tikslas yra pagal nepriklausomus kintamuosius nuspėti priklausomus kintamuosius.
-\end{comment}
-
-Prižiūrimo mokymosi metodų pagrindinė prielaida yra ta, kad kontekstas suteikia
-pakankamai informacijos. Kitaip tariant - jei žinai pakankamai daug objektų priklausančių kažkokioms tai 
-klasėms, tai naujiems objektams pakankamai tiksliai gali priskirti tas klases.
-
-Prižiūrėtasis mokymasis turi du pagrindinius būdus:
+Mokymas su mokytoju tai toks mokymas, kai turime mokymo duomenis, kuriems jau
+yra priskirtos tam tikras teisingas atsakymas. Kitaip tariant, mes sprendžiame
+uždavinį, kuriam atsakymą galime pasitikrinti. Mokymas su mokytoju yra
+skirstomas į dvi rūšis:
 \begin{enumerate}
   \item Klasifikavimas (angl. classification) - pagal nepriklausomus
   kintamuosius bandome nuspėti kokybinius (kategorinius) priklausomus kintamuosius. 
   \item Regresija (angl. regression) - pagal nepriklausomus kintamuosius bandome
   nuspėti kiekybinius priklausomus kintamuosius.
-\end{enumerate}
+\end{enumerate} 
 
-Išskiriami trys pagrindiniai klasifikavimo etapai:
-\begin{enumerate}
-  \item diskriminavimo (atskiriančiųjų) kintamųjų parinkimas,
-  \item klasifikavimo taisyklių sudarymas,
-  \item klasifikavimo kokybės įvertinimas.
-\end{enumerate}
+\subsubsection{Klasifikavimo uždavinio pavyzdys}
 
-\subsubsection{Neprižiūrimas mokymasis}
+Klasifikavimo uždavinių aktualumą galima pagrįsti paprastu pavyzdžiu. 
+%% surasti paveiksliukų. 
 
-Neprižiūrimas mokymasis dar vadinamas klasterizavimu (angl. clustering) arba
-mokymusi be mokytojo. Patogumo dėlei, toliau naudosiu klasterizavimo sąvoką kaip
-ekvivalentą neprižiūrimojo makymosi sąvokai.
+Uždavinys: Pašto skyriuose laiškai siunčiami įvairiomis kryptimis pagal gavėjo
+adresą ir (arba) pašto kodą. Mes norime automatizuoti laiškų rūšiavimą pagal
+siuntimo kryptį. Tam, kad galėtume laiškų rūšiavimą pagal kryptį automatizuoti,
+mums reikėtų galimybės nuo voko nuskaityti pašto kodą.
 
-Klasterizavimas (angl.  clustering) - tai viena iš duomenų gavybos sričių. Klasterizavimo 
-algoritmo užduotis – objektų suskirstymas  į prasmingas 
-grupes – klasterius, kai jokia papildoma informacija apie tas grupes (jų dydį, kiekį, grupavimo požymius) nėra iš anksto žinoma. 
-Klasterizavimo algoritmas pats, pagal pasirinktus algoritmo parametrus, turi nurodyti, kokioms 
-grupėms priklauso atitinkami įvesties duomenys.\cite{martisiute08}
+Sprendimas: Šią problemą mums padėtų išspręsti skeneris ir programine įranga,
+kuri sugebėtų ranka rašytus skaitmenis atpažinti ir konvertuoti į skaitmeninį
+formatą. Tų skaitmenų atpažinimui ir konvertavimui į skaitmeninį formatą,
+tikėtina, kad mes naudosime klasifikavimo algortimus, nes uždavinys pasižymi
+visomis klasifikavimui būdingomis savybėmis: turime aibę duomenų (vaizdinė
+informacija su ranka rašytais skaitmenimis), turime teisingus atsakymus (žmogus
+pažiūrėjęs į ranka rašytą skaitmenį gali pasakyti programai, koks ten yra
+skaitmuo), bei galimų sprendimai yra kategorinio tipo (dešimt skaitmenų nuo
+0 iki 9).
 
-Klasterizavimo algoritmų pagrindinis privalumas – gebėjimas atpažinti grupavimo
-struktūrą be jokios išankstinės informacijos.  
+Įgyvendinę aukščiau aprašyto uždavinio sprendimą, pašto skyrių vadybininkai
+galėtume atlaisvinti žmones nuo iš esmės mechaninio darbo - rūšiuoti laiškus.
+Tokiu būdu būtų optimizuotas pašto skyrių efektyvumas.
 
-Klasterizavimo principas - maksimizuoti objektų, esančių vienoje grupėje,
-tarpusavio panašumą ir minimizuoti tarpgrupinį objektų panašumą.
+\subsubsection{Regresijos uždavinio payzdys}
 
-\subsubsection{Prižiūrimojo ir neprižiūrimojo mokymosi skirtumai}
-Pagrindinis skirtumas tarp prižiūrimojo ir neprižiūrimojo mokymosi slypi
-mokymosi duomenyse: prižiūrimojo mokymosi algoritmų įeities duomenyse yra
-išreikštinai pasakyta, kokio rezultato mes laukiame, o neprižiūrimojo mokymosi duomenyse tokios
-papildomos informacijos nėra. Aptarkime pavyzdį: mums reikia sukurti
-klasifikatorių, kuris pasakytų, ar nuotraukoje yra žmogaus veidas. 
 
-Prižiūrimojo mokymosi programai kaip įeities duomenis paduotume keletą 
-nuotraukų su žymėmis pasakančiomis, ar nuotraukoje yra žmogaus veidas ar jo ten
-nėra, kitaip tariant, duotume keletą pavyzdžių su teisingais atsakymais.
-Programa peržvelgs visas nuotraukas ir susikurs klasifikatorių (modelį), kuris
-kažkokiu tikslumu galės atskirti nuotraukas su žmogaus veidu. Tokiu būdu mūsų
-prižiūrimojo mokymosi programa ``išmoks'', kas yra veidas.
 
-Neprižiūrimojo mokymosi programai kaip įeities duomenis paduotume keletą
-nuotraukų be jokių papildomų žymių. Žinoma, mūsų programa pati nesugebės
-``išrasti'', kas yra žmogaus veidas, tačiau ji tikriausiai sugrupuos nuotraukas
-su žmonių veidais ir tarkim peizažais į skirtingas grupes. Kitaip tariant,
-nuotraukos su žmonių veidais mūsų neprižiūrimo mokymosi programai bus nepanašios
-į nuotraukas su peizažais, todėl ji į vieną klasterį susidės nuotraukas, kurios
-jai atrodo tarpusavyje panašiausios: viename klasteryje nuotraukos su žmonių
-veidais, o kitoje su gamtos peizažais.
-
-Apibendrinant galime pasakyti, kad abi mokymosi rūšys siekia to paties tikslo,
-tik skitingomis priemonėmis. Pvz. atskirti nuotraukas su žmonių
-veidais nuo kitų nuotraukų su ar be teisingos žymės apie konkrečią nuotrauką.
-Bendras bruožas yra tai, kad jos mokymosi procese naudoja pavyzdžius, tik tie pavyzdžiai 
-skiriasi programai suteikiama informacija. % TODO Kuris daugiamatei analizei
-% svarbiau
+Abiejų mokymo su mokytoju rūšių tikslas yra pagal mokymosi duomenis sukurti
+modelį, kuriuo remiantis būtų galima identifikuoti naujų objektų
+savybes.\cite{markhall99} Šiame darbe negrinėsime klasifikavimo problemą.
 
