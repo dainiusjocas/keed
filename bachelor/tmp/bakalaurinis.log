@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2011.11.15)  24 NOV 2011 22:28
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2011.11.15)  25 NOV 2011 00:45
 entering extended mode
 **bakalaurinis.tex
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.tex
@@ -164,28 +164,65 @@ Package tocloft Note: The document has section divisions.
 \Urlmuskip=\muskip10
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks21
+)
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2010/02/14 v0.04n Graphics/color for pdfTeX
+\Gread@gobject=\count91
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.aux
 "
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\priziurimas_ir_n
 epriziurimas_mokymasis.aux")
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\support_vector_m
 achines.aux"))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for L7x/lmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for L7x/lmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
  ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\ucsencs.def"
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
+) ("C:\Program Files (x86)\MiKTeX 2.8\tex\context\base\supp-pdf.tex"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count92
+\scratchdimen=\dimen106
+\scratchbox=\box26
+\nofMPsegments=\count93
+\nofMParguments=\count94
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count95
+\MPscratchDim=\dimen107
+\MPnumerator=\count96
+\everyMPtoPDFconversion=\toks23
 )
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.toc
 "
@@ -240,22 +277,28 @@ Overfull \hbox (35.79439pt too wide) in paragraph at lines 41--46
 i-fikav-i-mo tik-slas - iden-ti-fikuoti parametrus,
  []
 
-[2
+<images/ranka_rasyti_skaiciai.png, id=8, 408.02437pt x 249.93375pt>
+File: images/ranka_rasyti_skaiciai.png Graphic file (type png)
 
-]
-Overfull \hbox (15.28911pt too wide) in paragraph at lines 81--86
+<use images/ranka_rasyti_skaiciai.png> [2
+
+ <C:/Users/Dainius/Documents/My Dropbox/bachelor/keed/bachelor/images/ranka_ras
+yti_skaiciai.png>]
+Overfull \hbox (15.28911pt too wide) in paragraph at lines 90--95
  \L7x/lmr/bx/n/10 Re-gresinës anal-izës payzdys[] []\L7x/lmr/m/n/10 Re-gre-si-j
 a prog-nozuo-jant nau-jø duomenø reikðmes
  []
 
 
-Overfull \hbox (8.68504pt too wide) in paragraph at lines 81--86
+Overfull \hbox (8.68504pt too wide) in paragraph at lines 90--95
 \L7x/lmr/m/n/10 Re-gresinë anal-izë daþ-ni-au-si-ai nau-do-ja-ma ávert-in-ti (a
 ng. fore-cast) ateities duomenø
  []
 
-[3]
-Overfull \hbox (1.17497pt too wide) in paragraph at lines 137--145
+[3] ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\data\uni-32.def"
+File: uni-32.def 2004/10/17 UCS: Unicode data U+2000..U+20FF
+)
+Overfull \hbox (1.17497pt too wide) in paragraph at lines 158--166
 [][]\L7x/lmr/m/n/10 Mokymosi be moky-to-jo pro-gra-mai kaip áeities duome-nis p
 aduo-tume keletà
  []
@@ -282,9 +325,6 @@ Overfull \hbox (5.74895pt too wide) in paragraph at lines 5--12
 
 ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\data\uni-0.def"
 File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
-)
-("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\data\uni-32.def"
-File: uni-32.def 2004/10/17 UCS: Unicode data U+2000..U+20FF
 ))
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.bbl
 "
@@ -355,10 +395,10 @@ epriziurimas_mokymasis.aux")
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\support_vector_m
 achines.aux")) ) 
 Here is how much of TeX's memory you used:
- 3082 strings out of 495285
- 40160 string characters out of 3179820
- 80822 words of memory out of 3000000
- 6239 multiletter control sequences out of 15000+200000
+ 3758 strings out of 495285
+ 49222 string characters out of 3179820
+ 92451 words of memory out of 3000000
+ 6888 multiletter control sequences out of 15000+200000
  39581 words of font info for 41 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  27i,8n,24p,342b,478s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -370,9 +410,9 @@ am Files (x86)/MiKTeX 2.8/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files (x
 1/public/lm/lmr7.pfb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/lm/l
 mr8.pfb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/lm/lmri10.pfb><C:
 /Program Files (x86)/MiKTeX 2.8/fonts/type1/public/lm/lmtt10.pfb>
-Output written on bakalaurinis.pdf (8 pages, 228559 bytes).
+Output written on bakalaurinis.pdf (8 pages, 245752 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
+ 65 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
