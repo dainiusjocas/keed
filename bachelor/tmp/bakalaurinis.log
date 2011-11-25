@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2011.11.15)  25 NOV 2011 00:45
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2011.11.15)  25 NOV 2011 11:51
 entering extended mode
 **bakalaurinis.tex
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.tex
@@ -297,37 +297,19 @@ ng. fore-cast) ateities duomenø
 
 [3] ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\data\uni-32.def"
 File: uni-32.def 2004/10/17 UCS: Unicode data U+2000..U+20FF
-)
-Overfull \hbox (1.17497pt too wide) in paragraph at lines 158--166
-[][]\L7x/lmr/m/n/10 Mokymosi be moky-to-jo pro-gra-mai kaip áeities duome-nis p
-aduo-tume keletà
- []
-
-) [4] [5
+))
+[4] [5
 
 ]
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\support_vector_m
-achines.tex"
-Overfull \hbox (10.10558pt too wide) in paragraph at lines 21--24
-[][]\L7x/lmr/m/n/10 Gali bûti ir taip, kad ieðko-ma hiper-plokð-tu-ma gali ir n
-eegzis-tuoti pavyzdþiui,
- []
-
-) [6
+achines.tex") [6
 
 ]
 ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\savoku_apibrezim
-ai.tex"
-Overfull \hbox (5.74895pt too wide) in paragraph at lines 5--12
-[][]\L7x/lmr/m/n/10 Maðininis[[]] (kom-pi-u-teri-nis, sistemos[[]]) moky-ma-sis
- (an-gl. ma-
- []
-
-("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\data\uni-0.def"
+ai.tex" ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\unicode\data\uni-0.def"
 File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
-))
-("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.bbl
-"
+)) ("C:\Users\Dainius\Documents\My Dropbox\bachelor\keed\bachelor\bakalaurinis.
+bbl"
 LaTeX Font Info:    Try loading font information for L7x+lmtt on input line 9.
  ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\lm\l7xlmtt.fd"
 File: l7xlmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -410,7 +392,7 @@ am Files (x86)/MiKTeX 2.8/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files (x
 1/public/lm/lmr7.pfb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/lm/l
 mr8.pfb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/lm/lmri10.pfb><C:
 /Program Files (x86)/MiKTeX 2.8/fonts/type1/public/lm/lmtt10.pfb>
-Output written on bakalaurinis.pdf (8 pages, 245752 bytes).
+Output written on bakalaurinis.pdf (8 pages, 246160 bytes).
 PDF statistics:
  65 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
