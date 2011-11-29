@@ -1,13 +1,13 @@
 #TeXlipse project settings
-#Tue Nov 15 23:33:34 PST 2011
-builderNum=0
+#Sun Nov 20 13:43:48 PST 2011
+builderNum=2
 outputDir=
 makeIndSty=
 bibrefDir=
-outputFormat=dvi
+outputFormat=pdf
 tempDir=tmp
 mainTexFile=bakalaurinis.tex
-outputFile=bakalaurinis.dvi
+outputFile=bakalaurinis.pdf
 langSpell=lt
 markDer=true
 srcDir=
