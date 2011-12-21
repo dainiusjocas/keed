@@ -1,0 +1,44 @@
+\begin{thebibliography}{Mam08}
+
+\bibitem[Ber08]{bernataviciene08}
+Jolita Bernatavi\v{c}ien\.{e}.
+\newblock {\em Vizualios žinių gavybos metodologija ir jos tyrimas}.
+\newblock PhD thesis, Vilniaus Gedimino technikos universitetas, 2008.
+\newblock Prieiga internetu:
+  \url{http://vddb.laba.lt/fedora/get/LT-eLABa-0001:E.02~2008~D_20080930_09052%
+0-93322/DS.005.0.02.ETD}.
+
+\bibitem[Hal99]{markhall99}
+Mark~A. Hall.
+\newblock {\em Correlation-based Feature Selection for Machine Learning}.
+\newblock PhD thesis, University of Waikato, 1999.
+\newblock Prieiga internetu:
+  \url{http://www.cs.waikato.ac.nz/~ml/publications/1999/99MH-Thesis.ps}.
+
+\bibitem[Mam08]{mamcenko08}
+Jelena Mam\v{c}enko.
+\newblock {\em Duomen\c{u} gavybos technologij\c{u} taikymas
+  i\v{s}skirstyt\c{u} serveri\c{u} darbui gerinti}.
+\newblock PhD thesis, Vilniaus Gedimino technikos universitetas, 2008.
+\newblock Prieiga internetu:
+  \url{http://vddb.laba.lt/fedora/get/LT-eLABa-0001:E.02~2008~D_20090105_15012%
+4-79076/DS.005.0.02.ETD}.
+
+\bibitem[Mar08]{martisiute08}
+Dalia Marti{\v s}i{\= u}t\.{e}.
+\newblock Vaizd\c{u} klasterizavimas.
+\newblock Master's thesis, Vilniaus universitetas, 2008.
+\newblock Prieiga internetu:
+  \url{http://vddb.laba.lt/fedora/get/LT-eLABa-0001:E.02~2008~D_20090908_20175%
+4-37094/DS.005.1.01.ETD}.
+
+\bibitem[tzz10]{tzz2010}
+{\em Tarptautini\c{u} \v{z}od\v{z}i\c{u} \v{z}odynas}.
+\newblock Vyriausioji enciklopedij\c{u} redakcija, 2010.
+
+\bibitem[Vap00]{vapnik2000nature}
+V.N. Vapnik.
+\newblock {\em The nature of statistical learning theory}.
+\newblock Statistics for engineering and information science. Springer, 2000.
+
+\end{thebibliography}
