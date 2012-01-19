@@ -1,118 +1,211 @@
 \section{Teorinis darbo pagrindas}
-Ğiame skyriuje aprağysiu teoriná darbo pagrindà.
-\begin{comment}
-TODO Pakeisti prişiûrimà mokymasi á mokymasi su mokytoju
-TODO Pakiesti neprişiûrimà mokymasi á mokymasi be mokytojo
-\end{comment}
-\subsection{Prişiûrimas ir neprişiûrimas mokymasis}
 
-Ğiame skyriuje stengsiuosi atsakyti á klausimà kuo skiriasi prişiûrimas mokymasis
-(angl. supervised learning) nuo neprişiûrimo mokymosi (angl. unsupervised
-learning). Mokymasis, duomenø klasifikavimo kontekste, reiğkia modeliø
-(klasifikatoriø) kûrimo metodus (algoritmus), kurie naudoja
+Å iame skyriuje apraÅ¡ysiu teorinÄ¯ darbo pagrindÄ….
+
+\subsection{Mokymasis su mokytoju ir mokymasis be mokytojo}
+
+Å iame skyriuje atsakysiu Ä¯ klausimÄ… kuo skiriasi mokymasis su
+mokytoju (angl. supervised learning) nuo mokymosi be mokytojo (angl.
+unsupervised learning). Mokymasis, duomenÅ³ klasifikavimo kontekste, reiÅ¡kia modeliÅ³(pvz. klasifikatoriÅ³) kÅ«rimo metodus (algoritmus), kurie naudoja
 mokymosi duomenis\footnote{Mokymosi duomenys (angl. sample data)- duomenys,
-kurie yra paruoğti darbui programø, kurios kurs klasifikatorius.}, kitaip
-tariant, tai mokymasis iğ pavyzdşiø.
+kurie yra paruoÅ¡ti darbui programÅ³, kurios kurs modelius (pvz.
+klasifikatorius).}, kitaip tariant, tai mokymasis iÅ¡ pavyzdÅ¾iÅ³.
 
-\subsubsection{Prişiûrimas mokymasis}
+\subsubsection{Mokymasis su mokytoju}
 
-Prişiûrimas mokymasis tai toks mokymasis, kai turime iğ anksto nustatytas
-klases bei mokymosi duomenis, kuriems jau yra priskirtos tam tikros
-teisingos klasës. Tikslas yra pagal mokymosi duomenis sukurti klasifikatoriø,
-kuriuo remiantis bûtø galima identifikuoti naujø objektø priklausomybæ vienai iğ
-şinomø klasiø.\cite{markhall99}
-
-%% JG: Paragrafas netikslus, nes be klasifikavimo dar yra regresija, apie kurià kalbi şemiau.
-
-\begin{comment}
-Prişiûrimojo mokymosi esmë: turime aibæ duomenø, kurios objektai yra vadinami
-áëjimo duomenimis (angl. Input) arba nepriklausomais kintamaisiais (angl.
-Independent variables), jø reikğmës yra iğmatuotos arba nustatytos. Darome prielaidà, 
-kad nepriklausomi kintamieji turi átakos vienam ar daugiau rezultato kintamøjø 
-(angl. Output) arba priklausomø kintamøjø (angl. Dependent variables). Paëmus dar vienà 
-duomenø objektà (angl. Tuple), tikslas yra pagal nepriklausomus kintamuosius nuspëti priklausomus kintamuosius.
-\end{comment}
-
-Prişiûrimo mokymosi metodø pagrindinë prielaida yra ta, kad kontekstas suteikia
-pakankamai informacijos. Kitaip tariant - jei şinai pakankamai daug objektø priklausanèiø kaşkokioms tai 
-klasëms, tai naujiems objektams pakankamai tiksliai gali priskirti tas klases.
-
-Prişiûrëtasis mokymasis turi du pagrindinius bûdus:
+Mokymasis su mokytoju tai toks mokymasis, kai turime mokymosi duomenis, kuriems jau
+yra priskirtas tam tikras teisingas atsakymas. Kitaip tariant, mes sprendÅ¾iame
+uÅ¾davinÄ¯, kuriam atsakymÄ… galime pasitikrinti. Mokymasis su mokytoju yra
+skirstomas Ä¯ dvi rÅ«Å¡is:
 \begin{enumerate}
   \item Klasifikavimas (angl. classification) - pagal nepriklausomus
-  kintamuosius bandome nuspëti kokybinius (kategorinius) priklausomus kintamuosius. 
+  kintamuosius bandome nuspÄ—ti kokybinius (kategorinius) priklausomus kintamuosius. 
   \item Regresija (angl. regression) - pagal nepriklausomus kintamuosius bandome
-  nuspëti kiekybinius priklausomus kintamuosius.
-\end{enumerate}
+  nuspÄ—ti kiekybinius priklausomus kintamuosius.
+\end{enumerate} 
 
-Iğskiriami trys pagrindiniai klasifikavimo etapai:
+%% JG: Pateik vizualÅ³ klasifikavimo pavyzdÄ¯ iliustruojanti visus 3 etapus.
+%% DJ: VizualÅ³, ta prasme su paveiksliukais ar ir tas pavyzdys su paÅ¡tu
+% pakankamai vaizdingas?
+
+%% JG: Reikia kitaip struktÅ«rizuoti Å¡itÄ… skyriÅ³: 
+% +PradÅ¾ioj pasakyk, kad yra klasifikavimas ir regresija ir po
+%  sakinÄ¯Â kiekvienam.
+% +Tada aptark klasifikavimÄ… ir pateik pavyzdÄ¯. 
+% +Tada pateik regresijos pavyzdÄ¯.
+% +Tada paraÅ¡yk, kad Å¡iame darbe studijuojama klasifikavimo problema.
+
+\paragraph{Klasifikavimo uÅ¾davinio pavyzdys}
+
+Klasifikavimo tikslas - identifikuoti parametrus, kurie nusakytÅ³ grupÄ™ (klasÄ™),
+kuriai priklauso objektas. Klasifikavimo sÄ…voka gali bÅ«ti naudojama tiek esamÅ³
+duomenÅ³ suvokimui, tiek naujÅ³ objektÅ³ charakteristikÅ³ prognozavimui.
+Klasifikavimo uÅ¾daviniÅ³ aktualumÄ… galima parodyti tokiu pavyzdÅ¾iu.
+
+\begin{figure}[htb]
+\begin{center}
+\leavevmode
+\includegraphics[width=0.5\textwidth]{images/ranka_rasyti_skaiciai.png}
+\end{center}
+\caption{Ranka raÅ¡ytas tekstas, kurÄ¯ reikia atpaÅ¾inti.}
+\label{fig:flash}
+\end{figure}
+
+UÅ¾davinys: PaÅ¡to skyriuose laiÅ¡kai siunÄiami Ä¯vairiomis kryptimis pagal gavÄ—jo
+adresÄ… ir (arba) paÅ¡to kodÄ…. Norima automatizuoti laiÅ¡kÅ³ rÅ«Å¡iavimÄ… pagal
+siuntimo kryptÄ¯. Tam, kad bÅ«tÅ³ galima laiÅ¡kÅ³ rÅ«Å¡iavimÄ… pagal kryptÄ¯
+automatizuoti, mums reikia priemonÄ—s atpaÅ¾inti ant voko uÅ¾raÅ¡ytÄ…
+paÅ¡to kodÄ….
+
+Sprendimas: Å iÄ… problemÄ… mums padÄ—tÅ³ iÅ¡sprÄ™sti skeneris ir programine Ä¯ranga,
+kuri sugebÄ—tÅ³ ranka raÅ¡ytus skaitmenis atpaÅ¾inti ir konvertuoti Ä¯ skaitmeninÄ¯
+formatÄ…. TÅ³ skaitmenÅ³ atpaÅ¾inimui ir konvertavimui Ä¯ skaitmeninÄ¯ formatÄ…
+mes naudosime klasifikavimo algoritmus, nes uÅ¾davinys pasiÅ¾ymi
+visomis klasifikavimui bÅ«dingomis savybÄ—mis: turime aibÄ™ duomenÅ³ (vaizdinÄ—
+informacija su ranka raÅ¡ytais skaitmenimis), turime teisingus atsakymus (Å¾mogus
+paÅ¾iÅ«rÄ—jÄ™s Ä¯ ranka raÅ¡ytÄ… skaitmenÄ¯ gali pasakyti programai, koks ten yra
+skaitmuo), bei galimÅ³ sprendimai yra kategorinio tipo (deÅ¡imt skaitmenÅ³ nuo
+0 iki 9).
+
+KlasifikatoriÅ³ kursime trimis etapais:
 \begin{enumerate}
-  \item diskriminavimo (atskirianèiøjø) kintamøjø parinkimas,
-  \item klasifikavimo taisykliø sudarymas,
-  \item klasifikavimo kokybës ávertinimas.
+  \item diskriminavimo (atskirianÄiÅ³jÅ³) kintamÅ³jÅ³ parinkimas - nuskenuotÅ³
+  paÅ¡to kodÅ³ skaitmenÅ³ daÅ¾niausiai pasitaikanÄiÅ³, charakteringiausiÅ³ linijÅ³
+  radimas,
+  \item klasifikavimo taisykliÅ³ sudarymas - pagal tam tikrÄ… charakteringiausiÅ³
+  linijÅ³ grupÄ™ objektui priskiriama klasÄ—,
+  \item klasifikavimo kokybÄ—s Ä¯vertinimas - kokybei Ä¯vertinti naudojami Ä¯vairÅ«s
+  metodai, tokie kaip kryÅ¾minis patikrinimas (angl. cross-validation) ir
+  Ä¯kelÄiÅ³ metodas (angl. bootstrap).
 \end{enumerate}
 
-%% JG: Pateik vizualø klasifikavimo pavyzdá iliustruojanti visus 3 etapus.
+Ä®gyvendinÄ™ aukÅ¡Äiau apraÅ¡yto uÅ¾davinio sprendimÄ…, paÅ¡to skyriaus vadybininkai
+galÄ—tÅ³ atlaisvinti Å¾mones nuo iÅ¡ esmÄ—s mechaninio darbo - rÅ«Å¡iuoti laiÅ¡kus.
+Tokiu bÅ«du bÅ«tÅ³ optimizuotas paÅ¡to skyriÅ³ efektyvumas.
 
-%% JG: Reikia kitaip struktûrizuoti ğità skyriø. Pradşioj pasakyk, kad yra klasifikavimas ir regresija ir po sakiná kiekvienam. Tada aptark klasifikavimà ir pateik pavyzdá. Tada pateik regresijos pavyzdá. Tada parağyk, kad ğiame darbe studijuojama klasifikavimo problema.
+\paragraph{RegresinÄ—s analizÄ—s payzdys}
 
-\subsubsection{Neprişiûrimas mokymasis}
+Regresija prognozuojant naujÅ³ duomenÅ³ reikÅ¡mes naudojasi Å¾inomais, jau turimais
+duomenimis. Ji naudoja standartinius statistinius metodus, tokius kaip maÅ¾iausiÅ³
+kvadratÅ³ metodas (angl. least squares). RegresinÄ— analizÄ— daÅ¾niausiai naudojama
+Ä¯vertinti (ang. forecast) ateities duomenÅ³ vertes bei interpoliacijai -
+funkcijos tikÄ—tinos reikÅ¡mÄ—s tarp dviejÅ³ taÅ¡kÅ³ Ä¯vertinimui.
 
-Neprişiûrimas mokymasis dar vadinamas klasterizavimu (angl. clustering) arba
-mokymusi be mokytojo. Patogumo dëlei, toliau naudosiu klasterizavimo sàvokà kaip
-ekvivalentà neprişiûrimojo makymosi sàvokai.
+Tipinio uÅ¾davinio, kuriam naudojama regresinÄ— analizÄ— pavyzdys: AktuarinÄ—je
+(draudimo) matematikoje reikia turÄ—ti Ä¯verÄius, pasakanÄius kokia tikimybÄ—, kad
+Å¾mogus vienokio ar kitokio amÅ¾iaus mirs. Tam yra naudojamos taip vadinamos 
+mirtingumo lentelÄ—s. Jose duomenys apraÅ¡o kiek ir kokio amÅ¾iaus Å¾moniÅ³
+kaÅ¾kuriais metais mirÄ—, pvz. 2010 metais Lietuvoje mirÄ— 1000 20 metÅ³ amÅ¾iaus 
+Å¾moniÅ³. Detalesni duomenys nÄ—ra naudojami, nes per daug sudÄ—tinga juos apdoroti.
+Kadangi aktuarai nori apskaiÄiuoti draudimo kainÄ…, jiems reikia Ä¯vertinti
+rizikÄ…, kada Å¾mogus mirs, tai jie naudodamiesi regresinÄ—s analizÄ—s metodais 
+paskaiÄiuoja tikÄ—tiniausiÄ… reikÅ¡mÄ™, kad pvz. yra 3\% tikimybÄ—, kad Å¾mogus  mirs
+dvideÅ¡imtaisiais savo gyvenimo metais. Kitais Å¾odÅ¾iais tariant, iÅ¡ turimÅ³
+duomenÅ³ mes sukursime tolydÅ¾iÄ… funkcija, kuri mums pasakys reikÅ¡mes taÅ¡kuose,
+kuriÅ³ mes neturime.
 
-%% JG: neprişiûrimø mokymosi metodø yra visokiø: association rule mining, clustering, ir t.t. Zr ESL knygos 14 skyriø.
+\paragraph{Klasifikavimas ir regresija}
 
-Klasterizavimas (angl.  clustering) - tai viena iğ duomenø gavybos srièiø. Klasterizavimo 
-algoritmo uşduotis – objektø suskirstymas  á prasmingas 
-grupes – klasterius, kai jokia papildoma informacija apie tas grupes (jø dydá, kieká, grupavimo poşymius) nëra iğ anksto şinoma.
-%
-%% Kartais ğiokia tokia informacija şinoma. Pvz., klasteriø kiekis nurodomas k-means algoritme. Arba galima daryti prielaidas apie klasteriø struktûrà: k-means ieğko apvaliø klasteriø. Esminis dalykas yra tas, kad teisingas atsakymas nëra şinomas.
-% 
-Klasterizavimo algoritmas pats, pagal pasirinktus algoritmo parametrus, turi nurodyti, kokioms 
-grupëms priklauso atitinkami ávesties duomenys.\cite{martisiute08}
-%% JG: algoritmas turi atrasti grupes duomenyse, jos nëra iğ anksto şinomos.
+AbiejÅ³ mokymosi su mokytoju rÅ«Å¡iÅ³ tikslas yra pagal mokymosi duomenis sukurti
+modelÄ¯, kuriuo remiantis bÅ«tÅ³ galima identifikuoti naujÅ³ objektÅ³
+savybes.\cite{markhall99} Å iame darbe negrinÄ—sime klasifikavimo problemÄ….
 
-Klasterizavimo algoritmø pagrindinis privalumas – gebëjimas atpaşinti grupavimo
-struktûrà be jokios iğankstinës informacijos.  
+\subsubsection{Mokymas be mokytojo}
 
-Klasterizavimo principas - maksimizuoti objektø, esanèiø vienoje grupëje,
-tarpusavio panağumà ir minimizuoti tarpgrupiná objektø panağumà.
+Mokymasis be mokytojo tai toks mokymasis, kai turime mokymosi duomenis, kuriems
+nÄ—ra priskirtas teisingas atsakymas. Kitaip tariant, mes sprendÅ¾iame
+uÅ¾davinÄ¯, kuriam atsakymo galime pasitikrinti. Mokymosi be mokytojo principas - 
+maksimizuoti objektÅ³, esanÄiÅ³ vienoje grupÄ—je, tarpusavio panaÅ¡umÄ… ir 
+minimizuoti tarpgrupinÄ¯ objektÅ³ panaÅ¡umÄ….
 
-\subsubsection{Prişiûrimojo ir neprişiûrimojo mokymosi skirtumai}
-Pagrindinis skirtumas tarp prişiûrimojo ir neprişiûrimojo mokymosi slypi
-mokymosi duomenyse: prişiûrimojo mokymosi algoritmø áeities duomenyse yra
-iğreikğtinai pasakyta, kokio rezultato mes laukiame, o neprişiûrimojo mokymosi duomenyse tokios
-papildomos informacijos nëra. Aptarkime pavyzdá: mums reikia sukurti
-klasifikatoriø, kuris pasakytø, ar nuotraukoje yra şmogaus veidas. 
+Mokymosi su mokytoju metu galima iÅ¡matuoti gauto modelio tikslumÄ… Ä¯vairiais metodais, pvz.
+kryÅ¾miniu patikrinimu. Mokymesi be mokytojo mes tokiÅ³ tiesioginio patikrinimo
+procedÅ«rÅ³ neturime. TodÄ—l yra sunkiau iÅ¡siaiÅ¡kinti patikimumÄ… iÅ¡vadÅ³, gautÅ³ pagal
+daugumos mokymosi be mokytojo algoritmÅ³ darbo rezultatus. 
 
-Prişiûrimojo mokymosi programai kaip áeities duomenis paduotume keletà 
-nuotraukø su şymëmis pasakanèiomis, ar nuotraukoje yra şmogaus veidas ar jo ten
-nëra, kitaip tariant, duotume keletà pavyzdşiø su teisingais atsakymais.
-Programa perşvelgs visas nuotraukas ir susikurs klasifikatoriø (modelá), kuris
-kaşkokiu tikslumu galës atskirti nuotraukas su şmogaus veidu. Tokiu bûdu mûsø
-prişiûrimojo mokymosi programa ``iğmoks'', kas yra veidas.
+Yra maÅ¾iausiai penkios pagrindinÄ—s prieÅ¾astys, kodÄ—l mums gali bÅ«ti Ä¯domÅ«s
+mokymosi be mokytojo algoritmai:
 
-Neprişiûrimojo mokymosi programai kaip áeities duomenis paduotume keletà
-nuotraukø be jokiø papildomø şymiø. Şinoma, mûsø programa pati nesugebës
-``iğrasti'', kas yra şmogaus veidas, taèiau ji tikriausiai sugrupuos nuotraukas
-su şmoniø veidais ir tarkim peizaşais á skirtingas grupes. Kitaip tariant,
-nuotraukos su şmoniø veidais mûsø neprişiûrimo mokymosi programai bus nepanağios
-á nuotraukas su peizaşais, todël ji á vienà klasterá susidës nuotraukas, kurios
-jai atrodo tarpusavyje panağiausios: viename klasteryje nuotraukos su şmoniø
-veidais, o kitoje su gamtos peizaşais.
+\begin{enumerate}
+	\item Turime labai daug nesuÅ¾ymÄ—tÅ³ (angl. unlabelled) duomenÅ³, o jÅ³
+	suÅ¾ymÄ—jimas rankomis bÅ«tÅ³ labai brangus. 
+	\item Norime apsimokyti su dideliu kiekiu sÄ…lyginai ,,pigiÅ³`` duomenÅ³ tam,
+	kad paskui galÄ—tume	pasitelkti mokymosi su mokytoju algoritmus, ir tada
+	detaliau iÅ¡tirti duomenis.
+	\item DuomenÅ³ struktÅ«ros Å¡ablonas yra nuolat kintantis, ir jei tÄ… kitimÄ…
+	galÄ—tume sekti mokymosi be mokytojo reÅ¾imu, tai bÅ«tÅ³ galima padidinti 
+	mÅ«sÅ³ programos naÅ¡umÄ….
+	\item Galima panaudoti mokymosi be mokytojo algoritmus, kad surastume
+	duomenÅ³ savybes, kurias vÄ—liau panaudosime duomenÅ³ kategorizavimui.
+	\item PradinÄ—je duomenÅ³ analizÄ—s stadijoje pasinaudojÄ™ mokymosi be mokytojo
+	metodais galime geriau paÅ¾inti turimus duomenis.
+\end{enumerate}
 
-Apibendrinant galime pasakyti, kad abi mokymosi rûğys siekia to paties tikslo,
-tik skitingomis priemonëmis. Pvz. atskirti nuotraukas su şmoniø
-veidais nuo kitø nuotraukø su ar be teisingos şymës apie konkreèià nuotraukà.
-Bendras bruoşas yra tai, kad jos mokymosi procese naudoja pavyzdşius, tik tie pavyzdşiai 
-skiriasi programai suteikiama informacija. % TODO Kuris daugiamatei analizei
-% svarbiau
+Mokymosi be mokytojo algoritmÅ³ pagrindinis privalumas â€“ gebÄ—jimas atpaÅ¾inti grupavimo
+struktÅ«rÄ… be jokios iÅ¡ankstinÄ—s informacijos.
 
-%% JG: ağ nesutinku, kad abiem procesais siekiama tø paèiø tikslø. Vienu atveju siekiama iğmokti iğ pavyzdşiø. Kitu atveju siekiama atrasti neşinomas struktûras turimuose duomenyse. Procesai yra panağûs savo esme, bet jø panaudojimas skiriasi iğ esmës.
+%% JG: nepriÅ¾iÅ«rimÅ³ mokymosi metodÅ³ yra visokiÅ³: association rule mining,
+% clustering, ir t.t. Zr ESL knygos 14 skyriÅ³.
+%% DJ: NuraÅ¡inÄ—jau nuo Duda knygos tÄ… vietÄ…, kur mokymas be mokytojo ir 
+% klasterizavimas yra sinonimai.
 
-%% JG: iğ vikipedijos: In machine learning, unsupervised learning refers to the problem of trying to find hidden structure in unlabeled data. Since the examples given to the learner are unlabeled, there is no error or reward signal to evaluate a potential solution. This distinguishes unsupervised learning from supervised learning and reinforcement learning.
+%% Kartais Å¡iokia tokia informacija Å¾inoma. Pvz., klasteriÅ³Â kiekis nurodomas
+% k-means algoritme. Arba galima daryti prielaidas apie klasteriÅ³ struktÅ«rÄ…:
+% k-means ieÅ¡ko apvaliÅ³ klasteriÅ³. Esminis dalykas yra tas, kad teisingas
+% atsakymas nÄ—ra Å¾inomas.
 
-%% JG: visà ğità skyriø reikia pateikti koncentruotai. Esminiai teiginiai ir grafiniai pavyzdşiai. 
+%% JG: algoritmas turi atrasti grupes duomenyse, jos nÄ—ra iÅ¡ anksto Å¾inomos.
 
+\subsubsection{Mokymosi su mokytoju ir mokymosi be mokytojo skirtumai}
+
+Pagrindiniai skirtumai tarp mokymosi su mokytoju ir mokymosi be mokytojo yra:
+\begin{itemize}
+	\item mokymosi duomenys - mokymosi su mokytoju algoritmÅ³ Ä¯eities duomenyse
+	yra	iÅ¡reikÅ¡tinai pasakyta, kokio rezultato mes laukiame, o mokymosi be
+	mokytojo Ä¯eities duomenyse tokios papildomos informacijos nÄ—ra.
+	\item  naudojimo tikslai - mokymasis su mokytoju siekia iÅ¡ pavyzdÅ¾iÅ³
+	iÅ¡mokti vertinti naujus duomenis, o mokymasis be mokytojo siekia atrasti
+	vidinÄ™ duomenÅ³ struktÅ«rÄ….
+\end{itemize}
+
+Aptarkime pavyzdÄ¯: nuotraukÅ³ apdorojimas.
+
+Mokymosi su mokytoju programai kaip Ä¯eities duomenis paduotume keletÄ… 
+nuotraukÅ³ su Å¾ymÄ—mis pasakanÄiomis, ar nuotraukoje yra Å¾mogaus veidas ar jo ten
+nÄ—ra, kitaip tariant, duotume keletÄ… pavyzdÅ¾iÅ³ su teisingais atsakymais.
+Programa perÅ¾velgs visas nuotraukas ir susikurs klasifikatoriÅ³ (modelÄ¯), kuris
+kaÅ¾kokiu tikslumu galÄ—s atskirti nuotraukas su Å¾mogaus veidu. Tokiu bÅ«du mÅ«sÅ³
+mokymosi programa ,,iÅ¡moks`` nuotraukose atpaÅ¾inti veidus.
+
+Mokymosi be mokytojo programai kaip Ä¯eities duomenis paduotume keletÄ…
+nuotraukÅ³ be jokiÅ³ papildomÅ³ Å¾ymiÅ³. Å½inoma, mÅ«sÅ³ programa pati nesugebÄ—s
+,,iÅ¡rasti``, kas yra Å¾mogaus veidas, taÄiau ji tikriausiai sugrupuos nuotraukas
+su Å¾moniÅ³ veidais ir tarkim peizaÅ¾ais Ä¯ skirtingas grupes. Kitaip tariant,
+nuotraukÅ³ su Å¾moniÅ³ veidais vidinÄ— struktÅ«ra mÅ«sÅ³ mokymosi be mokytojo programai
+bus nepanaÅ¡i Ä¯ nuotraukÅ³ su peizaÅ¾ais vidinÄ™ struktÅ«rÄ…, todÄ—l ji Ä¯ vienÄ… grupÄ™
+sudÄ—s nuotraukas, kurios jai atrodo tarpusavyje panaÅ¡iausios: vienoje
+grupÄ—je nuotraukos su Å¾moniÅ³ veidais, o kitoje su gamtos peizaÅ¾ais.
+
+Abu mokymo procesai yra panaÅ¡Å«s savo esme (siekia iÅ¡gauti Å¾inias apie turimus
+duomenis), bet jÅ³ panaudojimas skiriasi iÅ¡ esmÄ—s (mokymo su mokytoju atveju mes
+kuriame modelÄ¯ apibÅ«dinantÄ¯ kaip buvo sukurti mokymo duomenys, kad galÄ—tume
+spÄ—ti naujÅ³ objektÅ³ savybes, o mokymo be mokytojo atveju siekiame susipaÅ¾inti
+su vidine mokymo duomenÅ³ struktÅ«ra, kai nÄ—ra kaip pamatuoti ar geri ar blogi
+klasteriai buvo rasti).
+
+%% JG: aÅ¡ nesutinku, kad abiem procesais siekiama tÅ³Â paÄiÅ³ tikslÅ³. Vienu atveju 
+% siekiama iÅ¡mokti iÅ¡ pavyzdÅ¾iÅ³. Kitu atveju siekiama atrasti neÅ¾inomas
+% struktÅ«ras turimuose duomenyse. Procesai yra panaÅ¡Å«s savo esme, bet jÅ³ 
+% panaudojimas skiriasi iÅ¡ esmÄ—s.
+
+%% JG: iÅ¡ vikipedijos: In machine learning, unsupervised learning refers to the 
+% problem of trying to find hidden structure in unlabeled data. Since the
+% examples given to the learner are unlabeled, there is no error or reward
+% signal to evaluate a potential solution. This distinguishes unsupervised 
+% learning from supervised learning and reinforcement learning.
+
+%% JG: visÄ… Å¡itÄ… skyriÅ³ reikia pateikti koncentruotai. Esminiai teiginiai ir grafiniai pavyzdÅ¾iai. 
+
+%% DJ: Turiu pripaÅ¾int, kad Å¡itam pavyzdyje prigrybavau stipriai. NuraÅ¡inÄ—jau
+% pavyzdÄ¯ kur prastai paaiÅ¡kino skirtumÄ…, bet uÅ¾tat man pavyzdys patiko. Dabar
+% labiau Ä¯ temÄ… suraÅ¡yta.
