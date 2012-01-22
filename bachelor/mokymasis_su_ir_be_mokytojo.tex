@@ -1,211 +1,207 @@
-\section{Teorinis darbo pagrindas}
-
-Šiame skyriuje aprašysiu teorinį darbo pagrindą.
-
 \subsection{Mokymasis su mokytoju ir mokymasis be mokytojo}
 
-Šiame skyriuje atsakysiu į klausimą kuo skiriasi mokymasis su
+Å iame skyriuje atsakysiu Ä¯ klausimÄ… kuo skiriasi mokymasis su
 mokytoju (angl. supervised learning) nuo mokymosi be mokytojo (angl.
-unsupervised learning). Mokymasis, duomenų klasifikavimo kontekste, reiškia modelių(pvz. klasifikatorių) kūrimo metodus (algoritmus), kurie naudoja
+unsupervised learning). Mokymasis, duomenÅ³ klasifikavimo kontekste, reiÅ¡kia modeliÅ³(pvz. klasifikatoriÅ³) kÅ«rimo metodus (algoritmus), kurie naudoja
 mokymosi duomenis\footnote{Mokymosi duomenys (angl. sample data)- duomenys,
-kurie yra paruošti darbui programų, kurios kurs modelius (pvz.
-klasifikatorius).}, kitaip tariant, tai mokymasis iš pavyzdžių.
+kurie yra paruoÅ¡ti darbui programÅ³, kurios kurs modelius (pvz.
+klasifikatorius).}, kitaip tariant, tai mokymasis iÅ¡ pavyzdÅ¾iÅ³.
 
 \subsubsection{Mokymasis su mokytoju}
 
 Mokymasis su mokytoju tai toks mokymasis, kai turime mokymosi duomenis, kuriems jau
-yra priskirtas tam tikras teisingas atsakymas. Kitaip tariant, mes sprendžiame
-uždavinį, kuriam atsakymą galime pasitikrinti. Mokymasis su mokytoju yra
-skirstomas į dvi rūšis:
+yra priskirtas tam tikras teisingas atsakymas. Kitaip tariant, mes sprendÅ¾iame
+uÅ¾davinÄ¯, kuriam atsakymÄ… galime pasitikrinti. Mokymasis su mokytoju yra
+skirstomas Ä¯ dvi rÅ«Å¡is:
 \begin{enumerate}
   \item Klasifikavimas (angl. classification) - pagal nepriklausomus
-  kintamuosius bandome nuspėti kokybinius (kategorinius) priklausomus kintamuosius. 
+  kintamuosius bandome nuspÄ—ti kokybinius (kategorinius) priklausomus kintamuosius. 
   \item Regresija (angl. regression) - pagal nepriklausomus kintamuosius bandome
-  nuspėti kiekybinius priklausomus kintamuosius.
+  nuspÄ—ti kiekybinius priklausomus kintamuosius.
 \end{enumerate} 
 
-%% JG: Pateik vizualų klasifikavimo pavyzdį iliustruojanti visus 3 etapus.
-%% DJ: Vizualų, ta prasme su paveiksliukais ar ir tas pavyzdys su paštu
+%% JG: Pateik vizualÅ³ klasifikavimo pavyzdÄ¯ iliustruojanti visus 3 etapus.
+%% DJ: VizualÅ³, ta prasme su paveiksliukais ar ir tas pavyzdys su paÅ¡tu
 % pakankamai vaizdingas?
 
-%% JG: Reikia kitaip struktūrizuoti šitą skyrių: 
-% +Pradžioj pasakyk, kad yra klasifikavimas ir regresija ir po
-%  sakinį kiekvienam.
-% +Tada aptark klasifikavimą ir pateik pavyzdį. 
-% +Tada pateik regresijos pavyzdį.
-% +Tada parašyk, kad šiame darbe studijuojama klasifikavimo problema.
+%% JG: Reikia kitaip struktÅ«rizuoti Å¡itÄ… skyriÅ³: 
+% +PradÅ¾ioj pasakyk, kad yra klasifikavimas ir regresija ir po
+%  sakinÄ¯Â kiekvienam.
+% +Tada aptark klasifikavimÄ… ir pateik pavyzdÄ¯. 
+% +Tada pateik regresijos pavyzdÄ¯.
+% +Tada paraÅ¡yk, kad Å¡iame darbe studijuojama klasifikavimo problema.
 
-\paragraph{Klasifikavimo uždavinio pavyzdys}
+\paragraph{Klasifikavimo uÅ¾davinio pavyzdys}
 
-Klasifikavimo tikslas - identifikuoti parametrus, kurie nusakytų grupę (klasę),
-kuriai priklauso objektas. Klasifikavimo sąvoka gali būti naudojama tiek esamų
-duomenų suvokimui, tiek naujų objektų charakteristikų prognozavimui.
-Klasifikavimo uždavinių aktualumą galima parodyti tokiu pavyzdžiu.
+Klasifikavimo tikslas - identifikuoti parametrus, kurie nusakytÅ³ grupÄ™ (klasÄ™),
+kuriai priklauso objektas. Klasifikavimo sÄ…voka gali bÅ«ti naudojama tiek esamÅ³
+duomenÅ³ suvokimui, tiek naujÅ³ objektÅ³ charakteristikÅ³ prognozavimui.
+Klasifikavimo uÅ¾daviniÅ³ aktualumÄ… galima parodyti tokiu pavyzdÅ¾iu.
 
 \begin{figure}[htb]
 \begin{center}
 \leavevmode
 \includegraphics[width=0.5\textwidth]{images/ranka_rasyti_skaiciai.png}
 \end{center}
-\caption{Ranka rašytas tekstas, kurį reikia atpažinti.}
+\caption{Ranka raÅ¡ytas tekstas, kurÄ¯ reikia atpaÅ¾inti.}
 \label{fig:flash}
 \end{figure}
 
-Uždavinys: Pašto skyriuose laiškai siunčiami įvairiomis kryptimis pagal gavėjo
-adresą ir (arba) pašto kodą. Norima automatizuoti laiškų rūšiavimą pagal
-siuntimo kryptį. Tam, kad būtų galima laiškų rūšiavimą pagal kryptį
-automatizuoti, mums reikia priemonės atpažinti ant voko užrašytą
-pašto kodą.
+UÅ¾davinys: PaÅ¡to skyriuose laiÅ¡kai siunÄ�iami Ä¯vairiomis kryptimis pagal gavÄ—jo
+adresÄ… ir (arba) paÅ¡to kodÄ…. Norima automatizuoti laiÅ¡kÅ³ rÅ«Å¡iavimÄ… pagal
+siuntimo kryptÄ¯. Tam, kad bÅ«tÅ³ galima laiÅ¡kÅ³ rÅ«Å¡iavimÄ… pagal kryptÄ¯
+automatizuoti, mums reikia priemonÄ—s atpaÅ¾inti ant voko uÅ¾raÅ¡ytÄ…
+paÅ¡to kodÄ….
 
-Sprendimas: Šią problemą mums padėtų išspręsti skeneris ir programine įranga,
-kuri sugebėtų ranka rašytus skaitmenis atpažinti ir konvertuoti į skaitmeninį
-formatą. Tų skaitmenų atpažinimui ir konvertavimui į skaitmeninį formatą
-mes naudosime klasifikavimo algoritmus, nes uždavinys pasižymi
-visomis klasifikavimui būdingomis savybėmis: turime aibę duomenų (vaizdinė
-informacija su ranka rašytais skaitmenimis), turime teisingus atsakymus (žmogus
-pažiūrėjęs į ranka rašytą skaitmenį gali pasakyti programai, koks ten yra
-skaitmuo), bei galimų sprendimai yra kategorinio tipo (dešimt skaitmenų nuo
+Sprendimas: Å iÄ… problemÄ… mums padÄ—tÅ³ iÅ¡sprÄ™sti skeneris ir programine Ä¯ranga,
+kuri sugebÄ—tÅ³ ranka raÅ¡ytus skaitmenis atpaÅ¾inti ir konvertuoti Ä¯ skaitmeninÄ¯
+formatÄ…. TÅ³ skaitmenÅ³ atpaÅ¾inimui ir konvertavimui Ä¯ skaitmeninÄ¯ formatÄ…
+mes naudosime klasifikavimo algoritmus, nes uÅ¾davinys pasiÅ¾ymi
+visomis klasifikavimui bÅ«dingomis savybÄ—mis: turime aibÄ™ duomenÅ³ (vaizdinÄ—
+informacija su ranka raÅ¡ytais skaitmenimis), turime teisingus atsakymus (Å¾mogus
+paÅ¾iÅ«rÄ—jÄ™s Ä¯ ranka raÅ¡ytÄ… skaitmenÄ¯ gali pasakyti programai, koks ten yra
+skaitmuo), bei galimÅ³ sprendimai yra kategorinio tipo (deÅ¡imt skaitmenÅ³ nuo
 0 iki 9).
 
-Klasifikatorių kursime trimis etapais:
+KlasifikatoriÅ³ kursime trimis etapais:
 \begin{enumerate}
-  \item diskriminavimo (atskiriančiųjų) kintamųjų parinkimas - nuskenuotų
-  pašto kodų skaitmenų dažniausiai pasitaikančių, charakteringiausių linijų
+  \item diskriminavimo (atskirianÄ�iÅ³jÅ³) kintamÅ³jÅ³ parinkimas - nuskenuotÅ³
+  paÅ¡to kodÅ³ skaitmenÅ³ daÅ¾niausiai pasitaikanÄ�iÅ³, charakteringiausiÅ³ linijÅ³
   radimas,
-  \item klasifikavimo taisyklių sudarymas - pagal tam tikrą charakteringiausių
-  linijų grupę objektui priskiriama klasė,
-  \item klasifikavimo kokybės įvertinimas - kokybei įvertinti naudojami įvairūs
-  metodai, tokie kaip kryžminis patikrinimas (angl. cross-validation) ir
-  įkelčių metodas (angl. bootstrap).
+  \item klasifikavimo taisykliÅ³ sudarymas - pagal tam tikrÄ… charakteringiausiÅ³
+  linijÅ³ grupÄ™ objektui priskiriama klasÄ—,
+  \item klasifikavimo kokybÄ—s Ä¯vertinimas - kokybei Ä¯vertinti naudojami Ä¯vairÅ«s
+  metodai, tokie kaip kryÅ¾minis patikrinimas (angl. cross-validation) ir
+  Ä¯kelÄ�iÅ³ metodas (angl. bootstrap).
 \end{enumerate}
 
-Įgyvendinę aukščiau aprašyto uždavinio sprendimą, pašto skyriaus vadybininkai
-galėtų atlaisvinti žmones nuo iš esmės mechaninio darbo - rūšiuoti laiškus.
-Tokiu būdu būtų optimizuotas pašto skyrių efektyvumas.
+Ä®gyvendinÄ™ aukÅ¡Ä�iau apraÅ¡yto uÅ¾davinio sprendimÄ…, paÅ¡to skyriaus vadybininkai
+galÄ—tÅ³ atlaisvinti Å¾mones nuo iÅ¡ esmÄ—s mechaninio darbo - rÅ«Å¡iuoti laiÅ¡kus.
+Tokiu bÅ«du bÅ«tÅ³ optimizuotas paÅ¡to skyriÅ³ efektyvumas.
 
-\paragraph{Regresinės analizės payzdys}
+\paragraph{RegresinÄ—s analizÄ—s payzdys}
 
-Regresija prognozuojant naujų duomenų reikšmes naudojasi žinomais, jau turimais
-duomenimis. Ji naudoja standartinius statistinius metodus, tokius kaip mažiausių
-kvadratų metodas (angl. least squares). Regresinė analizė dažniausiai naudojama
-įvertinti (ang. forecast) ateities duomenų vertes bei interpoliacijai -
-funkcijos tikėtinos reikšmės tarp dviejų taškų įvertinimui.
+Regresija prognozuojant naujÅ³ duomenÅ³ reikÅ¡mes naudojasi Å¾inomais, jau turimais
+duomenimis. Ji naudoja standartinius statistinius metodus, tokius kaip maÅ¾iausiÅ³
+kvadratÅ³ metodas (angl. least squares). RegresinÄ— analizÄ— daÅ¾niausiai naudojama
+Ä¯vertinti (ang. forecast) ateities duomenÅ³ vertes bei interpoliacijai -
+funkcijos tikÄ—tinos reikÅ¡mÄ—s tarp dviejÅ³ taÅ¡kÅ³ Ä¯vertinimui.
 
-Tipinio uždavinio, kuriam naudojama regresinė analizė pavyzdys: Aktuarinėje
-(draudimo) matematikoje reikia turėti įverčius, pasakančius kokia tikimybė, kad
-žmogus vienokio ar kitokio amžiaus mirs. Tam yra naudojamos taip vadinamos 
-mirtingumo lentelės. Jose duomenys aprašo kiek ir kokio amžiaus žmonių
-kažkuriais metais mirė, pvz. 2010 metais Lietuvoje mirė 1000 20 metų amžiaus 
-žmonių. Detalesni duomenys nėra naudojami, nes per daug sudėtinga juos apdoroti.
-Kadangi aktuarai nori apskaičiuoti draudimo kainą, jiems reikia įvertinti
-riziką, kada žmogus mirs, tai jie naudodamiesi regresinės analizės metodais 
-paskaičiuoja tikėtiniausią reikšmę, kad pvz. yra 3\% tikimybė, kad žmogus  mirs
-dvidešimtaisiais savo gyvenimo metais. Kitais žodžiais tariant, iš turimų
-duomenų mes sukursime tolydžią funkcija, kuri mums pasakys reikšmes taškuose,
-kurių mes neturime.
+Tipinio uÅ¾davinio, kuriam naudojama regresinÄ— analizÄ— pavyzdys: AktuarinÄ—je
+(draudimo) matematikoje reikia turÄ—ti Ä¯verÄ�ius, pasakanÄ�ius kokia tikimybÄ—, kad
+Å¾mogus vienokio ar kitokio amÅ¾iaus mirs. Tam yra naudojamos taip vadinamos 
+mirtingumo lentelÄ—s. Jose duomenys apraÅ¡o kiek ir kokio amÅ¾iaus Å¾moniÅ³
+kaÅ¾kuriais metais mirÄ—, pvz. 2010 metais Lietuvoje mirÄ— 1000 20 metÅ³ amÅ¾iaus 
+Å¾moniÅ³. Detalesni duomenys nÄ—ra naudojami, nes per daug sudÄ—tinga juos apdoroti.
+Kadangi aktuarai nori apskaiÄ�iuoti draudimo kainÄ…, jiems reikia Ä¯vertinti
+rizikÄ…, kada Å¾mogus mirs, tai jie naudodamiesi regresinÄ—s analizÄ—s metodais 
+paskaiÄ�iuoja tikÄ—tiniausiÄ… reikÅ¡mÄ™, kad pvz. yra 3\% tikimybÄ—, kad Å¾mogus  mirs
+dvideÅ¡imtaisiais savo gyvenimo metais. Kitais Å¾odÅ¾iais tariant, iÅ¡ turimÅ³
+duomenÅ³ mes sukursime tolydÅ¾iÄ… funkcija, kuri mums pasakys reikÅ¡mes taÅ¡kuose,
+kuriÅ³ mes neturime.
 
 \paragraph{Klasifikavimas ir regresija}
 
-Abiejų mokymosi su mokytoju rūšių tikslas yra pagal mokymosi duomenis sukurti
-modelį, kuriuo remiantis būtų galima identifikuoti naujų objektų
-savybes.\cite{markhall99} Šiame darbe negrinėsime klasifikavimo problemą.
+AbiejÅ³ mokymosi su mokytoju rÅ«Å¡iÅ³ tikslas yra pagal mokymosi duomenis sukurti
+modelÄ¯, kuriuo remiantis bÅ«tÅ³ galima identifikuoti naujÅ³ objektÅ³
+savybes.\cite{markhall99} Å iame darbe negrinÄ—sime klasifikavimo problemÄ….
 
-\subsubsection{Mokymas be mokytojo}
+\subsubsection{Mokymasis be mokytojo}
 
 Mokymasis be mokytojo tai toks mokymasis, kai turime mokymosi duomenis, kuriems
-nėra priskirtas teisingas atsakymas. Kitaip tariant, mes sprendžiame
-uždavinį, kuriam atsakymo galime pasitikrinti. Mokymosi be mokytojo principas - 
-maksimizuoti objektų, esančių vienoje grupėje, tarpusavio panašumą ir 
-minimizuoti tarpgrupinį objektų panašumą.
+nÄ—ra priskirtas teisingas atsakymas. Kitaip tariant, mes sprendÅ¾iame
+uÅ¾davinÄ¯, kuriam atsakymo galime pasitikrinti. Mokymosi be mokytojo principas - 
+maksimizuoti objektÅ³, esanÄ�iÅ³ vienoje grupÄ—je, tarpusavio panaÅ¡umÄ… ir 
+minimizuoti tarpgrupinÄ¯ objektÅ³ panaÅ¡umÄ….
 
-Mokymosi su mokytoju metu galima išmatuoti gauto modelio tikslumą įvairiais metodais, pvz.
-kryžminiu patikrinimu. Mokymesi be mokytojo mes tokių tiesioginio patikrinimo
-procedūrų neturime. Todėl yra sunkiau išsiaiškinti patikimumą išvadų, gautų pagal
-daugumos mokymosi be mokytojo algoritmų darbo rezultatus. 
+Mokymosi su mokytoju metu galima iÅ¡matuoti gauto modelio tikslumÄ… Ä¯vairiais metodais, pvz.
+kryÅ¾miniu patikrinimu. Mokymesi be mokytojo mes tokiÅ³ tiesioginio patikrinimo
+procedÅ«rÅ³ neturime. TodÄ—l yra sunkiau iÅ¡siaiÅ¡kinti patikimumÄ… iÅ¡vadÅ³, gautÅ³ pagal
+daugumos mokymosi be mokytojo algoritmÅ³ darbo rezultatus. 
 
-Yra mažiausiai penkios pagrindinės priežastys, kodėl mums gali būti įdomūs
+Yra maÅ¾iausiai penkios pagrindinÄ—s prieÅ¾astys, kodÄ—l mums gali bÅ«ti Ä¯domÅ«s
 mokymosi be mokytojo algoritmai:
 
 \begin{enumerate}
-	\item Turime labai daug nesužymėtų (angl. unlabelled) duomenų, o jų
-	sužymėjimas rankomis būtų labai brangus. 
-	\item Norime apsimokyti su dideliu kiekiu sąlyginai ,,pigių`` duomenų tam,
-	kad paskui galėtume	pasitelkti mokymosi su mokytoju algoritmus, ir tada
-	detaliau ištirti duomenis.
-	\item Duomenų struktūros šablonas yra nuolat kintantis, ir jei tą kitimą
-	galėtume sekti mokymosi be mokytojo režimu, tai būtų galima padidinti 
-	mūsų programos našumą.
+	\item Turime labai daug nesuÅ¾ymÄ—tÅ³ (angl. unlabelled) duomenÅ³, o jÅ³
+	suÅ¾ymÄ—jimas rankomis bÅ«tÅ³ labai brangus. 
+	\item Norime apsimokyti su dideliu kiekiu sÄ…lyginai ,,pigiÅ³`` duomenÅ³ tam,
+	kad paskui galÄ—tume	pasitelkti mokymosi su mokytoju algoritmus, ir tada
+	detaliau iÅ¡tirti duomenis.
+	\item DuomenÅ³ struktÅ«ros Å¡ablonas yra nuolat kintantis, ir jei tÄ… kitimÄ…
+	galÄ—tume sekti mokymosi be mokytojo reÅ¾imu, tai bÅ«tÅ³ galima padidinti 
+	mÅ«sÅ³ programos naÅ¡umÄ….
 	\item Galima panaudoti mokymosi be mokytojo algoritmus, kad surastume
-	duomenų savybes, kurias vėliau panaudosime duomenų kategorizavimui.
-	\item Pradinėje duomenų analizės stadijoje pasinaudoję mokymosi be mokytojo
-	metodais galime geriau pažinti turimus duomenis.
+	duomenÅ³ savybes, kurias vÄ—liau panaudosime duomenÅ³ kategorizavimui.
+	\item PradinÄ—je duomenÅ³ analizÄ—s stadijoje pasinaudojÄ™ mokymosi be mokytojo
+	metodais galime geriau paÅ¾inti turimus duomenis.
 \end{enumerate}
 
-Mokymosi be mokytojo algoritmų pagrindinis privalumas – gebėjimas atpažinti grupavimo
-struktūrą be jokios išankstinės informacijos.
+Mokymosi be mokytojo algoritmÅ³ pagrindinis privalumas â€“ gebÄ—jimas atpaÅ¾inti grupavimo
+struktÅ«rÄ… be jokios iÅ¡ankstinÄ—s informacijos.
 
-%% JG: neprižiūrimų mokymosi metodų yra visokių: association rule mining,
-% clustering, ir t.t. Zr ESL knygos 14 skyrių.
-%% DJ: Nurašinėjau nuo Duda knygos tą vietą, kur mokymas be mokytojo ir 
+%% JG: nepriÅ¾iÅ«rimÅ³ mokymosi metodÅ³ yra visokiÅ³: association rule mining,
+% clustering, ir t.t. Zr ESL knygos 14 skyriÅ³.
+%% DJ: NuraÅ¡inÄ—jau nuo Duda knygos tÄ… vietÄ…, kur mokymas be mokytojo ir 
 % klasterizavimas yra sinonimai.
 
-%% Kartais šiokia tokia informacija žinoma. Pvz., klasterių kiekis nurodomas
-% k-means algoritme. Arba galima daryti prielaidas apie klasterių struktūrą:
-% k-means ieško apvalių klasterių. Esminis dalykas yra tas, kad teisingas
-% atsakymas nėra žinomas.
+%% Kartais Å¡iokia tokia informacija Å¾inoma. Pvz., klasteriÅ³Â kiekis nurodomas
+% k-means algoritme. Arba galima daryti prielaidas apie klasteriÅ³ struktÅ«rÄ…:
+% k-means ieÅ¡ko apvaliÅ³ klasteriÅ³. Esminis dalykas yra tas, kad teisingas
+% atsakymas nÄ—ra Å¾inomas.
 
-%% JG: algoritmas turi atrasti grupes duomenyse, jos nėra iš anksto žinomos.
+%% JG: algoritmas turi atrasti grupes duomenyse, jos nÄ—ra iÅ¡ anksto Å¾inomos.
 
 \subsubsection{Mokymosi su mokytoju ir mokymosi be mokytojo skirtumai}
 
 Pagrindiniai skirtumai tarp mokymosi su mokytoju ir mokymosi be mokytojo yra:
 \begin{itemize}
-	\item mokymosi duomenys - mokymosi su mokytoju algoritmų įeities duomenyse
-	yra	išreikštinai pasakyta, kokio rezultato mes laukiame, o mokymosi be
-	mokytojo įeities duomenyse tokios papildomos informacijos nėra.
-	\item  naudojimo tikslai - mokymasis su mokytoju siekia iš pavyzdžių
-	išmokti vertinti naujus duomenis, o mokymasis be mokytojo siekia atrasti
-	vidinę duomenų struktūrą.
+	\item mokymosi duomenys - mokymosi su mokytoju algoritmÅ³ Ä¯eities duomenyse
+	yra	iÅ¡reikÅ¡tinai pasakyta, kokio rezultato mes laukiame, o mokymosi be
+	mokytojo Ä¯eities duomenyse tokios papildomos informacijos nÄ—ra.
+	\item  naudojimo tikslai - mokymasis su mokytoju siekia iÅ¡ pavyzdÅ¾iÅ³
+	iÅ¡mokti vertinti naujus duomenis, o mokymasis be mokytojo siekia atrasti
+	vidinÄ™ duomenÅ³ struktÅ«rÄ….
 \end{itemize}
 
-Aptarkime pavyzdį: nuotraukų apdorojimas.
+Aptarkime pavyzdÄ¯: nuotraukÅ³ apdorojimas.
 
-Mokymosi su mokytoju programai kaip įeities duomenis paduotume keletą 
-nuotraukų su žymėmis pasakančiomis, ar nuotraukoje yra žmogaus veidas ar jo ten
-nėra, kitaip tariant, duotume keletą pavyzdžių su teisingais atsakymais.
-Programa peržvelgs visas nuotraukas ir susikurs klasifikatorių (modelį), kuris
-kažkokiu tikslumu galės atskirti nuotraukas su žmogaus veidu. Tokiu būdu mūsų
-mokymosi programa ,,išmoks`` nuotraukose atpažinti veidus.
+Mokymosi su mokytoju programai kaip Ä¯eities duomenis paduotume keletÄ… 
+nuotraukÅ³ su Å¾ymÄ—mis pasakanÄ�iomis, ar nuotraukoje yra Å¾mogaus veidas ar jo ten
+nÄ—ra, kitaip tariant, duotume keletÄ… pavyzdÅ¾iÅ³ su teisingais atsakymais.
+Programa perÅ¾velgs visas nuotraukas ir susikurs klasifikatoriÅ³ (modelÄ¯), kuris
+kaÅ¾kokiu tikslumu galÄ—s atskirti nuotraukas su Å¾mogaus veidu. Tokiu bÅ«du mÅ«sÅ³
+mokymosi programa ,,iÅ¡moks`` nuotraukose atpaÅ¾inti veidus.
 
-Mokymosi be mokytojo programai kaip įeities duomenis paduotume keletą
-nuotraukų be jokių papildomų žymių. Žinoma, mūsų programa pati nesugebės
-,,išrasti``, kas yra žmogaus veidas, tačiau ji tikriausiai sugrupuos nuotraukas
-su žmonių veidais ir tarkim peizažais į skirtingas grupes. Kitaip tariant,
-nuotraukų su žmonių veidais vidinė struktūra mūsų mokymosi be mokytojo programai
-bus nepanaši į nuotraukų su peizažais vidinę struktūrą, todėl ji į vieną grupę
-sudės nuotraukas, kurios jai atrodo tarpusavyje panašiausios: vienoje
-grupėje nuotraukos su žmonių veidais, o kitoje su gamtos peizažais.
+Mokymosi be mokytojo programai kaip Ä¯eities duomenis paduotume keletÄ…
+nuotraukÅ³ be jokiÅ³ papildomÅ³ Å¾ymiÅ³. Å½inoma, mÅ«sÅ³ programa pati nesugebÄ—s
+,,iÅ¡rasti``, kas yra Å¾mogaus veidas, taÄ�iau ji tikriausiai sugrupuos nuotraukas
+su Å¾moniÅ³ veidais ir tarkim peizaÅ¾ais Ä¯ skirtingas grupes. Kitaip tariant,
+nuotraukÅ³ su Å¾moniÅ³ veidais vidinÄ— struktÅ«ra mÅ«sÅ³ mokymosi be mokytojo programai
+bus nepanaÅ¡i Ä¯ nuotraukÅ³ su peizaÅ¾ais vidinÄ™ struktÅ«rÄ…, todÄ—l ji Ä¯ vienÄ… grupÄ™
+sudÄ—s nuotraukas, kurios jai atrodo tarpusavyje panaÅ¡iausios: vienoje
+grupÄ—je nuotraukos su Å¾moniÅ³ veidais, o kitoje su gamtos peizaÅ¾ais.
 
-Abu mokymo procesai yra panašūs savo esme (siekia išgauti žinias apie turimus
-duomenis), bet jų panaudojimas skiriasi iš esmės (mokymo su mokytoju atveju mes
-kuriame modelį apibūdinantį kaip buvo sukurti mokymo duomenys, kad galėtume
-spėti naujų objektų savybes, o mokymo be mokytojo atveju siekiame susipažinti
-su vidine mokymo duomenų struktūra, kai nėra kaip pamatuoti ar geri ar blogi
+Abu mokymo procesai yra panaÅ¡Å«s savo esme (siekia iÅ¡gauti Å¾inias apie turimus
+duomenis), bet jÅ³ panaudojimas skiriasi iÅ¡ esmÄ—s (mokymo su mokytoju atveju mes
+kuriame modelÄ¯ apibÅ«dinantÄ¯ kaip buvo sukurti mokymo duomenys, kad galÄ—tume
+spÄ—ti naujÅ³ objektÅ³ savybes, o mokymo be mokytojo atveju siekiame susipaÅ¾inti
+su vidine mokymo duomenÅ³ struktÅ«ra, kai nÄ—ra kaip pamatuoti ar geri ar blogi
 klasteriai buvo rasti).
 
-%% JG: aš nesutinku, kad abiem procesais siekiama tų pačių tikslų. Vienu atveju 
-% siekiama išmokti iš pavyzdžių. Kitu atveju siekiama atrasti nežinomas
-% struktūras turimuose duomenyse. Procesai yra panašūs savo esme, bet jų 
-% panaudojimas skiriasi iš esmės.
+%% JG: aÅ¡ nesutinku, kad abiem procesais siekiama tÅ³Â paÄ�iÅ³ tikslÅ³. Vienu atveju 
+% siekiama iÅ¡mokti iÅ¡ pavyzdÅ¾iÅ³. Kitu atveju siekiama atrasti neÅ¾inomas
+% struktÅ«ras turimuose duomenyse. Procesai yra panaÅ¡Å«s savo esme, bet jÅ³ 
+% panaudojimas skiriasi iÅ¡ esmÄ—s.
 
-%% JG: iš vikipedijos: In machine learning, unsupervised learning refers to the 
+%% JG: iÅ¡ vikipedijos: In machine learning, unsupervised learning refers to the 
 % problem of trying to find hidden structure in unlabeled data. Since the
 % examples given to the learner are unlabeled, there is no error or reward
 % signal to evaluate a potential solution. This distinguishes unsupervised 
 % learning from supervised learning and reinforcement learning.
 
-%% JG: visą šitą skyrių reikia pateikti koncentruotai. Esminiai teiginiai ir grafiniai pavyzdžiai. 
+%% JG: visÄ… Å¡itÄ… skyriÅ³ reikia pateikti koncentruotai. Esminiai teiginiai ir grafiniai pavyzdÅ¾iai. 
 
-%% DJ: Turiu pripažint, kad šitam pavyzdyje prigrybavau stipriai. Nurašinėjau
-% pavyzdį kur prastai paaiškino skirtumą, bet užtat man pavyzdys patiko. Dabar
-% labiau į temą surašyta.
+%% DJ: Turiu pripaÅ¾int, kad Å¡itam pavyzdyje prigrybavau stipriai. NuraÅ¡inÄ—jau
+% pavyzdÄ¯ kur prastai paaiÅ¡kino skirtumÄ…, bet uÅ¾tat man pavyzdys patiko. Dabar
+% labiau Ä¯ temÄ… suraÅ¡yta.

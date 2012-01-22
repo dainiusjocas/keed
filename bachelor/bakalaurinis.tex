@@ -12,12 +12,13 @@
 \usepackage{graphicx} 
 \parindent = 1cm
 
+\usepackage{mathtools} % pades rašyti matematinius intarpus
 \begin{document}
 
 %\include{titulinis_puslapis} % kol kas neaktualu
 \let \savenumberline \numberline
 \def \numberline#1{\savenumberline{#1.}}
-\tableofcontents
+%\tableofcontents 
 
 \addcontentsline{toc}{section}{{\c I}VADAS}
 %\section*{ĮVADAS}
@@ -25,10 +26,10 @@
 
 %% JG: Sekcija apie darbe nagrinėjamą problemą. Problem definition.
 
-
-\include{mokymasis_su_ir_be_mokytojo}
 \section{Teorija}
-\subsection{Bayesian decision theory}
+Šiame skyriuje aptarsiu teorinį darbo pagrindą.
+%\include{mokymasis_su_ir_be_mokytojo} % Supervised and Unsupervised Learning
+\include{bajeso_teorija} %Bayesian decision theory}
 \subsection{Klasifikavimas ``artimiausio kaimyno'' metodu}
 \subsection{Klasifikavimas ``mažiausių kvadratų metotu''}
 \subsection{Naive Bayesian classifier}

@@ -1,0 +1,45 @@
+\subsection{Bajeso teorija}
+
+Kuris terminas geresnis: ,,Bajeso teorija`` ar ,,Bajeso išvadų teorija``?
+Arba kaip reikėtų versti ``Bayesian Decision Theory''?
+Kaip reikėtų suprasti P(error|x)?
+% Sensitivity: measures difficulty of task
+% Bias: measures strategy of subject
+
+Bajeso teorija\cite{duda2001pattern} yra statistinis požiūris į modelių (angl.
+pattern) klasifikavimo problemą. Bajeso teorija paremta klasifikavimo sprendimų kompromisų (angl.
+tradeoff) matavimų tikimybėmis ir tų sprendimų svoriais. Bajeso teorija remiasi
+prielaida, kad sprendimą galima aprašyti tikimybiniais teminais ir kad
+susijusios tikimybės yra iš anksto žinomos.
+
+Kitaip tariant, Bajeso teorija padeda atsakyti į klausimą, kokią tikimybė, kad
+objektas priklauso kažkokiai klasei $\omega_j$ ir jis turi kažkokią savybę $x$.
+Tai galime užrašyti taip: 
+
+\begin{equation}
+p(\omega_j, x) = P(\omega_j | x) \times p(x) = p(x|\omega_j) \times P(\omega_j)
+\end{equation}
+
+O jei pergrupuosime pirmąją formulę, tai gausime taip vadinamąją Bajeso formulę:
+
+\begin{equation}
+P(\omega_j | x) = \frac{p(x | \omega_j) \times P(\omega_j)}{p(x)}, kur
+\end{equation}
+
+$P(\omega_j | x)$ (angl. posterior probability) - sąlyginė tikimybė,
+kad objektas priklauso $\omega_j$ klasei, kai kažkuri jo savybė yra $x$;
+
+$p(x | \omega_j)$ (angl. likelihood) - sąlyginė tikimybė, kad $\omega_j$ klasei
+priklausantis objektas turės kažkokią savybę x;
+
+$P(\omega_j)$ (angl. prior probability) - tikimybė, kad objektas priklauso
+$\omega_j$ klasei (nusatoma iš istorinių duomenų);
+
+$p(x) = \sum_{j=1}^{n} p(x | \omega_j) \times P(\omega_j)$ (angl. evidence) -
+perskaičiavimo faktorius (angl. scale factor), kuris parodo tai, kaip dažnai mes
+įvertinsime modelį su savybe $x$. Jis užtikrina, kad visų $P(\omega_j | x)$
+sąlyginių tikimybių suma bus lygi 1.
+
+Remdamiesi Bajeso teorija laikysime, kad objektas priklauso klasei $\omega_i$,
+kai $P(\omega_i | x) > P(\omega_j | x)$ ir atvikščiai. Tai yra taip vadinama
+Bajeso sprendimo taisyklė (angl. Bayes Decision Rule).
