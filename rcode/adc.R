@@ -1,7 +1,11 @@
+###############################################################################
+# Library for computing Asymetric Dependency Coefficients
+###############################################################################
+
 # This method computes Asymetric Dependency Coefficients for the dimensions
 #   of a given dataset. 
 # DATASET SHOULD BE ALREADY NORMALIZED!!!
-# input: dataset: rows - features, columns - patients
+# input: dataset: rows - features, columns - tuples
 # input: normal - indexes of normal patients in the dataset
 # input: tumor - indexes of patients with tumor in the dataset
 # output: list of Asymetric Dependency Coefficiets dimentions.

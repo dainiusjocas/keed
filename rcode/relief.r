@@ -1,19 +1,26 @@
-# This method computer the relevance of feature for relief feature ranking
-# method
-# input: dataset - rows - features, collumns - tuples
+################################################################################
+# Library for computing the relevance criteria
+################################################################################
+
+# This method computes the relevance of feature for relief feature ranking
+#   method
+# input: dataset: rows - features, collumns - tuples
 # input: indexes_of_classes - list of two lists: first - indexes of normal
 #  patients, second - patients with tumor (this paremeter can be prepared
 #  with get_indexes_of_positives_and_negatives method)
-get_rel_vec <- function(dataset, indexes_of_classes)
+get_relevance <- function(dataset, pos, neg)
 {
+  indexes_of_classes <- c(list(pos), list(neg))
   distance_matrix <- get_distance_matrix(dataset)
   result <- apply(dataset, 1, get_rel_val, distance_matrix = distance_matrix,
                   indexes = indexes_of_classes)
-  print(result)
+  return(result)
 }
 
 # This method computes distance matrix and return it as a matrix
+# Measures distance between columns
 # input: dataset - (lines - features), (column - tuple)
+# output: distance matrix
 get_distance_matrix <- function(dataset)
 {
   distance_matrix <- dist(t(dataset), method = "euclidean", upper = TRUE, diag = TRUE)
@@ -21,6 +28,9 @@ get_distance_matrix <- function(dataset)
 }
 
 # This method computes relevance value of the feature. 
+# input: x - values of all the features
+# input: distance_matrix
+# input: indexes
 get_rel_val <- function(x, distance_matrix, indexes)
 {
   relevance_of_feature <- 0
@@ -48,14 +58,21 @@ get_rel_val <- function(x, distance_matrix, indexes)
     }  
     relevance_of_feature <- 
       relevance_of_feature - 
-      relief_difference2(value_of_feature_j, x[index_of_nearest_hit],
-                        minimal_value, maximal_value) / number_of_tuples + 
-      relief_difference2(value_of_feature_j, x[index_of_nearest_miss],
-                        minimal_value, maximal_value) / number_of_tuples      
+      (relief_difference(value_of_feature_j, x[index_of_nearest_hit],
+                        maximal_value, minimal_value) / number_of_tuples) + 
+      (relief_difference(value_of_feature_j, x[index_of_nearest_miss],
+                        maximal_value, minimal_value) / number_of_tuples)      
   }
   return(relevance_of_feature)
 }
 
+# This method finds the nearest neighbour and returns it's index in vector of
+#   features
+# input: index_of_tuple - tuple to which we'll search the nearest neighbour
+# input: distance_matrix
+# input: indexes_of_specific_class - indexes of columns in the distance matrix
+#   in which we'll search the nearest neighbour
+# output: index_of_nearest_neighbour
 get_index_of_nearest_neigbour_from_specific_class <- function(index_of_tuple,
                                                               distance_matrix, 
                                                      indexes_of_specific_class)
@@ -76,10 +93,13 @@ get_index_of_nearest_neigbour_from_specific_class <- function(index_of_tuple,
 #   max_value - ,
 #   min_value - ,
 # output: difference - difference for relief function.
-relief_difference2 <- function(value, nearest_hit_or_miss,
-                              max_value, min_value)
+relief_difference <- function(value, 
+                              nearest_hit_or_miss,
+                              max_value, 
+                              min_value)
 {
-  difference <- abs(value - nearest_hit_or_miss) /
+  difference <- 
+    abs(value - nearest_hit_or_miss) /
     (max_value - min_value)
   return(difference)
 }
