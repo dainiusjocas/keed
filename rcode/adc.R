@@ -2,6 +2,7 @@
 # Library for computing Asymetric Dependency Coefficients
 ###############################################################################
 
+# ENTRT POINT
 # This method computes Asymetric Dependency Coefficients for the dimensions
 #   of a given dataset. 
 # DATASET SHOULD BE ALREADY NORMALIZED!!!

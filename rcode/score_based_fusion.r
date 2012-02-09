@@ -1,5 +1,5 @@
 ###############################################################################
-# Library to compute Score-Based Multicriteroin Fusion
+# Library to compute Score-Based Multicriterion Fusion
 ###############################################################################
 
 # ENTRY POINT

@@ -2,6 +2,9 @@
 # Library for computing the relevance criteria
 ################################################################################
 
+library("parallel")
+
+# ENTRY POINT
 # This method computes the relevance of feature for relief feature ranking
 #   method
 # input: dataset: rows - features, collumns - tuples
