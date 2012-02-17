@@ -1,5 +1,9 @@
 library(e1071)
 
+# This method computes the ranking of features according to svm-rfe algorithm
+# output: featureRankedList - vector which first item has the index of the
+#   feature which is the most relevant to perform the classificatiom and the
+#   last item is the least relevant 
 svmrfeFeatureRanking = function(x,y){
   n = ncol(x)
   survivingFeaturesIndexes = seq(1:n)
@@ -92,3 +96,41 @@ svm.weights<-function(model){
   }
   return(w)
 }
+
+# This method computes the weights of features of dataset. First, we build
+#   a model of svm classifier, then we get weight values of every feature 
+#   from that model. 
+# NOTE: Only one iteration of building the svm model is done.
+# input: dataset: rows - features, columns - tuples
+# input: pos - indexes of normal patients in the dataset
+# input: neg - indexes of patients with tumor in the dataset
+# output: svm_weights - a vector of scores of features
+get_svm_feature_weights <- function(dataset, pos, neg)
+{
+  y <- c()
+  y[pos] <- -1
+  y[neg] <- 1
+  # dataset should be transposed in order to compute weights
+  data <- t(dataset) 
+  svmModel = svm(data, y, cost = 10, cachesize=500,
+                 scale=F, type="C-classification", kernel="linear" )
+  # For two-class situation
+  svm_weights <- abs(t(svmModel$coefs)%*%svmModel$SV)
+  # For multiclass situation
+  # svm_weights <- abs(svm.weights(svmModel))
+  return(as.vector(svm_weights))
+}
+
+# This method does input data transformation and then calls method 
+#   svmrfeFeatureRanking to get the ranks of the feature.
+get_svm_feature_ranks <- function(dataset, pos, neg)
+{
+  y <- c()
+  y[pos] <- -1
+  y[neg] <- 1
+  # dataset should be transposed in order to compute weights
+  data <- t(dataset)
+  svm_feature_ranks <- svmrfeFeatureRanking(data, y)
+  return(svm_feature_ranks)
+}
+

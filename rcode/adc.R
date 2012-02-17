@@ -2,6 +2,8 @@
 # Library for computing Asymetric Dependency Coefficients
 ###############################################################################
 
+library(entropy)
+
 # ENTRT POINT
 # This method computes Asymetric Dependency Coefficients for the dimensions
 #   of a given dataset. 
@@ -46,14 +48,16 @@ get_mutual_information <- function(values_of_feature,
                                    probability_normal,
                                    probability_tumor)
 {
+  min_value <- min(values_of_feature)
+  max_value <- max(values_of_feature)
   counts_of_values_of_feature_normal <- 
-    hist(values_of_feature[indexes_normal], seq(-6, 6, 0.25))$counts
+    hist(values_of_feature[indexes_normal], seq(-13, 13, 0.25))$counts
   # Probability that specific value belongs to class of normal patients
   probability_of_normal <- 
     counts_of_values_of_feature_normal / 
     sum(counts_of_values_of_feature_normal)
   counts_of_values_of_feature_tumor <- 
-    hist(values_of_feature[indexes_tumor], seq(-6, 6, 0.25))$counts
+    hist(values_of_feature[indexes_tumor], seq(-13, 13, 0.25))$counts
   # probability that specific value belongs to class of patients with tumor
   probability_of_tumor <- 
     counts_of_values_of_feature_tumor / 
