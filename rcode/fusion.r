@@ -1,10 +1,14 @@
 source('fscore.r')
-source('relief.r')
+source('quality.r')
 source('adc.r')
 source('svm_weights.r')
 source('ranking_based_fusion.r')
 source('score_based_fusion.r')
 
+# ENTRY POINT
+# input: dataset - rows - features, columns - tuples
+# input: pos - positive tuples (sick patients)
+# input: neg - negative tuples
 get_best_features <- function(dataset, pos, neg)
 {
   list_of_scores <- get_list_of_scores(dataset, pos, neg)
@@ -13,7 +17,6 @@ get_best_features <- function(dataset, pos, neg)
                           weights=ranks_of_best_features)
   ranks_of_best_features <- get_ranking_based_fusion(list_of_scores)
   best_features <- sort(ranks_of_best_features, decreasing=T, index.return=T)$ix
-  
   return(best_features)
 }
 
@@ -57,10 +60,11 @@ get_list_of_scores <- function(dataset, pos, neg)
   list_of_scores <- cbind(list_of_scores, 
                           fisher=get_fisher_scores(dataset, pos, neg))
   list_of_scores <- cbind(list_of_scores, 
-                          relief=get_relevance(dataset, pos, neg))
+                          relief=get_relief_scores(dataset, pos, neg))
   list_of_scores <- cbind(list_of_scores, 
                           adc=get_adc(dataset, pos, neg))
   list_of_scores <- cbind(list_of_scores, 
                         svm_weights=get_svm_feature_weights(dataset, pos, neg))
   return(list_of_scores)
 }
+

@@ -2,7 +2,9 @@
 # Library for computing the relevance criteria
 ################################################################################
 
-library("parallel")
+library(multicore)
+library(doMC)
+#registerDoMC()
 
 # ENTRY POINT
 # This method computes the relevance of feature for relief feature ranking
@@ -15,9 +17,21 @@ get_relevance <- function(dataset, pos, neg)
 {
   indexes_of_classes <- c(list(pos), list(neg))
   distance_matrix <- get_distance_matrix(dataset)
-  result <- apply(dataset, 1, get_rel_val, distance_matrix = distance_matrix,
-                  indexes = indexes_of_classes)
-  return(result)
+  dataset_as_list <- c()
+  for(i in 1:length(dataset[,1])) 
+  {
+    dataset_as_list[i] <- list(dataset[i, ])
+  }
+  result_as_list <- mclapply(X=dataset_as_list,
+                             FUN=get_rel_val, 
+                             distance_matrix = distance_matrix,
+                             indexes = indexes_of_classes)
+  result_as_vector <- c()
+  for(i in 1:length(dataset[,1]))
+  {
+    result_as_vector[i] <- result_as_list[[i]]
+  }
+  return(result_as_vector)
 }
 
 # This method computes distance matrix and return it as a matrix
@@ -53,7 +67,7 @@ get_rel_val <- function(x, distance_matrix, indexes)
         get_index_of_nearest_neigbour_from_specific_class(i, distance_matrix, indexes[[1]])      
     } 
     else 
-    { # normal between normals
+    { # normal between normal
       index_of_nearest_hit <- 
         get_index_of_nearest_neigbour_from_specific_class(i, distance_matrix, indexes[[1]])
       index_of_nearest_miss <- 
@@ -107,30 +121,3 @@ relief_difference <- function(value,
   return(difference)
 }
 
-# This method separates indexes of patiens with positive tissues and negative
-# tisues
-# input: patients - list of patiens. negative sign - tumor; positive - normal.
-# output: vector of two vectors, where first vector contains indexes of
-#   patiens with normal tissue, second vector contains indexes of tumor tissues.
-get_indexes_of_positives_and_negatives <- function(patients)
-{
-  indexes_of_positives <- c()
-  indexes_of_negatives <- c()
-  result <- c()
-  for (i in 1:length(patients[ , 1]))
-  {
-    if (patients[i, ] > 0) 
-    {
-      indexes_of_positives <- 
-        append(indexes_of_positives, c(i), length(indexes_of_positives))
-    }
-    else 
-    {
-      indexes_of_negatives <- 
-        append(indexes_of_negatives, c(i), length(indexes_of_negatives))
-    }
-  }
-  result[[1]] <- indexes_of_positives
-  result[[2]] <- indexes_of_negatives
-  return(result)
-}

@@ -1,3 +1,7 @@
+###############################################################################
+# Library to rank features by svm weights
+###############################################################################
+
 library(e1071)
 
 # This method computes the ranking of features according to svm-rfe algorithm
@@ -97,6 +101,7 @@ svm.weights<-function(model){
   return(w)
 }
 
+# ENTRY POINT
 # This method computes the weights of features of dataset. First, we build
 #   a model of svm classifier, then we get weight values of every feature 
 #   from that model. 
@@ -113,7 +118,7 @@ get_svm_feature_weights <- function(dataset, pos, neg)
   # dataset should be transposed in order to compute weights
   data <- t(dataset) 
   svmModel = svm(data, y, cost = 10, cachesize=500,
-                 scale=F, type="C-classification", kernel="linear" )
+                 type="C-classification", kernel="linear" )
   # For two-class situation
   svm_weights <- abs(t(svmModel$coefs)%*%svmModel$SV)
   # For multiclass situation
@@ -121,7 +126,7 @@ get_svm_feature_weights <- function(dataset, pos, neg)
   return(as.vector(svm_weights))
 }
 
-# This method does input data transformation and then calls method 
+# This method does input data transformatiocnsn and then calls method 
 #   svmrfeFeatureRanking to get the ranks of the feature.
 get_svm_feature_ranks <- function(dataset, pos, neg)
 {
@@ -133,4 +138,5 @@ get_svm_feature_ranks <- function(dataset, pos, neg)
   svm_feature_ranks <- svmrfeFeatureRanking(data, y)
   return(svm_feature_ranks)
 }
+
 

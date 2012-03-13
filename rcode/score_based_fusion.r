@@ -49,3 +49,4 @@ get_fusion_of_scores <- function(normalized_list_of_scores)
   }
   return(fusion_of_scores)
 }
+

@@ -2,7 +2,14 @@
 # Implementation of CGS (Consensus Group Stable feature selection) algorithm
 ###############################################################################
 
+.libPaths(".")
+library(e1071)
+library(doMC)
+library(multicore)
+library(iterators)
+library(foreach)
 source('dgf.r')
+source('fscore.r')
 
 # input: dataset: rows - tuples, columns - features
 # input: pos - positive tuples, neg - negative tuples
@@ -15,14 +22,17 @@ get_consensus_groups <- function(dataset, pos, neg,
                                  number_of_subsamplings,
                                  relevance_measurement_method)
 {
-  indexes_in_groups <- NULL
-  for (i in 1:number_of_subsamplings)
+  looprez <- foreach (i = 1:number_of_subsamplings) %dopar%
   {
     sample_indexes <- sample(1:length(dataset[, 1]),
                              length(dataset[, 1]) * 0.632)
     dense_groups <- DGF(dataset[sample_indexes, ], 1)
-    indexes_in_groups <- rbind(indexes_in_groups,
-                               get_indexes_of_groups(dense_groups))
+    get_indexes_of_clusters(dense_groups)
+  }
+  indexes_in_groups <- NULL
+  for (i in 1:number_of_subsamplings)
+  {
+    indexes_in_groups <- rbind(indexes_in_groups, as.vector(looprez[[1]]))
   }
   frequencies <- matrix(seq(from=0, to=0,
                             length.out=length(dataset[1, ]) ** 2),
@@ -31,17 +41,10 @@ get_consensus_groups <- function(dataset, pos, neg,
   {
     for (j in i:length(dataset[1, ])) 
     {
-      for(k in 1:length(indexes_in_groups))
-      {
-        if (i %in% indexes_in_groups[[k]] && j %in% indexes_in_groups[[k]]) 
-        {
-          frequencies[i,j] <- frequencies[i,j] + 1
-          if (i != j) 
-          {
-            frequencies[j,i] <- frequencies[j,i] + 1
-          }
-        }
-      }
+      diff_vector <- indexes_in_groups[,i] == indexes_in_groups[,j]
+      diff_vector[which(is.na(diff_vector))] <- F 
+      frequencies[i, j] <- sum(diff_vector)
+      frequencies[j, i] <- sum(diff_vector)
     }
   }
   frequencies <- frequencies / number_of_subsamplings
@@ -64,8 +67,6 @@ get_consensus_groups <- function(dataset, pos, neg,
     relevance_measurement_method(t(dataset), pos, neg) # cia galima ir fusion metoda ikalt
   sorted_relevance_scores <- 
     sort(relevance_scores, decreasing=T, index.return=T)
-#   print(indexes_of_representative_features)
-#   print(sorted_scores)
   consensus_features <- 
     sorted_relevance_scores$ix[which(sorted_relevance_scores$ix %in%
                                      indexes_of_representative_features)]
@@ -101,13 +102,36 @@ get_mean_vector <- function(data)
   return(as.matrix(mean_vector))
 }
 
-get_indexes_of_groups <- function(dense_groups)
+get_indexes_of_clusters <- function(dense_groups)
 {
-  indexes_in_group <- list()
-  for (i in 1:length(dense_groups)) 
+  indexes_of_cluster <- c()
+  for(i in 1:length(dense_groups))
   {
-    indexes_in_group <- rbind(indexes_in_group,
-                              list(dense_groups[[i]]$features))
+    indexes_of_cluster[dense_groups[[i]]$features] <- i
   }
-  return(indexes_in_group)
+  return(indexes_of_cluster)
+}
+
+consensus_performance <- function(dataset, bp, sz, cc, start, end, relevance_method)
+{
+  number_of_subsamplings <- 8
+  rez <- data.frame(size=0, time=0)
+  amount_of_features <- seq(start, end, by=100)
+  for(i in amount_of_features)
+  {
+    for(j in 1:1)
+    {
+      begin <- Sys.time()
+      groups <- get_consensus_groups(t(dataset[1:i, c(bp, cc)]),
+                                     1:length(bp),
+                                     ((length(bp)+1):(length(bp)+length(cc))),
+                                     number_of_subsamplings,
+                                     relevance_method)
+      duration <-  c(i, Sys.time() - begin)
+      write(duration, file='performance_consensus.txt', append=T)
+    }
+    print(duration)
+    gc()
+  }
+  return(duration)
 }

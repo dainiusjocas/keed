@@ -43,11 +43,12 @@ get_fusion_of_ranks <- function(ranked_features)
 #   with their number in the sorted list.
 rank_features <- function(list_of_scores)
 {
-  ranked_features <- list_of_scores
+  ranked_features <- NULL
   for (i in 1:length(list_of_scores[1, ]))
   {
-    ranked_features[ ,i] <- sort(sort(list_of_scores[ , i], index.return=T)$ix,
-                                 index.return=T)$ix
+    ranked_features <- cbind(ranked_features, sort(sort(list_of_scores[ , i], index.return=T)$ix,
+                                 index.return=T)$ix)
   }
   return(ranked_features)
 }
+
