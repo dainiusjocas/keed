@@ -1,0 +1,6 @@
+#!/bin/sh
+#SBATCH -p long
+#SBATCH -n20
+#SBATCH --mem=4000
+R CMD BATCH colon_classification.R
+
