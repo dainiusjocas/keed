@@ -25,6 +25,58 @@ classify_with_folds <- function(dataset, labels, number_of_best_features,
   }
 }
 
+classify_with_mcf_rfe <- function(dataset, labels, train_size, number_of_folds)
+{
+  number_of_features <- length(dataset[, 1])
+  features <- c()
+  i <- 1
+  while(number_of_features > 1)
+  {
+    features[i] <- number_of_features
+    i <- i + 1
+    number_of_features <- round(number_of_features * 0.5)
+  }
+  features <- rev(features)
+  rez <- foreach(j = features) %dopar%
+  {
+    classification_errors <- foreach(i = 1:number_of_folds) %dopar%
+    {
+      do_classification(dataset, labels, train_size, j)
+    }
+    write(j, file='rez/classification_errors.txt', append=T)
+    for(k in 1:length(classification_errors))
+    {
+      write(classification_errors[[k]], file='rez/classification_errors.txt', append=T)
+    }
+  }
+  return(rez)
+}
+
+do_classification <- function(dataset, labels, train_size, number_of_features)
+{
+  train_indexes <- sample(1:length(dataset[1, ]), train_size)
+  test_indexes <- setdiff(1:length(dataset[1, ]), train_indexes)
+  train_data <- dataset[, train_indexes] # buvo transponuota
+  train_labels <- labels[train_indexes]
+  pos <- which(train_labels == 1, arr.ind=T)
+  neg <- which(train_labels == -1, arr.ind=T)
+  best_features <- get_mcf_rfe(train_data, pos, neg, number_of_features)
+  write(best_features, file='rez/best_features.txt', append=T, ncolumns=100)
+  write(" ", file='rez/best_features.txt', append=T)
+  train_data <- train_data[best_features, ]
+  model <- svm(t(train_data), as.factor(labels[train_indexes]), kernel="linear")
+  test_data <-  t(dataset[best_features, test_indexes])
+  pred <- predict(model, (test_data))
+  errors<- 0
+  for(j in 1:length(test_indexes))
+  {
+    if (as.vector(pred)[j] != as.factor(labels[test_indexes])[j]) {
+      errors <- errors + 1
+    }
+  }
+  return(errors)
+}
+
 # output: number of errors
 test_classify <- function(dataset, labels, number_of_best_features,
                           train_size)

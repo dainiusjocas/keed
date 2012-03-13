@@ -9,6 +9,7 @@ source('score_based_fusion.r')
 # input: dataset - rows - features, columns - tuples
 # input: pos - positive tuples (sick patients)
 # input: neg - negative tuples
+# output: list of ranked features
 get_best_features <- function(dataset, pos, neg)
 {
   list_of_scores <- get_list_of_scores(dataset, pos, neg)
@@ -68,3 +69,30 @@ get_list_of_scores <- function(dataset, pos, neg)
   return(list_of_scores)
 }
 
+###############################################################################
+# MCF-RFE implementation library
+###############################################################################
+
+# This method gets n best features using fusion feature ranking algorithm
+#   recursively 
+# input: dataset - rows -> features; columns - tuples
+# input: pos - first class, neg - second class
+# input: n - how many best features we want to get (default=20)
+get_mcf_rfe <- function(dataset, pos, neg, n=20)
+{
+  indexes = c(1:length(dataset[ , 1]))
+  i <- length(dataset[ , 1])
+  while (i > 2 * n)
+  {
+    ranks <- get_best_features(dataset[indexes, ], pos, neg) 
+    i <- round(i * 0.5)
+    indexes <- indexes[-tail(ranks, n=i)]
+  }
+  while (i >= n)
+  {
+    ranks <- get_best_features(dataset[indexes, ], pos, neg)
+    indexes <- indexes[-tail(ranks, n=1)]
+    i <- i - 1
+  }
+  return(indexes)
+}
