@@ -1,1 +1,0 @@
-plot(sin, -pi, 2*pi)

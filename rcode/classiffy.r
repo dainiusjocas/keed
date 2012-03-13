@@ -1,12 +1,9 @@
-.libPaths(".")
 library(foreach)
 library(doMC)
-registerDoMC()
 library(e1071)
 source('fusion.r')
-load('mydata.Rdata')
 
-
+# ENTRY POINT
 # this method use svm and best feature selection to classify dataset.
 # input: dataset - rows - features, columns - tuples
 # input: labels: vector of labels of classes
@@ -22,7 +19,6 @@ classify_with_folds <- function(dataset, labels, number_of_best_features,
   {
     test_classify(dataset, labels, number_of_best_features, train_size)
   }
-  #print(classification_errors)
   for (i in 1:length(classification_errors))
   {
     write(classification_errors[[i]], file='cerrors.txt', append=T)  
@@ -97,6 +93,22 @@ measure_methods_performance <- function(dataset, bp, sz, cc, start, end)
               (length(bp) + 1):(length(bp)+length(cc)))
       duration_svm <- Sys.time() - begin
       write(c(i, duration_fisher, duration_relief, duration_adc, duration_svm), file='performance_methods.txt', append=T)
+    }
+  }
+}
+
+measure_adc_performance <- function(dataset, bp, sz, cc, start, end)
+{
+  amount_of_features <- seq(start, end, by=500)
+  for(i in amount_of_features)
+  {
+    for(j in 1:3)
+    {
+      begin <- Sys.time()
+      get_adc(dataset[1:i, c(bp, cc)], 1:length(bp),
+              (length(bp) + 1):(length(bp)+length(cc)))
+      duration_adc <- Sys.time() - begin
+      write(c(i, duration_adc), file='rez/performance_adc.txt', append=T)
     }
   }
 }

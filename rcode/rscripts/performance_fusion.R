@@ -1,0 +1,7 @@
+.libPaths("../")
+source('../classiffy.r')
+load('../big.RData')
+registerDoMC(8)
+getDoParWorkers()
+measure_performance(scaled_mass, bp, sz, cc, 500, 20000)
+q('no')

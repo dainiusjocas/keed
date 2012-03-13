@@ -1,0 +1,5 @@
+#!/bin/sh
+#SBATCH -p short
+#SBATCH -n1
+R CMD BATCH performance_adc.R
+
