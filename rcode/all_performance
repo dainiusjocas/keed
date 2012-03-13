@@ -1,0 +1,6 @@
+#!/bin/sh
+#SBATCH -p long
+#SBATCH -n1
+#SBATCH --mem=3000
+R CMD BATCH all_performance.R
+
