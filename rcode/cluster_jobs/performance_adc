@@ -1,5 +1,5 @@
 #!/bin/sh
-#SBATCH -p short
+#SBATCH -p long
 #SBATCH -n1
 R CMD BATCH performance_adc.R
 
