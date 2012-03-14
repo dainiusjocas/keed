@@ -2,6 +2,7 @@ Projekto pradziu pradzia
 
 Apie katalogu struktura:
 |_bachelor       // bakalaurinio darbo latex'o failai.
-|_r_development  // bandomosios programeles parasytos R programavimo kalba.
+|_paper          // straipsnio i konferencijas juodrastis
+|_rcode          // bandomosios programeles parasytos R programavimo kalba.
 
 Linkiu sau sekmes darbuose.
