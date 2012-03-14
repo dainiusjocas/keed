@@ -148,7 +148,7 @@ measure_methods_performance <- function(dataset, bp, sz, cc, start, end)
       get_best_features(dataset[1:i, c(bp, cc)], 1:length(bp),
                         (length(bp) + 1):(length(bp)+length(cc)))
       duration_fusion <-  c(i, Sys.time() - begin)
-      write(c(i, duration_fisher, duration_relief, duration_adc, duration_svm, duration_fusion), file='rez/all_performance.txt', append=T)
+      write(c(i, duration_fisher, duration_relief, duration_adc, duration_svm, duration_fusion), file='rez/all_performance.txt', append=T, ncolumns=10)
       gc()
     }
   }
