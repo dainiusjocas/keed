@@ -1,0 +1,8 @@
+.libPaths(".")
+source('classiffy.r')
+load('altarA.RData')
+registerDoMC(1)
+getDoParWorkers()
+measure_cgs_performance(scaled_mass, bp, sz, cc, 500, 5000)
+getDoParWorkers()
+q('no')

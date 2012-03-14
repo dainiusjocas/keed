@@ -2,6 +2,7 @@ library(foreach)
 library(doMC)
 library(e1071)
 source('fusion.r')
+source('consensus.r')
 
 # ENTRY POINT
 # this method use svm and best feature selection to classify dataset.
@@ -147,7 +148,7 @@ measure_methods_performance <- function(dataset, bp, sz, cc, start, end)
       begin <- Sys.time()
       get_best_features(dataset[1:i, c(bp, cc)], 1:length(bp),
                         (length(bp) + 1):(length(bp)+length(cc)))
-      duration_fusion <-  c(i, Sys.time() - begin)
+      duration_fusion <-  Sys.time() - begin
       write(c(i, duration_fisher, duration_relief, duration_adc, duration_svm, duration_fusion), file='rez/all_performance.txt', append=T, ncolumns=10)
       gc()
     }
@@ -170,3 +171,18 @@ measure_adc_performance <- function(dataset, bp, sz, cc, start, end)
   }
 }
 
+measure_cgs_performance <- function(dataset, bp, sz, cc, start, end)
+{
+  amount_of_features <- seq(start, end, by=500)
+  for(i in amount_of_features)
+  {
+    for(j in 1:3)
+    {
+      begin <- Sys.time()
+      get_consensus_groups(t(dataset[1:i, c(bp, cc)]), 1:length(bp),
+              (length(bp) + 1):(length(bp)+length(cc)), 8, get_fisher_scores)
+      duration_adc <- Sys.time() - begin
+      write(c(i, duration_adc), file='rez/cgs_performance.txt', append=T)
+    }
+  }
+}

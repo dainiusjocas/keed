@@ -2,7 +2,6 @@
 # Implementation of CGS (Consensus Group Stable feature selection) algorithm
 ###############################################################################
 
-.libPaths(".")
 library(e1071)
 library(doMC)
 library(multicore)
@@ -11,12 +10,14 @@ library(foreach)
 source('dgf.r')
 source('fscore.r')
 
-# input: dataset: rows - tuples, columns - features
+# ENTRY POINT
+# input: dataset: rows - tuples, columns - features !!!
 # input: pos - positive tuples, neg - negative tuples
 # input: number_of_subsamplings - number of boostraped groups
 # input: relevance_measurement_method - function to compute a relevance.
 #   function must take three parameters: dataset, pos, neg, and return vector
 #   of length equal to number of features
+# output: vector of several best ranked features
 # EXAMPLE: get_consensus_groups(mymatrix, c(1,2), c(3,4,5), 2, get_fisher_scores)
 get_consensus_groups <- function(dataset, pos, neg,
                                  number_of_subsamplings,
@@ -26,7 +27,7 @@ get_consensus_groups <- function(dataset, pos, neg,
   {
     sample_indexes <- sample(1:length(dataset[, 1]),
                              length(dataset[, 1]) * 0.632)
-    dense_groups <- DGF(dataset[sample_indexes, ], 1)
+    dense_groups <- DGF(dataset[sample_indexes, ], 0.7)
     get_indexes_of_clusters(dense_groups)
   }
   indexes_in_groups <- NULL
