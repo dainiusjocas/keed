@@ -1,0 +1,36 @@
+
+R version 2.11.1 (2010-05-31)
+Copyright (C) 2010 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> .libPaths(".")
+> source('classiffy.r')
+Loading required package: iterators
+Loading required package: codetools
+Loading required package: multicore
+Loading required package: class
+> load('altarA.RData')
+> registerDoMC(1)
+> getDoParWorkers()
+[1] 1
+> measure_methods_performance(scaled_mass, bp, sz, cc, 500, 20000)
+> getDoParWorkers()
+[1] 1
+> q('no')
+> proc.time()
+     user    system   elapsed 
+44284.715  2407.957  9279.518 
