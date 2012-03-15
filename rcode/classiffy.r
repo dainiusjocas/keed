@@ -28,7 +28,7 @@ classify_with_folds <- function(dataset, labels, number_of_best_features,
 
 classify_with_mcf_rfe <- function(dataset, labels, train_size, number_of_folds)
 {
-  features <- seq(10, 20, by=10)
+  features <- seq(10, 200, by=10)
   rez <- foreach(j = features) %dopar%
   {
     classification_errors <- foreach(i = 1:number_of_folds) %dopar%
