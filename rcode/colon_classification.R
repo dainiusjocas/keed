@@ -1,7 +1,7 @@
 .libPaths(".")
 source('classiffy.r')
 load('colon.RData')
-registerDoMC(20)
+registerDoMC(2)
 getDoParWorkers()
 classify_with_mcf_rfe(ndata, labels, 39, 50)
 getDoParWorkers()
