@@ -1,0 +1,8 @@
+.libPaths(".")
+source('cgs_class.r')
+load('colon.RData')
+registerDoMC(4)
+getDoParWorkers()
+cgs_classification(ndata, labels, 39, 10)
+getDoParWorkers()
+q('no')
