@@ -17,3 +17,13 @@ plot_performance <- function(all_performance)
     lines(x=all_performance[, 1], y=all_performance[, i], col=colors[i - 2])
   }
 }
+
+# This method makes a plot of performance results of cgs method
+# input: cgs_performance - rows -> computation time by number of features,
+#   columns -> measures by methods
+plot_performance_cgs <- function(cgs_performance)
+{
+  colors <- c('yellow', 'red', 'green', 'blue')
+  plot(x=cgs_performance[ , 1], y=cgs_performance[, 2], type='l', col='black',
+       xlab='Number of features', ylab='Computation time, seconds')
+}
