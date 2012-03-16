@@ -1,0 +1,8 @@
+.libPaths(".")
+source('cns_classification.r')
+load('cns.RData')
+registerDoMC(8)
+getDoParWorkers()
+cns_classify(cns, cns_labels,  100)
+getDoParWorkers()
+q('no')
