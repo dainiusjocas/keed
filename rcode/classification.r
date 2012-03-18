@@ -37,7 +37,7 @@ do_classification <- function(dataset, labels, classification_file, feature_rank
   train_data <- dataset[, train_indexes]
   pos <- which(train_labels == 1, arr.ind=T)
   neg <- which(train_labels == -1, arr.ind=T)
-  best_features <- sort(get_relief_scores(train_data, pos, neg), decreasing=T, index.return=T)$ix
+  best_features <- mcf_rfe_ranking(train_data, pos, neg)
   write(best_features, file=feature_ranking_file, append=T, ncolumns=100)
   write(" ", file=feature_ranking_file, append=T)
   number_of_features <- seq(from=10, to=300, by=10)
