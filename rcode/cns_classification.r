@@ -23,8 +23,8 @@ do_cns_classification <- function(dataset, labels)
   pos <- which(train_labels == 1, arr.ind=T)
   neg <- which(train_labels == -1, arr.ind=T)
   best_features <- mcf_rfe_ranking(train_data, pos, neg)
-  write(best_features, file='rez/best_features_cns.txt', append=T, ncolumns=100)
-  write(" ", file='rez/best_features_cns.txt', append=T)
+  write(best_features, file='rez/best_features_colon2.txt', append=T, ncolumns=100)
+  write(" ", file='rez/best_features_colon2.txt', append=T)
   number_of_features <- seq(from=10, to=300, by=10)
   for (i in number_of_features)
   {
@@ -39,7 +39,7 @@ do_cns_classification <- function(dataset, labels)
         errors <- errors + 1
       }
     }
-    write(c(i, errors), file='rez/cns_classification.txt', append=T)
+    write(c(i, errors), file='rez/colon2_classification.txt', append=T)
     rm(model)
     gc()
   }
