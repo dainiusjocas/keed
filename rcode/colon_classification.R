@@ -1,8 +1,0 @@
-.libPaths(".")
-source('classiffy.r')
-load('colon.RData')
-registerDoMC(4)
-getDoParWorkers()
-classify_with_mcf_rfe(ndata, labels, 39, 100)
-getDoParWorkers()
-q('no')

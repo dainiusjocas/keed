@@ -1,4 +1,0 @@
-#!/bin/sh
-#SBATCH -p short
-#SBATCH -n10
-R CMD BATCH /scratch/lustre/dajo7822/script.R
