@@ -1,0 +1,8 @@
+.libPaths(".")
+source('classification.r')
+load('colon.RData')
+registerDoMC(8)
+getDoParWorkers()
+classification(ndata, labels,  300, 'fisher_classification.txt', 'fisher_robustness.txt')
+getDoParWorkers()
+q('no')

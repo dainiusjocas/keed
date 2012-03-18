@@ -19,7 +19,7 @@ source('fusion.r')
 # output: TRUE just to return something.
 classification <- function(dataset, labels, number_of_folds,
                          classification_file='classification_errors.txt',
-                         feature_ranking_file='beature_rankings')
+                         feature_ranking_file='feature_rankings')
 {
   foreach(i = 1:number_of_folds) %dopar%
   {
@@ -37,10 +37,10 @@ do_classification <- function(dataset, labels, classification_file, feature_rank
   train_data <- dataset[, train_indexes]
   pos <- which(train_labels == 1, arr.ind=T)
   neg <- which(train_labels == -1, arr.ind=T)
-  best_features <- mcf_rfe_ranking(train_data, pos, neg)
+  best_features <- sort(get_fisher_scores(train_data, pos, neg), decreasing=T, index.return=T)$ix
   write(best_features, file=feature_ranking_file, append=T, ncolumns=100)
   write(" ", file=feature_ranking_file, append=T)
-  number_of_features <- seq(from=10, to=30, by=10)
+  number_of_features <- seq(from=10, to=300, by=10)
   for (i in number_of_features)
   {
     train_data <- dataset[best_features[1:i], train_indexes]
