@@ -1,6 +1,0 @@
-#!/bin/sh
-#SBATCH -p long
-#SBATCH -n1
-#SBATCH --mem=40000
-R CMD BATCH cgs_performance.R
-
