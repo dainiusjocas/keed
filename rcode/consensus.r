@@ -136,3 +136,12 @@ consensus_performance <- function(dataset, bp, sz, cc, start, end, relevance_met
   }
   return(duration)
 }
+
+# This method return feture ranking according to CGS algorithm
+# NOTE: NUMBER OF RANKS RETURNED IS VARYING
+get_cgf_ranking <- function(dataset, pos, neg)
+{
+  dataset <- t(dataset)
+  ranking <- get_consensus_groups(dataset, pos, neg, 10, get_fisher_scores)
+  return(ranking)
+}
