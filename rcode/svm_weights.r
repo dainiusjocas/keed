@@ -139,4 +139,11 @@ get_svm_feature_ranks <- function(dataset, pos, neg)
   return(svm_feature_ranks)
 }
 
+# This method returns feature ranking according to svm weights
+get_svm_ranking <- function(dataset, pos, neg)
+{
+  ranking <- sort(get_svm_feature_weights(dataset, pos, neg),
+                  decreasing=T, index.return=T)$ix
+  return(ranking)
+}
 

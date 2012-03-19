@@ -51,3 +51,11 @@ get_fisher_scores <- function(dataset, pos, neg)
   return(fisher_scores)
 }
 
+# This method returns ranking of features according to fisher score feature 
+#   ranking method. 
+get_fisher_ranking <- function(dataset, normal, tumor)
+{
+  ranking <- sort(get_fisher_scores(dataset, normal, tumor), decreasing=T, index.return=T)$ix
+  return(ranking)
+}
+

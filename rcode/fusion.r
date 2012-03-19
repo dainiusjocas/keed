@@ -96,3 +96,36 @@ get_mcf_rfe <- function(dataset, pos, neg, n=20)
   }
   return(indexes)
 }
+
+###############################################################################
+# MCF-RFE implementation library
+###############################################################################
+
+# This method gets n best features using fusion feature ranking algorithm
+#   recursively 
+# input: dataset - rows -> features; columns - tuples
+# input: pos - first class, neg - second class
+# input: n - how many best features we want to get (default=20)
+get_mcf_rfe_ranking <- function(dataset, pos, neg)
+{
+  ranking <- c()
+  indexes = c(1:length(dataset[ , 1]))
+  i <- length(dataset[ , 1])
+  while (i > 100)
+  {
+    ranks <- get_best_features(dataset[indexes, ], pos, neg)
+    i <- round(i * 0.5)
+    ranking <- c(ranking, indexes[tail(ranks, n=i)])
+    indexes <- indexes[-tail(ranks, n=i)]
+  } 
+  while (i > 2)
+  {
+    ranks <- get_best_features(dataset[indexes, ], pos, neg)
+    ranking <- c(ranking, indexes[tail(ranks, n=1)])
+    indexes <- indexes[-tail(ranks, n=1)]
+    i <- i - 1
+  }
+  ranking <- c(ranking, indexes)
+  return(rev(ranking))
+}
+

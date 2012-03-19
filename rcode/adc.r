@@ -58,10 +58,10 @@ get_mutual_information <- function(values_of_feature,
                                    probability_tumor)
 {
   probability_of_normal <- density(values_of_feature[indexes_normal], kernel="epanechnikov",
-                                   from=-12, to=12, n=512, adjust=1)$y
+                                   from=-12, to=12, n=512, adjust=0.3)$y
   probability_of_normal <- probability_of_normal / sum(probability_of_normal)
   probability_of_tumor <- density(values_of_feature[indexes_tumor], kernel="epanechnikov",
-                                  from=-12, to=12, n=512, adjust=1)$y
+                                  from=-12, to=12, n=512, adjust=0.3)$y
   probability_of_tumor <- probability_of_tumor / sum(probability_of_tumor)
   joint_probability <- matrix(cbind(probability_of_normal * probability_normal,
                                     probability_of_tumor * probability_tumor), ncol=2)
@@ -70,3 +70,10 @@ get_mutual_information <- function(values_of_feature,
   return(mutual_information)
 }
 
+# This method returns ranking of features according to ADC features ranking
+#   method. 
+get_adc_ranking <- function(dataset, normal, tumor)
+{
+  ranking <- sort(get_adc(dataset, normal, tumor), decreasing=T, index.return=T)$ix
+  return(ranking)
+}
