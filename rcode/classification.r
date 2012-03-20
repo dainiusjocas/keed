@@ -20,18 +20,25 @@ source('fusion.r')
 classification <- function(dataset, labels, number_of_folds,
                            classification_file='classification_errors.txt',
                            feature_ranking_file='feature_rankings',
+                           decision_value_file='decision_value.txt',
+                           test_labels_file='test_label_file.txt',
                            feature_ranking_method)
 {
   foreach(i = 1:number_of_folds) %dopar%
   {
     do_classification(dataset, labels, classification_file,
-                      feature_ranking_file, feature_ranking_method)
+                      feature_ranking_file,
+                      decision_value_file,
+                      test_labels_file,
+                      feature_ranking_method)
   }
   return(TRUE)
 }
 
 do_classification <- function(dataset, labels, classification_file,
                               feature_ranking_file,
+                              decision_values_file,
+                              test_labels_file,
                               feature_ranking_method)
 {
   train_size <- round(length(dataset[1, ]) * 0.632)
@@ -44,24 +51,20 @@ do_classification <- function(dataset, labels, classification_file,
   best_features <- feature_ranking_method(train_data, pos, neg)
   write(best_features, file=feature_ranking_file, append=T, ncolumns=length(dataset[, 1]))
   write(" ", file=feature_ranking_file, append=T)
-  number_of_features <- seq(from=10, to=300, by=10)
+  number_of_features <- seq(from=10, to=50, by=10)
   for (i in number_of_features)
   {
-    train_data <- dataset[best_features[1:i], train_indexes]
+    train_data <- t(dataset[best_features[1:i], train_indexes])
     test_data <-  t(dataset[best_features[1:i], test_indexes])
-    model <- best.svm(x=t(train_data), y=as.factor(labels[train_indexes]), kernel='linear', cost=0.01)
-    pred <- predict(model, (test_data))
-    errors <- 0
-    for(j in 1:length(test_indexes))
-    {
-      if (as.vector(pred)[j] != as.factor(labels[test_indexes])[j]) {
-        errors <- errors + 1
-      }
-    }
-    write(c(i, errors), file=classification_file, append=T)
-    rm(model)
+    model <- best.svm(x=train_data, y=as.factor(labels[train_indexes]), kernel='linear', cost=0.01)
+    guess <- predict(model, test_data, decision.values=T)
+    write(c(i, attr(guess, 'decision.values')), file=decision_values_file, ncolumns=1000, append=T)
+    write(c(i, labels[test_indexes]), file=test_labels_file, ncolumns=1000, append=T)
+    trez <- table(labels[test_indexes], guess[1:length(labels[test_indexes])])
+    write(c(i, trez[1,2] + trez[2,1], trez[1,1], trez[1,2], trez[2,1], trez[2,2]), ncolumns=6, file=classification_file, append=T)
+    rm(model, train_data, test_data)
     gc()
   }
-  return(number_of_features)
+  return(T)
 }
 
