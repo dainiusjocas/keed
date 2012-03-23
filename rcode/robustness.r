@@ -20,7 +20,11 @@ get_koncheva_index <- function(feature_ranking_i,
 {
   s <- length(feature_ranking_i)
   r <- length(intersect(feature_ranking_i, feature_ranking_j))
-  N - number_of_features
+  N <- number_of_features
+  if (N == s)
+  {
+    return(1)
+  }
   KI <- (r * N - s^2) / (s * (N - s))
   return(KI)
 }
@@ -35,25 +39,32 @@ get_koncheva_index <- function(feature_ranking_i,
 # input: rankings - feature rankings of some dataset - a matrix where every row
 #   is a ranking, first number is an index of best ranked feature.
 # input: percentage - fraction of number of best ranked features. Default is 5%
-# output: stability
-overal_stability <- function(rankings, percentage=0.05)
+# output: stability. if percentage is less that 0 or more than 1 then NaN is
+#   returned
+get_overal_stability <- function(rankings, percentage=0.05)
 {
+  if ((percentage < 0) || (percentage > 1))
+  {
+    return(NaN)
+  }
+  rankings <- as.matrix(rankings)
   stability <- 0
   k <- length(rankings[, 1])
   total_number_of_features <- length(rankings[1, ])
-  number_of_best_features <- round(k * percentage)
-  best_rankings <- ranking[, 1:number_of_best_features]
-  for (i in 1:k)
+  number_of_best_features <- ceiling(total_number_of_features * percentage)
+  best_rankings <- matrix(rankings[, 1:number_of_best_features],
+                          ncol=number_of_best_features)
+  for (i in 1:(k-1))
   {
     for (j in (i + 1):k)
     {
       stability <- 
         stability + 
-        get_koncheva_index(rankings[i, ],
-                           rankings[j, ],
+        get_koncheva_index(best_rankings[i, ],
+                           best_rankings[j, ],
                            total_number_of_features)
     }
   }
   stability <- (2 * stability) / (k * (k - 1))
-  return <- stability
+  return(stability)
 }

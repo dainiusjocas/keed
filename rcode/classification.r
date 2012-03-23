@@ -35,7 +35,8 @@ classification <- function(dataset, labels, number_of_folds,
   return(TRUE)
 }
 
-do_classification <- function(dataset, labels, classification_file,
+do_classification <- function(dataset, labels, 
+                              classification_file,
                               feature_ranking_file,
                               decision_values_file,
                               test_labels_file,
@@ -46,12 +47,11 @@ do_classification <- function(dataset, labels, classification_file,
   test_indexes <- setdiff(1:length(dataset[1, ]), train_indexes)
   train_labels <- labels[train_indexes]
   train_data <- dataset[, train_indexes]
-  pos <- which(train_labels == 1, arr.ind=T)
-  neg <- which(train_labels == -1, arr.ind=T)
+  pos <- which(train_labels == -1, arr.ind=T)
+  neg <- which(train_labels == 1, arr.ind=T)
   best_features <- feature_ranking_method(train_data, pos, neg)
   write(best_features, file=feature_ranking_file, append=T, ncolumns=length(dataset[, 1]))
-  write(" ", file=feature_ranking_file, append=T)
-  number_of_features <- seq(from=10, to=50, by=10)
+  number_of_features <- seq(from=10, to=500, by=10)
   for (i in number_of_features)
   {
     train_data <- t(dataset[best_features[1:i], train_indexes])
