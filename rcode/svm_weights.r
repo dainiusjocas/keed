@@ -147,3 +147,23 @@ get_svm_ranking <- function(dataset, pos, neg)
   return(ranking)
 }
 
+# This method implement SVM-RFE feature ranking method
+get_svm_rfe_ranking <- function(dataset, pos, neg, E=0.2)
+{
+  if (E < 0 || E > 1)
+  {
+    return(NaN)
+  }
+  ranking <- c()
+  indexes = c(1:length(dataset[ , 1]))
+  i <- length(dataset[ , 1])
+  while (i > 2)
+  {
+    ranks <- get_svm_ranking(dataset[indexes, ], pos, neg)
+    ranking <- c(ranking, indexes[tail(ranks, n=round(i * E))])
+    indexes <- indexes[-tail(ranks, n=round(i * E))]
+    i <- i - round(i * E)
+  } 
+  ranking <- c(ranking, indexes)
+  return(rev(ranking))
+}

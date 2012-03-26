@@ -68,3 +68,19 @@ get_overal_stability <- function(rankings, percentage=0.05)
   stability <- (2 * stability) / (k * (k - 1))
   return(stability)
 }
+
+plot_robustness <- function(rankings)
+{
+  percentage <- c(0.005, 0.01, 0.02, 0.05, 0.1, 0.25, 0.5)
+  KI_values <- c()
+  for (i in 1:7)
+  {
+    KI_values[i] <- get_overal_stability(rankings, percentage[i])
+  }
+  x_labels <- rev(c('0.5', '1', '2', '5', '10', '25', '50'))
+  plot(x=1:7, xaxt="n", y=rev(KI_values), type='b', 
+       xlab="Percentage of selected features",
+       ylab='Kuncheva index', ylim=c(0.3, 0.99), pch=0)
+  axis(side=1, at=1:7, labels=x_labels)
+  legend(x=1, y=0.35, legend='Fisher feature ranking', pch=0, lty=1)
+}
