@@ -105,7 +105,7 @@ make_distance_matrix <- function(dataset)
 
 # This method returns feature ranking according to relief feture ranking
 #   method.
-get_relief_ranking <- function(dataset, pos, neg, m=length(dataset[, 1])) 
+get_relief_ranking <- function(dataset, pos, neg, m=length(dataset[1, ])) 
 {
   ranking <- sort(get_relief_scores(dataset, pos, neg, m), decreasing=T, index.return=T)$ix  
   return(ranking)
