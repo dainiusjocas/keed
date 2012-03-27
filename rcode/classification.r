@@ -22,7 +22,8 @@ classification <- function(dataset, labels, number_of_folds,
                            feature_ranking_file='feature_rankings',
                            decision_value_file='decision_value.txt',
                            test_labels_file='test_label_file.txt',
-                           feature_ranking_method)
+                           feature_ranking_method,
+                           size_of_subsample=0.632)
 {
   foreach(i = 1:number_of_folds) %dopar%
   {
@@ -30,7 +31,8 @@ classification <- function(dataset, labels, number_of_folds,
                       feature_ranking_file,
                       decision_value_file,
                       test_labels_file,
-                      feature_ranking_method)
+                      feature_ranking_method,
+                      size_of_subsample)
   }
   return(TRUE)
 }
@@ -40,9 +42,10 @@ do_classification <- function(dataset, labels,
                               feature_ranking_file,
                               decision_values_file,
                               test_labels_file,
-                              feature_ranking_method)
+                              feature_ranking_method,
+                              size_of_subsample=0.632)
 {
-  train_size <- round(length(dataset[1, ]) * 0.632)
+  train_size <- round(length(dataset[1, ]) * size_of_subsample)
   train_indexes <- sample(1:length(dataset[1, ]), train_size)
   test_indexes <- setdiff(1:length(dataset[1, ]), train_indexes)
   train_labels <- labels[train_indexes]
