@@ -56,12 +56,14 @@ get_index_of_nearest_hit <- function(distance_matrix, instance_index, pos, neg)
     nearest_hit <- 
       which(distance_matrix[instance_index, pos] 
             == min(distance_matrix[instance_index, pos]))
+    nearest_hit <- pos[nearest_hit]
   }
   else
   {
     nearest_hit <- 
       which(distance_matrix[instance_index, neg]
             == min(distance_matrix[instance_index, neg]))
+    nearest_hit <- neg[nearest_hit]
   }
   return(head(nearest_hit))
 }
@@ -80,18 +82,20 @@ get_index_of_nearest_miss <- function(distance_matrix, instance_index, pos, neg)
     nearest_miss <- 
       which(distance_matrix[instance_index, neg] 
             == min(distance_matrix[instance_index, neg]))
+    nearest_miss <- neg[nearest_miss]
   }
   else
   {
     nearest_miss <- 
       which(distance_matrix[instance_index, pos]
             == min(distance_matrix[instance_index, pos]))
+    nearest_miss <- pos[nearest_miss]
   }
   return(head(nearest_miss))
 }
 
 # This method makes distance matrix which if full matrix and this matrix
-#   is specific because in the diagonal there are Inf's (normally diag it is 0)
+#   is specific because in the diagonal there are Inf's (normally diag is 0)
 # input: dataset - rows -> features, columns -> tuples
 # output: distance_matrix - in the diagonal there is Inf
 make_distance_matrix <- function(dataset)
@@ -100,6 +104,7 @@ make_distance_matrix <- function(dataset)
                                     method = "euclidean",
                                     upper = TRUE))
   diag(distance_matrix) <-Inf
+  distance_matrix <- matrix(distance_matrix, ncol=length(dataset[1, ]))
   return(distance_matrix)
 }
 
