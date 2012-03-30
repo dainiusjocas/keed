@@ -161,3 +161,20 @@ test_that("Artimiausio kaimyno is kitos klases treciajam objektui indeksas turi 
             expected_index_of_nearest_miss <- 1
             expect_that(index_of_nearest_miss, equals(expected_index_of_nearest_miss))
           })
+
+context("get_relief_scores(dataset, pos, neg)")
+
+test_that("Kokybinio skirtumo dydis turi buti 1, 
+          kai duomenys yra [(-1,0,0,1), (-1,-2,0,1), (-2,-1,0,1), (-1,-2,0,1)],
+          kai pirmas ir trecias objektai yra is tos pacios klases", {
+            dataset <- rbind(c(1,0,0,1), c(1,2,0,1), c(2,1,0,1), c(1,2,0,1))
+            pos <- c(1,3)
+            neg <- c(2,4)
+            distance_matrix <- make_distance_matrix(dataset)
+            instance_index <- 1
+            feature_index <- 1
+            nearest_hit <- 3
+            nearest_miss <- 4
+            d <- get_diff(dataset, instance_index, feature_index, nearest_hit, nearest_miss)
+            expect_that(d, equals(1))
+          })

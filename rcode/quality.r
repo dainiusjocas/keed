@@ -22,12 +22,21 @@ get_relief_scores <- function(dataset, pos, neg, m=length(dataset[1, ]))
     for(j in 1:length(dataset[ , 1]))
     {
       weights[j] <- weights[j] - 
-        (abs(dataset[j, instance_index] - dataset[j, nearest_hit]) -
-        abs(dataset[j, instance_index] - dataset[j, nearest_miss])) /
+        get_diff(dataset, instance_index, j, nearest_hit, nearest_miss) /
         (m * min_max_diff[j]) 
     }
   }
   return(weights)
+}
+
+get_diff <- function(dataset, instance_index, feature_index,
+                     nearest_hit, nearest_miss)
+{
+  difference <- 
+    abs(dataset[feature_index, instance_index] -
+    dataset[feature_index, nearest_hit]) -
+    abs(dataset[feature_index, instance_index] -
+    dataset[feature_index, nearest_miss])
 }
 
 # This method computes differences between max and min values of every feature
@@ -114,4 +123,13 @@ get_relief_ranking <- function(dataset, pos, neg, m=length(dataset[1, ]))
 {
   ranking <- sort(get_relief_scores(dataset, pos, neg, m), decreasing=T, index.return=T)$ix  
   return(ranking)
+}
+
+tt <- function(dataset, pos, neg, m)
+{
+  for (i in 1:1000)
+  {
+    write(get_relief_ranking(dataset, pos, neg, m), file='rez/relief_stability.txt')
+  }
+  return(rez)
 }
