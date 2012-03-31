@@ -124,12 +124,3 @@ get_relief_ranking <- function(dataset, pos, neg, m=length(dataset[1, ]))
   ranking <- sort(get_relief_scores(dataset, pos, neg, m), decreasing=T, index.return=T)$ix  
   return(ranking)
 }
-
-tt <- function(dataset, pos, neg, m)
-{
-  for (i in 1:1000)
-  {
-    write(get_relief_ranking(dataset, pos, neg, m), file='rez/relief_stability.txt')
-  }
-  return(rez)
-}
