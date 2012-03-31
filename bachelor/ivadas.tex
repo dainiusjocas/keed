@@ -1,1 +1,89 @@
-TODO ~Gegužės mėnuo
+Duomenų kiekiai labai sparčiai didėja. Dar daugiau, tie duomenys sudėtingėja. 
+Duomenų sudėtingėjimas suponuoja atributų skaičiaus augimą - didėja duomenų
+dimensijų skaičius. Dimensijų skaičiaus ,,sprogimas`` ypač pastebimas 
+biologiniuose duomenyse. Taip yra todėl, nes atsiranda vis naujesni būdai 
+apdoroti biologinius duomenis, pavyzdžiui, genomo sekvenavimas ar epigenitinė
+analizė. Sekvenuojant genomą moderniomis priemonėmis galima gauti net
+keletą milijonų dimensijų vienam genui(!). Todėl naujiems duomenims klasifikuoti
+reikia ir naujų klasifikavimo strategijų, nes tradicinės yra nepajėgios dirbti
+su tokiu dideliu dimensijų skaičiumi - drastiškai didėja skaičiavimo laikas, 
+mažėja klasifikavimo tikslumas.
+ 
+Viena iš strategijų dirbti su didelio dimensiškumo duomenis yra naudoti įvairius
+dimensijų atrinkimo metodus. Tokie metodai nėra naujiena, jie jau kuris laikas
+yra naudojami mašininio mokymosi taikymuose, bet jie gali itin svariai 
+prisidėti prie naujų klasifikavimo strategijų, reikalingų darbui su daugiamačiais 
+duomenimis. Dimensijų atrinkimo etapas yra
+svarbus duomenų paruošimui. Jis ne tik leidžia sukurti tikslesnius klasifikavimo
+modelius, taip pat jis padeda geriau suprasti ir vizualizuoti tais duomenimis
+apibūdinamus procesus, sumažinti atminties poreikį, pagreitinti mokymosi ir 
+klasifikatorių naudojimo laiką. 
+
+Kadangi duomenų kiekiai yra didžiuliai, tai jiems apdoroti reikia labai daug
+skaičiavimo resursų. Atsiranda natūralus poreikis kažkaip optimizuoti 
+skaičiavimus. Klasifikavimo procesas yra imlus skaičiavimo resursams, todėl 
+sumažinus dimensijų skaičių galime gauti nemažą spartdidina tikimybę, kad atrinktosios 
+dimensijos yra tikrai susijusios su nagrinėjama problema. os prieaugį, tačiau ir 
+dimensijų atrinkimo metodai turi būti pakankamai našūs, todėl ne visi yra
+naudotini.
+
+Gyvybėms mokslų tyrėjams itin svarbu fokusuoti į mažesnį dimensijų skaičių,
+nes tai itin paspartina jų tyrimus - jiems reikia tirti mažesnį skaičių 
+mėginių. Mažesnio skaičiaus mėginių tyrimas ir kainuoja mažiau, nes mažiau 
+reikia ir cheminių reagentų ir laiko. Bet čia iškyla naujas dimensijų atrinkimo 
+kriterijus - stabilumas (ang. robustness). Stabilumas didina tikimybę, kad atrinktosios 
+dimensijos yra tikrai susijusios su nagrinėjama problema. Jei dimensijų atrinkimo
+rezultatai labai stipriai varijuos, tai tada reikės atlikinėti bandymus su visa
+duomenų aibe, kas yra labai neefektyvu. Dar daugiau, stabilumo matavimai turi
+būti atliekami būtinai atsižvelgiant į klasifikavimo tikslumą.
+
+Dar viena problema dirbant su daugiamačiais duomenimis yra tai, kad dažnai
+turimas labai ribotas skaičius duomenų objektų. Dimensijų - objektų santykis 
+neretai skiriasi visomis eilėmis. Atrodytų, laiko klausimas, kada bus paruošta
+daugiau objektų, bet žvelgiant į duomenų gavybos tendencijas pasidaro aišku, kad
+objektų skaičius neikada nepavis dimensijų skaičiau. Todėl reikia labai apgalvoti,
+kaip bus į tai atsižvelgta kuriant klasifikavimo modelius. Nes esant mažam
+objektų skaičiui kyla grėsmė susidurti su persimokymo problema (angl. 
+overfitting). Tokiu atveju klasifikatorius tampa bevertis.
+
+Duomenyse daugėja dimensijų - neišvengiamai daugėja ir triukšmo. Triukšmas atsiranda
+dėl įvairių priežasčių, pavyzdžiui, cheminiai preparatai buvo ne visai tinkamai
+paruošti. Triukšmas duoda atsitiktinius rezultatus, iš kurių naudos nedaug.
+Atsiranda poreikis identifikuoti triukšmingus duomenis ir juos išmesti iš 
+klasifikavimo proceso.
+
+Taigi, žvelgiant iš paukščio skrydžio, galime pastebėti, kad norint optimaliai
+dirbti su daugiamačiais duomenimis vienu metu reikia atsižvelgti į eilę kriterijų:
+\begin{enumerate}
+ \item klasifikavimo tikslumas - tipinė klasifikavimo užduotis yra atskirti
+ sergančius pacientus nuo sveikų.;
+ \item dimensijų atrinkimo stabilumas, atsižvelgiant į klasifikavimo rezultatus;
+ \item didelis dimensijų-objektų santykis;
+ \item triukšmo lygis duomenyse;
+ \item skaičiavimo išteklių naudojimas.
+\end{enumerate}
+Reikalavmas vienu metu atsižvelgti į keletą kriterijų labai apsunkina užduotį.
+Daugiamačių duomenų klasifikavime
+Galime net įsivaizduoti, kad sprendžiame multikriterinį optimizavimo uždavinį.
+
+Šiame darbe dirbsime su viešai prieinamomis genų ekspresijos duomenų bazėmis.
+\textcolor{red}{***TODO: lentelė apie datasetus***}
+Skaičiavimo išteklius, kurių reikėjo ne taip ir mažai, suteikė VU MIF ITTC.
+Programavimo darbai buvo atlikti naudojant R programavimo kalbą. Didžiąją
+dalį eksperimentų atlikau profesinės praktikos MII metu.
+
+Su teorine dalykinės srities medžiaga susipažinau skaitydamas darbo vadovo 
+rekomenduotus mokslinius straipsnius, bei naudodamasis internetine paieška.
+
+Šio darbo tikslas yra išanalizuoti darbo su daugiamačiais duomenis ypatybes.
+
+Šiam darbui yra keliamos tokios užduotys:
+\begin{enumerate}
+ \item Apžvelgti esamus klasifikavimo metodus;
+ \item Išanalizuoti populiariausių dimensijų atrinkimo metodų spartą;
+ \item Išanalizuoti populiariausių dimensijų atrinkimo metodų stabilumą;
+ \item Išanalizuoti kaip dimensijų atrinkimo metodai įtakoja klasifikatorių tikslumą.
+\end{enumerate}
+
+
+
