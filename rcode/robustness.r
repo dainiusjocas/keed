@@ -30,7 +30,7 @@ get_koncheva_index <- function(feature_ranking_i,
 }
 
 # This method computer overal stability of feature selection method.
-# Stot = (2 * SUM(SUM(KI(fi, fj), j=i+1..k), i=1..k))/(k * (k - 1)), where
+# Stot = (2 * SUM(SUM(KI(fi, fj), j=i+1..k-1), i=1..k))/(k * (k - 1)), where
 #   Stot - average over all pairwise similarity comparisons between all 
 #     signatures on the k subsamplings - overal stability
 #   k - number of subsamplings
@@ -69,7 +69,12 @@ get_overal_stability <- function(rankings, percentage=0.05)
   return(stability)
 }
 
-plot_robustness <- function(rankings)
+# This method plots the values of robustness, when specific amount
+#   of best feaures is considered
+# input: rankings - list of lists with feature ranking.
+# input: method_name - name of method which was used to rank the
+#   features
+plot_robustness <- function(rankings, method_name)
 {
   percentage <- c(0.005, 0.01, 0.02, 0.05, 0.1, 0.25, 0.5)
   KI_values <- c()
@@ -77,10 +82,10 @@ plot_robustness <- function(rankings)
   {
     KI_values[i] <- get_overal_stability(rankings, percentage[i])
   }
-  x_labels <- rev(c('0.5', '1', '2', '5', '10', '25', '50'))
-  plot(x=1:7, xaxt="n", y=rev(KI_values), type='b', 
+  x_labels <- c('0.5', '1', '2', '5', '10', '25', '50')
+  plot(x=1:7, xaxt="n", y=KI_values, type='b', 
        xlab="Percentage of selected features",
-       ylab='Kuncheva index', ylim=c(0.3, 0.99), pch=0)
+       ylab='Kuncheva index', ylim=c(-0.5, 0.99), pch=0)
   axis(side=1, at=1:7, labels=x_labels)
-  legend(x=1, y=0.35, legend='Fisher feature ranking', pch=0, lty=1)
+  legend(x=1, y=-0.1, legend=method_name, pch=0, lty=1)
 }
