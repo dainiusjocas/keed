@@ -9,54 +9,36 @@
 \usepackage{url}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \usepackage{parskip}
-\usepackage{graphicx} 
+\usepackage{graphicx}
+\usepackage{fixltx2e} % šitas dėl \textsubscript{}
+\usepackage{color} % spalvinsim tekstą
 \parindent = 1cm
 
-%\usepackage{mathtools} % pades rašyti matematinius intarpus
+\usepackage{mathtools} % pades rašyti matematinius intarpus
 \begin{document}
+%\input{titulinis_puslapis} % kol kas neaktualu
 
-%\include{titulinis_puslapis} % kol kas neaktualu
+
 \let \savenumberline \numberline
 \def \numberline#1{\savenumberline{#1.}}
-%\tableofcontents 
+\tableofcontents 
+\newpage
 
 \addcontentsline{toc}{section}{{\c I}VADAS}
-%\section*{ĮVADAS}
-%\include{ivadas}
+\section*{ĮVADAS}
+\input{ivadas}
 
-%% JG: Sekcija apie darbe nagrinėjamą problemą. Problem definition.
+\section{DIMENSIJŲ ATRINKIMAS}
+\input{dimensiju_atrinkimas}
 
-\section{Teorija}
-Šiame skyriuje aptarsiu teorinį darbo pagrindą ir pagrindus.
-%\include{mokymasis_su_ir_be_mokytojo} % Supervised and Unsupervised Learning
-% \include{bajeso_teorija} %Bayesian decision theory}
-\include{savybiu_atrinkimas}
-\subsection{Klasifikavimas ``artimiausio kaimyno'' metodu}
-\subsection{Klasifikavimas ``mažiausių kvadratų metotu''}
-\subsection{Naive Bayesian classifTitleier}
-\subsection{Bias and variance tradeoff}
-\subsection{Klasifikavimo metodo įvertinimas}
-\subsubsection{Klasifikavimo metodo įvertinimas ``cross-validation'' metodu}
-\subsubsection{Klasifikavimo metodo įvertinimas ``bootstrapping'' metodu}
-\include{support_vector_machines}
-\subsection{Random forests}
-\subsection{Kuo ypatingas daugiamačių duomenų klasifikavimas}
-\subsubsection{the curse of dimensionality}
+%\section{DIMENSIJŲ ATRINKIMO METODŲ SPARTA}
 
-\section{Susiję darbai}
-\section{Klasifikavimo metodų palyginimo karkasas}
-\section{Klasifikavimo metodų palyginimo rezultatai}
+\section{DIMENSIJŲ ATRINKIMO STABILUMAS}
+\input{stabilumas}
 
-\addcontentsline{toc}{section}{REZULTATAI IR IŠVADOS}
-%\section*{REZULTATAI IR IŠVADOS}
-%\input{rezultatai_ir_isvados}
-
-\addcontentsline{toc}{section}{SĄVOKŲ APIBRĖŽIMAI}
-\section*{SĄVOKŲ APIBRĖŽIMAI}
-\input{savoku_apibrezimai}
 
 \addcontentsline{toc}{section}{LITERATŪRA} 
 \bibliographystyle{alpha}
-\bibliography{literatura}
+\bibliography{literatura.bib}
 
 \end{document}

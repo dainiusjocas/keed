@@ -1,0 +1,71 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[lithuanian]{babel}
+\usepackage[L7x]{fontenc}
+\usepackage{lmodern}
+\usepackage{verbatim}
+\usepackage{tocloft} 
+\usepackage{url}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\usepackage{parskip}
+\usepackage{graphicx} 
+\parindent = 1cm
+\usepackage{mathtools} % pades rašyti matematinius intarpus
+
+
+\begin{document}
+\maketitle
+%\include{titulinis_puslapis}
+
+
+%\include{titulinis_puslapis} % kol kas neaktualu
+\let \savenumberline \numberline
+\def \numberline#1{\savenumberline{#1.}}
+%\tableofcontents 
+\begin{comment}
+%% JG: Sekcija apie darbe nagrinėjamą problemą. Problem definition.
+
+\section{Teorija}
+Šiame skyriuje aptarsiu teorinį darbo pagrindą ir pagrindus.
+\include{mokymasis_su_ir_be_mokytojo} % Supervised and Unsupervised Learning
+\include{bajeso_teorija} %Bayesian decision theory}
+
+\subsection{Klasifikavimas ``artimiausio kaimyno'' metodu}
+\subsection{Klasifikavimas ``mažiausių kvadratų metotu''}
+\subsection{Naive Bayesian classifTitleier}
+\subsection{Bias and variance tradeoff}
+\subsection{Klasifikavimo metodo įvertinimas}
+\subsubsection{Klasifikavimo metodo įvertinimas ``cross-validation'' metodu}
+\subsubsection{Klasifikavimo metodo įvertinimas ``bootstrapping'' metodu}
+\include{support_vector_machines}
+\subsection{Random forests}
+\subsection{Kuo ypatingas daugiamačių duomenų klasifikavimas}
+\subsubsection{the curse of dimensionality}
+
+\section{Susiję darbai}
+\section{Klasifikavimo metodų palyginimo karkasas}
+\section{Klasifikavimo metodų palyginimo rezultatai}
+
+\addcontentsline{toc}{section}{REZULTATAI IR IŠVADOS}
+\section*{REZULTATAI IR IŠVADOS}
+\input{rezultatai_ir_isvados}
+
+\addcontentsline{toc}{section}{SĄVOKŲ APIBRĖŽIMAI}
+\section*{SĄVOKŲ APIBRĖŽIMAI}
+\input{savoku_apibrezimai}
+
+
+\addcontentsline{toc}{section}{LITERATŪRA} 
+\bibliographystyle{alpha}
+\bibliography{literatura.bib}
+\end{comment}
+
+
+\begin{abstract}
+Mano abstractas.
+
+\end{abstract}
+
+\section{}
+
+\end{document}
