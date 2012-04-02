@@ -43,7 +43,7 @@ do_classification <- function(dataset, labels,
                               decision_values_file,
                               test_labels_file,
                               feature_ranking_method,
-                              size_of_subsample=0.632)
+                              size_of_subsample=0.9)
 {
   train_size <- round(length(dataset[1, ]) * size_of_subsample)
   train_indexes <- sample(1:length(dataset[1, ]), train_size)
@@ -59,13 +59,14 @@ do_classification <- function(dataset, labels,
   {
     train_data <- t(dataset[best_features[1:i], train_indexes])
     test_data <-  t(dataset[best_features[1:i], test_indexes])
-    model <- best.svm(x=train_data, y=as.factor(labels[train_indexes]), kernel='linear', cost=0.01)
+    model <- svm(x=train_data, y=as.factor(labels[train_indexes]), kernel='linear')#, cost=0.01)
     guess <- predict(model, test_data, decision.values=T)
+    print(guess)
     write(c(i, attr(guess, 'decision.values')), file=decision_values_file, ncolumns=1000, append=T)
     write(c(i, labels[test_indexes]), file=test_labels_file, ncolumns=1000, append=T)
     trez <- table(labels[test_indexes], guess[1:length(labels[test_indexes])])
     write(c(i, trez[1,2] + trez[2,1], trez[1,1], trez[1,2], trez[2,1], trez[2,2]), ncolumns=6, file=classification_file, append=T)
-    rm(model, train_data, test_data)
+    rm(model, guess, train_data, test_data, trez)
     gc()
   }
   return(T)
