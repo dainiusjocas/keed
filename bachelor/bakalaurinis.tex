@@ -7,6 +7,8 @@
 \usepackage{verbatim}
 \usepackage{tocloft} 
 \usepackage{url}
+\usepackage{setspace}
+\usepackage{caption}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \usepackage{parskip}
 \usepackage{graphicx}
@@ -15,6 +17,11 @@
 \parindent = 1cm
 
 \usepackage{mathtools} % pades rašyti matematinius intarpus
+\usepackage{titlesec}
+\titlelabel{\thetitle.\quad} % Padeda tašką po skyriaus numerio
+\usepackage{indentfirst} % atitraukta pirmoji eilute
+\usepackage{longtable} % darysim didelias lenteles
+\usepackage{algorithm}
 \begin{document}
 %\input{titulinis_puslapis} % kol kas neaktualu
 
@@ -22,7 +29,7 @@
 \let \savenumberline \numberline
 \def \numberline#1{\savenumberline{#1.}}
 \tableofcontents 
-\newpage
+%\newpage
 
 \addcontentsline{toc}{section}{{\c I}VADAS}
 \section*{ĮVADAS}

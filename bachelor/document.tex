@@ -11,8 +11,10 @@
 \usepackage{graphicx} 
 \parindent = 1cm
 \usepackage{mathtools} % pades rašyti matematinius intarpus
+\usepackage{longtable} % kad galeciau ilgas lenteles tureti
 
-
+\title{moo}
+\author{You}
 \begin{document}
 \maketitle
 %\include{titulinis_puslapis}
@@ -22,6 +24,76 @@
 \let \savenumberline \numberline
 \def \numberline#1{\savenumberline{#1.}}
 %\tableofcontents 
+\begin{longtable}{|p{3cm}|p{12.5cm}|}
+\captionsetup{labelsep=period}
+\caption{OLTP sistemų savybės}\\
+%This is the header for the first page of the table...
+
+\hline \hline
+{\textbf{Savybė}} &
+{\textbf{Paaiškinimas}}\\
+\hline
+\endfirsthead
+
+%This is the header for the remaining page(s) of the table...
+
+\multicolumn{2}{c}{{\tablename} \thetable{} -- Tęsinys} \\[0.5ex]
+\hline \hline
+{\textbf{Savybė}} &
+{\textbf{Paaiškinimas}}\\
+\hline
+\endhead
+
+%This is the footer for all pages except the last page of the table...
+
+\multicolumn{2}{l}{{Lentelės tęsinys kitame puslapyje\ldots}} \\
+\endfoot
+
+%This is the footer for the last page of the table...
+
+\hline \hline
+\endlastfoot
+\hline 
+Greitas atsako laikas 
+&
+Visos OLTP sistemos yra kuriamos tam, kad jos būtų interaktyvios bei su jomis būtų galima dirbti tada, kada reikia. OLTP sistemoms reikia trumpų atsako laikų, kad sistemos naudotojai išliktų produktyvūs. \\ 
+\hline
+Smulkios transakcijos 
+&
+OLTP sistemos paprastai dirba tik su tam tikrais nedideliais duomenų kiekiais; duomenų apdorojimas dažniausiai yra paprastas, o sudėtingi DB lentelių sujungimai (angl. join) yra naudojami palyginti retai. 
+\\ 
+\hline
+Duomenų palaikymo (angl. maintenance) operacijos 
+&
+Nėra neįprasta turėti ataskaitų rengimo ir duomenų atnaujinimo programas, kurios turi dirbti arba reguliariai, arba pagal poreikį. Tos programos, kurios veikia foniniu (angl. Background) režimu, kol kiti sistemos klientai normaliai dirba su sistema, gali bandyti dirbti su dideliais kiekiais duomenų, kurie yra toje pačioje DB.
+\\
+\hline
+Daugelio naudotojų sistema
+&
+OLTP sistemos gali turėti labai daug naudotojų, kuriems gali reikėti tuo pačiu metu dirbti su tais pačiais duomenimis.
+\\
+\hline
+Intensyvus vienalaikiškumas
+&
+Dėl to, kad OLTP sistemos gali turėti daug klientų; joms reikia apdoroti didelius operacijų kiekius, kuriuos reikia apdoroti per trumpą laiką, intensyvaus vienalaikiškumo palaikymas yra labai svarbus.
+\\
+\hline
+Dideli duomenų kiekiai
+&
+Priklausomai nuo programos tipo, klientų kiekio ir duomenų saugojimo laiko, OLTP sistemų dydis gali labai išaugti. Pavyzdžiui, elektroninės bankininkystės, klientas nori pamatyti visas savo paskutinių metų sąskaitas.
+\\
+\hline
+Pasiekiamumas
+&
+Pasiekiamumas OLTP sistemose turi būti nuolatinis. Laikinai nepasiekiama sistema gali paveikti didelį klientų skaičių, dėl kurio gali stipriai nukentėti visa kompanija.
+\\
+\hline
+Periodiniai naudojimo ypatumai
+&
+Gali nutikti taip, kad OLTP sistemų naudojamumas turi kažkokį cikliškumą. Pavyzdžiui, kiekvieno mėnesio gale yra apskaičiuojama visų banko sąskaitų suvestinė.
+\\
+\hline
+\end{longtable}
 \begin{comment}
 %% JG: Sekcija apie darbe nagrinėjamą problemą. Problem definition.
 

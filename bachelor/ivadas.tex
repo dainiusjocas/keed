@@ -63,12 +63,88 @@ dirbti su daugiamačiais duomenimis vienu metu reikia atsižvelgti į eilę krit
  \item triukšmo lygis duomenyse;
  \item skaičiavimo išteklių naudojimas.
 \end{enumerate}
-Reikalavmas vienu metu atsižvelgti į keletą kriterijų labai apsunkina užduotį.
+Reikalavimas vienu metu atsižvelgti į keletą kriterijų labai apsunkina užduotį.
 Daugiamačių duomenų klasifikavime pragrindinė problema yra surasti optimalų 
 metodą, kuris geriausiai atsižvelgia į aukščiau minėtus kriterijus.
 
 Šiame darbe dirbsime su viešai prieinamomis genų ekspresijos duomenų bazėmis.
-\textcolor{red}{***TODO: lentelė apie datasetus***}
+\begin{longtable}{|p{4cm}|p{1.4cm}|p{2.5cm}|p{1.6cm}|p{1cm}|}
+\captionsetup{labelsep=period}
+\caption{Darbe naudotos duomenų bazės\label{table:datasets}}\\
+%This is the header for the first page of the table...
+\hline \hline
+{\textbf{Pavadinimas}} &
+{\textbf{Šaltinis}} &
+{\textbf{Objektų skaičius (+/-)}}&
+{\textbf{Dimensijų skaičius}}&
+{\textbf{ODS}}\\
+\hline
+\endfirsthead
+%This is the header for the remaining page(s) of the table...
+\multicolumn{3}{c}{{\tablename} \thetable{} -- Tęsinys} \\[0.5ex]
+\hline \hline
+{\textbf{Pavadinimas}} &
+{\textbf{Šaltinis}} &
+{\textbf{Objektų skaičius (+/-)}}&
+{\textbf{Dimensijų skaičius}}&
+{\textbf{ODS}}\\
+\hline
+\endhead
+%This is the footer for all pages except the last page of the table...
+\multicolumn{3}{l}{{Lentelės tęsinys kitame puslapyje\ldots}} \\
+\endfoot
+%This is the footer for the last page of the table...
+\hline \hline
+\endlastfoot
+\hline 
+Gaubtinės žarnos auglys (angl. Colon) 
+& 
+\cite{alon1999broad} 
+& 
+62 (40/22) 
+& 
+2000 
+& 
+3,1\% \\
+\hline
+Centrinės nervų sistemos auglys (CNS) 
+& 
+\cite{pomeroy2002prediction} 
+& 
+60 (39/21) 
+& 
+7129 
+& 
+0.84\% \\
+\hline
+Prostatos auglys 
+& 
+\cite{singh2002gene} 
+& 
+102 (52/50) 
+& 
+6033 
+& 
+1.7\% \\
+\hline
+Šizofrenija ir maniakinė depresija
+&
+\cite{altara}
+&
+90 (bp\footnote{bp (angl. Bipolar disorder) - maniakine depresija sergantys pacientai.}:
+sz\footnote{sz (anlg. Schizophrenia) - šizofrenija sergantys pacientai.}:
+cc\footnote{cc (angl. Control Crowd) - kontrolinė grupė.} =30:31:29)
+&
+22283
+&
+0.403\% \\
+\hline
+\end{longtable}
+Duomenų bazes apibūdinantis dydis ODS\footnote{ODS - Objektų dimensijų santykis},
+kuris turimiems duomenims tesiekia nuo  0,403\% iki 3,01\% procento,
+parodo, kad turime labai retus (angl. scarce) duomenis, o tai labai apsunkina
+mokymosi procesą ir gali sukelti persimokymo (angl. overfitting) problemą.
+
 Skaičiavimo išteklius, kurių reikėjo ne taip ir mažai, suteikė VU MIF ITTC.
 Programavimo darbai buvo atlikti naudojant R programavimo kalbą. Didžiąją
 dalį eksperimentų atlikau profesinės praktikos MII metu.
@@ -85,6 +161,4 @@ rekomenduotus mokslinius straipsnius, bei naudodamasis internetine paieška.
  \item Išanalizuoti populiariausių dimensijų atrinkimo metodų stabilumą;
  \item Išanalizuoti kaip dimensijų atrinkimo metodai įtakoja klasifikatorių tikslumą.
 \end{enumerate}
-
-
 

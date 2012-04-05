@@ -1,12 +1,12 @@
 Klasifikuojant daugiamačius duomenis susiduriame su taip vadinamu dimensiškumo
 prakeiksmu (angl. curse of dimentionality). Pavyzdžiui, kai dimensijų skaičius įkopia į
 trečią ar ketvirtą eilę naudoti paprastus klasifikavimo algoritmus tampa
-nebeefektyvu nei laiko nei klasifikavimo našumo atžvilgiais. Vienas iš būdų
+nebeefektyvu nei laiko, nei klasifikavimo našumo atžvilgiais. Vienas iš būdų
 kovoti su dimensiškumo prakeiksmu
 yra naudoti vienokius ar kitokius dimensijų skaičiaus mažinimo metodus. Šiame
 skyriuje nagrinėsiu bazinius dimensijų atsirinkimo metodus, keletos 
 kriterijų suliejimą metodą (angl.
-feature selection based on multicriterion fusion)\cite{5611484}, bei
+feature selection based on multicriterion fusion)\cite{yang2011robust}, bei
 stabilių dimensijų grupių išskyrimo metodą\cite{Loscalzo:2009:CGS:1557019.1557084}.
 
 \subsection{Baziniai dimensijų atrinkimo metodai}
@@ -118,7 +118,10 @@ absoliučių svorių SVM metodo taikymas nuolat išmetinėjant dimensijas su
 mažiausiais svoriais. Rekursyvus dimensijų eliminavimas mums padeda surasti 
 tinkamą dimensijų poaibį, kas nevisada pavyksta su dimensijų reitingavimo 
 metodais. Bendroji rekursyvaus dimensijų eliminavimo procedūra:
-\begin{enumerate}
+\begin{algorithm}
+\caption{Rekursyvus dimensijų eliminavimas}
+\label{RFE}
+ \begin{enumerate}
  \item Turime pilną dimensijų rinkinį $F_0$, nustatome $i=0$.
  \item Įvertiname kiekvienos dimensijos kokybę dimensijų aibėje $F_i$.
  \item Išmetame mažiausiai svarbią dimensiją iš $F_I$ tam, kad gautume
@@ -126,6 +129,7 @@ metodais. Bendroji rekursyvaus dimensijų eliminavimo procedūra:
  \item Nustatome $i=i+1$ ir grįžtame į antrąjį žingsnį kol nėra patenkinta 
  algoritmo pabaigos sąlyga.
 \end{enumerate}
+\end{algorithm}
 Jei trečiajame algoritmo žingsnyje yra pašalinama tik viena dimensija, tai gauname dar
 ir dimensijų reitingavimą, o jei pašalinamos kelios dimensijos ar jų dalis
 (pvz. 50\%) tai reitingavimo negauname. Pastebėtina, kad rekursyvus dimensijų
@@ -134,56 +138,139 @@ atžvilgiu. Algoritmo pabaigos sąlyga gali būti koks nors konkretus dimensijų
 skaičius arba tiesiog dimensijų aibę mažinti tol, kol dimensijų visai nebeliks.
 
 
-\subsection{Savybių pasirinkimo pagal keletos kriterijų suliejimą metodas}
+\subsection{Dimensijų atrinkimo pagal keletos kriterijų suliejimą metodai}
 
-Šio metodo esmė yra panaudoti kelis savybių atrinkimo metodus suliejant jų
-rezultatus į vieną bendrą rezultatą. Kodėl naudinga sulieti keletą savybių
-atrinkimo metodų? Sulieti keletą savybių atrinkimo metodų naudinga, nes
-pavieniai savybių atrinkimo metodai be to, kad turi savitų privalumų, visada
+Dimensijų atrinkimo pagal keletos kriterijų suliejimą metodų esmė yra panaudoti
+kelis dimensijų atrinkimo metodus suliejant jų
+rezultatus į vieną bendrą rezultatą. Kodėl naudinga sulieti keletą dimensijų
+atrinkimo metodų rezultatų? Sulieti keletą dimensijų atrinkimo metodų rezultatų
+naudinga, nes
+pavieniai dimensijų atrinkimo metodai be to, kad turi savitų privalumų, visada
 turi ir savo silnybių, pavyzdžiui, jautrumas išimtims (angl. outliers), negali
-rasti savybių tarpusavio priklausomybių, etc. Suliejant keletą skirtingų metodų
-suliejamos gerosios pavienių savybių atrinkimo metodų savybės, taip
+rasti dimensijų tarpusavio priklausomybių, etc. Suliejant keletą skirtingų metodų
+suliejamos gerosios pavienių dimensijų atrinkimo metodų savybės, taip
 kompensuojant algoritmų silpnybes.
 
-Galima pavienių savybių atrankos rezultatus sulieti pagal šias suliejimo
+Galima pavienių dimensijų atrankos rezultatus sulieti pagal šias suliejimo
 strategijas:
 \begin{enumerate}
-  \item Suliejimas pagal svorius
-  \item Suliejimas pagal reitingus (angl. rank)
-  \item Sulieti ir pagal svorius ir pagal reitingus
+  \item Suliejimas pagal svorius;
+  \item Suliejimas pagal reitingus (angl. rank);
+  \item Sulieti ir pagal svorius, ir pagal reitingus.
 \end{enumerate}
 
-Suliejimo pagal svorius būdu būtinai reikia atlikti svorių normalizavimą. Kitu
-atveju savybių įvertinimo metodai bus nepalyginami. Pirmajame paveikslėlyje
-nenormalizuotų svorių skiriasi netgi intervalai. Antrajame paveikslėlyje matoma,
-kad net ir normalizavus svorius gana stipriai skiriasi svorių kvartiliai.
+\subsubsection{Keletos dimensijų atrinkimo kriterijų suliejimas pagal svorius}
 
-\begin{figure}[htb]
-\begin{center}
-\leavevmode
-\includegraphics[width=0.5\textwidth]{images/boxplot_colon_all.png}
-\end{center}
-\caption{Pavienių savybių atrinkimo metodų nenormalizuotas svorių
+Keletos dimensijų atrinkimo kriterijų suliejimo pagal svorius algoritmo
+pirmajame žingsnyje kiekvienas bazinis metodas priskiriame duomenų rinkinio
+dimensijoms svorius, tada tie svoriai yra kombinuojami į vieną sutarties
+(angl. consensus) svorių vektorių, kurio pagrindu yra gaunami dimensijų 
+reitingai. Algoritmas yra pavaizduotas ~\ref{fig:figure4} pav.
+\begin{figure}
+ \centering
+ \includegraphics[width=1\textwidth]{images/score_based_multicriterion_fusion_2.png}
+ \caption{Svoriais grįstas multikriterinis suliejimas.}
+ \label{fig:figure4}
+\end{figure}
+\begin{figure}[ht]
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\includegraphics[width=1\textwidth]{images/boxplot_colon_all.png}
+\caption{Pavienių dimensijų atrinkimo metodų nenormalizuotas svorių
 pasiskirstymas.}
-\label{fig:flash}
+\label{fig:figure1}
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\includegraphics[width=1\textwidth]{images/boxplot_colon_all_normalized.png}
+\caption{Pavienių dimensijų atrinkimo metodų normalizuotas svorių
+pasiskirstymas.}
+\label{fig:figure2}
+\end{minipage}
 \end{figure}
 
-\begin{figure}[htb]
-\begin{center}
-\leavevmode
-\includegraphics[width=0.5\textwidth]{images/boxplot_colon_all_normalized.png}
-\end{center}
-\caption{Pavienių savybių atrinkimo metodų normalizuotas svorių
-pasiskirstymas.}
-\label{fig:flash}
+Agreguojant svorius svarbu yra užtikrinti, kad svoriai gauti naudojant
+skirtingus bazinius kriterijus būtų palyginami. Todėl svorių normalizavimas
+turi būti atliekamas prieš svorių kombinavimą.  Kitu
+atveju dimensijų įvertinimo metodai bus nepalyginami. Paveikslėlyje ~\ref{fig:figure1} pav.
+nenormalizuotų pavienių dimensijų vertinimo metodų skiriasi netgi suteiktų
+svorių intervalai. Paveikslėlyje ~\ref{fig:figure2} pav. matome,
+kad net ir normalizavus svorius gana stipriai skiriasi svorių kvartiliai - į 
+tai reikia atkreipti dėmesį interpretuojant galutinius dimensijų vertinimo 
+rezultatus. Šiame darbe svoriai yra 
+normalizuoti intervale $[0, 1]$ pagal šią formulę:
+\begin{equation}
+ u_i'=\frac{u_i - u_{i min}}{u_{i max} - u_{i min}}, 
+\end{equation}
+kur $u_i$ - dimensijų svorių vektorius pagal $i$ kriterijų, 
+$u_{i min}$ - minimali $u_i$ svorių vektoriaus reikšmė,
+$u_{i max}$ - maksimali $u_i$ svorių vektoriaus reikšmė,
+$u_i'$ - normalizuotų svorių vektorius.
+
+Sutarties svorių vektorius $u$ yra vidurkis normalizuotų svorių vektorių:
+\begin{equation}
+ u = \frac{1}{m}\sum_{i=1}^m u_i',
+\end{equation}
+kur $m$ yra bazinių kriterijų skaičius. Reikia paminėti, kad didesnė svorio
+reikšmė reiškia, kad dimensija yra geresnė.
+
+\subsubsection{Keletos dimensijų atrinkimo kriterijų suliejimas pagal reitingus}
+
+Suliejimo pagal reitingus metodas gauna duomenų rinkinkio dimensijų reitingą,
+pagal keletą dimensijų reitingavimo kriterijų. Algoritmo pirmajame žingsnyje
+keletas dimensijų atrinkimo kriterijų grąžina dimensijų reitingu, paskui tie
+reitingai yra kombinuojami į vieną bendra dimensijų reitingą.  Algoritmas yra
+pavaizduotas ~\ref{fig:figure5} pav.
+\begin{figure}
+ \centering
+ \includegraphics[width=1\textwidth]{images/ranking_based_multicriterion_fusion_2.png}
+ \caption{Reitingais grįstas multikriterinis suliejimas.}
+ \label{fig:figure5}
 \end{figure}
+Suliejimo pagal reitingus metodas nereikalauja dimensijų atrinkimo metodų 
+rezultatų normalizavimo, nes tiesiog imame dimensijoms priskirtus reitingus ir 
+juos kombinuojame. Skirtingai nei suliejimo pagal svorius algoritme, baziniai 
+dimensijų atrinkimo kriterijai turi gražinti dimnesijų reitingus, o ne svorius.
 
-Suliejimo pagal reitingus metodas nereikalauja normalizavimo, nes tiesiog imame
-savybių svorių įverčius ir juos išrykiuojame mažėjimo tvarka - išreitinguojame.
+Dimensijų reitingų kombinavimui yra keletas metodų\cite{dwork2001rank}, tačiau
+paprastumo dėlei šiame darbe naudosiu Borda balsavimą\footnote{Dar žinomas kaip
+,,Pažymių metodas``. Jis buvo pasiūlytas prancūzų matematiko ir fiziko 
+Jean-Charles de Borda 1770 metais.} (angl. Borda count). Tarkime, kad turime
+$m$ basuotojų ir $p$ kandidatų aibę. Tada Borda balsavimo metodas kiekvienam
+$i$-ajam balsuotojui sukuria balsų vektorių $v_i$ tokiu būdu: geriausiai 
+įvertintam kandidatui suteikiama $p$ taškų, antrajam kandidatui $p-1$, ir t.t.
+Galutiniai taškai yra gaunami sudedant visų balsuotojų taškus
+\begin{equation}
+ v = \sum_{i=1}^m v_i,
+\end{equation}
+kur $v$ yra suminių taškų vektorius, o iš jo galime gauti ir dimensijų reitingus.
 
-Savybių įverčių pagal svorius ir reitingus metodas vyksta dviem žingsniais:
+\subsubsection{Keletos dimensijų atrinkimo kriterijų suliejimas ir pagal 
+svorius, ir pagal reitingus}
+
+Dimensijų atrinkimo kriterijų suliejimas ir pagal svorius, ir pagal reitingus
+nuo kriterijų suliejimo pagal reitingus skiriasi tuo, kad kaip dar vienas 
+reitingas yra panaudojamas dimensijų atrinkimo suliejimo pagal svorius metu
+gautas reitingas.
+Dimensijų įverčių ir pagal svorius, ir pagal reitingus metodas vyksta dviem
+žingsniais:
 \begin{enumerate}
-  \item suliejame savybes pagal svorius ir taip gauname vieną savybių reitingą,
-  kurį prijungiame prie kitų savybių reitingų;
-  \item reitinguojame savybes pagal visus turimus pavienius reitingus.
+  \item suliejame dimensijų įverčius  pagal svorius ir taip gauname vieną 
+  dimensijų reitingą;
+  \item reitinguojame savybes pagal visus turimus $m+1$ pavienius reitingus.
 \end{enumerate} 
+Algoritmas yra pavaizduotas ~\ref{fig:figure3} pav.
+\begin{figure}
+ \centering
+ \includegraphics[width=1\textwidth]{images/score_and_ranking_based_multicriterion_fusion_4.png}
+ \caption{Svoriais ir reitingais grįstas multikriterinis suliejimas.}
+ \label{fig:figure3}
+\end{figure}
+
+\subsubsection{Multikriterinis rekursyvus dimensijų eliminavimas}
+
+Multikriterinis dimensijų eliminavimas\cite{yang2011robust} susideda iš dviejų
+dalių: keletos dimensijų atrinkimo kriterijų suliejimo ir pagal svorius, ir 
+pagal reitingus, ir rekursyvaus dimensijų eliminavimo aprašyto algoritme 
+nr. \ref{RFE}.
