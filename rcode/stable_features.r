@@ -10,7 +10,7 @@ get_stable_features <- function(dataset, pos, neg,
   labels[neg] <- -1
   train_size <- round(length(dataset[1, ]) * size_of_subsample)
   ranks <- c()
-  for (i in number_of_subsampling)
+  for (i in 1:number_of_subsampling)
   {
     train_indexes <- sample(1:length(dataset[1, ]), train_size)
     train_labels <- labels[train_indexes]
