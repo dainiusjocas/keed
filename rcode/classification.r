@@ -61,7 +61,6 @@ do_classification <- function(dataset, labels,
     test_data <-  t(dataset[best_features[1:i], test_indexes])
     model <- best.svm(x=train_data, y=as.factor(labels[train_indexes]), kernel='linear', cost=0.01)
     guess <- predict(model, test_data, decision.values=T)
-    print(guess)
     write(c(i, attr(guess, 'decision.values')), file=decision_values_file, ncolumns=1000, append=T)
     write(c(i, labels[test_indexes]), file=test_labels_file, ncolumns=1000, append=T)
     trez <- table(labels[test_indexes], guess[1:length(labels[test_indexes])])
