@@ -62,9 +62,8 @@ get_list_of_scores <- function(dataset, pos, neg)
                           fisher=get_fisher_scores(dataset, pos, neg))
   list_of_scores <- cbind(list_of_scores, 
                           relief=get_relief_scores(dataset, pos, neg))
-  sdataset <- scale(log2(dataset))
   list_of_scores <- cbind(list_of_scores, 
-                          adc=get_adc(sdataset, pos, neg))
+                          adc=get_adc(dataset, pos, neg))
   list_of_scores <- cbind(list_of_scores, 
                         svm_weights=get_svm_feature_weights(dataset, pos, neg))
   return(list_of_scores)

@@ -1,6 +1,6 @@
 get_stable_features <- function(dataset, pos, neg, 
                                 feature_ranking_method=get_fisher_ranking,
-                                number_of_subsampling=100,
+                                number_of_subsampling=10,
                                 size_of_subsample=0.9, 
                                 percentage=0.5,
                                 threshold=1)
@@ -22,6 +22,7 @@ get_stable_features <- function(dataset, pos, neg,
     gc()
   }
   stable_features <- get_all_stable_features(ranks, percentage, threshold)
+  stable_features <- feature_ranking_method(train_data[stable_features, ], pos, neg)
   return(stable_features)
 }
 
