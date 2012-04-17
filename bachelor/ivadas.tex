@@ -1,12 +1,22 @@
 \newpage
 \section*{ĮVADAS}
 
+%% JG: Idėja - naudok terminus "matai" ir "mėginiai". Kiekvienam mėginiui atliekama labai daug matavimų, iš to ir "daugiamatiškumas"
+
+
+% JG: Paminėk, kad šiame darbe mes gilinamės į biomedicinoje kaupiamų genetinių duomenų analizės specifika. Šie duomenys ypatingi dėl daugiamatiškumo, mažo mėginių kiekio, triukšmingų matavimų.
+
 Atsiranda vis tikslesni būdai, pvz. genomo sekvenavimas, gauti 
 biomedicininius duomenis. Tikslumas šiame kontekste reiškia, kad didėja 
 atributų, dažniau
 vadinamų duomenų dimensijomis, skaičius. Sekvenuojant genomą moderniomis 
 priemonėmis galima gauti net keletą milijonų dimensijų vienam genui(!).
 Duomenys turintys daug dimensijų yra vadinami daugiamačiais duomenimis.
+
+
+%% JG: Būdai neatsiranda, o vystosi technologija. Jie nėra tikslesni, bet detalesni, t.y. kiekvienam mėginiui atliekama daugiau matavimų. 
+
+%% JG: Nors matavimų kiekis didėja, mėginio kaina išlieka gana aukšta. Todėl biomedicinos eksperimentuose gaunami duomenys ypatingi tuo, kad matų visados ženkliai daugiau nei mėginių.
 
 Norint daugiamačius duomenis suskirstyti į pageidaujamas kategorijas, pvz. 
 atskirti sergančius nuo nesergančių pacientų, pagal vidinę duomenų struktūrą 
@@ -17,6 +27,10 @@ duomenimis. Taikant tradicines klasifikavimo strategijas daugiamačiams
 duomenims skaičiavimo laikas pasidaro nebepriimtinas, mažėja klasifikavimo
 tikslumas. 
  
+%% JG: Kodėl klasifikuojama? Norima nustatyti, kokie matai, veikdami drauge, geriausiai paaiškina skirtumą tarp ligos paveiktų ir sveikų mėginių.
+
+%% JG: Kokios yra tradicinės klasifikavimo strategijos ir kodėl jos neveikia daugiamačių duomenų atveju? Skaičiavimo laikas nėra problema - Random forests veikia visai neblogai tokiais atvejais. Daugiamatiškumas veda prie the curse fo dimensionality.
+
 Viena iš strategijų dirbti su daugiamačiais duomenimis yra mažinti duomenų 
 dimensijų skaičių - naudoti dimensijų atrinkimo \textit{(angl. feature
 selection)}  metodus. Naudojant dimensijų atrinkimo metodus galima 
@@ -28,14 +42,19 @@ klasifikavimo modelius, sumažinti skaičiavimams reikalingų resursų poreikį,
 pagreitinti klasifikavimo modelio kūrimo - mokymosi - procesą, taip pat jis 
 padeda vizualizuoti bei geriau suprasti tais duomenimis apibūdinamus procesus.
 
-Norint geriau suprasti biomedicininius duomenis itin svarbu fokusuoti dėmesį į 
+% JG: sumažinus naudojamų matų kiekį, matų kiekis priartėja prie mėginių kiekio ir tokiu būdu apeinamas daugiamatiškumo prakeiksmo problema. Biomedicinos duomenų kontekste, galima daryti prielaidą, kad dauguma matų yra beprasmiai, pvz., tik kai kurie genai įtakoja ligą, todėl matų mažinimimas yra prasmingas. Taip pat, kuriant medicininius diagnostikos įrankius, naudojamų matų kiekis įtakoja įrankio kainą. Todėl pageidautina turėti kuo mažiau matų.
+
+Norint geriau suprasti biomedicininius duomenis itin svarbu fokusuoti dėmesį į
 sąlyginai nedidelį dimensijų poaibį. Dimensijų aibės sumažinimas paspartina
-biomedicininių duomenų tyrimus - tyrėjams reikia atlikinėti bandymus su 
-mažesniu mėginių skaičiumi. Mažesnio skaičiaus mėginių tyrimas kainuoja mažiau,
-nes mažiau reikia žmonių darbo laiko, mažiau reikia ir cheminių reagentų. 
-Tačiau tyrėjams ne mažiau svarbu yra žinoti kaip tų atrinktųjų dimensijų aibė varijuoja 
-priklausomai nuo nedidelių pasikeitimų pačioje duomenų aibėje - šis kriterijus 
-yra vadinamas dimensijų atrinkimo stabilumu \textit{(angl. robustness)}. 
+biomedicininių duomenų tyrimus - tyrėjams reikia atlikinėti bandymus su
+mažesniu mėginių skaičiumi. Mažesnio skaičiaus mėginių tyrimas kainuoja
+mažiau, nes mažiau reikia žmonių darbo laiko, mažiau reikia ir cheminių
+reagentų. Tačiau tyrėjams ne mažiau svarbu yra žinoti kaip tų atrinktųjų
+dimensijų aibė varijuoja priklausomai nuo nedidelių pasikeitimų pačioje
+duomenų aibėje - šis kriterijus yra vadinamas dimensijų atrinkimo stabilumu
+\textit{(angl. robustness)}.
+
+% JG: Žiūrėkim į stabilumą kaip į šalutinį matų atrinkimo efektą, kurį svarbu pažaboti. Stabilumas svarbus, nes, analizuojant duomenis norima ne tik nustatyti, koks būtų vidutinis klasifikatoriaus tikslumas, bet ir sukurti tą vidutinį klasifikatorių. Norint pastarąjį sukurti, reikia žinoti, kuriuos konkrečius matus naudoti. 
 
 Jei atrinktųjų dimensijų poaibis, kurį naudojant duomenų objektai yra išskirstomi
 teisingoms kategorijoms (klasifikavimo rezultatai yra tikslūs),
@@ -57,6 +76,8 @@ objektų skaičiui kyla grėsmė, kad klasifikatorius bus sukurtas toks, kuris
 gerai veiks tik, su tais duomenimis, kuriais remiantis jis buvo sukurtas, 
 tačiau netiksliai klasifikuos naujus duomenis. Tokia problema yra vadinama 
 persimokymo problema (angl. overfitting).
+
+% JG: Šitam paragrafe suplaki daug svarbių dalykų į krūvą ir juos turėtum būti paaiškinęs jau anksčiau. Mėginių trūkumas nėra tavo sprendžiama problema. Tačiau, kuo mažiau duomenų, tuo nestabilesni atrenkami matai. 
 
 Išgaunamuose biomedicininiuose duomenyse didėja dimensijų skaičius, todėl 
 daugėja ir nereikalingų ar klaidingų duomenų - triukšmo. Triukšmas atsiranda
