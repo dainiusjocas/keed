@@ -23,7 +23,7 @@ classification <- function(dataset, labels, number_of_folds,
                            decision_value_file='decision_value.txt',
                            test_labels_file='test_label_file.txt',
                            feature_ranking_method,
-                           size_of_subsample=0.632)
+                           size_of_subsample=0.9)
 {
   foreach(i = 1:number_of_folds) %dopar%
   {
