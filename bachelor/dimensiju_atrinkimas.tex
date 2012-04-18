@@ -3,8 +3,30 @@ prakeiksmu (angl. curse of dimentionality). Pavyzdžiui, kai dimensijų skaičiu
 trečią ar ketvirtą eilę naudoti paprastus klasifikavimo algoritmus tampa
 nebeefektyvu nei laiko, nei klasifikavimo našumo atžvilgiais. Vienas iš būdų
 kovoti su dimensiškumo prakeiksmu
-yra naudoti vienokius ar kitokius dimensijų skaičiaus mažinimo metodus. Šiame
-skyriuje nagrinėsiu bazinius dimensijų atsirinkimo metodus, keletos 
+yra naudoti vienokius ar kitokius dimensijų skaičiaus mažinimo metodus. 
+Dimensijų atrinkimas yra svarbus etapas duomenų apdorojimui daugelyje mašininio
+mokymosi taikymų, jis dažniausiai yra naudojamas surasti mažiausią dimensijų
+poaibį, kuris maksimaliai pegerina klasifikavimo modelio našumą.
+
+Pagal tai, kaip dimensijų atrinkimo metodai bendradarbiauja su klasifikatoriumi,
+dimensijų atrinkimo metodus galima išskirstyti į tris kategorijas:
+\begin{enumerate}
+ \item Filtravimo metodai (angl. filter methods). Jie dirba tiesiogiai su
+ duomenimis, o jų rezultatas gali būti dimensijų įvertinimas svoriais, 
+ dimensijų reitingavimas ar tiesiog dimensijų poaibis. Tokių metodų pagrindinis
+ privalumas yra tai, kad jie yra greiti ir nepriklausomi nuo klasifikavimo
+ metodo, tačiau gali sumažinti klasifikavimo tikslumą.
+ \item Įvyniojimo metodai (angl. wrapper methods). Jie atlieka paiešką 
+ dimensijų aibėje vadovaudamiesi klasifikavimo modeliu (pvz. klasifikavimo
+ našumu po pakartotinio įvertinimo). Jie dažnai duoda geresnius rezultatus 
+ negu filtravimo metodai, bet yra reiklesni resursams.
+ \item Įdėtiniai metodai (angl. embedded methods). Jie dimensijų atrinkimui
+ naudoja vidinius klasifikatoriaus duomenis (pvz. svoriai gauti pagal SVM).
+ Šie metodai dažnai siūlo gerus mainus tarp klasifikavimo našumo ir 
+ skaičiavimų sudėtingumo.
+\end{enumerate}
+
+Šiame skyriuje nagrinėsiu bazinius dimensijų atsirinkimo metodus, keletos 
 kriterijų suliejimą metodą (angl.
 feature selection based on multicriterion fusion)\cite{yang2011robust}, bei
 stabilių dimensijų grupių išskyrimo metodą\cite{Loscalzo:2009:CGS:1557019.1557084}.

@@ -1,0 +1,85 @@
+% Čia aprašysiu eksperimentus
+\subsection{Naudoti duomenys}
+
+Šiame darbe eksperimentai buvo atliekami su biomedicininiais viešai prieinamais
+genų ekspresijos duomenų rinkiniais.
+\begin{longtable}{|p{4cm}|p{1.4cm}|p{2.5cm}|p{1.6cm}|p{1cm}|}
+\captionsetup{labelsep=period}
+\caption{Darbe naudoti duomenų rinkiniai\label{table:datasets}}\\
+%This is the header for the first page of the table...
+\hline \hline
+{\textbf{Pavadinimas}} &
+{\textbf{Šaltinis}} &
+{\textbf{Objektų skaičius (+/-)}}&
+{\textbf{Dimensijų skaičius}}&
+{\textbf{ODS}}\\
+\hline
+\endfirsthead
+%This is the header for the remaining page(s) of the table...
+\multicolumn{3}{c}{{\tablename} \thetable{} -- Tęsinys} \\[0.5ex]
+\hline \hline
+{\textbf{Pavadinimas}} &
+{\textbf{Šaltinis}} &
+{\textbf{Objektų skaičius (+/-)}}&
+{\textbf{Dimensijų skaičius}}&
+{\textbf{ODS}}\\
+\hline
+\endhead
+%This is the footer for all pages except the last page of the table...
+\multicolumn{3}{l}{{Lentelės tęsinys kitame puslapyje\ldots}} \\
+\endfoot
+%This is the footer for the last page of the table...
+\hline \hline
+\endlastfoot
+\hline 
+Gaubtinės žarnos auglys (angl. Colon) 
+& 
+\cite{alon1999broad} 
+& 
+62 (40/22) 
+& 
+2000 
+& 
+3,1\% \\
+\hline
+Centrinės nervų sistemos auglys (CNS) 
+& 
+\cite{pomeroy2002prediction} 
+& 
+60 (39 AAL / 21 AML) 
+& 
+7129 
+& 
+0.84\% \\
+\hline
+Prostatos auglys 
+& 
+\cite{singh2002gene} 
+& 
+102 (52/50) 
+& 
+6033 
+& 
+1.7\% \\
+\hline
+Šizofrenija ir maniakinė depresija
+&
+\cite{altara}
+&
+90 (bp\footnote{bp (angl. Bipolar disorder) - maniakine depresija sergantys
+pacientai.}:
+sz\footnote{sz (angl. Schizophrenia) - šizofrenija sergantys pacientai.}:
+cc\footnote{cc (angl. Control Crowd) - kontrolinė grupė.} =30:31:29)
+&
+22283
+&
+0.403\% \\
+\hline
+\end{longtable}
+Duomenų rinkinius apibūdinantis dydis ODS, kuris turimiems duomenims tesiekia
+nuo  0,403\% iki 3,01\% procento, parodo, kad turime labai retus (angl. sparce) duomenis, o tai labai apsunkina
+mokymosi procesą ir gali sukelti persimokymo (angl. overfitting) problemą.
+
+\subsection{Metodologija}
+
+\subsection{Dimensijų atrinkimo metodų sparta}

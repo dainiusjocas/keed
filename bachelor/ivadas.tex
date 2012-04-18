@@ -1,158 +1,125 @@
-Duomenų kiekis pasaulyje labai sparčiai didėja. Dar daugiau, tie duomenys sudėtingėja. 
-Duomenų sudėtingėjimas suponuoja atributų skaičiaus augimą - didėja duomenų
-dimensijų skaičius. Dimensijų skaičiaus ,,sprogimas`` ypač pastebimas 
-biologiniuose duomenyse. Taip yra todėl, nes atsiranda vis naujesni būdai 
-apdoroti biologinius duomenis, pavyzdžiui, genomo sekvenavimas ar epigenitinė
-analizė. Sekvenuojant genomą moderniomis priemonėmis galima gauti net
-keletą milijonų dimensijų vienam genui(!). Todėl naujiems duomenims klasifikuoti
-reikia ir naujų klasifikavimo strategijų, nes tradicinės yra tiesiog nepajėgios dirbti
-su tokiu milžinišku dimensijų skaičiumi - drastiškai didėja skaičiavimo laikas, 
-mažėja klasifikavimo tikslumas.
- 
-Viena iš strategijų dirbti su didelio dimensiškumo duomenis yra naudoti įvairius
-dimensijų atrinkimo\cite{guyon2003introduction} (angl. feature selection) metodus.
-Tokie metodai nėra naujiena, jie jau kuris laikas
-yra naudojami mašininio mokymosi taikymuose, bet išradingai naudojant jie gali itin svariai 
-prisidėti prie naujų klasifikavimo strategijų, reikalingų darbui su daugiamačiais 
-duomenimis. Dimensijų atrinkimo etapas yra
-svarbus duomenų paruošimui. Jis ne tik leidžia sukurti tikslesnius klasifikavimo
-modelius, taip pat jis padeda geriau suprasti ir vizualizuoti tais duomenimis
-apibūdinamus procesus, sumažinti atminties poreikį, pagreitinti mokymosi ir 
-sumažinti klasifikatorių darbo laiką. Tačiau ir dimensijų atrinkimo metodai
-turi būti pakankamai našūs, todėl ne visi yra naudotini.
+\newpage
+\section*{ĮVADAS}
 
-Gyvybėms mokslų tyrėjams itin svarbu fokusuoti į mažesnį dimensijų skaičių,
-nes tai itin paspartina jų tyrimus - jiems reikia tirti mažesnį skaičių 
-mėginių. Mažesnio skaičiaus mėginių tyrimas ir kainuoja mažiau, nes mažiau 
-reikia ir cheminių reagentų ir darbo laiko. Bet čia iškyla naujas dimensijų atrinkimo 
-kriterijus - stabilumas (ang. robustness). Stabilumas didina tikimybę, kad atrinktosios 
-dimensijos yra tikrai susijusios su nagrinėjama problema. Jei dimensijų atrinkimo
-rezultatai labai stipriai varijuos, tai tada reikės atlikinėti bandymus su visa
-duomenų aibe, kas yra labai neefektyvu. Pastebėtina, kad stabilumo matavimai turi
-būti atliekami būtinai atsižvelgiant į klasifikavimo tikslumą.
+%% JG: Idėja - naudok terminus "matai" ir "mėginiai". Kiekvienam mėginiui atliekama labai daug matavimų, iš to ir "daugiamatiškumas"
+
+
+% JG: Paminėk, kad šiame darbe mes gilinamės į biomedicinoje kaupiamų genetinių duomenų analizės specifika. Šie duomenys ypatingi dėl daugiamatiškumo, mažo mėginių kiekio, triukšmingų matavimų.
+
+Atsiranda vis tikslesni būdai, pvz. genomo sekvenavimas, gauti 
+biomedicininius duomenis. Tikslumas šiame kontekste reiškia, kad didėja 
+atributų, dažniau
+vadinamų duomenų dimensijomis, skaičius. Sekvenuojant genomą moderniomis 
+priemonėmis galima gauti net keletą milijonų dimensijų vienam genui(!).
+Duomenys turintys daug dimensijų yra vadinami daugiamačiais duomenimis.
+
+
+%% JG: Būdai neatsiranda, o vystosi technologija. Jie nėra tikslesni, bet detalesni, t.y. kiekvienam mėginiui atliekama daugiau matavimų. 
+
+%% JG: Nors matavimų kiekis didėja, mėginio kaina išlieka gana aukšta. Todėl biomedicinos eksperimentuose gaunami duomenys ypatingi tuo, kad matų visados ženkliai daugiau nei mėginių.
+
+Norint daugiamačius duomenis suskirstyti į pageidaujamas kategorijas, pvz. 
+atskirti sergančius nuo nesergančių pacientų, pagal vidinę duomenų struktūrą 
+(šis procesas vadinamas klasifikavimu) reikia specifinių klasifikavimo 
+strategijų. To reikia todėl,
+kad tradiciniai klasifikavimo būdai yra nepajėgūs dirbti su daugiamačiais
+duomenimis. Taikant tradicines klasifikavimo strategijas daugiamačiams 
+duomenims skaičiavimo laikas pasidaro nebepriimtinas, mažėja klasifikavimo
+tikslumas. 
+ 
+%% JG: Kodėl klasifikuojama? Norima nustatyti, kokie matai, veikdami drauge, geriausiai paaiškina skirtumą tarp ligos paveiktų ir sveikų mėginių.
+
+%% JG: Kokios yra tradicinės klasifikavimo strategijos ir kodėl jos neveikia daugiamačių duomenų atveju? Skaičiavimo laikas nėra problema - Random forests veikia visai neblogai tokiais atvejais. Daugiamatiškumas veda prie the curse fo dimensionality.
+
+Viena iš strategijų dirbti su daugiamačiais duomenimis yra mažinti duomenų 
+dimensijų skaičių - naudoti dimensijų atrinkimo \textit{(angl. feature
+selection)}  metodus. Naudojant dimensijų atrinkimo metodus galima 
+supaprastinti duomenis atsirenkant tik tas dimensijas, kurios yra svarbios 
+konkrečiai tiriamai problemai, pvz. nustatant ligos priežastis. Dimensijų 
+atrinkimas yra svarbi duomenų apdorojimo \textit{(angl. preprocessing)} etapo
+dalis. Pasirinkus našius dimensijų atrinkimo metodus galima sukurti tikslesnius
+klasifikavimo modelius, sumažinti skaičiavimams reikalingų resursų poreikį,
+pagreitinti klasifikavimo modelio kūrimo - mokymosi - procesą, taip pat jis 
+padeda vizualizuoti bei geriau suprasti tais duomenimis apibūdinamus procesus.
+
+% JG: sumažinus naudojamų matų kiekį, matų kiekis priartėja prie mėginių kiekio ir tokiu būdu apeinamas daugiamatiškumo prakeiksmo problema. Biomedicinos duomenų kontekste, galima daryti prielaidą, kad dauguma matų yra beprasmiai, pvz., tik kai kurie genai įtakoja ligą, todėl matų mažinimimas yra prasmingas. Taip pat, kuriant medicininius diagnostikos įrankius, naudojamų matų kiekis įtakoja įrankio kainą. Todėl pageidautina turėti kuo mažiau matų.
+
+Norint geriau suprasti biomedicininius duomenis itin svarbu fokusuoti dėmesį į
+sąlyginai nedidelį dimensijų poaibį. Dimensijų aibės sumažinimas paspartina
+biomedicininių duomenų tyrimus - tyrėjams reikia atlikinėti bandymus su
+mažesniu mėginių skaičiumi. Mažesnio skaičiaus mėginių tyrimas kainuoja
+mažiau, nes mažiau reikia žmonių darbo laiko, mažiau reikia ir cheminių
+reagentų. Tačiau tyrėjams ne mažiau svarbu yra žinoti kaip tų atrinktųjų
+dimensijų aibė varijuoja priklausomai nuo nedidelių pasikeitimų pačioje
+duomenų aibėje - šis kriterijus yra vadinamas dimensijų atrinkimo stabilumu
+\textit{(angl. robustness)}.
+
+% JG: Žiūrėkim į stabilumą kaip į šalutinį matų atrinkimo efektą, kurį svarbu pažaboti. Stabilumas svarbus, nes, analizuojant duomenis norima ne tik nustatyti, koks būtų vidutinis klasifikatoriaus tikslumas, bet ir sukurti tą vidutinį klasifikatorių. Norint pastarąjį sukurti, reikia žinoti, kuriuos konkrečius matus naudoti. 
+
+Jei atrinktųjų dimensijų poaibis, kurį naudojant duomenų objektai yra išskirstomi
+teisingoms kategorijoms (klasifikavimo rezultatai yra tikslūs),
+yra stabilus, tai reiškia, kad tikslinga detalius bandymus su duomenimis 
+pradėti nuo atrinktojo stabilaus dimensijų poaibio. Kitu atveju bandymus 
+atlikinėti reikia su visa duomenų aibe, kas yra mažiau efektyvu. Pastebėtina, kad
+stabilumo matavimus tikslinga atlikinėti tik atsižvelgiant į klasifikavimo
+tikslumą.
 
 Dar viena problema dirbant su daugiamačiais duomenimis yra tai, kad dažnai
-turimas labai ribotas skaičius duomenų objektų. Dimensijų - objektų santykis 
-neretai skiriasi visomis eilėmis. Atrodytų, tik laiko klausimas, kada bus paruošta
-daugiau objektų, bet žvelgiant į duomenų gavybos tendencijas pasidaro aišku, kad
-objektų skaičius niekada nepavys dimensijų skaičiaus. Todėl reikia labai apgalvoti,
+turimas labai ribotas skaičius duomenų objektų \textit{(angl. tuple)}. 
+Objektų - dimensijų santykis (ODS) gali skirtis keliais šimtais kartų. 
+Atrodytų, tik laiko klausimas, kada bus paruošta
+daugiau duomenų objektų, bet žvelgiant į duomenų gavybos tendencijas pasidaro
+aišku, kad
+objektų skaičius niekada nepavys dimensijų skaičiaus. Todėl reikia apgalvoti,
 kaip bus į tai atsižvelgta kuriant klasifikavimo modelius. Nes esant mažam
-objektų skaičiui kyla grėsmė susidurti su persimokymo problema (angl. 
-overfitting). Tokiu atveju klasifikatorius tampa bevertis.
+objektų skaičiui kyla grėsmė, kad klasifikatorius bus sukurtas toks, kuris
+gerai veiks tik, su tais duomenimis, kuriais remiantis jis buvo sukurtas, 
+tačiau netiksliai klasifikuos naujus duomenis. Tokia problema yra vadinama 
+persimokymo problema (angl. overfitting).
 
-Duomenyse daugėja dimensijų, todėl neišvengiamai daugėja ir triukšmo. 
-Triukšmas atsiranda
-dėl įvairių priežasčių, pavyzdžiui, cheminiai preparatai buvo ne visai tinkamai
-paruošti. Triukšmas duoda atsitiktinius rezultatus, iš kurių naudos nedaug.
-Atsiranda poreikis identifikuoti triukšmingus duomenis ir juos išmesti iš 
-klasifikavimo proceso.
+% JG: Šitam paragrafe suplaki daug svarbių dalykų į krūvą ir juos turėtum būti paaiškinęs jau anksčiau. Mėginių trūkumas nėra tavo sprendžiama problema. Tačiau, kuo mažiau duomenų, tuo nestabilesni atrenkami matai. 
 
-Taigi, žvelgiant iš paukščio skrydžio, galime pastebėti, kad norint optimaliai
-dirbti su daugiamačiais duomenimis vienu metu reikia atsižvelgti į eilę kriterijų:
+Išgaunamuose biomedicininiuose duomenyse didėja dimensijų skaičius, todėl 
+daugėja ir nereikalingų ar klaidingų duomenų - triukšmo. Triukšmas atsiranda
+dėl įvairių priežasčių, pvz, cheminiai preparatai buvo netinkamai paruošti. 
+Duomenyse esant triukšmui su jais tampa sudėtinga dirbti, prastėja klasifikavimo
+rezultatai. Atsiranda poreikis duomenų apdorojimo etape identifikuoti 
+triukšmingus duomenis ir juos pašalinti iš duomenų rinkinio.
+
+Taigi, dirbant su daugiamačiais duomenimis, reikia atsižvelgti į keletą 
+kriterijų:
 \begin{enumerate}
- \item Klasifikavimo tikslumas - tipinė klasifikavimo užduotis yra atskirti
- sergančius pacientus nuo sveikų.;
- \item Dimensijų atrinkimo stabilumas, atsižvelgiant į klasifikavimo rezultatus;
- \item Didelis dimensijų-objektų santykis;
- \item Triukšmo lygis duomenyse;
- \item Skaičiavimo išteklių optimalus naudojimas.
+ \item Klasifikavimo tikslumą;
+ \item Dimensijų atrinkimo stabilumą, atsižvelgiant į klasifikavimo rezultatus;
+ \item Triukšmo lygį duomenyse;
+ \item Skaičiavimo išteklių naudojimo racionalumą.
 \end{enumerate}
-Reikalavimas vienu metu atsižvelgti į keletą kriterijų labai apsunkina užduotį.
-Daugiamačių duomenų klasifikavime pragrindinė problema yra surasti optimalų 
-metodą, kuris geriausiai atsižvelgia į aukščiau minėtus kriterijus.
+Reikalavimas vienu metu atsižvelgti į keletą kriterijų apsunkina užduotį.
+Klasifikuojant daugiamačius duomenis uždavinys yra surasti geriausius 
+rezultatus duodančią strategiją, kuri geriausiai atsižvelgia į aukščiau minėtus
+kriterijus.
 
-Šiame darbe dirbsime su viešai prieinamomais genų ekspresijos duomenų rinkiniais.
-\begin{longtable}{|p{4cm}|p{1.4cm}|p{2.5cm}|p{1.6cm}|p{1cm}|}
-\captionsetup{labelsep=period}
-\caption{Darbe naudoti duomenų rinkiniai\label{table:datasets}}\\
-%This is the header for the first page of the table...
-\hline \hline
-{\textbf{Pavadinimas}} &
-{\textbf{Šaltinis}} &
-{\textbf{Objektų skaičius (+/-)}}&
-{\textbf{Dimensijų skaičius}}&
-{\textbf{ODS}}\\
-\hline
-\endfirsthead
-%This is the header for the remaining page(s) of the table...
-\multicolumn{3}{c}{{\tablename} \thetable{} -- Tęsinys} \\[0.5ex]
-\hline \hline
-{\textbf{Pavadinimas}} &
-{\textbf{Šaltinis}} &
-{\textbf{Objektų skaičius (+/-)}}&
-{\textbf{Dimensijų skaičius}}&
-{\textbf{ODS}}\\
-\hline
-\endhead
-%This is the footer for all pages except the last page of the table...
-\multicolumn{3}{l}{{Lentelės tęsinys kitame puslapyje\ldots}} \\
-\endfoot
-%This is the footer for the last page of the table...
-\hline \hline
-\endlastfoot
-\hline 
-Gaubtinės žarnos auglys (angl. Colon) 
-& 
-\cite{alon1999broad} 
-& 
-62 (40/22) 
-& 
-2000 
-& 
-3,1\% \\
-\hline
-Centrinės nervų sistemos auglys (CNS) 
-& 
-\cite{pomeroy2002prediction} 
-& 
-60 (39 AAL / 21 AML) 
-& 
-7129 
-& 
-0.84\% \\
-\hline
-Prostatos auglys 
-& 
-\cite{singh2002gene} 
-& 
-102 (52/50) 
-& 
-6033 
-& 
-1.7\% \\
-\hline
-Šizofrenija ir maniakinė depresija
-&
-\cite{altara}
-&
-90 (bp\footnote{bp (angl. Bipolar disorder) - maniakine depresija sergantys pacientai.}:
-sz\footnote{sz (angl. Schizophrenia) - šizofrenija sergantys pacientai.}:
-cc\footnote{cc (angl. Control Crowd) - kontrolinė grupė.} =30:31:29)
-&
-22283
-&
-0.403\% \\
-\hline
-\end{longtable}
-Duomenų rinkinius apibūdinantis dydis ODS\footnote{ODS - Objektų dimensijų santykis},
-kuris turimiems duomenims tesiekia nuo  0,403\% iki 3,01\% procento,
-parodo, kad turime labai retus (angl. scarce) duomenis, o tai labai apsunkina
-mokymosi procesą ir gali sukelti persimokymo (angl. overfitting) problemą.
-
-Skaičiavimo išteklius, kurių reikėjo ne taip ir mažai, suteikė VU MIF ITTC.
-Programavimo darbai buvo atlikti naudojant R programavimo kalbą. Didžiąją
-dalį eksperimentų atlikau profesinės praktikos MII metu.
-
-Su teorine dalykinės srities medžiaga susipažinau skaitydamas darbo vadovo 
-rekomenduotus mokslinius straipsnius, bei naudodamasis internetine paieška.
+Darbo eksperimentinei daliai reikalingus skaičiavimo išteklius, suteikė VU MIF 
+ITC. Duomenų apdorojimo algoritmų implementavimui buvo naudojama R programavimo
+kalba. Eksperimentai atlikti profesinės praktikos MII metu.
 
 Šio darbo tikslas yra išanalizuoti darbo su daugiamačiais duomenis ypatybes.
 
 Šiam darbui yra keliamos tokios užduotys:
 \begin{enumerate}
  \item Apžvelgti esamus klasifikavimo metodus;
- \item Išanalizuoti populiariausių dimensijų atrinkimo metodų spartą;
- \item Išanalizuoti populiariausių dimensijų atrinkimo metodų stabilumą;
- \item Išanalizuoti kaip dimensijų atrinkimo metodai įtakoja klasifikatorių tikslumą.
+ \item Išanalizuoti bazinių dimensijų atrinkimo metodų spartą;
+ \item Išanalizuoti bazinių dimensijų atrinkimo metodų stabilumą;
+ \item Išanalizuoti kaip dimensijų atrinkimo metodai įtakoja klasifikatorių
+ tikslumą;
+ \item Pasiūlyti naują metodą daugiamačių duomenų klasifikavimui.
+\end{enumerate}
+
+Bakalaurinis darbas suskirstytas į 3 skyrius:
+\begin{enumerate}
+ \item Pirmajame skyriuje apžvelgsiu nagrinėjamą dalykinę sritį;
+ \item Antrajame skyriuje pristatysiu siūlomą metodą daugiamačių duomenų 
+ klasifikavimui;
+ \item Trečiajame skyriuje aprašysiu darbo metu atliktus eksperimentus.
 \end{enumerate}
 
