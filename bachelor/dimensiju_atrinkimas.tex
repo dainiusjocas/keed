@@ -148,7 +148,20 @@ atrinkimo metodų rezultatų? Sulieti keletą dimensijų atrinkimo metodų rezul
 naudinga, nes
 pavieniai dimensijų atrinkimo metodai be to, kad turi savitų privalumų, visada
 turi ir savo silnybių, pavyzdžiui, jautrumas išimtims (angl. outliers), negali
-rasti dimensijų tarpusavio priklausomybių, etc. Suliejant keletą skirtingų metodų
+rasti dimensijų tarpusavio priklausomybių, etc. Yra skiriamos trys priežastys,
+kodėl keletas kombinuotų silpnų ir nestabilių dimensijų atrinkimo metodų
+gali duoti geresnius rezultatus\cite{dietterich2000ensemble}:
+\begin{enumerate}
+ \item Keletas skirtingų, bet vienodai optimalių hipotezių gali būti teisingos,
+ ir kriterijų kombinavimas sumažiną tikimybę, kad bus pasirinkta neteisinga 
+ hipotezė;
+ \item Atskiri kriterijai gali dirbti skirtinguose lokaliuose optimumuose, tuo
+ tarpu kombinavimas gali geriau reprezentuoti tikrąją duomenų funkciją;
+ \item Tikroji duomenų funkcija negali būti reprezentuojama jokia hipoteze
+ paskiro algoritmo hipotezių erdvėje ir agreguojant pavienių metodų rezultatus
+ galima praplėsti hipotezių erdvę.
+\end{enumerate}
+Suliejant keletą skirtingų metodų
 suliejamos gerosios pavienių dimensijų atrinkimo metodų savybės, taip
 kompensuojant algoritmų silpnybes.
 
