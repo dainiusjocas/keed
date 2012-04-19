@@ -1,0 +1,57 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[lithuanian]{babel}
+\usepackage[L7x]{fontenc}
+\usepackage{lmodern}
+\usepackage{verbatim}
+\usepackage{tocloft} 
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{caption}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{fixltx2e} % šitas dėl \textsubscript{}
+\usepackage{color} % spalvinsim tekstą
+\usepackage{mathtools} % pades rašyti matematinius intarpus
+\usepackage{titlesec}
+\usepackage{indentfirst} % atitraukta pirmoji eilute
+\usepackage{longtable} % darysim didelias lenteles
+\usepackage{algorithm}
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+\usepackage{geometry}
+\usepackage{changepage}
+\usepackage{pdfpages} % su šitua paketu galima įkelti pdf kaip puslapius
+\linespread{1.5}
+\parindent = 1cm
+\titlelabel{\thetitle.\quad} % Padeda tašką po skyriaus numerio
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\begin{document}
+% Titulinis puslapis
+\includepdf{images/praktikos_ataskaitos_titulinis.pdf}
+
+\let \savenumberline \numberline
+\def \numberline#1{\savenumberline{#1.}}
+\tableofcontents 
+\newpage
+
+\input{ivadas}
+\newpage
+
+\input{imones_apibudinimas}
+\newpage
+
+\section{DIMENSIJŲ ATRINKIMAS}
+%\input{dimensiju_atrinkimas}
+
+%\section{DIMENSIJŲ ATRINKIMO METODŲ SPARTA}
+
+\section{DIMENSIJŲ ATRINKIMO STABILUMAS}
+%\input{stabilumas}
+
+\addcontentsline{toc}{section}{LITERATŪRA} 
+\bibliographystyle{alpha}
+\bibliography{literatura.bib}
+
+\end{document}
