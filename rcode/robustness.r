@@ -3,7 +3,7 @@
 ###############################################################################
 
 # This method computes Koncheva's index (KI) - measure of a stability
-# KI(fi, fj) = (r * N - s^2) / (s * (N-s)) = (r - (s^2/N)) / (r - (s^2/N)),
+# KI(fi, fj) = (r * N - s^2) / (s * (N-s)) = (r - (s^2/N)) / (s - (s^2/N)),
 # where
 #   KI - stability index between fi and fj
 #   fi, fj - feature rankings
@@ -89,3 +89,65 @@ plot_robustness <- function(rankings, method_name)
   axis(side=1, at=1:7, labels=x_labels)
   legend(x=1, y=-0.1, legend=method_name, pch=0, lty=1)
 }
+
+get_jaccard_index <- function(A, B)
+{
+  A <- A[which(!is.na(A))]
+  B <- B[which(!is.na(B))]
+  AB_intersection_size <- length(intersect(A, B))
+  AB_union_size <- length(union(A, B))
+  jaccard_index <- AB_intersection_size / AB_union_size
+  return(jaccard_index)
+}
+
+get_overall_jaccard_index <- function(rankings)
+{
+  rankings <- as.matrix(rankings)
+  stability <- 0
+  k <- length(rankings[, 1])
+  for (i in 1:(k-1))
+  {
+    for (j in (i + 1):k)
+    {
+      stability <- 
+        stability + 
+        get_jaccard_index(rankings[i, ], rankings[j, ])
+    }
+  }
+  stability <- (2 * stability) / (k * (k - 1))
+  return(stability)
+}
+
+# input: A - vector of indexes 
+# input: B - vector of indexes
+get_hamming_distance <- function(A, B)
+{
+  A <- A[which(!is.na(A))]
+  B <- B[which(!is.na(B))]
+  maximal_value <- max(A, B)
+  new_A <- seq(from=0, to=0, length.out=maximal_value)
+  new_B <- seq(from=0, to=0, length.out=maximal_value)
+  new_A[A] <- 1
+  new_B[B] <- 1
+  hamming_distance <- sum(abs(new_A - new_B))
+  return(hamming_distance)
+}
+
+get_overall_hamming_distance <- function(rankings)
+{
+  rankings <- as.matrix(rankings)
+  stability <- 0
+  k <- length(rankings[, 1])
+  for (i in 1:(k-1))
+  {
+    for (j in (i + 1):k)
+    {
+      stability <- 
+        stability + 
+        get_hamming_distance(rankings[i, ], rankings[j, ])
+    }
+  }
+  stability <- (2 * stability) / (k * (k - 1))
+  return(stability)
+}
+
