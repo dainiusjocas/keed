@@ -1,8 +1,7 @@
-get_stable_features <- function(dataset, pos, neg, 
+get_stable_features <- function(dataset, pos, neg, number_of_features,
                                 feature_ranking_method=get_fisher_ranking,
                                 number_of_subsampling=10,
                                 size_of_subsample=0.9, 
-                                percentage=0.5,
                                 threshold=1)
 {
   labels <- c()
@@ -21,17 +20,16 @@ get_stable_features <- function(dataset, pos, neg,
     ranks <- rbind(ranks, best_features)
     gc()
   }
-  stable_features <- get_all_stable_features(ranks, percentage, threshold)
-  stable_features <- feature_ranking_method(train_data[stable_features, ], pos, neg)
+  stable_features <- get_all_stable_features(ranks, number_of_features, threshold)
   return(stable_features)
 }
 
 # input: ranks - matrix of ranking; in one line one ranking
 # input: percentage - what fraction of line to take
-get_unique_features <- function(ranks, percentage=0.5)
+get_unique_features <- function(ranks, number_of_features)
 {
   unique_features <- c()
-  how_many <- round(length(ranks[1, ]) * percentage)
+  how_many <- number_of_features
   for (i in 1:length(ranks[, 1]))
   {
     unique_features <- union(unique_features, ranks[i, 1:how_many])
@@ -48,10 +46,10 @@ get_unique_features <- function(ranks, percentage=0.5)
 # input: threshold - by passign parameter less than 1 we can make stability
 #   criteria less rigid. Defauls is 1 - very rigid
 # output: TRUE of FALSE
-is_feature_stable <- function(feature_id, ranks, percentage=0.5, threshold=1)
+is_feature_stable <- function(feature_id, ranks, number_of_features, threshold=1)
 {
   stability_criteria <- length(ranks[, 1]) * threshold
-  ranks_to_check <- ranks[, 1:(round(length(ranks[1, ]) * percentage))]
+  ranks_to_check <- ranks[, 1:number_of_features]
   observations <- length(which(ranks_to_check == feature_id))
   if (observations >= stability_criteria)
   {
@@ -65,13 +63,13 @@ is_feature_stable <- function(feature_id, ranks, percentage=0.5, threshold=1)
 # input: percentage
 # input: threshold
 # output: stable_features - vector of features that are stable
-get_all_stable_features <- function(ranks, percentage=0.5, threshold=1)
+get_all_stable_features <- function(ranks, number_of_features, threshold=1)
 {
-  unique_features <- get_unique_features(ranks, percentage)
+  unique_features <- get_unique_features(ranks, number_of_features)
   stable_features <- c()
   for(i in unique_features)
   {
-    if (is_feature_stable(i, ranks, percentage, threshold))
+    if (is_feature_stable(i, ranks, number_of_features, threshold))
     {
       stable_features <- c(stable_features, i)
     }
