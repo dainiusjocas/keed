@@ -1,104 +1,65 @@
-Klasifikuojant daugiamačius duomenis susiduriame su taip vadinamu dimensiškumo
-prakeiksmu (angl. curse of dimentionality). Pavyzdžiui, kai dimensijų skaičius įkopia į
-trečią ar ketvirtą eilę naudoti paprastus klasifikavimo algoritmus tampa
-nebeefektyvu nei laiko, nei klasifikavimo našumo atžvilgiais. Vienas iš būdų
-kovoti su dimensiškumo prakeiksmu
-yra naudoti vienokius ar kitokius dimensijų skaičiaus mažinimo metodus. 
-Dimensijų atrinkimas yra svarbus etapas duomenų apdorojimui daugelyje mašininio
-mokymosi taikymų, jis dažniausiai yra naudojamas surasti mažiausią dimensijų
-poaibį, kuris maksimaliai pegerina klasifikavimo modelio našumą.
+\section{PAGRINDINIAI DIMENSIJŲ ATRINKIMO METODAI}
 
-Pagal tai, kaip dimensijų atrinkimo metodai bendradarbiauja su klasifikatoriumi,
-dimensijų atrinkimo metodus galima išskirstyti į tris kategorijas:
+Biomedicininių duomenų kontekste galima daryti prielaidą, kad ne visi matai yra susiję su tiriama problema, pvz. gaubtinės žarnos vėžiu, dėl tokių faktorių, kaip triukšmas duomenyse. Paprastai nagrinėjamai problemai svarbus yra mažas, palyginus su visu, matų kiekis. Ši biomedicininių duomenų ypatybė veda prie ,,daugiamatiškumo prakeiksmo`` (angl. \textit{the curse of dimentionality}) \cite{bellman1966adaptive} - didėjant matų kiekiui mėginiai pasidaro panašūs, todėl bandymas juos klasifikuoti tolygus spėliojimui. Vienas iš būdų kovoti su ,,daugiamatiškumo prakeiksmu`` yra naudoti dimensijų atrinkimo metodus. Dimensijų atrinkimas yra svarbus etapas biomedicininių duomenų pirminiam apdorojimui (angl. \textit{preprocessing}). Dimensijų atrinkimas dažniausiai yra naudojamas surasti mažiausią dimensijų poaibį, kuris maksimaliai pagerina klasifikatoriaus tikslumą.
+
+Pagal tai, kaip dimensijų atrinkimo metodai yra susiję su klasifikatoriumi, dimensijų atrinkimo metodus galima skirstyti į tris kategorijas \cite{saeys2008robust}:
 \begin{enumerate}
- \item Filtravimo metodai (angl. filter methods). Jie dirba tiesiogiai su
- duomenimis, o jų rezultatas gali būti dimensijų įvertinimas svoriais, 
- dimensijų reitingavimas ar tiesiog dimensijų poaibis. Tokių metodų pagrindinis
- privalumas yra tai, kad jie yra greiti ir nepriklausomi nuo klasifikavimo
- metodo, tačiau gali sumažinti klasifikavimo tikslumą.
- \item Įvyniojimo metodai (angl. wrapper methods). Jie atlieka paiešką 
- dimensijų aibėje vadovaudamiesi klasifikavimo modeliu (pvz. klasifikavimo
- našumu po pakartotinio įvertinimo). Jie dažnai duoda geresnius rezultatus 
- negu filtravimo metodai, bet yra reiklesni resursams.
- \item Įdėtiniai metodai (angl. embedded methods). Jie dimensijų atrinkimui
- naudoja vidinius klasifikatoriaus duomenis (pvz. svoriai gauti pagal SVM).
- Šie metodai dažnai siūlo gerus mainus tarp klasifikavimo našumo ir 
- skaičiavimų sudėtingumo.
+ \item Filtruojantys metodai (angl. \textit{filter methods}), pvz. \textit{Fisher} įvertis. Jie dirba tiesiogiai su duomenimis, o jų rezultatas gali būti dimensijų įvertinimas svoriais, dimensijų reitingavimas ar tiesiog geriausių dimensijų poaibis, kuriuo remiantis vėliau apmokomas klasifikatorius. Tokių metodų pagrindinis privalumas yra tai, kad jie yra greiti, tinka paskirstytų skaičiavimų aplinkoms ir nepriklausomi nuo klasifikavimo  metodo, tačiau remiantis atrinktosiomis dimensijomis nebūtinai bus sukurtas geriausias klasifikatorius.
+ \item Prisitaikantieji metodai (angl. \textit{wrapper methods}). Pirma, apmokomas klasifikatorius su visomis dimensijomis, antra, parenkamas dimensijų poaibis ir apmokomas klasifikatorius, tada po daugkartinio dimensijų aibių įvertinimo pagal klasifikavimo rezultatus yra nusprendžiama, kuris dimensijų poaibis yra labiausiai tinkamas klasifikavimui. Įterptinių metodų atveju dimensijų atrinkimo procesas yra neatsiejamas nuo klasifikavimo proceso - pats klasifikatorius įvertina dimensijas. Jie dažnai duoda geresnius rezultatus negu filtravimo metodai, bet yra reiklūs resursams.
+ \item Įterptiniai metodai (angl. \textit{embedded methods}), pvz. AW-SVM\cite{vapnik2000nature}. Jie dimensijų atrinkimui naudoja vidinius klasifikatoriaus duomenis (pvz. dimensijų svoriai gauti pagal SVM). Šie metodai dažnai siūlo gerą santykį tarp klasifikavimo tikslumo ir skaičiavimų sudėtingumo.
 \end{enumerate}
 
-Šiame skyriuje nagrinėsiu bazinius dimensijų atsirinkimo metodus, keletos 
-kriterijų suliejimą metodą (angl.
-feature selection based on multicriterion fusion)\cite{yang2011robust}, bei
-stabilių dimensijų grupių išskyrimo metodą\cite{Loscalzo:2009:CGS:1557019.1557084}.
-
-\subsection{Baziniai dimensijų atrinkimo metodai}
-
-Yra pasiūlyta daugybė dimensijų atrinkimo metodų. Šiame skyriuje aptarsiu
-keletą taip vadinamų bazinių\footnote{Aptarsiu tik bazinius todėl, kad jie yra 
-svarbiausi, nes jų tarpusavio rezultatai yra nekoreliuojantys, o nekoreliuojančius
-rezultatus galima panaudot juos apjungiant, taip gauname sinergijos efektą.}
-dimensijų atrinkimo metodų: 
+Šiame skyriuje nagrinėsiu pagrindinius dimensijų atsirinkimo metodus:
 \begin{enumerate}
- \item Fisher'io įvertis (angl. Fisher ratio)\cite{Pavlidis:2001:GFC:369133.369228};
- \item Atpalaidavimo (ang. relief) metodas\cite{DBLP:journals/ml/Robnik-SikonjaK03};
- \item Asimetrinis priklausomybės koeficientas\cite{Shannon:2001:MTC:584091.584093} (ADC) (angl.
- Asymmetric Dependency Coefficient);
- \item Absoliučių svorių SVM\cite{vapnik2000nature} (AW-SVM) (angl. Absolute Weight SVM)
- \item Rekursyvus dimensijų eliminavimas pagal SVM\cite{Guyon:2002:GSC:599613.599671} (SVM-RFE) (angl. Recursive
- Feature Elimination by SVM)
+ \item \textit{Fisher} įvertis (angl. \textit{Fisher ratio})\cite{Pavlidis:2001:GFC:369133.369228};
+ \item \textit{Relief} metodas\cite{DBLP:journals/ml/Robnik-SikonjaK03};
+ \item Asimetrinis priklausomybės koeficientas\cite{Shannon:2001:MTC:584091.584093} (angl. \textit{Asymmetric Dependency Coefficient, ADC});
+ \item Absoliučių svorių SVM\cite{vapnik2000nature} (AW-SVM) (angl. \textit{Absolute Weight SVM})
+ \item Rekursyvus dimensijų eliminavimas pagal SVM\cite{Guyon:2002:GSC:599613.599671} (SVM-RFE) (angl. \textit{Recursive Feature Elimination by SVM})
 \end{enumerate}
 
-\subsubsection{Fisher'io įvertis}
+\subsection{\textit{Fisher} įvertis}
 
-Fisher'io įvertis vertina individualias dimensijas pagal jų klasių atskiriamąją 
-galią. Dimensijos įvertis yra sudarytas iš tarpklasinio skirtumo santykio su 
-vidiniu klasės pasiskirstymu:
+\textit{Fisher} įvertis vertina individualias dimensijas pagal dimensijos klasių atskiriamąją galią. Dimensijos įvertis yra sudarytas iš tarpklasinio skirtumo santykio su vidiniu klasės pasiskirstymu:
 \begin{equation}
  FR(j) = \frac{(\mu_{j1} - \mu_{j2})^2}{\sigma_{j1}^2 + \sigma_{j2}^2},
 \end{equation}
-kur, $j$ - yra dimensijos indeksas, $\mu_{jc}$ - dimensijos $j$ reikšmių vidurkis
-klasėje $c$, $\sigma_{jc}^2$ - dimensijos $j$ reikšmių standartinis nuokrypis
-klasėje $c$, kur $c={1,2}$. Kuo didesnis yra Fisher'io įvertis, tuo geriau ta
-dimensija atskiria klases.
+kur, 
+$j$ - yra dimensijos indeksas, 
+$\mu_{jc}$ - dimensijos $j$ reikšmių vidurkis klasėje $c$, 
+$\sigma_{jc}^2$ - dimensijos $j$ reikšmių standartinis nuokrypis klasėje $c$, kur $c={1,2}$. Kuo didesnis yra \textit{Fisher} įvertis, tuo geriau ta dimensija atskiria klases.
 
-\subsubsection{Atpalaidavimo metodas}
+\subsection{\textit{Relief} metodas}
 
-Atpalaidavimo metodas iteratyviai skaičiuoja dimensijų ,,susietumą``. Pradžioje
+\textit{Relief} metodas iteratyviai skaičiuoja dimensijų ,,susietumą``. Pradžioje
 ,,susietumas`` visoms dimensijoms yra lygus nuliui. Kiekvienoje
-iteracijoje atsitiktinai\footnote{Pastebėtina, kad metodas 
-turi atsitiktinį elementą, todėl klasifikavimo ir  dimensijų atrinkimo stabilumo
-rezultatai dažniausiai šiek tiek varijuoja nekeičiant konfigūracijos.} 
-pasirenkamas objektas iš duomenų bazės, surandami
+iteracijoje atsitiktinai\footnote{Pastebėtina, kad dėl atsitiktinumo faktoriaus klasifikavimo ir  dimensijų atrinkimo stabilumo
+rezultatai varijuoja.} pasirenkamas objektas iš mėginių aibės, surandami
 artimiausi kaimynai iš tos pačios ir kitos klasės, ir atnaujinamos visų 
 dimensijų ,,susietumo`` reikšmės. Dimensijos įvertis yra vidurkis visų objektų
-atstumų iki artimiausių kaimynų iš tos pačios ir kitos kasės:
+atstumų iki artimiausių kaimynų iš tos pačios ir kitos klasės:
 \begin{equation}
  W(j)=W(j) - \frac{diff(j, x, x_H)}{n} + \frac{diff(i, x, x_M)}{n},
 \end{equation}
-kur $W(j)$ - $j$-osios dimensijos ,,susietumo`` įvertis, $n$ - objektų aibės 
-dydis,$x$ - atsitiktinai pasirinktas objektas, $x_H$ - artimiausias
-kaimynas iš tos pačios klasės (angl. nearest-Hit), $x_M$ - artimiausias kaimynas
-iš kitos klasės, $diff(j, x, x')$ - $j$-osios dimensijos reikšmių skirtumas
-tarp laisvai pasirinkto objekto $x$ ir atitinkamo kaimyno, kur skirtumą į
-intervalą $[0, 1]$ normalizuojanti funkcija yra:
+kur 
+$W(j)$ - $j$-osios dimensijos ,,susietumo`` įvertis, 
+$n$ - mėginių aibės dydis, 
+$x$ - atsitiktinai pasirinktas mėginys, 
+$x_H$ - artimiausias $x$ kaimynas iš tos pačios klasės (angl. \textit{nearest-Hit}), 
+$x_M$ - artimiausias $x$ kaimynas iš kitos klasės(angl. \textit{nearest-Miss}),
+$diff(j, x, x')$ - $j$-osios dimensijos reikšmių skirtumas tarp laisvai pasirinkto objekto $x$ ir atitinkamo kaimyno, kur skirtumą į intervalą $[0, 1]$ normalizuojanti funkcija yra:
 \begin{equation}
- diff(j, x, x')=\frac{|x_j- x_j'|}{x_{j max} - x_{i min}},
+ diff(j, x, x')=\frac{|x_j- x_j'|}{x_{j_{max}} - x_{i_{min}}},
 \end{equation}
-kur $x_{j max}$ ir $x_{j min}$ yra maximali ir minimali $j$-osios dimensijos
-reikšmės. ,,Susietumo`` reikšmių atnaujinimas yra vykdomas $n$ kartų ir kuo
-didesnė galutinė reikšmė, tuo svarbesnė dimensija. Pastebėtina, kad šis algoritmas
-veikia tik su dviejomis klasėmis, nors yra ir išplėtimų.
+kur $x_{j_{max}}$ ir $x_{j_{min}}$ yra maximali ir minimali $j$-osios dimensijos reikšmės. ,,Susietumo`` reikšmių atnaujinimas yra vykdomas $n$ kartų ir kuo didesnė galutinė reikšmė, tuo svarbesnė dimensija. Pastebėtina, kad aprašyta algoritma versija yra skirta dirbti su dviejų klasių atveju, tačiau yra ir multiklasinis algoritmo variantas.
 
-\subsubsection{Asimetrinis priklausomybės koeficientas}
+\subsection{Asimetrinis priklausomybės koeficientas}
 
-Asimetrinis priklausomybės koeficientas yra dimensijų reitingavimo motodas,
-kuris matuoja klasės $Y$ etiketės (angl. label) tikimybinę priklausomybę $j$-ąjai
-dimensijąi, naudodamas informacijos prieaugį (angl. information gain):
+Asimetrinis priklausomybės koeficientas (ADC) yra dimensijų reitingavimo motodas, kuris matuoja klasės $Y$ etiketės (angl. \textit{label}) tikimybinę priklausomybę $j$-ąjai dimensijai, naudodamas informacijos prieaugį \cite{kent1983information} (angl. information gain):
 \begin{equation}
  ADC(Y, j) = \frac{MI(Y, X_j)}{H(Y)},
 \end{equation}
-kur $H(Y)$ - klasės $Y$ entropija, o $MI(Y, X_j)$ - yra bendrumo informacija
-(angl. mutual information) tarp klasės etiketės $Y$ ir $j$-osios dimensijos
+kur $H(Y)$ - klasės $Y$ entropija \cite{Shannon:2001:MTC:584091.584093}, o $MI(Y, X_j)$ - yra bendrumo informacija \cite{Shannon:2001:MTC:584091.584093} (angl. mutual information) tarp klasės etiketės $Y$ ir $j$-osios dimensijos
 \begin{equation}
  H(Y)=-\sum_y{p(Y=y)log{p(Y=y)}}, 
 \end{equation}
@@ -111,17 +72,11 @@ kur $H(Y)$ - klasės $Y$ entropija, o $MI(Y, X_j)$ - yra bendrumo informacija
 \begin{equation}
  H(Y, X_j) = -\sum_{y,x_j}{p(y, x_j)log{p(y, x_j)}},
 \end{equation}
+Kuo didesni ADC įverčiai, tuo dimensija yra svarbesnė, nes turi daugiau informacijos apie mėginių klases.
 
-Kuo didesni ADC įverčiai, tuo dimensija yra svarbesnė, nes turi daugiau
-informacijos apie duomenų klases.
+\subsection{Absoliučių svorių SVM}
 
-\subsubsection{Absoliučių svorių SVM}
-
-Atraminių vektorių metodas (SVM) yra vienas populiariausių klasifikavimo algortimų,
-nes jis gerai susidoroja su daugiamačiais duomenimis. Yra keletas bazinių 
-SVM variantų, bet šiame darbe naudosime tiesinį SVM, nes jis demonstruoja
-gerus rezultatus dirbant su genų ekspresijos duomenimis. Tiesinis SVM yra
-hiperplokštuma apibrėžta kaip:
+Atraminių vektorių metodas (SVM) yra vienas populiariausių klasifikavimo algortimų, nes jis gerai susidoroja su daugiamačiais duomenimis \cite{guyon2002gene}. Yra keletas bazinių SVM variantų \cite{vapnik2000nature}, bet šiame darbe naudosime tiesinį SVM, nes jis demonstruoja gerus rezultatus analizuojant genų ekspresijos duomenimis. Tiesinis SVM yra hiperplokštuma apibrėžta kaip:
 \begin{equation}
  \sum_{j=1}^{p}{w_jx_j + b_0 = 0},
 \end{equation}
@@ -130,14 +85,13 @@ dimensijos kintamasis, $b_0$ - konstanta. Dimensijos absoliutus\footnote{Svorį
 reikia imti absoliutaus dydžio, nes neigiamas svoris implikuoja priklausomybę 
 vienai klasei, o teigiamas kitai klasei.} svoris $w_j$ gali būti panaudotas
 dimensijų reitingavimui. Pastebėtina, kad svorių nustatymas yra atliekamas tik 
-vieną kartą\footnote{SVM-RFE - metodas svorius nustato daug kartų.}.
+vieną kartą\footnote{SVM-RFE dimensijų atrinkimo metodas svorius nustato daug kartų.}.
 
-\subsubsection{Rekursyvus dimensijų eliminavimas pagal SVM}
+\subsection{Rekursyvus dimensijų eliminavimas pagal SVM}
 
-Rekursyvus dimensijų eliminavimas pagal SVM yra vienas populiariausių dimensijų
-atrinkimo algoritmų. Todėl, jis yra naudojamas, kaip atskaitos taškas (angl. threshold)
-vertinant
-kitus dimensijų atrankos metodus. Iš esmės šis metodas yra daugkartinis 
+Rekursyvus dimensijų eliminavimas pagal SVM \cite{guyon2002gene} yra vienas populiariausių dimensijų
+atrinkimo algoritmų. Todėl, jis yra naudojamas, kaip atskaitos taškas (angl. \textit{benchmark})
+vertinant kitus dimensijų atrankos metodus. Iš esmės šis metodas yra daugkartinis 
 absoliučių svorių SVM metodo taikymas nuolat išmetinėjant dimensijas su 
 mažiausiais svoriais. Rekursyvus dimensijų eliminavimas mums padeda surasti 
 tinkamą dimensijų poaibį, kas nevisada pavyksta su dimensijų reitingavimo 
@@ -146,56 +100,45 @@ metodais. Bendroji rekursyvaus dimensijų eliminavimo procedūra:
 \caption{Rekursyvus dimensijų eliminavimas}
 \label{RFE}
  \begin{enumerate}
- \item Turime pilną dimensijų rinkinį $F_0$, nustatome $i=0$.
- \item Įvertiname kiekvienos dimensijos kokybę dimensijų aibėje $F_i$.
- \item Išmetame mažiausiai svarbią dimensiją iš $F_I$ tam, kad gautume
- dimensijų rinkinį $F_{i+1}$.
+ \item Turime pilną dimensijų rinkinį $F_0$, nustatome $i=0$;
+ \item Įvertiname kiekvienos dimensijos kokybę dimensijų aibėje $F_i$;
+ \item Išmetame mažiausiai kokybišką dimensiją iš $F_I$ tam, kad gautume
+ dimensijų rinkinį $F_{i+1}$;
  \item Nustatome $i=i+1$ ir grįžtame į antrąjį žingsnį kol nėra patenkinta 
  algoritmo pabaigos sąlyga.
 \end{enumerate}
 \end{algorithm}
-Jei trečiajame algoritmo žingsnyje yra pašalinama tik viena dimensija, tai gauname dar
-ir dimensijų reitingavimą, o jei pašalinamos kelios dimensijos ar jų dalis
-(pvz. 50\%) tai reitingavimo negauname. Pastebėtina, kad rekursyvus dimensijų
-eliminavimas gali labai padidinti algoritmo sudėtingumą skaičiavimo resursų
-atžvilgiu. Algoritmo pabaigos sąlyga gali būti koks nors konkretus dimensijų
-skaičius arba tiesiog dimensijų aibę mažinti tol, kol dimensijų visai nebeliks.
+Jei trečiajame algoritmo žingsnyje iš dimensijų aibės yra pašalinama tik viena dimensija, tai gauname dimensijų reitingavimą, o jei pašalinamas fiksuotas skaičius ar dalis (pvz. 50\%) dimensijų, tai dimensijų reitingavimo negauname. Pastebėtina, kad rekursyvus dimensijų eliminavimas labai padidina algoritmo sudėtingumą. Algoritmo pabaigos sąlyga gali būti koks nors konkretus dimensijų skaičius arba tiesiog dimensijų aibę mažinti tol, kol dimensijų visai nebeliks.
 
-\subsection{Multikriterinis dimensijų atrinkimas}
+\section{STABILIŲ DIMENSIJŲ ATRINKIMO METODAI}
+\label{stabiliu_dimensiju_atrinkimo_metodai}
 
-Multikriterinio dimensijų atrinkimo metodų esmė yra panaudoti
-kelis dimensijų atrinkimo metodus suliejant jų
-rezultatus į vieną bendrą rezultatą. Kodėl naudinga sulieti keletą dimensijų
-atrinkimo metodų rezultatų? Sulieti keletą dimensijų atrinkimo metodų rezultatų
-naudinga, nes
-pavieniai dimensijų atrinkimo metodai be to, kad turi savitų privalumų, visada
-turi ir savo silnybių, pavyzdžiui, jautrumas išimtims (angl. outliers), negali
-rasti dimensijų tarpusavio priklausomybių, etc. Yra skiriamos trys priežastys,
-kodėl keletas kombinuotų silpnų ir nestabilių dimensijų atrinkimo metodų
-gali duoti geresnius rezultatus\cite{dietterich2000ensemble}:
+Naudodami dimensijų atrinkimo metodus, biomedicininius duomenis tiriantys mokslininkai susiduria su atrinktųjų dimensijų aibės stabilumo problema - atrenkant dimensijas pagal kitą mėginių poaibį, gaunamas kitas dimensijų poaibis. Dimensijų atrinkimo nestabilumas yra sąlygotas šių veiksnių:
 \begin{enumerate}
- \item Keletas skirtingų, bet vienodai optimalių hipotezių gali būti teisingos,
- ir kriterijų kombinavimas sumažiną tikimybę, kad bus pasirinkta neteisinga 
- hipotezė;
- \item Atskiri kriterijai gali dirbti skirtinguose lokaliuose optimumuose, tuo
- tarpu kombinavimas gali geriau reprezentuoti tikrąją duomenų funkciją;
- \item Tikroji duomenų funkcija negali būti reprezentuojama jokia hipoteze
- paskiro algoritmo hipotezių erdvėje ir agreguojant pavienių metodų rezultatus
- galima praplėsti hipotezių erdvę.
+ \item Duomenys yra triukšmingi ir kai kurios dimensijos gali būti palaikytos informatyviomis grynai dėl atsitiktinių priežasčių;
+ \item Daugiamačiuose duomenyse tikėtina, kad dalis dimensijų koreliuoja, todėl, kuri iš koreliuojančių dimensijų bus pasirinkta, priklauso nuo to, kuriuos mėginius pasirinksime klasifikatoriaus apmokymui;
+ \item Kiekvienas dimensijų atrinkimo algoritmas daro skirtingas prielaidas apie tai, kurios dimensijos yra informatyvios.
 \end{enumerate}
-Suliejant keletą skirtingų metodų
-suliejamos gerosios pavienių dimensijų atrinkimo metodų savybės, taip
-kompensuojant algoritmų silpnybes.
+Galime teigti, kad skirtingi metodai tiems patiems duomenims gali atrinkti skirtingas dimensijas. Taip pat, suskaidžius turimus duomenis į atskiras persidengiančias aibes ir atrinkus tą patį kiekį dimensijų tuo pačiu metodu, gaunamos skirtingos dimensijų aibės. Be to, kuo triukšmingesni duomenys, kuo mažiau turima mėginių ir kuo daugiau yra dimensijų, tuo ryškesnė yra ši problema \cite{loscalzo2009consensus}. 
 
-Galima pavienių dimensijų atrankos rezultatus sulieti pagal šias suliejimo
-strategijas:
+Vienas iš būdų didinti dimensijų atrinkimo stabilumą yra naudoti multikriterinius dimensijų atrinkimo metodus. Jų esmė yra panaudoti kelis dimensijų atrinkimo metodus suliejant jų rezultatus į vieną bendrą rezultatą. Yra skiriamos trys priežastys, kodėl keletas agreguotų silpnų ir nestabilių dimensijų atrinkimo metodų gali duoti stabilesnius dimensijų atrinkimo rezultatus \cite{dietterich2000ensemble}:
 \begin{enumerate}
-  \item Svoriais grįstas multikriterinis suliejimas;
-  \item Reitingais (angl. rank) grįstas multikriterinis suliejimas;
-  \item Svoriais ir reitingais grįstas multikriterinis suliejimas.
+ \item Keletas skirtingų, bet vienodai optimalių hipotezių gali būti teisingos, ir kriterijų agregavimas sumažiną tikimybę, kad bus pasirinkta neteisinga  hipotezė;
+ \item Atskiri dimensijų metodai gali dirbti skirtinguose lokaliuose optimumuose, tuo tarpu agregavimas gali geriau reprezentuoti tikrąją  duomenis generuojančią funkciją;
+ \item Tikroji duomenų funkcija negali būti reprezentuojama jokia hipoteze paskiro algoritmo hipotezių erdvėje ir agreguojant pavienių metodų rezultatus galima praplėsti hipotezių erdvę.
+\end{enumerate}
+Apibendrinant galima sakyti, kad suliejant keletą skirtingų dimensijų atrinkimo metodų rezultatų suliejamos gerosios pavienių dimensijų atrinkimo metodų savybės, taip bandant kompensuoti tų algoritmų silpnybes.
+
+Šiame skyriuje aptarsiu dimensijų atrinkimo stabilumą didinančius metodus:
+\begin{enumerate}
+ \item Svoriais grįstas multikriterinis suliejimas;
+ \item Reitingais grįstas multikriterinis suliejimas;
+ \item Svoriais ir reitingais grįstas multikriterinis suliejimas;
+ \item Multikriterinis rekursyvus dimensijų eliminavimas;
+ \item Konsensuso grupėmis grįstas stabilių dimensijų atrinkimo metodas.
 \end{enumerate}
 
-\subsubsection{Svoriais grįstas multikriterinis suliejimas}
+\subsection{Svoriais grįstas multikriterinis suliejimas}
 
 Svoriais grįsto multikriterinio dimensijų atrinkimo suliejimo pagal svorius algoritmo
 pirmajame žingsnyje kiekvienas bazinis metodas priskiria duomenų rinkinio
@@ -237,11 +180,11 @@ tai reikia atkreipti dėmesį interpretuojant galutinius dimensijų vertinimo
 rezultatus. Šiame darbe svoriai yra 
 normalizuoti intervale $[0, 1]$ pagal formulę:
 \begin{equation}
- u_i'=\frac{u_i - u_{i min}}{u_{i max} - u_{i min}}, 
+ u_i'=\frac{u_i - u_{i_{min}}}{u_{i_{max}} - u_{i_{min}}}, 
 \end{equation}
 kur $u_i$ - dimensijų svorių vektorius pagal $i$ kriterijų, 
-$u_{i min}$ - minimali $u_i$ svorių vektoriaus reikšmė,
-$u_{i max}$ - maksimali $u_i$ svorių vektoriaus reikšmė,
+$u_{i_{min}}$ - minimali $u_i$ svorių vektoriaus reikšmė,
+$u_{i_{max}}$ - maksimali $u_i$ svorių vektoriaus reikšmė,
 $u_i'$ - normalizuotų svorių vektorius.
 
 Sutarties svorių vektorius $u$ yra vidurkis normalizuotų svorių vektorių:
@@ -251,7 +194,7 @@ Sutarties svorių vektorius $u$ yra vidurkis normalizuotų svorių vektorių:
 kur $m$ yra bazinių kriterijų skaičius. Reikia paminėti, kad didesnė svorio
 reikšmė reiškia, kad dimensija yra geresnė.
 
-\subsubsection{Reitingais grįstas multikriterinis suliejimas}
+\subsection{Reitingais grįstas multikriterinis suliejimas}
 
 Reitingais grįsto multikriterinio suliejimo pagal reitingus metodas gauna
 duomenų rinkinio dimensijų reitingą,
@@ -284,7 +227,7 @@ Galutiniai taškai yra gaunami sudedant visų balsuotojų taškus
 \end{equation}
 kur $v$ yra suminių taškų vektorius, o iš jo galime gauti ir dimensijų reitingus.
 
-\subsubsection{Svoriais ir reitingais grįstas multikriterinis suliejimas}
+\subsection{Svoriais ir reitingais grįstas multikriterinis suliejimas}
 
 Svoriais ir reitingais grįsto multikriterinio suliejimo metodas
 nuo reitingais grįsto multikriterinio suliejimo metodo skiriasi tuo, kad kaip dar vienas 
@@ -310,7 +253,7 @@ Kadangi yra suliejami keli mažai koreliuojantys dimensijų reitingavimo metodai
 yra pasiekiamas didesnis dimensijų atrinkimo stabilumas, kai varijuoja 
 treniravimosi duomenų poaibis (angl. subsampling).
 
-\subsubsection{Multikriterinis rekursyvus dimensijų eliminavimas}
+\subsection{Multikriterinis rekursyvus dimensijų eliminavimas}
 
 Jei dimensijų atrinkimo tikslas yra pagerinti klasifikavimo rezultatus, tai taikymas
 multikriterinio dimensijų atrinkimo metodų nebūtinai duos pageidaujamą rezultatą,
@@ -342,3 +285,63 @@ Nors SVM-RFE dimensijų atrinkimo algoritmas ir yra labai populiarus, tačiau yr
 multikriterinį dimensijų atrinkimą su rekursyvaus dimensijų eliminavimo paieškos
 strategija, turėtume gauti stabilesnį dimensijų atrinkimo algoritmą.
 
+\subsection{Konsensuso grupėmis grįstas stabilių dimensijų atrinkimo metodas}
+
+Konsensuso grupėmis grįstas stabilių dimensijų atrinkimo metodas\cite{loscalzo2009consensus}, pirma, identifikuoja panašių dimensijų grupes, antra, pagal surastas grupes transformuoja dimensijų erdvę, trečia, transformuotoje dimensijų erdvėje atlieka dimensijų atrinkimą. Schematiškai šis algoritmas pavaizduotas  ~\ref{fig:figure7} pav.
+
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{images/consensus_group_based_feature_selection_framework.pdf}
+ \caption{Konsensuso grupėmis grįstas stabilių dimensijų atrinkimas.}
+ \label{fig:figure7}
+\end{figure}
+Loscalzo pasiūlyto metodo pagrindinė dalis yra panašių dimensijų identifikavimas. Šio uždavinio sprendimui Loscalzo naudojo \textit{Dense Group Finder} (DGF) algoritmą. DGF aprašytas algoritme nr. \ref{DGF}.
+\begin{algorithm}
+\caption{DGF - \textit{Dense Group Finder}}
+\label{DGF}
+ \begin{algorithmic}
+ \item \textbf{Įeitis:} duomenys $D=\{x_i\}_{i=1}^n$, branduolio plotis $h$
+ \item \textbf{Išeitis:} tankios dimensijų grupės $G_1, G_1,..., G_L$
+ \For{$i = 1$ \textbf{to} $n$ \do} 
+  \State Inicializuojame $j=1, y_{i,j}=x_i$
+  \Repeat
+    \State Suskaičiuoti $y_{i, j+1}$ pagal (\ref{for_dgf})
+  \Until{konverguoja}
+  \State Nustatyti atskaitos tašką $y_{i,c} = y_{i,j+1}$ (Nustatyti piką $p_i$ kaip $y_{i,c}$)
+  \State Sulieti piką $p_i$ su artimiausiais pikais jei atstumai tarp jų $ < h$
+ \EndFor
+ \item Iš kiekvieno unikalaus piko $p_r$, pridėkime $x_i$ į $G_r$ jei $||p_r - x_i|| < h$
+ \end{algorithmic}
+\end{algorithm}
+
+
+\begin{equation}
+\label{for_dgf}
+  y_{i, j+1}=\frac{\sum_{i=1}^{n} x_i K(\frac{y_j - x_i}{h})}{\sum_{i=1}^{n} K(\frac{y_j - x_i}{h})} j=1,2,...
+\end{equation}
+kur
+
+\begin{algorithm}
+ \caption{Konsensuso grupėmis grįstas stabilių dimensijų atrinkimas}
+ \label{CGS}
+ \begin{algorithmic}
+   \item \textbf{Įeitis:} mėginių aibė $D$, iteracijų skaičius $t$, dimensijų atrinkimo metodas $\Phi$\
+   \item \textbf{Išeitis:} atrinktos konsensuso dimensijų grupės $CG_1, CG_1,..., CG_k$
+   \item // Konsensuso grupių identifikavimas
+   \For{$i = 1$ \textbf{to} $n$ \do}
+    \State Parinkti mėginių  poaibį $D_i$ iš $D$
+    \State Gauti tankių dimensijų grupes pagal $DGF(D_i, h)$
+   \EndFor
+   \For{kiekvienai dimensijų porai $X_i$ ir $X_j \in D$}
+    \State Nustatyti $W_{i,j}=$ dažnis kai $X_i$ ir $X_j$ yra toje pačioje grupėje $/t$
+   \EndFor
+   \item Sudaryti konsensuso grupes $CG_1, CG_1,..., CG_L$ atliekant hierarchinį klasterizavimą visoms dimensijoms pagal $W_{i, j}$
+   \item //Dimensijų atrinkimas grįstas konsensuso grupėmis
+   \For{$i = 1$ \textbf{to} $l$ \do}
+    \State Parinkti reprezentatyvią dimensiją $X_i$ iš $CG_i$
+    \State Įvertinti dimensijos informatyvumą $\Phi(X_i)$
+   \EndFor
+   \item Reitinguoti konsensuso grupes $CG_1, CG_1,..., CG_L$ pagal $\Phi(X_i)$
+   \item Pasirinkti $k$ dimensijų turinčių geriausią reitingą  
+ \end{algorithmic}
+\end{algorithm}

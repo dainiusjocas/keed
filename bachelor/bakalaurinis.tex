@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[12pt, a4paper]{article}
 
 \usepackage[utf8x]{inputenc}
 \usepackage[lithuanian]{babel}
@@ -22,32 +22,50 @@
 \usepackage{indentfirst} % atitraukta pirmoji eilute
 \usepackage{longtable} % darysim didelias lenteles
 \usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[top=2cm, bottom=2cm, left=3cm, right=1.5cm]{geometry}
+\usepackage{changepage}
+\usepackage{pdfpages} % su šitua paketu galima įkelti pdf kaip puslapius
+\linespread{1.5}
+
 \begin{document}
+
 %\input{titulinis_puslapis} % kol kas neaktualu
 
+%\input{santrauka_lietuviu_kalba}
+%\newpage
+
+%\input{santrauka_anglu_kalba}
+%\newpage
 
 \let \savenumberline \numberline
 \def \numberline#1{\savenumberline{#1.}}
 \tableofcontents 
-%\newpage
+\newpage
 
 \addcontentsline{toc}{section}{{\c I}VADAS}
 \input{ivadas}
+\newpage
 
-\section{DIMENSIJŲ ATRINKIMAS}
+\input{darbu_apzvalga}
+\newpage
+
 \input{dimensiju_atrinkimas}
+\newpage
 
-%\section{DIMENSIJŲ ATRINKIMO METODŲ SPARTA}
+\input{pasiulytas_sprendimas}
+\newpage
 
-\section{DIMENSIJŲ ATRINKIMO STABILUMAS}
-\input{stabilumas}
-
-\section{Eksperimantai}
 \input{eksperimentai}
+\newpage
+
+\addcontentsline{toc}{section}{REZULTATAI IR I{\v S}VADOS}
+\input{rezultatai_ir_isvados}
 
 
 \addcontentsline{toc}{section}{LITERATŪRA} 
 \bibliographystyle{alpha}
 \bibliography{literatura.bib}
+\newpage
 
 \end{document}
