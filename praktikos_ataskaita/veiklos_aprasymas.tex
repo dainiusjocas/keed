@@ -103,11 +103,7 @@ matų reitingavimui. Svorį reikia imti absoliutaus dydžio, nes neigiamas svori
 
 \subsubsection{Svoriais grįstas multikriterinis suliejimas}
 
-Svoriais grįsto multikriterinio matų atrinkimo suliejimo pagal svorius algoritmo
-pirmajame žingsnyje kiekvienas bazinis metodas priskiria duomenų rinkinio
-matams svorius, tada tie svoriai yra kombinuojami į vieną sutarties
-(angl. \textit{consensus}) svorių vektorių, kurio pagrindu yra gaunami matų 
-reitingai. Algoritmas yra pavaizduotas ~\ref{fig:figure4} pav.
+Svoriais grįsto multikriterinio matų atrinkimo suliejimo pagal svorius algoritmo pirmajame žingsnyje kiekvienas bazinis metodas priskiria duomenų rinkinio matams svorius, tada tie svoriai yra kombinuojami į vieną sutarties (angl. \textit{consensus}) svorių vektorių, kurio pagrindu yra gaunami matų reitingai. Algoritmas yra pavaizduotas ~\ref{fig:figure4} pav.
 \begin{figure}
  \centering
  \includegraphics[width=1\textwidth]{../bachelor/images/score_based_fusion.pdf}
@@ -136,7 +132,7 @@ turi būti atliekamas prieš svorių kombinavimą. Kitu
 atveju matų įvertinimai bus nepalyginami. Paveikslėlyje ~\ref{fig:figure1} pav.
 nenormalizuotų pavienių matų vertinimo metodų skiriasi netgi suteiktų
 svorių intervalai. Paveikslėlyje ~\ref{fig:figure2} pav. matome,
-kad net ir normalizavus svorius gana stipriai skiriasi svorių kvartiliai -- 
+kad net ir normalizavus svorius gana stipriai skiriasi svorių kvartiliai -- į
 tai reikia atkreipti dėmesį interpretuojant galutinius matų vertinimo 
 rezultatus. Šiame darbe svoriai yra normalizuoti intervale $[0, 1]$ pagal formulę:
 \begin{equation}
@@ -151,7 +147,7 @@ Sutarties svorių vektorius $u$ yra vidurkis normalizuotų svorių vektorių:
 \begin{equation}
  u = \frac{1}{m}\sum_{i=1}^m u_i',
 \end{equation}
-kur $m$ yra bazinių kriterijų skaičius. Reikia paminėti, kad didesnė svorio reikšmė reiškia, kad dimensija yra reikšmingesnė klasifikavimui.
+kur $m$ yra bazinių kriterijų skaičius. Reikia paminėti, kad didesnė svorio reikšmė reiškia, kad matas yra reikšmingesnis klasifikavimui.
 
 \subsubsection{Reitingais grįstas multikriterinis suliejimas}
 
@@ -165,9 +161,7 @@ pavaizduotas ~\ref{fig:figure5} pav.
  \caption{Reitingais grįstas multikriterinis suliejimas.}
  \label{fig:figure5}
 \end{figure}
-Suliejimo pagal reitingus metodas nereikalauja matų atrinkimo metodų 
-rezultatų normalizavimo, nes galima dimensijoms priskirtus reitingus iškart kombinuoti. Skirtingai nei suliejimo pagal svorius algoritme, baziniai 
-matų atrinkimo kriterijai turi gražinti matų reitingus, o ne svorius.
+Suliejimo pagal reitingus metodas nereikalauja matų atrinkimo metodų rezultatų normalizavimo, nes galima matams priskirtus reitingus iškart kombinuoti. Skirtingai nei suliejimo pagal svorius algoritme, baziniai matų atrinkimo kriterijai turi gražinti matų reitingus, o ne svorius.
 
 Matų reitingų kombinavimui yra keletas metodų\cite{dwork2001rank}, tačiau paprastumo dėlei šiame darbe naudosiu Borda balsavimą\footnote{Dar žinomas kaip ,,Pažymių metodas``. Jis buvo pasiūlytas prancūzų matematiko ir fiziko Jean-Charles de Borda 1770 metais.} (angl. \textit{Borda count}). Tarkime, kad turime $m$ basuotojų ir $p$ kandidatų aibę. Tada Borda balsavimo metodas kiekvienam $i$-ajam balsuotojui sukuria balsų vektorių $v_i$ tokiu būdu: geriausiai įvertintam kandidatui suteikiama $p$ taškų, antrajam kandidatui $p-1$, ir t.t. Galutiniai taškai yra gaunami sudedant visų balsuotojų taškus
 \begin{equation}
@@ -296,7 +290,7 @@ Matų atrinkimo metodų darbo laikas yra atvaizduotas dviem grafikais, nes atlie
 
 \subsubsection{Klasifikavimo pagal atrinktus matus tikslumas}
 
-Matų atrinkimo metodų įtaką klasifikavimo klasifikavimo tikslumui buvo matuojama naudojant tris biomedicininių duomenų rinkinius: Gaubtinės žarnos auglio (angl. Colon) \cite{alon1999broad}, Centrinės nervų sistemos (CNS) \cite{pomeroy2002prediction}, prostatos \cite{singh2002gene}. Klasifikavimui buvo naudojami tiesiniai atraminių vektorių klasifikatoriai (SVM) \cite{vapnik2000nature}, su parametru $C=0.01$, kurį nustačiau  empiriškai. Keičiant parametrus keičiasi ir klasifikavimo tikslumas. Klasifikatoriui apmokyti buvo naudojama 90\% atsitiktinai parinktų mėginių iš duomenų rinkinio. Likusiais 10\% mėginių buvo testuojamas klasifikatorius. Klasifikatorius buvo testuojamas po 300 kartų su įvairiu matų skaičiumi: nuo 10 iki 500. Klasifikavimo tikslumas pavaizduotas dviejų tipų grafikais: vidutinio klaidų procento priklausomybės nuo atrinktų dimensijų skaičiaus, bei ROC kreivėmis, kurios buvo gautos pagal duomenis gautus klasifikuojant su tiek atrinktų dimensijų su kiek klasifikavimo tikslumas buvo pats geriausias \cite{green1966signal}.
+Matų atrinkimo metodų įtaką klasifikavimo klasifikavimo tikslumui buvo matuojama naudojant tris biomedicininių duomenų rinkinius: Gaubtinės žarnos auglio (angl. Colon) \cite{alon1999broad}, Centrinės nervų sistemos (CNS) \cite{pomeroy2002prediction}, prostatos \cite{singh2002gene}. Klasifikavimui buvo naudojami tiesiniai atraminių vektorių klasifikatoriai (SVM) \cite{vapnik2000nature}, su parametru $C=0.01$, kurį nustačiau  empiriškai. Keičiant parametrus keičiasi ir klasifikavimo tikslumas. Klasifikatoriui apmokyti buvo naudojama 90\% atsitiktinai parinktų mėginių iš duomenų rinkinio. Likusiais 10\% mėginių buvo testuojamas klasifikatorius. Klasifikatorius buvo testuojamas po 300 kartų su įvairiu matų skaičiumi: nuo 10 iki 500. Klasifikavimo tikslumas pavaizduotas dviejų tipų grafikais: vidutinio klaidų procento priklausomybės nuo atrinktų matų skaičiaus, bei ROC kreivėmis, kurios buvo gautos pagal duomenis gautus klasifikuojant su tiek atrinktų matų su kiek klasifikavimo tikslumas buvo pats geriausias \cite{green1966signal}.
 \begin{figure}[H]
 \begin{minipage}[b]{0.5\linewidth}
 \centering
@@ -357,7 +351,7 @@ Matų atrinkimo metodų įtaką klasifikavimo klasifikavimo tikslumui buvo matuo
 % % \label{fig:roc_cns}
 % % \end{minipage}
 % % \end{figure}
-Centrinės nervų sistemos duomenų rinkinys yra sunkiai klasifikuojamas, nes vidutinis klaidų skaičius yra apie 35\%, kai, pvz. gautinės žarnos auglio duomenų rinkinio vidutinis klaidų skaičius yra tik 15\%. ~\ref{fig:class_cns} pav. matome, kad šiam duomenų rinkiniui vidutiniškai geriausiai matus atrenka ADC ir multikriterinio rekursyvaus dimensijų eliminavimo metodai. Prasčiausiai pasirodo \textit{Relief} metodas.
+Centrinės nervų sistemos duomenų rinkinys yra sunkiai klasifikuojamas, nes vidutinis klaidų skaičius yra apie 35\%, kai, pvz. gautinės žarnos auglio duomenų rinkinio vidutinis klaidų skaičius yra tik 15\%. ~\ref{fig:class_cns} pav. matome, kad šiam duomenų rinkiniui vidutiniškai geriausiai matus atrenka ADC ir multikriterinio rekursyvaus matų eliminavimo metodai. Prasčiausiai pasirodo \textit{Relief} metodas.
 
 % \begin{figure}[h]
 % \begin{minipage}[b]{0.5\linewidth}
