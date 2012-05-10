@@ -336,38 +336,7 @@ Matų atrinkimo metodų įtaką klasifikavimo klasifikavimo tikslumui buvo matuo
 \end{figure}
 ~\ref{fig:class_colon} pav. matome, kad gaubtinės žarnos auglio duomenų rinkinio matus geriausiai atrenka ADC metodas. Tik šiek tiek prasčiau pasirodo \textit{Fisher} įvertis. Blogiausiai su gaubtinės žarnos auglio mėginiais susidoroja absoliučių svorių SVM matų atrinkimo metodas.
 
-% % \begin{figure}[hw]
-% % \begin{minipage}[b]{0.5\linewidth}
-% % \centering
-% % \includegraphics[width=1\textwidth]{../bachelor/images/nncns_classification.pdf}
-% % \caption{Centrinės nervų sistemos meginių klasifikatorių tikslumas.}
-% % \label{fig:class_cns}
-% % \end{minipage}
-% % \hspace{0.5cm}
-% % \begin{minipage}[b]{0.5\linewidth}
-% % \centering
-% % \includegraphics[width=1\textwidth]{../bachelor/images/nncns_roc.pdf}
-% % \caption{Centrinės nervų sistemos mėginių klasifikatorių ROC kreivės.}
-% % \label{fig:roc_cns}
-% % \end{minipage}
-% % \end{figure}
 Centrinės nervų sistemos duomenų rinkinys yra sunkiai klasifikuojamas, nes vidutinis klaidų skaičius yra apie 35\%, kai, pvz. gautinės žarnos auglio duomenų rinkinio vidutinis klaidų skaičius yra tik 15\%. ~\ref{fig:class_cns} pav. matome, kad šiam duomenų rinkiniui vidutiniškai geriausiai matus atrenka ADC ir multikriterinio rekursyvaus matų eliminavimo metodai. Prasčiausiai pasirodo \textit{Relief} metodas.
-
-% \begin{figure}[h]
-% \begin{minipage}[b]{0.5\linewidth}
-% \centering
-% \includegraphics[width=1\textwidth]{../bachelor/images/prostate_classification.pdf}
-% \caption{Prostatos meginių klasifikatorių tikslumas.}
-% \label{fig:class_prostate}
-% \end{minipage}
-% \hspace{0.5cm}
-% \begin{minipage}[b]{0.5\linewidth}
-% \centering
-% \includegraphics[width=1\textwidth]{../bachelor/images/prostate_roc.pdf}
-% \caption{Prostatos mėginių klasifikatorių ROC kreivės.}
-% \label{fig:roc_prostate}
-% \end{minipage}
-% \end{figure}
 ~\ref{fig:class_prostate} pav. matome, kad prostatos duomenų rinkinio matus klasifikavimui geriausiai atrenka ADC absoliučių svorių SVM metodas. Prasčiausiai matus atrenka \textit{Relief}.
 
 Apibendrindamas gautus klasifikavimo tikslumo matavimo rezultatus, galiu teigti, kad nėra vieno absoliučiai geriausio matų atrinkimo metodo. Reikia eksperimentuoti, kad būtų rastas konkrečiai problemai geriausiai tinkantis matų atrinkimo metodas. Tačiau rezultatai parodė, kad matų atrinkimas svariai prisideda prie geresnio klasifikatoriaus sukūrimo.
@@ -421,38 +390,6 @@ Matų atrinkimo stabilumas buvo tiriamas naudojant tuos pačius biomedicininių 
 \end{figure}
 Pagal ~\ref{fig:robk_colon} pav. ir ~\ref{fig:robj_colon} pav. matome, kad gaubtinės žarnos auglio duomenų rinkinio matus stabiliausiai atrenka \textit{Fisher} įvertis. Mažiausiai stabiliai matus atrenka \textit{Relief} metodas.
 
-% \begin{figure}
-% \begin{minipage}[b]{0.5\linewidth}
-% \centering
-% \includegraphics[width=1\textwidth]{../bachelor/images/nncns_robustness_kuncheva.pdf}
-% \caption{Matų atrinkimo CNS mėginiams stabilumo grafikas pagal Kuncheva indeksą.}
-% \label{fig:robk_cns}
-% \end{minipage}
-% \hspace{0.5cm}
-% \begin{minipage}[b]{0.5\linewidth}
-% \centering
-% \includegraphics[width=1\textwidth]{../bachelor/images/nncns_robustness_jaccard.pdf}
-% \caption{Matų atrinkimo CNS mėginiams stabilumo grafikas pagal Jaccard indeksą.}
-% \label{fig:robj_cns}
-% \end{minipage}
-% \end{figure}
-Pagal ~\ref{fig:robk_cns} pav. ir ~\ref{fig:robj_cns} pav. matome, kad centrinės nervų sistemos duomenų rinkinio matus stabiliausiai atrenka absoliučių svorių SVM matų atrinkimo metodas. Mažiausiai stabiliai matus atrenka \textit{Relief} metodas.
-
-% \begin{figure}
-% \begin{minipage}[b]{0.5\linewidth}
-% \centering
-% \includegraphics[width=1\textwidth]{../bachelor/images/prostate_robustness_kuncheva.pdf}
-% \caption{Matų atrinkimo prostatos mėginiams stabilumo grafikas pagal Kuncheva indeksą.}
-% \label{fig:robk_prostate}
-% \end{minipage}
-% \hspace{0.5cm}
-% \begin{minipage}[b]{0.5\linewidth}
-% \centering
-% \includegraphics[width=1\textwidth]{../bachelor/images/prostate_robustness_jaccard.pdf}
-% \caption{Matų atrinkimo prostatos mėginiams stabilumo grafikas pagal Jaccard indeksą.}
-% \label{fig:robj_prostate}
-% \end{minipage}
-% \end{figure}
 Pagal ~\ref{fig:robk_prostate} pav. ir ~\ref{fig:robj_prostate} pav. matome, kad prostatos duomenų rinkinio matus stabiliausiai atrenka \textit{Fisher} įvertis. Mažiausiai stabiliai matus atrenka \textit{Relief} metodas.
 
 Apibendrindamas matų atrinkimo stabilumo matavimus galiu sakyti, kad matų atrinkimo stabilumas priklauso ne tik nuo matų atrinkimo metodo, bet ir nuo duomenų rinkinio, kurio matai yra atrinkinėjami. Lengvai klasifikuojamo prostatos duomenų rinkinio matų atrinkimo stabilumas vidutiniškai yra didesnis nei sunkiai klasifikuojamo CNS duomenų rinkinio. Eksperimentų rezultatai rodo, kad \textit{Relief} matų atrinkimo metodas yra nestabiliaus iš tirtųjų. Gana geru stabilumu pasižymi ADC metodas bei \textit{Fisher} įvertis.
