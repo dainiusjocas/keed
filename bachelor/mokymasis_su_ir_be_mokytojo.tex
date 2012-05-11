@@ -21,7 +21,7 @@ Mašininis mokymasis yra dirbtinio intelekto šaka, kuri siekia įgalinti kompiu
 
 \paragraph{Klasifikavimas}
 
-Mašininiame mokymesi klasifikavimu yra vadinama problema, kai pagal mokymosi duomenis reikia nustatyti, kuriai klasei (grupei) priklauso objektas. Klasifikavimo procesas grafiškai pavaizduotas ~\ref{fig:classification_process} pav. Dirbant su biomedicininiais duomenimis tipinė užduotis yra pagal mėginį (pacientą) apibūdinančius matus (patirtį) sukonstruoti klasifikatorių (funkciją), kuris bandys nuspėti, kuriai pacientų grupei -- sergančiųjų ar sveikųjų -- priklauso tiriamasis pacientas.
+Mašininiame mokymesi klasifikavimu yra vadinama problema, kai pagal mokymosi duomenis reikia nustatyti, kuriai klasei (grupei) priklauso objektas. Klasifikavimo procesas pavaizduotas ~\ref{fig:classification_process} pav. pavaizduota srautų diagrama. Dirbant su biomedicininiais duomenimis tipinė užduotis yra pagal mėginį (pacientą) apibūdinančius matus (patirtį) sukonstruoti klasifikatorių (funkciją), kuris bandys nuspėti, kuriai pacientų grupei -- sergančiųjų ar sveikųjų -- priklauso tiriamasis pacientas.
 \begin{figure}
  \centering
  \includegraphics[width=\textwidth]{images/classification_process.pdf}
@@ -72,11 +72,14 @@ Klasterizavimo algoritmuose mes matuojame objektų panašumą. Panašumui matuot
 
 Dirbant su biomedicininiais duomenimis klasterizavimo algoritmus galime panaudoti panašių matų sugrupavimui. Iš panašių matų grupės pasirinkus tik vieną reprezentatyviausią matą, būtų galima sumažinti bendrą matų skaičių. Toks matų skaičiaus sumažinimas pagerintų matų atrinkimo procesą.
 
-\pragraph{Hierarchinis klasterizavimas}
+\paragraph{Hierarchinis klasterizavimas}
 
+% Šio skyrelio reikia, nes Consensus Group Stable matų atrinkimo metodas naudoja hierarchinio klasterizavimo algoritmą
 Hierarchinis klasterizavimas (angl. hierarchical clustering) yra klasterizavimo algoritmas, kuris arba visą duomenų aibę panariui skaido į vis mažesnius klasterius (angl. divisive learning), arba pradeda nuo kiekvieno elemento ir kiekviename etape sujungia panašiausius klasterius (angl. \textit{agglomerative clustering}).  Hierarchinio klasterizavimo rezultatas -- klasterių medis, dendograma, rodanti, kaip klasteriai yra susiję. Pasirinktame lygyje nupjovus dendogramą gaunama pasirinkta klasetrizavimo struktūra \cite{martisiute08}. 
 
-\paragraph{Mokymosi su mokytoju ir mokymosi be mokytojo skirtumai}
+Hierarchinis klasterizavimas yra informatyvesnis nei paprastas -- plokščias -- klasterizavimas.
+
+\subsubsection{Mokymosi su mokytoju ir mokymosi be mokytojo skirtumai}
 
  Pagrindiniai skirtumai tarp mokymosi su mokytoju ir mokymosi be mokytojo yra:
 \begin{itemize}
