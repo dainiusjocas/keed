@@ -3,13 +3,13 @@
 
 Šiame skyriuje aprašysiu teoriją reikalingą bakalauriniame darbe atliekamam tyrimui: mašininis mokymasis, SVM klasifikatorius, random forest, dimensijų atrinkimo stabilumas.
 
-\subsection{Mašininis mokymasis}
-
-Pataisyti esamą tekstą ir įdėti į bakalaurinį.
+\input{mokymasis_su_ir_be_mokytojo}
 
 \subsubsection{Hierarchinis klasterizavimas}
 
-Šio skyrelio reikia, nes COnsensus Group Stable dimensijų atrinkimo metodas naudoja hierarchinio klasterizavimo algoritmą
+Mokymosi be mokytojo vienas iš metodų yra klasterizavimas. Klasterizavimu siekiama rasti prasmingą duomenų grupavimą. 
+Hierarchinis klasterizavimas yra informatyvesnis nei plokščias.
+Šio skyrelio reikia, nes Consensus Group Stable matų atrinkimo metodas naudoja hierarchinio klasterizavimo algoritmą
 
 \subsection{Atraminių vektorių klasifikatorius}
 
@@ -19,36 +19,36 @@ Pradžia yra kitame faile.
 
 TODO.
 
-\subsection{Dimensijų atrinkimo stabilumas}
+\subsection{Matų atrinkimo stabilumas}
 
-Dimensijų atrinkimo metodų stabilumas gali būti apibrėžtas kaip dimensijų atrinkimo rezultatų variacijos dėl mažų pakeitimo duomenų rinkinyje. Pekeitimai duomenų rinkinyje gali būti duomenų objektų lygio (pvz. pridedami ar atimami duomenų objektai), dimensijų lygio (pvz. pridedant dimensijoms triukšmo) ar abiejų lygių kombinacija.
+Matų atrinkimo metodų stabilumas gali būti apibrėžtas kaip matų atrinkimo rezultatų variacijos dėl mažų pakeitimo duomenų rinkinyje. Pekeitimai duomenų rinkinyje gali būti duomenų objektų lygio (pvz. pridedami ar atimami duomenų objektai), matų lygio (pvz. pridedant matams triukšmo) ar abiejų lygių kombinacija.
 
-Dimensijų atrinkimo technikų stabilumas yra vis daugiau dėmesio gaunanti tyrimų kryptis. Stabilumo aktualumas yra sąlygotas to, kad biologiniuose duomenyse galima daryti prielaidą, kad konkrečiai problemai yra aktualios tik tam tikros dimensijos. Todėl dalykinės srities ekspertams yra aktualu naudoti tuos dimensijų atrinkimo metodus, kurie yra stabilūs ir relevantiški modeliuojamai problemai, nes tai atpigina tolimesnę duomenų analizę. 
+Matų atrinkimo metodų stabilumas yra vis daugiau dėmesio gaunanti tyrimų kryptis. Stabilumo aktualumas yra sąlygotas to, kad biologiniuose duomenyse galima daryti prielaidą, kad konkrečiai problemai yra aktualūs tik tam tikri matai. Todėl dalykinės srities ekspertams yra aktualu naudoti tuos matų atrinkimo metodus, kurie yra stabilūs ir susiję su modeliuojama problema, nes tai atpigina tolimesnę duomenų analizę. 
 
-Svarbu paminėti, kad dimensijų stabilumas nėra matuojamas visiškai nepriklausomai - jis yra matuojamas atsižvelgiant į klasifikavimo rezultatus. Matuoti stabilumą verta tada, kai atrinktos dimensijos duoda gerus klasifikavimo rezultatus. Kitaip tariant, nėra naudingi tie dimensijų atrinkimo metodai, kurie duoda labai stabilius rezultatus, bet jais remiantis atrinktomis dimensijomis pavyksta sukurti tik atsitiktinius rezultatus duodančius klasifikatorius.
+Svarbu paminėti, kad matų stabilumas nėra matuojamas visiškai nepriklausomai -- jis yra matuojamas atsižvelgiant į klasifikavimo rezultatus. Matuoti stabilumą verta tada, kai atrinkti matai duoda gerus klasifikavimo rezultatus. Kitaip tariant, nėra naudingi tie matų atrinkimo metodai, kurie duoda labai stabilius rezultatus, bet jais remiantis atrinktais matais pavyksta sukurti tik atsitiktinius rezultatus duodančius klasifikatorius.
 
 \subsubsection{Stabilumo matavimas}
 
-Vertinant dimensijų atrinkimo metodų stabilumą yra svarbu kaip panašiai yra atrenkamos dimensijos, kai yra atliekamas dimensijų atrinkimas su vis kitu mėginių ar dimensijų poaibiu. Kuo mažiau skiriasi atrinktoji dimensijų aibė darant pakeitimus duomenyse, tuo dimensijų atrinkimo stabilumas yra didesnis. Vidutinis dimensijų atrinkimo stabilumas gali būti apibrėžtas kaip vidurkis visų reitingavimo metu gautų sąrašų porų tarpusavio panašumo įverčių \cite{kalousis2007stability}:
+Vertinant matų atrinkimo metodų stabilumą yra svarbu kaip panašiai yra atrenkami matai, kai yra atliekamas matų atrinkimas su vis kitu mėginių ar matų poaibiu. Kuo mažiau skiriasi atrinktoji matų aibė darant pakeitimus duomenyse, tuo matų atrinkimo stabilumas yra didesnis. Vidutinis matų atrinkimo stabilumas gali būti apibrėžtas kaip vidurkis visų reitingavimo metu gautų sąrašų porų tarpusavio panašumo įverčių \cite{kalousis2007stability}:
 \begin{equation}
  S_{tot}=\frac{2\sum_{i=1}^{k-1}\sum_{j=i+1}^{k} S(f_i, f_j)}{k*(k-1)},
 \end{equation} 
-kur $k$ žymi kiek kartų buvo imtas skirtingas poaibis objektų dimensijų atrinkimui,
-$f_i$, $f_j$ - dimensijų atrinkimo rezultatas - reitingai, 
-$S(f_i, f_j)$ - yra aibių panašumo matavimo funkcija.
+kur $k$ žymi kiek kartų buvo imtas skirtingas poaibis objektų matų atrinkimui,
+$f_i$, $f_j$ -- matų atrinkimo rezultatas -- reitingai, 
+$S(f_i, f_j)$ -- yra aibių panašumo įvertinimo funkcija.
 
-Dimensijų atrinkimo stabilumo įvertis priklauso nuo to, kokią aibių panašumo funkciją naudosime. Tradicinės panašumo funkcijos (persidengimo procentas, Pearson'o koreliacija, Spearman'o koreliacijoa) gali būti taikomos, bet jos yra linkusios priskirti didesnes panašumo reikšmes, kai pasirenkamas didesnis dimensijų poaibis. Taip yra dėl padidėjusio sisteminio nuokrypio (ang. bias), nes imant didesnį poaibį padidėja tikimybė tiesiog atsitiktinai pasirinkti dimensiją.
+Matų atrinkimo stabilumo įvertis priklauso nuo to, kokią aibių panašumo funkciją naudosime. Tradicinės panašumo funkcijos (persidengimo procentas, Pearson'o koreliacija, Spearman'o koreliacijoa) gali būti taikomos, bet jos yra linkusios priskirti didesnes panašumo reikšmes, kai pasirenkamas didesnis matų poaibis. Taip yra dėl padidėjusio sisteminio nuokrypio (ang. bias), nes imant didesnį poaibį padidėja tikimybė tiesiog atsitiktinai pasirinkti matą.
 
 \subsubsection{\textit{Kuncheva} indexas}
 
-\textit{Kuncheva} indexas \cite{DBLP:conf/aia/Kuncheva07} yra funkcija skirta matuoti aibių panašumu. Ši funkcija gerai tinka matuoti dimensijų atrinkimo atabilumą, nes atsižvelgia į paimto dimensijų poaibio dydį. \textit{Kuncheva} indeksas:
+\textit{Kuncheva} indexas \cite{DBLP:conf/aia/Kuncheva07} yra funkcija skirta matuoti aibių panašumui. Ši funkcija gerai tinka matuoti matų atrinkimo atabilumą, nes atsižvelgia į paimto matų poaibio dydį. \textit{Kuncheva} indeksas:
 \begin{equation}
 \label{kuncheva_index}
  KI(f_i, f_j)=\frac{r*N - s^2}{s*(N-s)}=\frac{r - (s^2/N)}{s - (s^2/N)},
 \end{equation}		
-kur $s=|f_i|=|f_j|$ yra atrinktų dimensijų aibės dydis, $r=|f_i \bigcap f_j|$ - abiems atrinktiems dimensijų poaibiams bendrų dimensijų skaičius, $N$ - bendras  duomenų aibės dimensijų skaičius. Pastebėtina, kad formulėje esantis atėminys $s^2/N$ ištaiso sisteminį nuokrypį atsirandantį dėl galimybės atsitiktinai pasirinkti dimensijas. 
+kur $s=|f_i|=|f_j|$ yra atrinktų matų aibės dydis, $r=|f_i \bigcap f_j|$ - abiems atrinktiems matų poaibiams bendrų matų skaičius, $N$ - bendras  duomenų aibės matų skaičius. Pastebėtina, kad formulėje esantis atėminys $s^2/N$ ištaiso sisteminį nuokrypį atsirandantį dėl galimybės atsitiktinai pasirinkti matus. 
 
-Kunchevos indeksas gali įgyti reikšmes iš intervalo $[-1, 1]$, kur didesnė reikšmė reiškia didesnį panašumą, o artimos nuliui reikšmės reiškia, kad dimensijos atrenkamos daugiausia atsitiktinai. Kunchevos indekso ypatybė yra ta, kad jis atsižvelgia tik į persidengiančias, tačiau visiškai nekreipia dėmesio į koreliuojančias dimensijas.
+Kunchevos indeksas gali įgyti reikšmes iš intervalo $[-1, 1]$, kur didesnė reikšmė reiškia didesnį panašumą, o artimos nuliui reikšmės reiškia, kad matai atrenkami daugiausia atsitiktinai. Kunchevos indekso ypatybė yra ta, kad jis atsižvelgia tik į persidengiančias, tačiau visiškai nekreipia dėmesio į koreliuojančius matus.
 
 \subsubsection{\textit{Jaccard} indeksas}
 

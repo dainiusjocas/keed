@@ -1,197 +1,91 @@
 \subsection{Mokymasis su mokytoju ir mokymasis be mokytojo}
 
-Šiame skyriuje atsakysiu į klausimą kuo skiriasi mokymasis su
-mokytoju (angl. supervised learning) nuo mokymosi be mokytojo (angl.
-unsupervised learning). Mokymasis, duomenų klasifikavimo kontekste, reiškia
-modelių(pvz. klasifikatorių) kūrimo metodus (algoritmus), kurie naudoja
-mokymosi duomenis\footnote{Mokymosi duomenys (angl. sample data) - duomenys,
-kurie yra paruošti darbui programų, kurios kurs modelius (pvz.
-klasifikatorius).}, kitaip tariant, tai mokymasis iš pavyzdžių.
+Mašininis mokymasis yra dirbtinio intelekto šaka, kuri siekia įgalinti kompiuterius tobulinti savo elgseną (mokytis) empirinių duomenų atžvilgiu \cite{duda2001pattern}. Pagal tai, kokie yra turimi empiriniai duomenys, mašininis mokymasis yra skirstomas į mokymąsi su mokytoju (angl. \textit{supervised learning}) ir mokymąsi be mokytojo (angl. \textit{unsupervised learning}). Šiame poskyryje aptarsiu, kas yra mokymasis su mokytoju ir mokymasis be mokytojo bei kuo jie skiriasi.
 
 \subsubsection{Mokymasis su mokytoju}
 
-Mokymasis su mokytoju tai toks mokymasis, kai turime mokymosi duomenis, kuriems jau
-yra priskirtas tam tikras teisingas atsakymas. Kitaip tariant, mes sprendžiame
-uždavinį, kuriam atsakymą galime pasitikrinti. Mokymasis su mokytoju yra
-skirstomas į dvi rūšis:
+Žmonės mokosi iš patirties, tačiau, skirtingai nei žmonės, kompiuteris patirties neturi, todėl kompiuteris turi mokytis iš patyrimą apibūdinančių duomenų -- mokymosi duomenų. Mašininio mokymosi tikslas yra sukonstruoti funkciją, kuri galėtų būti naudojama nuspėti patyrimą apibūdinančių charakteristikų reikšmes pagal patyrimą apibūdinančius duomenis. Mokymesi su mokytoju, mokytoją reikia suprasti kaip išankstinį mokymosi duomenų spėjamų charakteristikų žinojimą. Kitaip tariant, mokymesi su mokytoju yra sprendžiamas uždavinys, kuriam atsakymą galime pasitikrinti. Pagal tai, kokias charakteristikas bandome nuspėti mokymasis su mokytoju yra skirstomas į dvi rūšis:
 \begin{enumerate}
-  \item Klasifikavimas (angl. classification) - pagal nepriklausomus
-  kintamuosius bandome nuspėti kokybinius (kategorinius) priklausomus
-  kintamuosius.
-  \item Regresija (angl. regression) - pagal nepriklausomus kintamuosius bandome
-  nuspėti kiekybinius priklausomus kintamuosius.
+  \item Klasifikavimas (angl. classification) -- pagal mokymosi duomenų nepriklausomus kintamuosius bandoma nuspėti kokybinius (kategorinėd reikšmės) priklausomus kintamuosius.
+  \item Regresinė analizė (angl. regression) -- pagal mokymosi duomenų nepriklausomus kintamuosius bandoma nuspėti kiekybinius (tolydinėd reikšmės) priklausomus kintamuosius.
 \end{enumerate} 
 
 %% JG: Pateik vizualų klasifikavimo pavyzdį iliustruojanti visus 3 etapus.
-%% DJ: Vizualų, ta prasme su paveiksliukais ar ir tas pavyzdys su paštu
-% pakankamai vaizdingas?
-
+%% DJ: Vizualų, ta prasme su paveiksliukais ar ir tas pavyzdys su paštu pakankamai vaizdingas?
 %% JG: Reikia kitaip struktūrizuoti šitą skyrių: 
 % +Pradžioj pasakyk, kad yra klasifikavimas ir regresija ir po
-%  sakinįÂ kiekvienam.
+%  sakinįÂ kiekvienam.
 % +Tada aptark klasifikavimą ir pateik pavyzdį. 
 % +Tada pateik regresijos pavyzdį.
 % +Tada parašyk, kad šiame darbe studijuojama klasifikavimo problema.
 
-\paragraph{Klasifikavimo uždavinio pavyzdys}
+\paragraph{Klasifikavimas}
 
-Klasifikavimo tikslas - identifikuoti parametrus, kurie nusakytų grupę
-(klasę), kuriai priklauso objektas. Klasifikavimo sąvoka gali būti naudojama tiek esamų
-duomenų suvokimui, tiek naujų objektų charakteristikų prognozavimui.
-Klasifikavimo uždavinių aktualumą galima parodyti tokiu pavyzdžiu.
-
-\begin{figure}[htb]
-\begin{center}
-\leavevmode
-\includegraphics[width=0.5\textwidth]{images/ranka_rasyti_skaiciai.png}
-\end{center}
-\caption{Ranka rašytas tekstas, kurį reikia atpažinti.}
-\label{fig:flash}
+Mašininiame mokymesi klasifikavimu yra vadinama problema, kai pagal mokymosi duomenis reikia nustatyti, kuriai klasei (grupei) priklauso objektas. Klasifikavimo procesas grafiškai pavaizduotas ~\ref{fig:classification_process} pav. Dirbant su biomedicininiais duomenimis tipinė užduotis yra pagal mėginį (pacientą) apibūdinančius matus (patirtį) sukonstruoti klasifikatorių (funkciją), kuris bandys nuspėti, kuriai pacientų grupei -- sergančiųjų ar sveikųjų -- priklauso tiriamasis pacientas.
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{images/classification_process.pdf}
+ \caption{Klasifikavimo srautų diagrama su paaiškinimais.}
+ \label{fig:classification_process}
 \end{figure}
 
-Uždavinys: Pašto skyriuose laiškai siunčiami įvairiomis kryptimis pagal gavėjo
-adresą ir (arba) pašto kodą. Norima automatizuoti laiškų rūšiavimą pagal
-siuntimo kryptį. Tam, kad būtų galima laiškų rūšiavimą pagal kryptį
-automatizuoti, mums reikia priemonės atpažinti ant voko užrašytą
-pašto kodą.
+\paragraph{Regresinė analizė}
 
-Sprendimas: Šią problemą mums padėtų išspręsti skeneris ir programine įranga,
-kuri sugebėtų ranka rašytus skaitmenis atpažinti ir konvertuoti į skaitmeninį
-formatą. Tų skaitmenų atpažinimui ir konvertavimui į skaitmeninį formatą
-mes naudosime klasifikavimo algoritmus, nes uždavinys pasižymi
-visomis klasifikavimui būdingomis savybėmis: turime aibę duomenų (vaizdinė
-informacija su ranka rašytais skaitmenimis), turime teisingus atsakymus (žmogus
-pažiūrėjęs į ranka rašytą skaitmenį gali pasakyti programai, koks ten yra
-skaitmuo), bei galimų sprendimai yra kategorinio tipo (dešimt skaitmenų nuo
-0 iki 9).
+Mašininiame mokymesi regresine analize yra vadinama problema, kai pagal patirtį apibūdinančius duomenis reikia nustatyti kiekybines duomenų charakteristikas. Regresinė analizė naudoja standartinius statistinius metodus, tokius kaip mažiausių kvadratų metodas (angl. \textit{least squares}). Regresinė analizė dažniausiai naudojama įvertinti (ang. \textit{forecast}) ateities duomenų vertes bei interpoliacijai -- funkcijos tikėtinos reikšmės tarp keletos taškų įvertinimui. 
 
-Klasifikatorių kursime trimis etapais:
-\begin{enumerate}
-  \item diskriminavimo (atskiriančiųjų) kintamųjų parinkimas - nuskenuotų
-  pašto kodų skaitmenų dažniausiai pasitaikančių, charakteringiausių linijų
-  radimas,
-  \item klasifikavimo taisyklių sudarymas - pagal tam tikrą charakteringiausių
-  linijų grupę objektui priskiriama klasė,
-  \item klasifikavimo kokybės įvertinimas - kokybei įvertinti naudojami įvairūs
-  metodai, tokie kaip kryžminis patikrinimas (angl. cross-validation) ir
-  įkelčių metodas (angl. bootstrap).
-\end{enumerate}
+Dirbant su biomedicininiais duomenimis regresinė analizė gali būti taikoma bandant nuspėti mėginių trūkstamus matus apibūdinančias reikšmes -- interpoliuoti. Tačiau regresinė analizė dirbant su biomedicininiais duomenimis yra naudojama rečiau negu klasifikavimas, todėl toliau šiame darbe bus nagrinėjama klasifikavimo problema.
 
-Įgyvendinę aukščiau aprašyto uždavinio sprendimą, pašto skyriaus vadybininkai
-galėtų atlaisvinti žmones nuo iš esmės mechaninio darbo - rūšiuoti laiškus.
-Tokiu būdu būtų optimizuotas pašto skyrių efektyvumas.
-
-\paragraph{Regresinės analizės payzdys}
-
-Regresija prognozuojant naujų duomenų reikšmes naudojasi žinomais, jau turimais
-duomenimis. Ji naudoja standartinius statistinius metodus, tokius kaip mažiausių
-kvadratų metodas (angl. least squares). Regresinė analizė dažniausiai naudojama
-įvertinti (ang. forecast) ateities duomenų vertes bei interpoliacijai -
-funkcijos tikėtinos reikšmės tarp dviejų taškų įvertinimui.
-
-Tipinio uždavinio, kuriam naudojama regresinė analizė pavyzdys: Aktuarinėje
-(draudimo) matematikoje reikia turėti įverčius, pasakančius kokia tikimybė, kad
-žmogus vienokio ar kitokio amžiaus mirs. Tam yra naudojamos taip vadinamos 
-mirtingumo lentelės. Jose duomenys aprašo kiek ir kokio amžiaus žmonių
-kažkuriais metais mirė, pvz. 2010 metais Lietuvoje mirė 1000 20 metų amžiaus 
-žmonių. Detalesni duomenys nėra naudojami, nes per daug sudėtinga juos apdoroti.
-Kadangi aktuarai nori apskaičiuoti draudimo kainą, jiems reikia įvertinti
-riziką, kada žmogus mirs, tai jie naudodamiesi regresinės analizės metodais 
-paskaičiuoja tikėtiniausią reikšmę, kad pvz. yra 3\% tikimybė, kad žmogus  mirs
-dvidešimtaisiais savo gyvenimo metais. Kitais žodžiais tariant, iš turimų
-duomenų mes sukursime tolydžią funkcija, kuri mums pasakys reikšmes taškuose,
-kurių mes neturime.
-
-\paragraph{Klasifikavimas ir regresija}
-
-Abiejų mokymosi su mokytoju rūšių tikslas yra pagal mokymosi duomenis sukurti
-modelį, kuriuo remiantis būtų galima identifikuoti naujų objektų
-savybes.\cite{markhall99} Šiame darbe negrinėsime klasifikavimo problemą.
+%% DJ: Juozai, gal turi gražų pavyzdį, kur pritaikoma regresinė analizė dirbant su biomedicininiais duomenimis?
 
 \subsubsection{Mokymasis be mokytojo}
 
-Mokymasis be mokytojo tai toks mokymasis, kai turime mokymosi duomenis, kuriems
-nėra priskirtas teisingas atsakymas. Kitaip tariant, mes sprendžiame
-uždavinį, kuriam atsakymo galime pasitikrinti. Mokymosi be mokytojo principas - 
-maksimizuoti objektų, esančių vienoje grupėje, tarpusavio panašumą ir 
-minimizuoti tarpgrupinį objektų panašumą.
+Mašininio mokymosi kontekste dažnai sutinkamas uždavinys yra į prasmingas grupes (klasterius) sugrupuoti turimus duomenis, apie kuriuos nieko nėra žinoma. Kitaip tariant, reikia išspręsti duomenų grupavimo uždavinį, kuriam neturima iš anksto teisingo atsakymo. Mokymasis be mokytojo tai toks mokymasis, kai teisingas mokymosi duomenų grupavimas iš anksto nėra žinomas. Mokymosi be mokytojo pagrindinis principas -- maksimizuoti objektų, esančių toje pačioje grupėje, tarpusavio panašumą ir minimizuoti tarpgrupinį objektų panašumą.
 
-Mokymosi su mokytoju metu galima išmatuoti gauto modelio tikslumą įvairiais metodais, pvz.
-kryžminiu patikrinimu. Mokymesi be mokytojo mes tokių tiesioginio patikrinimo
-procedūrų neturime. Todėl yra sunkiau išsiaiškinti patikimumą išvadų, gautų pagal
-daugumos mokymosi be mokytojo algoritmų darbo rezultatus. 
+Mokymosi su mokytoju metu galima išmatuoti gautos funkcijos tikslumą įvairiais metodais, pvz. kryžminiu patikrinimu (angl. \textit{cross-validation}). Mokymosi be mokytojo proceso rezultato tiesioginio patikrinimo procedūrų nėra. Todėl yra sunku išsiaiškinti rezultatų, gautų pagal mokymosi be mokytojo algoritmų darbo rezultatus, patikimumą. 
 
-Yra mažiausiai penkios pagrindinės priežastys, kodėl mums gali būti įdomūs
-mokymosi be mokytojo algoritmai:
-
-\begin{enumerate}
-	\item Turime labai daug nesužymėtų (angl. unlabelled) duomenų, o jų
-	sužymėjimas rankomis būtų labai brangus. 
-	\item Norime apsimokyti su dideliu kiekiu sąlyginai ,,pigių`` duomenų tam,
-	kad paskui galėtume	pasitelkti mokymosi su mokytoju algoritmus, ir tada
-	detaliau ištirti duomenis.
-	\item Duomenų struktūros šablonas yra nuolat kintantis, ir jei tą kitimą
-	galėtume sekti mokymosi be mokytojo režimu, tai būtų galima padidinti 
-	mūsų programos našumą.
-	\item Galima panaudoti mokymosi be mokytojo algoritmus, kad surastume
-	duomenų savybes, kurias vėliau panaudosime duomenų kategorizavimui.
-	\item Pradinėje duomenų analizės stadijoje pasinaudoję mokymosi be mokytojo
-	metodais galime geriau pažinti turimus duomenis.
-\end{enumerate}
-
-Mokymosi be mokytojo algoritmų pagrindinis privalumas yra gebėjimas atpažinti
-grupavimo struktūrą be jokios išankstinės informacijos.
+% Yra mažiausiai penkios pagrindinės priežastys, kodėl mums gali būti įdomūs mokymosi be mokytojo algoritmai:
+% \begin{enumerate}
+%   \item Turime labai daug nesužymėtų (angl. \textit{unlabelled}) duomenų, o jų sužymėjimas rankomis būtų labai brangus. 
+%   \item Norime apsimokyti su dideliu kiekiu sąlyginai ,,pigių`` duomenų tam, kad paskui galėtume pasitelkti mokymosi su mokytoju algoritmus, ir tada detaliau ištirti duomenis.
+%   \item Duomenų struktūros šablonas yra nuolat kintantis, ir jei tą kitimą galėtume sekti mokymosi be mokytojo režimu, tai būtų galima padidinti mūsų programos našumą.
+%   \item Galima panaudoti mokymosi be mokytojo algoritmus, kad surastume duomenų savybes, kurias vėliau panaudosime duomenų kategorizavimui.
+%   \item Pradinėje duomenų analizės stadijoje pasinaudoję mokymosi be mokytojo metodais galime geriau pažinti turimus duomenis.
+% \end{enumerate}
 
 %% JG: neprižiūrimų mokymosi metodų yra visokių: association rule mining,
 % clustering, ir t.t. Zr ESL knygos 14 skyrių.
 %% DJ: Nurašinėjau nuo Duda knygos tą vietą, kur mokymas be mokytojo ir 
 % klasterizavimas yra sinonimai.
 
-%% Kartais šiokia tokia informacija žinoma. Pvz., klasteriųÂ kiekis nurodomas
+%% Kartais šiokia tokia informacija žinoma. Pvz., klasteriųÂ kiekis nurodomas
 % k-means algoritme. Arba galima daryti prielaidas apie klasterių struktūrą:
 % k-means ieško apvalių klasterių. Esminis dalykas yra tas, kad teisingas
 % atsakymas nėra žinomas.
 
 %% JG: algoritmas turi atrasti grupes duomenyse, jos nėra iš anksto žinomos.
 
-\subsubsection{Mokymosi su mokytoju ir mokymosi be mokytojo skirtumai}
+\paragraph{Klasterizavimas}
 
-Pagrindiniai skirtumai tarp mokymosi su mokytoju ir mokymosi be mokytojo yra:
+Klasterizavimas yra viena iš mokymosi be mokytojo algoritmų rūšių. Klasterizavimas -- tai turimų objektų suskirstymas į skirtingas grupes (klasterius) taip, kad grupės viduje esantys objektai būtų panašūs tarpusavyje, o objektai iš skirtingų grupių būtų nepanašūs. Klasterizavimu siekiama atrasti nežinomas struktūras turimuose duomenyse. 
+
+Klasterizavimo algoritmuose mes matuojame objektų panašumą. Panašumui matuoti yra naudojami atstumo tarp objektų metrikos, tokios kaip \textit{Manhattan}, Euklido, \textit{Mahalanobis} atstumai. Tačiau pasirinktosios atstumo metrikos rezultatai priklauso nuo to, kokioje skalėje yra atlikti paskirų matų matavimai. Todėl yra rekomenduojama prieš klasterizavimą visus matus normalizuoti. Dažniausiai naudojamas normalizavimas yra, kai mato matavimų reikšmių vidurkis yra $0$, o standartinio nuokrypio -- $1$ matavimo vienetas (angl. \textit{unit}). Normalizavimu siekiame apsisaugoti nuo situacijos, kai matas su didelėmis reikšmėmis gali iškreipti atstumo matavimus. 
+
+Dirbant su biomedicininiais duomenimis klasterizavimo algoritmus galime panaudoti panašių matų sugrupavimui. Iš panašių matų grupės pasirinkus tik vieną reprezentatyviausią matą, būtų galima sumažinti bendrą matų skaičių. Toks matų skaičiaus sumažinimas pagerintų matų atrinkimo procesą.
+
+\pragraph{Hierarchinis klasterizavimas}
+
+Hierarchinis klasterizavimas (angl. hierarchical clustering) yra klasterizavimo algoritmas, kuris arba visą duomenų aibę panariui skaido į vis mažesnius klasterius (angl. divisive learning), arba pradeda nuo kiekvieno elemento ir kiekviename etape sujungia panašiausius klasterius (angl. \textit{agglomerative clustering}).  Hierarchinio klasterizavimo rezultatas -- klasterių medis, dendograma, rodanti, kaip klasteriai yra susiję. Pasirinktame lygyje nupjovus dendogramą gaunama pasirinkta klasetrizavimo struktūra \cite{martisiute08}. 
+
+\paragraph{Mokymosi su mokytoju ir mokymosi be mokytojo skirtumai}
+
+ Pagrindiniai skirtumai tarp mokymosi su mokytoju ir mokymosi be mokytojo yra:
 \begin{itemize}
-	\item mokymosi duomenys - mokymosi su mokytoju algoritmų įeities duomenyse
-	yra	išreikštinai pasakyta, kokio rezultato mes laukiame, o mokymosi be
-	mokytojo įeities duomenyse tokios papildomos informacijos nėra.
-	\item  naudojimo tikslai - mokymasis su mokytoju siekia iš pavyzdžių
-	išmokti vertinti naujus duomenis, o mokymasis be mokytojo siekia atrasti
-	vidinę duomenų struktūrą.
+  \item mokymosi duomenys -- mokymosi su mokytoju proceso įeities duomenyse yra išreikštinai pasakyta, kokio rezultato mes laukiame, o mokymosi be mokytojo įeities duomenyse tokios papildomos informacijos nėra.
+  \item  naudojimo tikslai -- mokymasis su mokytoju siekia iš pavyzdžių išmokti vertinti naujus duomenis, o mokymasis be mokytojo siekia atrasti vidinę duomenų struktūrą.
 \end{itemize}
+Mokymosi su ir be mokytojo procesai panašūs savo esme -- siekia išgauti žinias apie turimus duomenis, tačiau jų panaudojimas skiriasi iš esmės -- mokymosi su mokytoju atveju siekiama išmokti iš pavyzdžių, o mokymosi be mokytojo atveju siekiama atrasti nežinomas struktūras turimuose duomenyse.
 
-Aptarkime pavyzdį: nuotraukų apdorojimas.
-
-Mokymosi su mokytoju programai kaip įeities duomenis paduotume keletą 
-nuotraukų su žymėmis pasakančiomis, ar nuotraukoje yra žmogaus veidas ar jo ten
-nėra, kitaip tariant, duotume keletą pavyzdžių su teisingais atsakymais.
-Programa peržvelgs visas nuotraukas ir susikurs klasifikatorių (modelį), kuris
-kažkokiu tikslumu galės atskirti nuotraukas su žmogaus veidu. Tokiu būdu mūsų
-mokymosi programa ,,išmoks`` nuotraukose atpažinti veidus.
-
-Mokymosi be mokytojo programai kaip įeities duomenis paduotume keletą
-nuotraukų be jokių papildomų žymių. Žinoma, mūsų programa pati nesugebės
-,,išrasti``, kas yra žmogaus veidas, tačiau ji tikriausiai sugrupuos nuotraukas
-su žmonių veidais ir tarkim peizažais į skirtingas grupes. Kitaip tariant,
-nuotraukų su žmonių veidais vidinė struktūra mūsų mokymosi be mokytojo programai
-bus nepanaši į nuotraukų su peizažais vidinę struktūrą, todėl ji į vieną grupę
-sudės nuotraukas, kurios jai atrodo tarpusavyje panašiausios: vienoje
-grupėje nuotraukos su žmonių veidais, o kitoje su gamtos peizažais.
-
-Abu mokymo procesai yra panašūs savo esme (siekia išgauti žinias apie turimus
-duomenis), bet jų panaudojimas skiriasi iš esmės (mokymo su mokytoju atveju mes
-kuriame modelį apibūdinantį kaip buvo sukurti mokymo duomenys, kad galėtume
-spėti naujų objektų savybes, o mokymo be mokytojo atveju siekiame susipažinti
-su vidine mokymo duomenų struktūra, kai nėra kaip pamatuoti ar geri ar blogi
-klasteriai buvo rasti).
-
-%% JG: aš nesutinku, kad abiem procesais siekiama tųÂ pačių tikslų. Vienu atveju 
+%% JG: aš nesutinku, kad abiem procesais siekiama tųÂ pačių tikslų. Vienu atveju 
 % siekiama išmokti iš pavyzdžių. Kitu atveju siekiama atrasti nežinomas
 % struktūras turimuose duomenyse. Procesai yra panašūs savo esme, bet jų 
 % panaudojimas skiriasi iš esmės.
