@@ -5,13 +5,29 @@
 
 \input{mokymasis_su_ir_be_mokytojo}
 
-\subsection{Atraminių vektorių klasifikatorius}
-
-Pradžia yra kitame faile.
+\input{support_vector_machines}
 
 \subsection{\textit{Random Forest} klasifikatorius}
 
-TODO.
+\textit{Random Forrest} klasifikatorius yra įrankis, kuris kuris sukuria eilę klasifikavimo medžių (angl. \textit{decision tree}), kurie visi nepriklausomai klasifikuoja mėginius, ir daugumos balsavimo (angl. \textit{majority voting}) būdų yra skelbiamas galutinis klasifikavimo rezultatas \cite{breiman1984classification}. Toks daugelio klasifikatorių panaudojimas yra vadinamas kombinuotoju mokymusi (angl. \textit{ensemble learning}). 
+
+Kiekvienas klasifikavimo medis yra konstruojamas pagal algoritmą:
+
+\begin{algorithm}
+ \caption{\textit{Random Forest} klasifikavimo medžių konstravimas}
+ \label{random_forest_algorithm}
+ \begin{enumerate}
+  \item Turimas $N$ mėginių, kurie turi $M$ matų;
+  \item Pasirenkamas $m$ matų, kurie bus naudojami klasifikavimo medžių kūrimui; $m << M$;
+  \item Sudaroma treniravimosi mėginių aibė $n$ kartų pasirenkant mėginius su pasikartojimais iš visų $N$ mėginių. Visi nepasirinkti mėginiai paliekami klasifikatoriaus testavimui; 
+  \item Kiekvienam medžio mazgui atsitiktinai pasirinkama $m$ matų, kuries sudarys sąlygą tam mazgui. Randamas geriausia atskyrimo sąlyga treniravimos duomenims pagal tuos $m$ matų;
+  \item Pilnai užauginti medžiai nėra genėjami (angl. \textit{pruning}).
+ \end{enumerate}
+\end{algorithm}
+
+\textit{Random forest} algoritmo tikslumas priklauso nuo: koreliacijos tarp sukurtų klasifikavimo medžių (didesnė koreliacija lemia mažesnį klasifikavimo tikslumą.); atskiro klasifikavimo medžio skiriamoji galia (kuo didesnė atskiro klasisifikavimo medžio skiriamoji galia, tuo geresnis klasifikavimo tikslumas).
+
+\textit{Randon forest} klasifikatoriai yra tikslūs, greiti, bei sugeba išvengti persimokymo (angl. \textit{overfitting}). Šios trys klasifikavimo algoritmo savybės yra labai svarbios dirbant su biomedicininiais duomenimis. 
 
 \subsection{Matų atrinkimo stabilumas}
 

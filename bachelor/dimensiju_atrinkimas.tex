@@ -81,7 +81,7 @@ matų reitingavimui. Svorį reikia imti absoliutaus dydžio, nes neigiamas svori
 
 \subsection{Rekursyvus matų eliminavimas pagal SVM}
 
-Rekursyvus matų eliminavimas pagal SVM (angl. \textit{Support Vector Machines -- Recursive Feature Elimination}, SVM-RFE) yra vienas populiariausių matų atrinkimo algoritmų \cite{guyon2002gene}. Todėl, jis yra naudojamas kaip atskaitos taškas (angl. \textit{benchmark}) vertinant kitus matų atrankos metodus. Iš esmės šis metodas yra daugkartinis absoliučių svorių SVM metodo taikymas nuolat išmetinėjant matus su mažiausiais svoriais. Rekursyvus matų eliminavimaas mums padeda surasti tinkamą matų poaibį, kas ne visada pavyksta su matų reitingavimo metodais. Bendroji rekursyvaus matų eliminavimo procedūra:
+Rekursyvus matų eliminavimas pagal SVM (angl. \textit{Support Vector Machines -- Recursive Feature Elimination}, SVM-RFE) yra vienas populiariausių matų atrinkimo algoritmų \cite{guyon2002gene}. Todėl, jis yra naudojamas kaip atskaitos taškas (angl. \textit{benchmark}) vertinant kitus matų atrankos metodus. Iš esmės šis metodas yra daugkartinis absoliučių svorių SVM metodo taikymas nuolat išmetinėjant matus su mažiausiais svoriais. Rekursyvus matų eliminavimas mums padeda surasti tinkamą matų poaibį, kas ne visada pavyksta su matų reitingavimo metodais. Bendroji rekursyvaus matų eliminavimo procedūra:
 \begin{algorithm}
 \caption{Rekursyvus matų eliminavimas}
 \label{RFE}
