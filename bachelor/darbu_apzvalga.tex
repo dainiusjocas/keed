@@ -1,17 +1,171 @@
 \section{SUSIJUSIŲ DARBŲ APŽVALGA}
 \label{darbu_apzvalga}
 
-Šiame skyriuje aprašysiu teoriją reikalingą bakalauriniame darbe atliekamam tyrimui: mašininis mokymasis, SVM klasifikatorius, random forest, dimensijų atrinkimo stabilumas.
+Šiame skyriuje aprašyta teorija, kuri yra pagrindas daugiamačių duomenų klasifikavimo analizei. Skyriuje eilės tvarka yra apžvelgiamos tokios dalykinės sritys kaip: mokymasis su mokytoju ir mokymasis be mokytojo, atraminių vektorių klasifikatoriai, \textit{Random Forest} klasifikatorius, matų atrinkimo stabilumas.
 
-\input{mokymasis_su_ir_be_mokytojo}
+\subsection{Mokymasis su mokytoju ir mokymasis be mokytojo}
 
-\input{support_vector_machines}
+Mašininis mokymasis (angl. \textit{machine learning}) yra dirbtinio intelekto šaka, kuri siekia įgalinti kompiuterius tobulinti savo elgseną (mokytis) empirinių duomenų atžvilgiu \cite{duda2001pattern}. Pagal tai, kokie yra turimi empiriniai duomenys, mašininis mokymasis yra skirstomas į mokymąsi su mokytoju (angl. \textit{supervised learning}) ir mokymąsi be mokytojo (angl. \textit{unsupervised learning}). Šiame poskyryje aptariama, kas yra mokymasis su mokytoju, mokymasis be mokytojo bei kuo jie skiriasi.
+
+\subsubsection{Mokymasis su mokytoju}
+
+Žmonės mokosi iš patirties, tačiau, skirtingai nei žmonės, kompiuteriai patirties neturi, todėl kompiuteriai turi mokytis iš patyrimą apibūdinančių duomenų -- mokymosi duomenų. Mokymosi su mokytoju tikslas yra sukonstruoti funkciją, kuri galėtų būti naudojama nuspėti patirtį apibūdinančių charakteristikų reikšmes pagal mokymosi duomenis. Šiame kontekste mokytoją reikia suprasti kaip išankstinį mokymosi duomenų spėjamų charakteristikų žinojimą. Kitaip tariant, mokymosi su mokytoju metodais yra sprendžiami uždaviniai, kuriems atsakymus galime pasitikrinti. Pagal tai, kokias charakteristikas bandome nuspėti mokymasis su mokytoju yra skirstomas į dvi rūšis:
+\begin{enumerate}
+  \item Klasifikavimas (angl. \textit{classification}) -- pagal mokymosi duomenų nepriklausomus kintamuosius bandoma nuspėti kokybinius (kategorinės reikšmės) priklausomus kintamuosius.
+  \item Regresinė analizė (angl. \textit{regression}) -- pagal mokymosi duomenų nepriklausomus kintamuosius bandoma nuspėti kiekybinius (tolydinės reikšmės) priklausomus kintamuosius.
+\end{enumerate} 
+
+%% JG: Pateik vizualų klasifikavimo pavyzdį iliustruojanti visus 3 etapus.
+%% DJ: Vizualų, ta prasme su paveiksliukais ar ir tas pavyzdys su paštu pakankamai vaizdingas?
+%% JG: Reikia kitaip struktūrizuoti šitą skyrių: 
+% +Pradžioj pasakyk, kad yra klasifikavimas ir regresija ir po
+%  sakinįÂ kiekvienam.
+% +Tada aptark klasifikavimą ir pateik pavyzdį. 
+% +Tada pateik regresijos pavyzdį.
+% +Tada parašyk, kad šiame darbe studijuojama klasifikavimo problema.
+
+\paragraph{Klasifikavimas}
+
+Mašinininio mokymosi kontekste klasifikavimu yra vadinama problema, kai pagal mokymosi duomenis reikia nustatyti, kuriai klasei (grupei) priklauso objektas. Klasifikavimo procesas pavaizduotas ~\ref{fig:classification_process} pav. srautų diagrama. Dirbant su biomedicininiais duomenimis tipinė užduotis yra pagal mėginį (pacientą) apibūdinančius matus (patirtį) sukonstruoti klasifikatorių (funkciją), kuris bandys nuspėti, kuriai pacientų grupei -- sergančiųjų ar sveikųjų -- priklauso tiriamasis mėginys.
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{images/classification_process.pdf}
+ \caption{Klasifikavimo srautų diagrama su paaiškinimais.}
+ \label{fig:classification_process}
+\end{figure}
+Klasifikavimą galima vertinti pagal:
+\begin{itemize}
+ \item klasifikavimo tikslumą (angl. \textit{accuracy}) -- santykį tarp teisingai suklasifikuotų mėginių ir visų mėginių;
+ \item klasifikavimo nuostolius (angl. \textit{error rate}) -- santykį tarp neteisingai suklasifikuotų mėginių ir visų mėginių;
+ \item ROC (angl. \textit{receiver operating characteristic}, ROC) kreivę -- abscisių ašyje tikimybės (angl. \textit{false positive}) įvykio, ordinačių ašyje (angl. \textit{true positive}) įvykio.
+\end{itemize}
+
+\paragraph{Regresinė analizė}
+
+Mašininio mokymosi kontekste regresine analize yra vadinama problema, kai pagal patirtį apibūdinančius duomenis reikia nustatyti kiekybines duomenų charakteristikas. Regresinė analizė naudoja standartinius statistinius metodus, tokius kaip mažiausių kvadratų metodas (angl. \textit{least squares}). Regresinė analizė dažniausiai naudojama įvertinti (ang. \textit{forecast}) ateities duomenų vertes bei interpoliacijai -- tikėtinos reikšmės tarp keletos taškų įvertinimui. 
+
+Dirbant su biomedicininiais duomenimis regresinė analizė gali būti taikoma bandant nuspėti mėginių trūkstamus matus apibūdinančias reikšmes -- interpoliuoti. Tačiau regresinė analizė dirbant su biomedicininiais duomenimis yra naudojama rečiau negu klasifikavimas, todėl toliau šiame darbe bus nagrinėjama klasifikavimo problema.
+
+%% DJ: Juozai, gal turi gražų pavyzdį, kur pritaikoma regresinė analizė dirbant su biomedicininiais duomenimis?
+
+\subsubsection{Mokymasis be mokytojo}
+
+Mašininio mokymosi kontekste dažnai sutinkamas uždavinys yra į prasmingas grupes (klasterius) sugrupuoti turimus duomenis, apie kuriuos nieko nėra žinoma. Kitaip tariant, reikia išspręsti duomenų grupavimo uždavinį, kuriam neturima iš anksto teisingo atsakymo. Mokymasis be mokytojo tai toks mokymasis, kai teisingas mokymosi duomenų grupavimas iš anksto nėra žinomas. Mokymosi be mokytojo pagrindinis principas -- maksimizuoti objektų, esančių toje pačioje grupėje, tarpusavio panašumą ir minimizuoti tarpgrupinį objektų panašumą.
+
+Mokymosi su mokytoju metu galima išmatuoti gautos funkcijos tikslumą įvairiais metodais, pvz. kryžminiu patikrinimu (angl. \textit{cross-validation}). Mokymosi be mokytojo proceso rezultato tiesioginio patikrinimo procedūrų nėra. Todėl yra sunku išsiaiškinti rezultatų, gautų pagal mokymosi be mokytojo algoritmų darbo rezultatus, patikimumą. 
+
+% Yra mažiausiai penkios pagrindinės priežastys, kodėl mums gali būti įdomūs mokymosi be mokytojo algoritmai:
+% \begin{enumerate}
+%   \item Turime labai daug nesužymėtų (angl. \textit{unlabelled}) duomenų, o jų sužymėjimas rankomis būtų labai brangus. 
+%   \item Norime apsimokyti su dideliu kiekiu sąlyginai ,,pigių`` duomenų tam, kad paskui galėtume pasitelkti mokymosi su mokytoju algoritmus, ir tada detaliau ištirti duomenis.
+%   \item Duomenų struktūros šablonas yra nuolat kintantis, ir jei tą kitimą galėtume sekti mokymosi be mokytojo režimu, tai būtų galima padidinti mūsų programos našumą.
+%   \item Galima panaudoti mokymosi be mokytojo algoritmus, kad surastume duomenų savybes, kurias vėliau panaudosime duomenų kategorizavimui.
+%   \item Pradinėje duomenų analizės stadijoje pasinaudoję mokymosi be mokytojo metodais galime geriau pažinti turimus duomenis.
+% \end{enumerate}
+
+%% JG: neprižiūrimų mokymosi metodų yra visokių: association rule mining,
+% clustering, ir t.t. Zr ESL knygos 14 skyrių.
+%% DJ: Nurašinėjau nuo Duda knygos tą vietą, kur mokymas be mokytojo ir 
+% klasterizavimas yra sinonimai.
+
+%% Kartais šiokia tokia informacija žinoma. Pvz., klasteriųÂ kiekis nurodomas
+% k-means algoritme. Arba galima daryti prielaidas apie klasterių struktūrą:
+% k-means ieško apvalių klasterių. Esminis dalykas yra tas, kad teisingas
+% atsakymas nėra žinomas.
+
+%% JG: algoritmas turi atrasti grupes duomenyse, jos nėra iš anksto žinomos.
+
+\paragraph{Klasterizavimas}
+
+Klasterizavimas yra viena iš mokymosi be mokytojo algoritmų rūšių. Klasterizavimas -- tai turimų objektų suskirstymas į skirtingas grupes (klasterius) taip, kad grupės viduje esantys objektai būtų panašūs tarpusavyje, o objektai iš skirtingų grupių būtų nepanašūs. Klasterizavimu siekiama atrasti nežinomas struktūras turimuose duomenyse. 
+
+Klasterizavimo algoritmuose mes matuojame objektų panašumą. Panašumui matuoti yra naudojami atstumo tarp objektų metrikos, tokios kaip \textit{Manhattan}, Euklido, \textit{Mahalanobis} atstumai. Tačiau pasirinktosios atstumo metrikos rezultatai priklauso nuo to, kokioje skalėje yra atlikti paskirų matų matavimai. Todėl yra rekomenduojama prieš klasterizavimą visus matus normalizuoti. Dažniausiai naudojamas normalizavimas yra, kai mato matavimų reikšmių vidurkis yra $0$, o standartinio nuokrypio -- $1$ matavimo vienetas (angl. \textit{unit}). Normalizavimu siekiame apsisaugoti nuo situacijos, kai matas su didelėmis reikšmėmis gali iškreipti atstumo matavimus. 
+
+Dirbant su biomedicininiais duomenimis klasterizavimo algoritmus galime panaudoti panašių matų sugrupavimui. Iš panašių matų grupės pasirinkus tik vieną reprezentatyviausią matą, būtų galima sumažinti bendrą matų skaičių. Toks matų skaičiaus sumažinimas pagerintų matų atrinkimo procesą.
+
+\paragraph{Hierarchinis klasterizavimas}
+
+\begin{figure}
+ \centering
+ \includegraphics[width=0.6\textwidth]{images/hierarchical_clustering.png}
+ \caption{Hierarchinio klasterizavimo rezultatų grafinis pavyzdys.}
+ \label{fig:hierarchical_clustering}
+\end{figure}
+% Šio skyrelio reikia, nes Consensus Group Stable matų atrinkimo metodas naudoja hierarchinio klasterizavimo algoritmą
+Hierarchinis klasterizavimas (angl. \textit{hierarchical clustering}) yra klasterizavimo algoritmas, kuris arba visą duomenų aibę panariui skaido į vis mažesnius klasterius (angl. \textit{divisive clustering}), arba pradeda nuo klasterių sudarytų tik iš vieno objekto ir kiekvienoje iteracijoje sujungia panašiausius klasterius (angl. \textit{agglomerative clustering}).  Hierarchinio klasterizavimo rezultatas -- klasterių medis, dendrograma, rodanti, kaip klasteriai yra hierarchiškai susiję. Klasterių dendrogramos pavyzdys yra ~\ref{fig:hierarchical_clustering} pav. Pasirinktame lygyje nupjovus dendogramą gaunama pasirinkta klasterizavimo struktūra \cite{martisiute08}. Hierarchinis klasterizavimas yra informatyvesnis nei paprastas -- plokščias -- klasterizavimas.
+
+\subsubsection{Mokymosi su mokytoju ir mokymosi be mokytojo skirtumai}
+
+ Pagrindiniai skirtumai tarp mokymosi su mokytoju ir mokymosi be mokytojo yra:
+\begin{itemize}
+  \item mokymosi duomenys -- mokymosi su mokytoju proceso įeities duomenyse yra išreikštinai pasakyta, kokio rezultato mes laukiame, o mokymosi be mokytojo įeities duomenyse tokios papildomos informacijos nėra.
+  \item  naudojimo tikslai -- mokymasis su mokytoju siekia iš pavyzdžių išmokti vertinti naujus duomenis, o mokymasis be mokytojo siekia atrasti vidinę duomenų struktūrą.
+\end{itemize}
+Mokymosi su ir be mokytojo procesai panašūs savo esme -- siekia išgauti žinias apie turimus duomenis, tačiau jų panaudojimas skiriasi iš esmės -- mokymosi su mokytoju atveju siekiama išmokti iš pavyzdžių, o mokymosi be mokytojo atveju siekiama atrasti nežinomas struktūras turimuose duomenyse.
+
+%% JG: aš nesutinku, kad abiem procesais siekiama tųÂ pačių tikslų. Vienu atveju 
+% siekiama išmokti iš pavyzdžių. Kitu atveju siekiama atrasti nežinomas
+% struktūras turimuose duomenyse. Procesai yra panašūs savo esme, bet jų 
+% panaudojimas skiriasi iš esmės.
+
+%% JG: iš vikipedijos: In machine learning, unsupervised learning refers to the 
+% problem of trying to find hidden structure in unlabeled data. Since the
+% examples given to the learner are unlabeled, there is no error or reward
+% signal to evaluate a potential solution. This distinguishes unsupervised 
+% learning from supervised learning and reinforcement learning.
+
+%% JG: visą šitą skyrių reikia pateikti koncentruotai. Esminiai teiginiai ir grafiniai pavyzdžiai. 
+
+%% DJ: Turiu pripažint, kad šitam pavyzdyje prigrybavau stipriai. Nurašinėjau
+% pavyzdį kur prastai paaiškino skirtumą, bet užtat man pavyzdys patiko. Dabar
+% labiau į temą surašyta.
+
+\subsection{Atraminių vektorių klasifikatoriai}
+
+Atraminių vektorių klasifikatoriai (angl. \textit{support vector machines}, SVM) - tai mašininio mokymosi algoritmas, kuris gali būti taikomas tiek klasifikavimui, tiek regresinei analizei. Šis algoritmas priskiriamas prie mokymosi su mokytoju algoritmų \cite{vapnik2000nature}.
+
+Atraminių vektorių klasifikatorių algoritmo idėja yra duomenų vektorių erdvėje surasti hiperplokštumą (sprendimo ribą (angl. \textit{decision boundary})), kurios atstumas nuo skirtingoms klasėms priklausančių objektų būtų didžiausias, galimai pašalinant triukšmą bei išimtis (angl. \textit{outlier}). Kitaip tariant, yra ieškoma hiperplokštuma, kuri geriausiai atskiria objektus priklausančius skirtingoms klasėms. 
+
+Tarkime, kad turime $L$ mokymosi objektų, kurių kiekvienas objektas $x_i$ turi $D$ matų ir priklauso vienai iš dviejų klasių $y_i=-1$ arba $y_i=+1$. Taigi turime mokymosi duomenis, kurių pavidalas yra:
+\begin{equation}
+ \{x_i, y_i\}, kur\; i=1..L, y_i \in \{-1,1\}, x \in \Re^D
+\end{equation}
+Tarkime, kad duomenys yra tiesiškai atskiriami. Tai reiškia, kad galima nupiešti tiesę grafe $x_1$ ir $x_2$, kuri atskiria dvi klases, kai $D=2$ ir hiperplokštumą grafuose $x_1, x_2,...x_D$, kai $D > 2$. Hiperplokštuma apibrėžta $w\cdot x_i + b = 0$, kur $w$ -- hiperplokštumos normalės vektorius, $\frac{b}{||w||}$ -- statmens einančio nuo hiperplokštumos iki koordinačių pradžios taško ilgis.
+
+Atraminiai vektoriai (angl. \textit{support vectors}) yra mėginiai esantys arčiausiai atskiriančiosios hiperplokštumos. Atraminių vektorių klasifikatorių algoritmo tikslas yra orientuoti hiperplokštumą tokiu būdu, kad atstumas tarp jos ir artimiausių objektų iš abiejų klasių būtų didžiausias \cite{cortes1995support}. Atskiriančiosios tiesės pavyzdys pavaizduotas ~\ref{fig:support_vector_machines} pav. Taigi, atraminių vektorių klasifikatorių sukūrimas yra parametrų $w$ ir $b$ tenkinančių minėtas sąlygas radimas. Tai galima užrašyti tokia nelygybe:
+\begin{equation}
+ \label{svm_separable}
+ y_i(x_i \cdot w + b) - 1 > 0
+\end{equation}
+Jei abiejų klasių objektai nėra tiesiškai atskiriami, reikia ,,atpalaiduoti'' (\ref{svm_separable}) salygą įvedant parametrą $\xi_i$:
+\begin{equation}
+ \label{svm_non_separable}
+ y_i(x_i \cdot w + b) - 1 + \xi_i > 0, kur\; \xi_i \geq 0, \;  \forall_i,
+\end{equation}
+kur $\xi_i$ yra baudos dydis už neteisingai klasei priskirtą mėginį.
+\begin{figure}
+ \centering
+ \includegraphics[width=.7\textwidth]{images/support_vector_machines.jpg}
+ \caption{Hiperplokštuma nubrėžta per dvi tiesiškai atskiriamas klases.}
+ \label{fig:support_vector_machines}
+\end{figure}
+
+Atraminių vektorių klasifikatoriai gerai tinka uždaviniams, kai turima labai maža mokymosi duomenų aibė. Biomedicininiai duomenys ir pasižymi tuo, kad mokymosi duomenų aibė yra maža palyginus su turimų matų skaičiumi. Todėl atraminių vektorių klasifikatorių naudojimas dirbui su biomedicininiais duomenimis yra tapęs standartiniu pasirinkimu. 
+
+%% JG: cituoti turi originalų darbą:
+%% JG: C. Cortes and V. Vapnik, Support-Vector Networks, Machine Learning, 20(3):273-297, September 1995
+%% JG: Vladimir N. Vapnik. The Nature of Statistical Learning Theory. Springer, New York, 1995
+
+%SVM is a type of machine learning algorithm derived from statistical learning
+%[theory](http://download.oracle.com/docs/cd/B14117_01/text.101/b10729/classify.htm).
+
+%% JG: nepamiršksio daugiamatiškumo erdvę, o ten juos galima atskirti tiesiškai.
 
 \subsection{\textit{Random Forest} klasifikatorius}
 
-\textit{Random Forrest} klasifikatorius yra įrankis, kuris kuris sukuria eilę klasifikavimo medžių (angl. \textit{decision tree}), kurie visi nepriklausomai klasifikuoja mėginius, ir daugumos balsavimo (angl. \textit{majority voting}) būdų yra skelbiamas galutinis klasifikavimo rezultatas \cite{breiman1984classification}. Toks daugelio klasifikatorių panaudojimas yra vadinamas kombinuotoju mokymusi (angl. \textit{ensemble learning}). 
+\textit{Random Forrest} klasifikatorius yra įrankis, kuris sukuria keletą klasifikavimo medžių (angl. \textit{decision tree}), kurie visi nepriklausomai klasifikuoja mėginius, ir daugumos balsavimo (angl. \textit{majority voting}) būdų yra skelbiamas galutinis klasifikavimo rezultatas \cite{breiman1984classification}. Toks daugelio klasifikatorių panaudojimas yra vadinamas kombinuotoju mokymusi (angl. \textit{ensemble learning}). 
 
-Kiekvienas klasifikavimo medis yra konstruojamas pagal algoritmą:
+Kiekvienas klasifikavimo medis yra konstruojamas pagal procedūrą aprašytą algoritme nr. \ref{random_forest_algorithm}.
 
 \begin{algorithm}
  \caption{\textit{Random Forest} klasifikavimo medžių konstravimas}
@@ -31,11 +185,11 @@ Kiekvienas klasifikavimo medis yra konstruojamas pagal algoritmą:
 
 \subsection{Matų atrinkimo stabilumas}
 
-Matų atrinkimo metodų stabilumas gali būti apibrėžtas kaip matų atrinkimo rezultatų variacijos dėl mažų pakeitimo duomenų rinkinyje. Pekeitimai duomenų rinkinyje gali būti duomenų objektų lygio (pvz. pridedami ar atimami duomenų objektai), matų lygio (pvz. pridedant matams triukšmo) ar abiejų lygių kombinacija.
+Matų atrinkimo metodų stabilumas gali būti apibrėžtas kaip matų atrinkimo rezultatų variacijos dėl mažų pakeitimo duomenų rinkinyje. Pekeitimai duomenų rinkinyje gali būti mėginių lygio (pvz. mėginiai pridedami arba atimami), matų lygio (pvz. pridedant matams triukšmo) ar abiejų lygių kombinacija.
 
-Matų atrinkimo metodų stabilumas yra vis daugiau dėmesio gaunanti tyrimų kryptis. Stabilumo aktualumas yra sąlygotas to, kad biologiniuose duomenyse galima daryti prielaidą, kad konkrečiai problemai yra aktualūs tik tam tikri matai. Todėl dalykinės srities ekspertams yra aktualu naudoti tuos matų atrinkimo metodus, kurie yra stabilūs ir susiję su modeliuojama problema, nes tai atpigina tolimesnę duomenų analizę. 
+Stabilių matų atrinkimo problematika yra populiarėjanti tyrimų kryptis. Stabilumo aktualumas yra sąlygotas fakto, kad biomedicininiuose duomenyse konkrečiai problemai yra aktualūs tik tam tikri matai. Todėl dalykinės srities ekspertams yra svarbu naudoti tuos matų atrinkimo metodus, kurie yra stabilūs ir susiję su modeliuojama problema, nes tai atpigina duomenų analizę. 
 
-Svarbu paminėti, kad matų stabilumas nėra matuojamas visiškai nepriklausomai -- jis yra matuojamas atsižvelgiant į klasifikavimo rezultatus. Matuoti stabilumą verta tada, kai atrinkti matai duoda gerus klasifikavimo rezultatus. Kitaip tariant, nėra naudingi tie matų atrinkimo metodai, kurie duoda labai stabilius rezultatus, bet jais remiantis atrinktais matais pavyksta sukurti tik atsitiktinius rezultatus duodančius klasifikatorius.
+Svarbu paminėti, kad matų stabilumas nėra matuojamas visiškai nepriklausomai -- jis yra matuojamas atsižvelgiant į klasifikavimo rezultatus. Matuoti stabilumą verta tada, kai atrinkami matai duoda gerus klasifikavimo rezultatus. Kitaip tariant, nėra naudingi tie matų atrinkimo metodai, kurie duoda labai stabilius rezultatus, bet jais remiantis atrinktais matais pavyksta sukurti tik atsitiktinius rezultatus duodančius klasifikatorius.
 
 \subsubsection{Stabilumo matavimas}
 
@@ -43,11 +197,11 @@ Vertinant matų atrinkimo metodų stabilumą yra svarbu kaip panašiai yra atren
 \begin{equation}
  S_{tot}=\frac{2\sum_{i=1}^{k-1}\sum_{j=i+1}^{k} S(f_i, f_j)}{k*(k-1)},
 \end{equation} 
-kur $k$ žymi kiek kartų buvo imtas skirtingas poaibis objektų matų atrinkimui,
+kur $k$ žymi kiek kartų buvo imtas skirtingas mėginių poaibis matų atrinkimui,
 $f_i$, $f_j$ -- matų atrinkimo rezultatas -- reitingai, 
 $S(f_i, f_j)$ -- yra aibių panašumo įvertinimo funkcija.
 
-Matų atrinkimo stabilumo įvertis priklauso nuo to, kokią aibių panašumo funkciją naudosime. Tradicinės panašumo funkcijos (persidengimo procentas, Pearson'o koreliacija, Spearman'o koreliacijoa) gali būti taikomos, bet jos yra linkusios priskirti didesnes panašumo reikšmes, kai pasirenkamas didesnis matų poaibis. Taip yra dėl padidėjusio sisteminio nuokrypio (ang. bias), nes imant didesnį poaibį padidėja tikimybė tiesiog atsitiktinai pasirinkti matą.
+Matų atrinkimo stabilumo įvertis priklauso nuo to, kokią aibių panašumo funkciją naudosime. Tradicinės panašumo funkcijos (persidengimo procentas, \textit{Pearson} koreliacija, \textit{Spearman} koreliacija) gali būti taikomos, bet jos yra linkusios priskirti didesnes panašumo reikšmes, kai pasirenkamas didesnis matų poaibis. Taip yra dėl padidėjusio sisteminio nuokrypio (ang. \textit{bias}), nes imant didesnį poaibį padidėja tikimybė tiesiog atsitiktinai pasirinkti matą.
 
 \subsubsection{\textit{Kuncheva} indexas}
 

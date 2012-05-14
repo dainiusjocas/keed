@@ -4,8 +4,8 @@
 \usepackage[lithuanian]{babel}
 \usepackage[L7x]{fontenc}
 \usepackage{lmodern}
-\usepackage{verbatim}
-\usepackage{tocloft} 
+\usepackage{verbatim} 
+\usepackage{tocloft}
 \usepackage{url}
 \usepackage{setspace}
 \usepackage{caption}
@@ -42,11 +42,11 @@
 \def \numberline#1{\savenumberline{#1.}}
 \setcounter{tocdepth}{5}
 \setcounter{secnumdepth}{5}
-\tableofcontents  
+\tableofcontents
 \newpage
 
 \addcontentsline{toc}{section}{{\c I}VADAS}
-%\input{ivadas}
+\input{ivadas}
 \newpage
 
 \input{darbu_apzvalga}
@@ -65,9 +65,10 @@
 \input{rezultatai_ir_isvados}
 
 
-\addcontentsline{toc}{section}{LITERATŪRA} 
+\addcontentsline{toc}{section}{ŠALTINIAI} 
 \bibliographystyle{alpha}
 \bibliography{literatura.bib}
 \newpage
+\input{savoku_apibrezimai}
 
 \end{document}

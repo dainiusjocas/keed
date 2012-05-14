@@ -1,6 +1,8 @@
 \section{PAGRINDINIAI MATŲ ATRINKIMO METODAI}
+\label{pagrindiniai_matu_atrinkimo_motodai}
 
-Dėl ,,daugiamatiškumo prakeiksmo`` (angl. \textit{the curse of dimentionality}) -- didėjant matų kiekiui mėginiai pasidaro panašūs, todėl bandymas juos klasifikuoti tolygus spėliojimui \cite{bellman1966adaptive}. Biomedicininių duomenų kontekste galima daryti prielaidą, kad ne visi matai yra susiję su tiriama problema, pvz. gaubtinės žarnos vėžiu, dėl to, kad duomenys yra daugiamačiai. Paprastai nagrinėjamai problemai svarbus yra mažas, palyginus su visu, matų kiekis. Todėl biomedicininių duomenų daugiamatiškumui sumažinti yra naudojami informatyviausių matų atrinkimo metodai \cite{guyon2003introduction} (angl. \textit{feature selection}). Matų atrinkimas yra svarbi biomedicininių duomenų apdorojimo (angl. \textit{preprocessing}) etapo dalis. Naudojant matų atrinkimo metodus, galima kovoti su daugiamatiškumo prakeiksmu matų skaičių priartinant prie mėginių skaičiaus. Todėl svarbu yra pasirinkti geriausiai tinkančią matų atrinkimo strategiją. Kadangi ir pačių matų atrinkimo metodų veikimas priklauso nuo konkrečių duomenų, tai metodo pasirinkimas yra sudėtinga užduotis.
+Dėl ,,daugiamatiškumo prakeiksmo`` (angl. \textit{the curse of dimentionality}) -- didėjant matų kiekiui mėginiai pasidaro panašūs, todėl bandymas juos klasifikuoti tolygus spėliojimui \cite{bellman1966adaptive}. Biomedicininių duomenų kontekste galima daryti prielaidą, kad ne visi matai yra susiję su tiriama problema, pvz. gaubtinės žarnos vėžiu, dėl to, kad duomenys yra daugiamačiai. Paprastai nagrinėjamai problemai svarbus yra mažas, palyginus su visu, matų kiekis. Todėl biomedicininių duomenų daugiamatiškumui sumažinti yra naudojami informatyviausių matų atrinkimo metodai \cite{guyon2003introduction} (angl. \textit{feature selection}). Matų atrinkimas yra svarbi biomedicininių duomenų apdorojimo (angl. \textit{preprocessing}) etapo dalis. Naudojant matų atrinkimo metodus, galima kovoti su daugiamatiškumo prakeiksmu matų skaičių priartinant prie mėginių skaičiaus. Todėl svarbu yra pasirinkti geriausiai tinkančią matų atrinkimo strategiją. Kadangi ir pačių matų atrinkimo metodų veikimas priklauso nuo 
+konkrečių duomenų, tai metodo pasirinkimas yra sudėtinga užduotis.
 
 Pagal tai, kaip matų atrinkimo metodai yra susiję su klasifikatoriumi, matų atrinkimo metodus galima skirstyti į tris kategorijas \cite{saeys2008robust}:
 \begin{enumerate}
@@ -131,15 +133,16 @@ Svoriais grįsto multikriterinio matų atrinkimo suliejimo pagal svorius algorit
  \caption{Svoriais grįstas multikriterinis suliejimas.}
  \label{fig:figure4}
 \end{figure}
+
 \begin{figure}[ht]
-\begin{minipage}[b]{0.5\linewidth}
+\begin{minipage}[b]{0.45\linewidth}
 \centering
 \includegraphics[width=1\textwidth]{images/boxplot_colon_all.png}
 \caption{Pavienių matų atrinkimo metodų nenormalizuotas svorių pasiskirstymas.}
 \label{fig:figure1}
 \end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[b]{0.5\linewidth}
+\hspace{0.2cm}
+\begin{minipage}[b]{0.45\linewidth}
 \centering
 \includegraphics[width=1\textwidth]{images/boxplot_colon_all_normalized.png}
 \caption{Pavienių matų atrinkimo metodų normalizuotas svorių pasiskirstymas.}
