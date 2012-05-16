@@ -1,6 +1,10 @@
 \addcontentsline{toc}{section}{SĄVOKŲ APIBRĖŽIMAI}
 \section*{SĄVOKŲ APIBRĖŽIMAI}
 
+Klasifikavimas --
+
+Klasifikatorius -- 
+
 Persimokymas (angl. \textit{overfitting}) -- reiškinys, kai klasifikavimo algoritmas per daug prisitaiko prie treniravimosi duomenų. Kitaip tariant, sukurtas klasifikatorius pasižymi aukštu klasifikavimo tikslumu dirbant su treniravimosi duomenimis, tačiau klasifikavimo tikslumas yra žemas dirbant su testiniais duomenimis.
 
 Genėjimas (klasifikavimo medžių)  (angl. \textit{pruning}) - technika, kuri iš klasifikavimo medžių pašalina mazgus, kurie turi salyginai mažą atskiriamąją galią.
@@ -11,12 +15,14 @@ Normalės vektorius - vektorius, kuris yra statmenas tiesei arba plokštumai.
 
 Triukšmas (angl. \textit{noise}) -- pašaliniai atsitiktiniai signalai, patekę į informaciją nešančių signalų srautą.
 
-Išimtis (angl. \textit{outlier}) -- mėginio mato skaitinė vertė $x$, kuri yra didesnė už $Q_3 + 1.5 * IQR$ arba mažesnė už $Q_1 - 1.5 * IQR$, kur $Q_i$ -- kvartilių vertės, $IQR$ -- skirtumas tarp trečiojo ir pirmojo kvartilių.
+Išimtis (angl. \textit{outlier}) -- obejektas, kuris savo skaitine daug didesnis arba daug mažesnis už imties vidurkį.
 
-Mašininis (kompiuterinis, sistemos\cite{martisiute08}) mokymasis (angl. \textit{machine learning}) -- tai mokslas siekiantis įgalinti kompiuterius atlikti tam tikrus darbus be išreikštinio programavimo.
+Mašininis mokymasis (angl. \textit{machine learning}) yra dirbtinio intelekto šaka, kurios tyrėjai siekia įgalinti kompiuterius tobulinti savo elgseną (mokytis) empirinių duomenų atžvilgiu.
 
-Atraminių vektorių klasifikatoriai (angl. support vector machines, SVM) -- mokymosi su mokytoju metodas, taikomas ir klasifikavime, ir regresinei analizei.\cite{bernataviciene08}
+Atraminių vektorių klasifikatoriai (angl. support vector machines, SVM) -- mokymosi su mokytoju metodas, taikomas ir klasifikavime, ir regresinei analizei.
 
-Regrèsija [lot. regressio –- grįžimas, traukimasis] -- tikimybių teorijoje ir mat. statistikoje – atsitiktinio dydžio vidurkio priklausomybės nuo kt. dydžio (kelių dydžių) išraiška \cite{tzz2010};
+Regresija [lot. regressio –- grįžimas, traukimasis] -- tikimybių teorijoje ir mat. statistikoje – atsitiktinio dydžio vidurkio priklausomybės nuo kt. dydžio (kelių dydžių) išraiška \cite{tzz2010}.
 
-Mokymosi duomenys (angl. \textit{training data}) -- duomenys, kurie yra paruošti naudoti algoritmams, kuries kurs modelius (pvz. klasifikatorius).
+Mokymosi duomenys (angl. \textit{training data}) -- duomenys, su kuriais dirbs mašininio mokymosi algoritmai.
+
+Testavimo duomenys (angl. \textit{testing data}) -- duomenys, kuriais bus validuojamas sukurtas klasifikatorius.

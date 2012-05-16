@@ -8,7 +8,7 @@ Pagal tai, kaip matų atrinkimo metodai yra susiję su klasifikatoriumi, matų a
 \begin{enumerate}
  \item Filtruojantys metodai (angl. \textit{filter methods}), pvz. \textit{Fisher} įvertis. Jie dirba tiesiogiai su duomenimis, o jų darbo rezultatas gali būti matų įvertinimas svoriais, matų reitingavimas ar tiesiog geriausių matų poaibis, kuriuo remiantis vėliau apmokomas klasifikatorius. Tokių metodų pagrindinis privalumas yra tai, kad jie yra greiti, tinka paskirstytų skaičiavimų aplinkoms ir nepriklausomi nuo klasifikavimo  metodo, tačiau remiantis atrinktaisiais matais nebūtinai bus sukurtas geriausias klasifikatorius.
  \item Prisitaikantieji metodai (angl. \textit{wrapper methods}). Pirma, apmokomas klasifikatorius su visais matais, antra, parenkamas matų poaibis ir apmokomas klasifikatorius. Po daugkartinio matų aibių įvertinimo pagal klasifikavimo rezultatus yra nusprendžiama, kuris matų poaibis yra labiausiai tinkamas klasifikavimui. Įterptinių metodų atveju matų atrinkimo procesas yra neatsiejamas nuo klasifikavimo proceso -- matai yra atrenkami pagal klasifikatoriaus darbo rezultatus. Prisitaikantieji metodai dažnai duoda geresnius rezultatus negu filtravimo metodai, bet yra reiklūs resursams.
- \item Įterptiniai metodai (angl. \textit{embedded methods}), pvz. AW-SVM\cite{vapnik2000nature}. Jie matų atrinkimui naudoja vidinius klasifikatoriaus duomenis (pvz. matų svoriai gauti pagal SVM). Šie metodai dažnai siūlo gerą santykį tarp klasifikavimo tikslumo ir skaičiavimų sudėtingumo.
+ \item Įterptiniai metodai (angl. \textit{embedded methods}), pvz. AW-SVM\cite{vapnik2000nature}. Jie matų atrinkimui naudoja vidinius klasifikatoriaus duomenis (pvz. matų svoriai gauti pagal atraminių vektorių klasifikatorius). Šie metodai dažnai siūlo gerą santykį tarp klasifikavimo tikslumo ir skaičiavimų sudėtingumo.
 \end{enumerate}
 
 Šiame skyriuje nagrinėsiu pagrindinius matų atsirinkimo metodus:
@@ -99,13 +99,13 @@ Jei trečiajame algoritmo žingsnyje iš matų aibės yra pašalinamas tik viena
 \section{STABILIŲ MATŲ ATRINKIMO METODAI}
 \label{stabiliu_matu_atrinkimo_metodai}
 
-Naudodami matų atrinkimo metodus, biomedicininius duomenis tiriantys mokslininkai susiduria su atrinktųjų matų aibės stabilumo problema - atrenkant matus pagal kitą mėginių poaibį, gaunamas kitas informatyviausių matų poaibis. Matų atrinkimo nestabilumas yra sąlygotas šių veiksnių:
+Naudodajant matų atrinkimo metodus, biomedicininius duomenis tiriantys mokslininkai susiduria su atrinktųjų matų aibės stabilumo problema - atrenkant matus pagal kitą mėginių poaibį, gaunamas kitas informatyviausių matų poaibis. Matų atrinkimo nestabilumas yra sąlygotas šių veiksnių:
 \begin{enumerate}
  \item Duomenys yra triukšmingi ir kai kurie matai gali būti palaikyti informatyviais dėl atsitiktinių priežasčių;
  \item Daugiamačiuose duomenyse tikėtina, kad dalis matų koreliuoja, todėl, kuris iš koreliuojančių matų bus pasirinktas, priklauso nuo to, kuriuos mėginius pasirinksime klasifikatoriaus apmokymui;
- \item Kiekvienas maatų atrinkimo algoritmas daro skirtingas prielaidas apie tai, kurie matai yra informatyvūs.
+ \item Kiekvienas matų atrinkimo algoritmas daro skirtingas prielaidas apie tai, kurie matai yra informatyvūs.
 \end{enumerate}
-Galime teigti, kad skirtingi metodai tiems patiems duomenims gali atrinkti skirtingus matus. Taip pat, suskaidžius turimus duomenis į atskiras persidengiančias aibes ir atrinkus tą patį kiekį matų tuo pačiu metodu, gaunamos skirtingos matų aibės. Be to, kuo triukšmingesni duomenys, kuo mažiau turima mėginių ir kuo daugiau yra matų, tuo ryškesnė yra ši problema \cite{loscalzo2009consensus}. 
+Skirtingi metodai tiems patiems duomenims gali atrinkti skirtingus matus. Taip pat, suskaidžius turimus duomenis į atskiras persidengiančias aibes ir atrinkus tą patį kiekį matų tuo pačiu metodu, gaunamos skirtingos matų aibės. Kuo triukšmingesni duomenys, kuo mažiau turima mėginių ir kuo daugiau yra matų, tuo ryškesnė yra ši problema \cite{loscalzo2009consensus}. 
 
 Vienas iš būdų didinti matų atrinkimo stabilumą yra naudoti multikriterinius matų atrinkimo metodus. Jų esmė yra panaudoti kelis matų atrinkimo metodus suliejant jų rezultatus į vieną bendrą rezultatą. Yra skiriamos trys priežastys, kodėl keletas agreguotų silpnų ir nestabilių matų atrinkimo metodų gali duoti stabilesnius matų atrinkimo rezultatus \cite{dietterich2000ensemble}:
 \begin{enumerate}
@@ -113,9 +113,9 @@ Vienas iš būdų didinti matų atrinkimo stabilumą yra naudoti multikriteriniu
  \item Atskiri matų atrinkimo metodai gali dirbti skirtinguose lokaliuose optimumuose, tuo tarpu agregavimas gali geriau reprezentuoti tikrąją  duomenis generuojančią funkciją;
  \item Tikroji duomenų funkcija negali būti reprezentuojama jokia hipoteze paskiro algoritmo hipotezių erdvėje ir agreguojant pavienių metodų rezultatus galima praplėsti hipotezių erdvę.
 \end{enumerate}
-Apibendrinant galima sakyti, kad suliejant keletą skirtingų matų atrinkimo metodų rezultatų suliejamos gerosios pavienių matų atrinkimo metodų savybės, taip bandant kompensuoti tų algoritmų silpnybes.
+Suliejant keletą skirtingų matų atrinkimo metodų rezultatų suliejamos gerosios pavienių matų atrinkimo metodų savybės, taip kompensuojant metodų silpnybes.
 
-Šiame skyriuje aptarsiu matų atrinkimo stabilumą didinančius metodus:
+Šiame skyriuje aptariama stabilumo matavimų problematika bei matų atrinkimo stabilumą didinantys metodus:
 \begin{enumerate}
  \item Svoriais grįstas multikriterinis suliejimas;
  \item Reitingais grįstas multikriterinis suliejimas;
@@ -123,6 +123,57 @@ Apibendrinant galima sakyti, kad suliejant keletą skirtingų matų atrinkimo me
  \item Multikriterinis rekursyvus matų eliminavimas;
  \item Konsensuso grupėmis grįstas stabilių matų atrinkimo metodas.
 \end{enumerate}
+
+\subsection{Matų atrinkimo stabilumas}
+
+Matų atrinkimo metodų stabilumas gali būti apibrėžtas kaip matų atrinkimo rezultatų variacijos dėl mažų pakeitimo duomenų rinkinyje. Pekeitimai duomenų rinkinyje gali būti mėginių lygio (pvz. mėginiai pridedami arba atimami), matų lygio (pvz. pridedant matams triukšmo) ar abiejų lygių kombinacija.
+
+Stabilių matų atrinkimo problematika yra populiarėjanti tyrimų kryptis. Stabilumo aktualumas yra sąlygotas fakto, kad biomedicininiuose duomenyse konkrečiai problemai yra aktualūs tik tam tikri matai. Todėl dalykinės srities ekspertams yra svarbu naudoti tuos matų atrinkimo metodus, kurie yra stabilūs ir susiję su modeliuojama problema, nes tai atpigina duomenų analizę. 
+
+Svarbu paminėti, kad matų stabilumas nėra matuojamas visiškai nepriklausomai -- jis yra matuojamas atsižvelgiant į klasifikavimo rezultatus. Matuoti stabilumą verta tada, kai atrinkami matai duoda gerus klasifikavimo rezultatus. Kitaip tariant, nėra naudingi tie matų atrinkimo metodai, kurie duoda labai stabilius rezultatus, bet jais remiantis atrinktais matais pavyksta sukurti tik atsitiktinius rezultatus duodančius klasifikatorius.
+
+\subsubsection{Stabilumo matavimas}
+
+Vertinant matų atrinkimo metodų stabilumą yra svarbu kaip panašiai yra atrenkami matai, kai yra atliekamas matų atrinkimas su vis kitu mėginių ar matų poaibiu. Kuo mažiau skiriasi atrinktoji matų aibė darant pakeitimus duomenyse, tuo matų atrinkimo stabilumas yra didesnis. Vidutinis matų atrinkimo stabilumas gali būti apibrėžtas kaip vidurkis visų reitingavimo metu gautų sąrašų porų tarpusavio panašumo įverčių \cite{kalousis2007stability}:
+\begin{equation}
+ S_{tot}=\frac{2\sum_{i=1}^{k-1}\sum_{j=i+1}^{k} S(f_i, f_j)}{k*(k-1)},
+\end{equation} 
+kur $k$ žymi kiek kartų buvo imtas skirtingas mėginių poaibis matų atrinkimui,
+$f_i$, $f_j$ -- matų atrinkimo rezultatas -- reitingai, 
+$S(f_i, f_j)$ -- yra aibių panašumo įvertinimo funkcija.
+
+Matų atrinkimo stabilumo įvertis priklauso nuo to, kokią aibių panašumo funkciją naudosime. Tradicinės panašumo funkcijos (persidengimo procentas, \textit{Pearson} koreliacija, \textit{Spearman} koreliacija) gali būti taikomos, bet jos yra linkusios priskirti didesnes panašumo reikšmes, kai pasirenkamas didesnis matų poaibis. Taip yra dėl padidėjusio sisteminio nuokrypio (ang. \textit{bias}), nes imant didesnį poaibį padidėja tikimybė tiesiog atsitiktinai pasirinkti matą.
+
+\subsubsection{\textit{Kuncheva} indexas}
+
+\textit{Kuncheva} indexas \cite{DBLP:conf/aia/Kuncheva07} yra funkcija skirta matuoti aibių panašumui. Ši funkcija gerai tinka matuoti matų atrinkimo atabilumą, nes atsižvelgia į paimto matų poaibio dydį. \textit{Kuncheva} indeksas:
+\begin{equation}
+\label{kuncheva_index}
+ KI(f_i, f_j)=\frac{r*N - s^2}{s*(N-s)}=\frac{r - (s^2/N)}{s - (s^2/N)},
+\end{equation}		
+kur $s=|f_i|=|f_j|$ yra atrinktų matų aibės dydis, $r=|f_i \bigcap f_j|$ - abiems atrinktiems matų poaibiams bendrų matų skaičius, $N$ - bendras  duomenų aibės matų skaičius. Pastebėtina, kad formulėje esantis atėminys $s^2/N$ ištaiso sisteminį nuokrypį atsirandantį dėl galimybės atsitiktinai pasirinkti matus. 
+
+\textit{Kuncheva} indeksas gali įgyti reikšmes iš intervalo $[-1, 1]$, kur didesnė reikšmė reiškia didesnį panašumą, o artimos nuliui reikšmės reiškia, kad matai atrenkami daugiausia atsitiktinai. Kunchevos indekso ypatybė yra ta, kad jis atsižvelgia tik į persidengiančias, tačiau visiškai nekreipia dėmesio į koreliuojančius matus.
+
+\subsubsection{\textit{Jaccard} indeksas}
+
+Vienas paprasčiausi aibių panašumo įverčių yra \textit{Jaccard} indeksas \cite{jaccard1901etude}. \textit{Jaccard} indexas yra santykis tarp aibių sankirtos ir aibių sąjungos:
+\begin{equation}
+\label{jaccard_index}
+ JI(f_i, f_j)=\frac{|f_i \bigcap f_j|}{|f_i \cup f_j|}=\frac{\sum_{l}I(f_i^l=f_j^l=1)}{\sum_{l}I{f_i^l+f_j^l > 0)}}, 
+\end{equation}
+kur $f_i$ ir $f_j$ yra matų reitingai, $I(x)$ - funkcija grąžinanti 1, jei $x=TRUE$, ir 0 kitu atveju.
+
+\subsubsection{\textit{Hamming} atstumas}
+
+Informacijos teorijoje \textit{Hamming} atstumas \cite{hamming1950error} tarp dviejų vienodo ilgio vektorių yra apibrėžtas kaip pozicijų skaičius, kuriose esantys simboliai nesutampa. Kitaip tariant, \textit{Hamming} atstumas yra minimalus skaičius pakeitimų, kad vieną vektorių padarytume lygų kitam. 
+\begin{equation}
+\label{hamming_distance}
+ Hamming Distance(X, Y)= \sum_{i=1}^{n} (x_i \oplus y_i),
+\end{equation}
+kur $\oplus$ - sumos moduliu 2 arba XOR operacija.
+
+Šiuo metodu matuojant matų atrinkimo stabilumą, prieš atstumo matavimą reikia atlikti pertvarkymus. Pirma, iš atrinktų matų vektorių padaryti bendro matų skaičiaus ilgio binarinius vektorius. Antra, vienetukus sudėti tose vektoriaus elementuose, kurių indeksai gaunani matų atrinkimo metodu. Tada jau galima matuoti atstumą tarp dviejų matų atrinkimo rezultatų.
 
 \subsection{Svoriais grįstas multikriterinis suliejimas}
 
