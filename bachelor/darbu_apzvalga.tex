@@ -1,7 +1,7 @@
 \section{MAŠININIO MOKYMOSI APŽVALGA}
 \label{darbu_apzvalga}
 
-Mašininis mokymasis (angl. \textit{machine learning}) yra dirbtinio intelekto šaka, kurios tyrėjai siekia įgalinti kompiuterius tobulinti savo elgseną (mokytis) empirinių duomenų atžvilgiu \cite{duda2001pattern}. Pagal tai, kokie yra turimi empiriniai duomenys, mašininis mokymasis yra skirstomas į mokymąsi su mokytoju (angl. \textit{supervised learning}) ir mokymąsi be mokytojo (angl. \textit{unsupervised learning}). Toliau šiame skyriuje apžvelgiami mašininio mokymosi pagrindai: mokymasis su mokytoju, mokymasis be mokytojo, atraminių vektorių klasifikatoriai, \textit{Random Forest} klasifikatorius.
+Mašininis mokymasis (angl. \textit{machine learning}) yra dirbtinio intelekto šaka, kurios tyrėjai siekia įgalinti kompiuterius tobulinti savo elgseną (mokytis) empirinių duomenų atžvilgiu \cite{duda2001pattern}. Pagal tai, kokie yra turimi empiriniai duomenys, mašininis mokymasis yra skirstomas į mokymąsi su mokytoju (angl. \textit{supervised learning}) ir mokymąsi be mokytojo (angl. \textit{unsupervised learning}). Toliau šiame skyriuje apžvelgiami mašininio mokymosi teorijos pagrindai, kurie yra būtini analizuojant daugiamačius biomedicininius duomenis: mokymasis su mokytoju, mokymasis be mokytojo, atraminių vektorių klasifikatoriai, \textit{Random Forest} klasifikatorius.
 
 \subsection{Mokymasis su mokytoju}
 
@@ -38,9 +38,9 @@ Dirbant su biomedicininiais duomenimis tipinė užduotis yra pagal paciento mėg
 \end{figure}
 Klasifikavimą galima vertinti pagal:
 \begin{itemize}
- \item klasifikavimo tikslumą (angl. \textit{accuracy}) -- santykį tarp teisingai suklasifikuotų mėginių ir visų mėginių;
- \item klasifikavimo nuostolius (angl. \textit{error rate}) -- santykį tarp neteisingai suklasifikuotų mėginių ir visų mėginių;
- \item ROC (angl. \textit{receiver operating characteristic}, ROC) kreivę -- *****TODO***** abscisių ašyje tikimybės (angl. \textit{false positive}) įvykio, ordinačių ašyje (angl. \textit{true positive}) įvykio.
+ \item Klasifikavimo tikslumą (angl. \textit{accuracy}) -- santykį tarp teisingai suklasifikuotų mėginių ir visų mėginių;
+ \item Klasifikavimo nuostolius (angl. \textit{error rate}) -- santykį tarp neteisingai suklasifikuotų mėginių ir visų mėginių;
+ \item ROC (angl. \textit{receiver operating characteristic}, ROC) kreivę -- grafikas, rodantis klasifikatoriaus jautrumo ir specifiškumo (tiksliau, specifiškumo ir vieneto skirtumo) sąryšį. Grafiko abscisių ašyje atidedamos klasifikatoriaus specifiškumo (angl. \textit{false positive}) reikšmės, o ordinačių ašyje jautrumo (angl. \textit{true positive}) reikšmės.
 \end{itemize}
 
 \subsubsection{Regresinė analizė}
@@ -121,44 +121,58 @@ Hierarchinis klasterizavimas (angl. \textit{hierarchical clustering}) yra klaste
 
 \subsection{Kombinuotasis mokymasis}
 
-Kombinuotasis mokymasis (angl. \textit{ensemble learning}) - tai toks mašininis mokymasis, kai problemos sprendimui yra kombinuojami keli mašininio mokymos metodai. Pristatant kombinuotąjį mokymąsi bus kalbama apie klasifikavimą, tačiau principai yra pritaikomi ir kitiems mašininio mokymosi metodams, pvz. matų atrinkio uždaviniams. 
+Kombinuotasis mokymasis (angl. \textit{ensemble learning}) - tai toks mašininis mokymasis, kai problemos sprendimui yra kombinuojami keli mašininio mokymos metodai. Kombinuotojo mokymosi algoritmai turi sugebėti konstruoti pavieniu klasifikatorius ir kombinuoti tų klasifikatorių gautus rezultatus. Yra keletas kombinuotojo mokymosi metodų, kurių populiariausi yra \textit{bagging} \cite{breiman1996bagging}, \textit{boosting} \cite{schapire2003boosting}, \textit{stacking} \cite{wolpert1992stacked}, etc. Pristatant kombinuotąjį mokymąsi kalbama apie klasifikavimą, tačiau principai yra pritaikomi ir kitiems mašininio mokymosi metodams, pvz. matų atrinkio uždaviniams. 
 
-Kombinuotasis mokymasis pirmiausia yra naudojamas tam, kad pagerintų kuriamo klasifikatoriaus tikslumą arba sumažintų prasto klasifikatoriaus sukūrimo tikimybę. Prielaidos šiam teiginiui yra:
+Kombinuotasis mokymasis pirmiausia yra naudojamas tam, kad pagerintų kuriamo klasifikatoriaus tikslumą arba sumažintų prasto klasifikatoriaus sukūrimo tikimybę. Situacijos kada kombinuotojo mokymosi metodų taikymas pasiteisina \cite{polikar2006ensemble}:
 \begin{enumerate}
- \item 
+ \item Statistinis reikšmingumas -- imant keletos klasifikatorių vidutinį rezultatą, yra sumažinama rizika pasirinkti prastą klasifikatorių.
+ \item Dideli duomenų kiekiai -- kartais duomenų būna tiek, kad juos apdoroti vienam klasifikatoriui yra labai neefektyvu, o kombinuojant keletą klasifikatorių pasiekiamas geresnis efektyvumas.
+ \item Mažas skaičius mėginių -- daugelio klasifikatorių apmokymas su vis kitu mėginių poaibiu padeda tiksliau atspėti tikrąją duomenų funkciją.
+ \item Skaldyk ir valdyk -- kai kurie duomenys yra per sudėtingi, kad jie būtų išmokti vienu klasifikatoriumi. Tačiau kombinuojant keletą klasifikatorių galima išmokti net ir labai komplikuotus duomenis. 
 \end{enumerate}
-
-
 
 \subsection{Atraminių vektorių klasifikatoriai}
 
-Atraminių vektorių klasifikatoriai (angl. \textit{support vector machines}, SVM) - tai mašininio mokymosi algoritmas, kuris gali būti taikomas tiek klasifikavimui, tiek regresinei analizei. Šis algoritmas priskiriamas prie mokymosi su mokytoju algoritmų \cite{vapnik2000nature}.
+Atraminių vektorių klasifikatoriai (angl. \textit{support vector machines}, SVM) - tai mokymosi su mokytoju algoritmas, kuris gali būti taikomas tiek klasifikavimui, tiek regresinei analizei \cite{vapnik2000nature}. Atraminiais vektoriais (angl. \textit{support vectors}) yra vadinami abiejų klasių mėginiai esantys arčiausiai atskiriančiosios hiperplokštumos (angl. \textit{decision boundary}). Atraminių vektorių klasifikatorių algoritmo tikslas yra mėginių erdvėje orientuoti atskiriančiąją hiperplokštumą tokiu būdu, galimai pašalinant triukšmą bei išimtis (angl. \textit{outlier}), kad atstumas tarp jos ir atraminių vektorių būtų didžiausias \cite{cortes1995support}. 
 
-Atraminiai vektoriai (angl. \textit{support vectors}) yra mėginiai esantys arčiausiai atskiriančiosios hiperplokštumos (angl. \textit{decision boundary}). Atraminių vektorių klasifikatorių algoritmo tikslas yra mėginių erdvėje orientuoti atskiriančiąją hiperplokštumą tokiu būdu, galimai pašalinant triukšmą bei išimtis (angl. \textit{outlier}), kad atstumas tarp jos ir artimiausių objektų iš abiejų klasių būtų didžiausias \cite{cortes1995support}. Atskiriančiosios tiesės pavyzdys pavaizduotas \ref{fig:support_vector_machines} pav.
+\subsubsection{Tiesiškai atskiriami duomenys}
 
 Tarkime, kad turime $L$ mokymosi objektų, kurių kiekvienas objektas $x_i$ turi $D$ matų ir priklauso vienai iš dviejų klasių $y_i=-1$ arba $y_i=+1$. Taigi turime mokymosi duomenis, kurių pavidalas yra:
 \begin{equation}
  \{x_i, y_i\}, kur\; i=1..L, y_i \in \{-1,1\}, x \in \Re^D
 \end{equation}
-Tarkime, kad duomenys yra tiesiškai atskiriami. Tai reiškia, kad galima nupiešti tiesę grafe $x_1$ ir $x_2$, kuri atskiria dvi klases, kai $D=2$ ir hiperplokštumą grafuose $x_1, x_2,...x_D$, kai $D > 2$. Hiperplokštuma apibrėžta $w\cdot x_i + b = 0$, kur $w$ -- hiperplokštumos normalės vektorius, $\frac{b}{||w||}$ -- statmens einančio nuo hiperplokštumos iki koordinačių pradžios taško ilgis.
+Tarkime, kad duomenys yra tiesiškai atskiriami. Tai reiškia, kad galima nupiešti tiesę plokštumoje $x_1$ ir $x_2$, kuri atskiria dvi klases, kai $D=2$ ir hiperplokštumą erdvėje $x_1, x_2,...x_D$, kai $D > 2$. Atskiriančioji tiesė pavaizduota \ref{fig:support_vector_machines} pav. Hiperplokštuma apibrėžta $w\cdot x_i + b = 0$, kur $w$ -- hiperplokštumos normalės vektorius, $\frac{b}{||w||}$ -- statmens einančio nuo hiperplokštumos iki koordinačių pradžios taško ilgis (sisteminis nuokrypis (angl. \textit{bias})).
+\begin{figure}
+ \centering
+ \includegraphics[width=.7\textwidth]{images/support_vector_machines.jpg}
+ \caption{Atskiriančiosioji tiesė nubrėžta plokštumoje, kurioje pavaizduoti tiesiškai atskiriami duomenys.}
+ \label{fig:support_vector_machines}
+\end{figure}
 
  Taigi, atraminių vektorių klasifikatorių sukūrimas yra parametrų $w$ ir $b$ tenkinančių minėtas sąlygas radimas. Tai galima užrašyti tokia nelygybe:
 \begin{equation}
  \label{svm_separable}
  y_i(x_i \cdot w + b) - 1 > 0
 \end{equation}
-Jei abiejų klasių objektai nėra tiesiškai atskiriami, reikia ,,atpalaiduoti'' (\ref{svm_separable}) salygą įvedant parametrą $\xi_i$:
-\begin{equation}
- \label{svm_non_separable}
- y_i(x_i \cdot w + b) - 1 + \xi_i > 0, kur\; \xi_i \geq 0, \;  \forall_i,
-\end{equation}
-kur $\xi_i$ yra baudos dydis už neteisingai klasei priskirtą mėginį.
+
+\subsubsection{Tiesiškai neatskiriami duomenys}
+
+Kartais, kai duomenys yra tiesiškai neatskiriami, matų erdvės transformavimas gali padėti duomenis padaryti tiesiškai atskiriamais. Branduolio metodai transformuoja matų erdvę taip, kad jie tampa tiesiškai atskiriami \cite{aizerman1964theoretical}. Tokios transformacijos pavyzdys pateiktas \ref{fig:matu_erdves_transformavimas} pav.
 \begin{figure}
  \centering
- \includegraphics[width=.7\textwidth]{images/support_vector_machines.jpg}
- \caption{Hiperplokštuma nubrėžta per dvi tiesiškai atskiriamas klases.}
- \label{fig:support_vector_machines}
+ \includegraphics[width=.7\textwidth]{images/matu_erdves_transformavimas.png}
+ \caption{Tiesiškai neatskiriamos matų erdvės transformavimas į tiesiškai atskiriamą.}
+ \label{fig:matu_erdves_transformavimas}
 \end{figure}
+
+Išraiška
+\begin{equation}
+ \label{kernel}
+ K(X, Y) = \langle \phi(X)^T \cdot \phi(Y) \rangle
+\end{equation}
+yra vadinama branduoliu (angl. \textit{kernel}). Branduolio savybė, kai jį galima išreikšti funkcija nuo pradinių kintamųjų skaliarinės sandaugos, vadinama ,,branduolio gudrybe`` (angl. \textit{kernel trick}). ,,Branduolio gudrybė`` dažniausiai naudojama norint tiesinį metodą paversti netiesiniu. 
+
+Pavyzdžiui, branduolys yra $K(X, Y)=\langle X \cdot Y \rangle ^ 2$, o $\phi(x_1, x_2)=(x_1^2, \sqrt{2}x_1x_2, x_2^2)^2$ transformuoja matų erdvę iš $R^2$ į $R^3$. Turime mėginius $X=(x_1, x_2),\; Y=(y_1, y_2)$. Branduolį taikome mėginiams $K(X, Y) = \langle X \cdot Y \rangle ^ 2 = \langle x_1y_1 + x_2y_2\rangle ^ 2 = \langle x_1^2y_1^2 + 2x_1y_1x_2y_2 + x_2^2y_2^2 \rangle = \langle (x_1^2, \sqrt{2}x_1x_2, x_2^2) \cdot (y_1^2, \sqrt{2}y_1y_2, y_2^2) \rangle = \langle \phi(X) \cdot \phi(Y) \rangle ^ 2$
 
 Atraminių vektorių klasifikatorių algoritmo naudojimas dirbant su biomedicininiais duomenimis populiarus, nes jis demonstruoja gerus rezultatus, kai turima maža daugiamačių mokymosi duomenų aibė. 
 
@@ -173,10 +187,7 @@ Atraminių vektorių klasifikatorių algoritmo naudojimas dirbant su biomedicini
 
 \subsection{\textit{Random Forest} klasifikatorius}
 
-\textit{Random Forrest} klasifikatorius yra įrankis, kuris sukuria keletą klasifikavimo medžių (angl. \textit{decision tree}), kurie visi nepriklausomai klasifikuoja mėginius, ir daugumos balsavimo (angl. \textit{majority voting}) būdų yra skelbiamas galutinis klasifikavimo rezultatas \cite{breiman1984classification}. Toks daugelio klasifikatorių panaudojimas yra vadinamas kombinuotoju mokymusi (angl. \textit{ensemble learning}). 
-
-Kiekvienas klasifikavimo medis yra konstruojamas pagal procedūrą aprašytą algoritme nr. \ref{random_forest_algorithm}.
-
+\textit{Random Forrest} klasifikatorius yra kombinuotojo mokymosi algoritmas, kuris sukuria keletą klasifikavimo medžių (angl. \textit{decision tree}) \cite{DBLP:books/mk/HanK2000}, kurie  nepriklausomai klasifikuoja mėginius, ir daugumos balsavimo (angl. \textit{majority voting}) būdu yra skelbiamas galutinis klasifikavimo rezultatas \cite{breiman1984classification}. Kiekvienas klasifikavimo medis yra konstruojamas pagal algoritmą nr. \ref{random_forest_algorithm}.
 \begin{algorithm}
  \caption{\textit{Random Forest} klasifikavimo medžių konstravimas}
  \label{random_forest_algorithm}
@@ -184,11 +195,11 @@ Kiekvienas klasifikavimo medis yra konstruojamas pagal procedūrą aprašytą al
   \item Turimas $N$ mėginių, kurie turi $M$ matų;
   \item Pasirenkamas $m$ matų, kurie bus naudojami klasifikavimo medžių kūrimui; $m << M$;
   \item Sudaroma treniravimosi mėginių aibė $n$ kartų pasirenkant mėginius su pasikartojimais iš visų $N$ mėginių. Visi nepasirinkti mėginiai paliekami klasifikatoriaus testavimui; 
-  \item Kiekvienam medžio mazgui atsitiktinai pasirinkama $m$ matų, kuries sudarys sąlygą tam mazgui. Randamas geriausia atskyrimo sąlyga treniravimos duomenims pagal tuos $m$ matų;
+  \item Kiekvienam medžio mazgui atsitiktinai pasirenkama $m$ matų, kuries sudarys sąlygą tam mazgui. Randamas geriausia atskyrimo sąlyga treniravimos duomenims pagal tuos $m$ matų;
   \item Pilnai užauginti medžiai nėra genėjami (angl. \textit{pruning}).
  \end{enumerate}
 \end{algorithm}
 
-\textit{Random forest} algoritmo tikslumas priklauso nuo: koreliacijos tarp sukurtų klasifikavimo medžių (didesnė koreliacija lemia mažesnį klasifikavimo tikslumą.); atskiro klasifikavimo medžio skiriamoji galia (kuo didesnė atskiro klasisifikavimo medžio skiriamoji galia, tuo geresnis klasifikavimo tikslumas).
+\textit{Random forest} algoritmo tikslumas priklauso nuo koreliacijos tarp sukurtų klasifikavimo medžių ir atskirų klasifikavimo medžių skiriamosios galios. Didesnė koreliacija lemia mažesnį klasifikavimo tikslumą, o kuo didesnė atskiro klasisifikavimo medžio skiriamoji galia, tuo geresnis klasifikavimo tikslumas.
 
 \textit{Randon forest} klasifikatoriai yra tikslūs, greiti, bei sugeba išvengti persimokymo (angl. \textit{overfitting}). Šios trys klasifikavimo algoritmo savybės yra labai svarbios dirbant su biomedicininiais duomenimis. 
