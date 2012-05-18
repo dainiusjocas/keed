@@ -121,15 +121,17 @@ Hierarchinis klasterizavimas (angl. \textit{hierarchical clustering}) yra klaste
 
 \subsection{Kombinuotasis mokymasis}
 
-Kombinuotasis mokymasis (angl. \textit{ensemble learning}) - tai toks mašininis mokymasis, kai problemos sprendimui yra kombinuojami keli mašininio mokymos metodai. Kombinuotojo mokymosi algoritmai turi sugebėti konstruoti pavieniu klasifikatorius ir kombinuoti tų klasifikatorių gautus rezultatus. Yra keletas kombinuotojo mokymosi metodų, kurių populiariausi yra \textit{bagging} \cite{breiman1996bagging}, \textit{boosting} \cite{schapire2003boosting}, \textit{stacking} \cite{wolpert1992stacked}, etc. Pristatant kombinuotąjį mokymąsi kalbama apie klasifikavimą, tačiau principai yra pritaikomi ir kitiems mašininio mokymosi metodams, pvz. matų atrinkio uždaviniams. 
+Kombinuotasis mokymasis (angl. \textit{ensemble learning}) - tai toks mašininis mokymasis, kai problemos sprendimui yra kombinuojami keli mašininio mokymos metodai. Kombinuotojo mokymosi algoritmai turi sugebėti konstruoti pavieniu klasifikatorius ir kombinuoti tų klasifikatorių gautus rezultatus. Yra keletas kombinuotojo mokymosi metodų, kurių populiariausi yra \textit{bagging} \cite{breiman1996bagging}, \textit{boosting} \cite{schapire2003boosting}, \textit{stacking} \cite{wolpert1992stacked}, etc. Pristatant kombinuotojo mokymosi principus naudojama klasifikatoriaus sąvoka, tačiau principai galioja ir kitiems mašininio mokymosi metodams, pvz. matų atrinkimui. 
 
-Kombinuotasis mokymasis pirmiausia yra naudojamas tam, kad pagerintų kuriamo klasifikatoriaus tikslumą arba sumažintų prasto klasifikatoriaus sukūrimo tikimybę. Situacijos kada kombinuotojo mokymosi metodų taikymas pasiteisina \cite{polikar2006ensemble}:
+Kombinuotasis mokymasis pirmiausia yra naudojamas tam, kad pagerintų kuriamo klasifikatoriaus tikslumą arba sumažintų prasto klasifikatoriaus sukūrimo tikimybę, nes dažniausiai nėra žinoma, kuris klasifikavimo algoritmas ir kokia jo konfigūracija geriausiai tinka nagrinėjamai problematikai. Tipinės situacijos, kai kombinuotojo mokymosi metodų taikymas pasiteisina \cite{polikar2006ensemble}:
 \begin{enumerate}
- \item Statistinis reikšmingumas -- imant keletos klasifikatorių vidutinį rezultatą, yra sumažinama rizika pasirinkti prastą klasifikatorių.
+ \item Statistinis reikšmingumas -- imant keletos klasifikatorių vidutinį rezultatą, yra sumažinama rizika pasirinkti netinkamą klasifikatorių.
  \item Dideli duomenų kiekiai -- kartais duomenų būna tiek, kad juos apdoroti vienam klasifikatoriui yra labai neefektyvu, o kombinuojant keletą klasifikatorių pasiekiamas geresnis efektyvumas.
- \item Mažas skaičius mėginių -- daugelio klasifikatorių apmokymas su vis kitu mėginių poaibiu padeda tiksliau atspėti tikrąją duomenų funkciją.
+ \item Mažas mėginių skaičius -- daugelio klasifikatorių apmokymas su vis kitu mėginių poaibiu padeda tiksliau nuspėti tikrąją duomenų funkciją.
  \item Skaldyk ir valdyk -- kai kurie duomenys yra per sudėtingi, kad jie būtų išmokti vienu klasifikatoriumi. Tačiau kombinuojant keletą klasifikatorių galima išmokti net ir labai komplikuotus duomenis. 
+ \item Duomenų suliejimas -- kartais duomenys gaunami iš keletos šaltinių, vienam klasifikatoriui apdoroti tokius duomenimis gali būti per sunku, todėl pasiteisina skirtingų klasifikatorių naudojimas atskiriems duomenų rinkiniams, kombinuojant jų rezultatus.
 \end{enumerate}
+Kombinuotasis mokymasis gali būti palygintas su keletos ekspertų apklausa, todėl kombinuotojo mokymosi metodų naudojimas sudėtingose problemose, pvz. darbas su biomedicininiais duomenimis, pasiteisina.
 
 \subsection{Atraminių vektorių klasifikatoriai}
 
