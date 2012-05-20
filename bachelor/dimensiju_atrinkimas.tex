@@ -1,41 +1,33 @@
 \section{PAGRINDINIAI MATŲ ATRINKIMO METODAI}
 \label{pagrindiniai_matu_atrinkimo_motodai}
 
-Dėl ,,daugiamatiškumo prakeiksmo`` (angl. \textit{the curse of dimentionality}) -- didėjant matų kiekiui mėginiai pasidaro panašūs, todėl bandymas juos klasifikuoti tolygus spėliojimui \cite{bellman1966adaptive}. Biomedicininių duomenų kontekste galima daryti prielaidą, kad ne visi matai yra susiję su tiriama problema, pvz. gaubtinės žarnos vėžiu, dėl to, kad duomenys yra daugiamačiai. Paprastai nagrinėjamai problemai svarbus yra mažas, palyginus su visu, matų kiekis. Todėl biomedicininių duomenų daugiamatiškumui sumažinti yra naudojami informatyviausių matų atrinkimo metodai \cite{guyon2003introduction} (angl. \textit{feature selection}). Matų atrinkimas yra svarbi biomedicininių duomenų apdorojimo (angl. \textit{preprocessing}) etapo dalis. Naudojant matų atrinkimo metodus, galima kovoti su daugiamatiškumo prakeiksmu matų skaičių priartinant prie mėginių skaičiaus. Todėl svarbu yra pasirinkti geriausiai tinkančią matų atrinkimo strategiją. Kadangi ir pačių matų atrinkimo metodų veikimas priklauso nuo 
-konkrečių duomenų, tai metodo pasirinkimas yra sudėtinga užduotis.
+Dėl ,,daugiamatiškumo prakeiksmo`` (angl. \textit{the curse of dimentionality}) didėjant matų kiekiui mėginiai pasidaro panašūs, todėl bandymas juos klasifikuoti tolygus spėliojimui \cite{bellman1966adaptive}. Biomedicininių duomenų kontekste galima daryti prielaidą, kad ne visi matai yra susiję su tiriama problema dėl to, kad duomenys yra daugiamačiai.
+%% DJ: Paprastai nagrinėjamai problemai svarbus yra mažas, palyginus su visu, matų kiekis. 
+Todėl biomedicininių duomenų daugiamatiškumui sumažinti yra naudojami informatyviausių matų atrinkimo metodai \cite{guyon2003introduction} (angl. \textit{feature selection}). Matų atrinkimas yra svarbi biomedicininių duomenų apdorojimo (angl. \textit{preprocessing}) etapo dalis. Naudojant matų atrinkimo metodus, galima kovoti su daugiamatiškumo prakeiksmu matų skaičių priartinant prie mėginių skaičiaus. Kadangi matų atrinkimo rezultatai priklauso nuo konkrečių duomenų, todėl svarbu yra pasirinkti tinkamiausią matų atrinkimo strategiją
 
 Pagal tai, kaip matų atrinkimo metodai yra susiję su klasifikatoriumi, matų atrinkimo metodus galima skirstyti į tris kategorijas \cite{saeys2008robust}:
-\begin{enumerate}
+\begin{itemize}
  \item Filtruojantys metodai (angl. \textit{filter methods}), pvz. \textit{Fisher} įvertis. Jie dirba tiesiogiai su duomenimis, o jų darbo rezultatas gali būti matų įvertinimas svoriais, matų reitingavimas ar tiesiog geriausių matų poaibis, kuriuo remiantis vėliau apmokomas klasifikatorius. Tokių metodų pagrindinis privalumas yra tai, kad jie yra greiti, tinka paskirstytų skaičiavimų aplinkoms ir nepriklausomi nuo klasifikavimo  metodo, tačiau remiantis atrinktaisiais matais nebūtinai bus sukurtas geriausias klasifikatorius.
- \item Prisitaikantieji metodai (angl. \textit{wrapper methods}). Pirma, apmokomas klasifikatorius su visais matais, antra, parenkamas matų poaibis ir apmokomas klasifikatorius. Po daugkartinio matų aibių įvertinimo pagal klasifikavimo rezultatus yra nusprendžiama, kuris matų poaibis yra labiausiai tinkamas klasifikavimui. Įterptinių metodų atveju matų atrinkimo procesas yra neatsiejamas nuo klasifikavimo proceso -- matai yra atrenkami pagal klasifikatoriaus darbo rezultatus. Prisitaikantieji metodai dažnai duoda geresnius rezultatus negu filtravimo metodai, bet yra reiklūs resursams.
+ \item Prisitaikantieji metodai (angl. \textit{wrapper methods}). Pirma, apmokomas klasifikatorius su visais matais, antra, parenkamas matų poaibis ir apmokomas klasifikatorius. Po daugkartinio matų poaibių įvertinimo pagal klasifikavimo rezultatus yra nusprendžiama, kuris matų poaibis yra labiausiai tinkamas klasifikavimui. Įterptinių metodų atveju matų atrinkimo procesas yra neatsiejamas nuo klasifikavimo proceso -- matai yra atrenkami pagal klasifikatoriaus darbo rezultatus. Prisitaikantieji metodai dažnai duoda geresnius rezultatus negu filtravimo metodai, bet yra reiklūs resursams.
  \item Įterptiniai metodai (angl. \textit{embedded methods}), pvz. AW-SVM\cite{vapnik2000nature}. Jie matų atrinkimui naudoja vidinius klasifikatoriaus duomenis (pvz. matų svoriai gauti pagal atraminių vektorių klasifikatorius). Šie metodai dažnai siūlo gerą santykį tarp klasifikavimo tikslumo ir skaičiavimų sudėtingumo.
-\end{enumerate}
+\end{itemize}
 
-Šiame skyriuje nagrinėsiu pagrindinius matų atsirinkimo metodus:
-\begin{enumerate}
- \item \textit{Fisher} įvertis (angl. \textit{Fisher ratio})\cite{Pavlidis:2001:GFC:369133.369228};
- \item \textit{Relief} metodas\cite{DBLP:journals/ml/Robnik-SikonjaK03};
- \item Asimetrinis priklausomybės koeficientas (angl. \textit{Asymmetric Dependency Coefficient, ADC}) \cite{Shannon:2001:MTC:584091.584093};
- \item Absoliučių svorių SVM (angl. \textit{Absolute Weight SVM}, AW-SVM) \cite{vapnik2000nature};
- \item Rekursyvus matų eliminavimas pagal SVM (SVM-RFE) (angl. \textit{Recursive Feature Elimination by SVM}) \cite{Guyon:2002:GSC:599613.599671}.
-\end{enumerate}
+Šiame skyriuje yra nagrinėjai pagrindiniai matų atrinkimo metodai: \textit{Fisher} įvertis, \textit{Relief} metodas, asimetrinis priklausomybės koeficientas, absoliučių svorių SVM, rekursyvus matų eliminavimas pagal SVM.
 
 \subsection{\textit{Fisher} įvertis}
 
-\textit{Fisher} įvertis vertina individualius matus pagal matų klasių atskiriamąją galią. Mato įvertis yra sudarytas iš tarpklasinio skirtumo santykio su vidiniu klasės pasiskirstymu:
+\textit{Fisher} įvertis (angl. \textit{Fisher ratio}) vertina individualius matus pagal matų klasių atskiriamąją galią \cite{Pavlidis:2001:GFC:369133.369228}. Mato įvertis yra sudarytas iš atskirų klasių vidurkių skirtumo santykio su klasių standartinių nuokrypių suma:
 \begin{equation}
  FR(j) = \frac{(\mu_{j1} - \mu_{j2})^2}{\sigma_{j1}^2 + \sigma_{j2}^2},
 \end{equation}
 kur, 
-$j$ -- yra mato indeksas, 
+$j$ -- mato indeksas, 
 $\mu_{jc}$ -- mato $j$ reikšmių vidurkis klasėje $c$, 
-$\sigma_{jc}^2$ -- mato $j$ reikšmių standartinis nuokrypis klasėje $c$, kur $c={1,2}$. Kuo didesnis yra \textit{Fisher} įvertis, tuo geriau ts matas atskiria klases. Nors ir paprastas, šis metodas neįvertina matų tarpusavio sąveikų.
+$\sigma_{jc}^2$ -- mato $j$ reikšmių standartinis nuokrypis klasėje $c$, kur $c={1,2}$. Kuo didesnis yra \textit{Fisher} įvertis, tuo geriau tas matas atskiria klases. Šis metodas neįvertina matų tarpusavio sąveikų.
 
 \subsection{\textit{Relief} metodas}
 
-\textit{Relief} metodas iteratyviai skaičiuoja matų ,,susietumą``. Pradžioje ,,susietumas`` visiems matams yra lygus nuliui. Kiekvienoje
-iteracijoje atsitiktinai pasirenkamas mėginys iš mėginių aibės, surandami artimiausi kaimynai iš tos pačios ir kitos grupių, ir atnaujinamos visų 
-matų ,,susietumo`` reikšmės. Dėl atsitiktinumo faktoriaus klasifikavimo ir  matų atrinkimo stabilumo rezultatai naudojant šį metodą varijuoja. Mato įvertis yra vidurkis visų objektų atstumų skirtumų iki artimiausių kaimynų iš kitos ir tos pačios klasių:
+\textit{Relief} metodas iteratyviai skaičiuoja matų ,,susietumą``. Pradžioje ,,susietumas`` visiems matams yra lygus nuliui. Kiekvienoje iteracijoje atsitiktinai pasirenkamas mėginys iš mėginių aibės, surandami artimiausi kaimynai iš tos pačios ir kitos klasių, ir atnaujinamos visų matų ,,susietumo`` reikšmės \cite{DBLP:journals/ml/Robnik-SikonjaK03}. Dėl atsitiktinumo faktoriaus klasifikavimo ir  matų atrinkimo stabilumo rezultatai naudojant šį metodą varijuoja. Mato įvertis yra vidurkis visų objektų atstumų skirtumų iki artimiausių kaimynų iš kitos ir tos pačios klasių:
 \begin{equation}
  W(j)=W(j) - \frac{diff(j, x, x_H)}{n} + \frac{diff(i, x, x_M)}{n},
 \end{equation}
@@ -43,21 +35,21 @@ kur
 $W(j)$ -- $j$-ojo mato ,,susietumo`` įvertis, 
 $n$ -- mėginių aibės dydis, 
 $x$ -- atsitiktinai pasirinktas mėginys, 
-$x_H$ - artimiausias $x$ kaimynas iš tos pačios grupės (angl. \textit{nearest-Hit}), 
-$x_M$ -- artimiausias $x$ kaimynas iš kitos grupės (angl. \textit{nearest-Miss}),
-$diff(j, x, x')$ -- $j$-ojo mato reikšmių skirtumas tarp atsitiktinai pasirinkto objekto $x$ ir atitinkamo jo kaimyno, kur skirtumą į intervalą $[0, 1]$ normalizuojanti funkcija yra:
+$x_H$ - artimiausias $x$ kaimynas iš tos pačios klasės (angl. \textit{nearest-Hit}), 
+$x_M$ -- artimiausias $x$ kaimynas iš kitos klasės (angl. \textit{nearest-Miss}),
+$diff(j, x, x')$ -- $j$-ojo mato reikšmių skirtumas tarp atsitiktinai pasirinkto mėginio $x$ ir atitinkamo jo kaimyno, kur skirtumą į intervalą $[0, 1]$ normalizuojanti funkcija yra:
 \begin{equation}
  diff(j, x, x')=\frac{|x_j- x_j'|}{x_{j_{max}} - x_{i_{min}}},
 \end{equation}
-kur $x_{j_{max}}$ ir $x_{j_{min}}$ yra maksimali ir minimali $j$-ojo matų reikšmės. ,,Susietumo`` reikšmių atnaujinimas yra vykdomas $n$ kartų ir kuo didesnė galutinė reikšmė, tuo svarbesnis matas. Šis algoritmas atsižvelgia į matų tarpusavio priklausomybes, nes mėginio artimiausias kaimynas yra ieškomas pagal visus mėginį apibūdinančius matus. Aprašyta algoritmo versija yra skirta dviejų klasių atvejui, tačiau yra ir multiklasinis algoritmo variantas \cite{DBLP:journals/ml/Robnik-SikonjaK03}.
+kur $x_{j_{max}}$ ir $x_{j_{min}}$ yra maksimali ir minimali $j$-ojo mato reikšmės. ,,Susietumo`` reikšmių atnaujinimas yra vykdomas $n$ kartų ir kuo didesnė galutinė reikšmė, tuo svarbesnis matas. Šis algoritmas atsižvelgia į matų tarpusavio priklausomybes, nes mėginio artimiausias kaimynas yra ieškomas pagal visus mėginį apibūdinančius matus. Aprašyta algoritmo versija yra skirta dviejų klasių atvejui, tačiau yra ir multiklasinis algoritmo variantas \cite{DBLP:journals/ml/Robnik-SikonjaK03}.
 
 \subsection{Asimetrinis priklausomybės koeficientas}
 
-Asimetrinis priklausomybės koeficientas (angl. \textit{asymetric dependency coefficient}, ADC) yra matų reitingavimo motodas, kuris matuoja mėginio grupės tikimybinę priklausomybę $j$-ajam matui, naudodamas informacijos prieaugį (angl. \textit{information gain}) \cite{kent1983information}:
+Asimetrinis priklausomybės koeficientas (angl. \textit{Asymetric Dependency Coefficient}, ADC) yra matų reitingavimo motodas, kuris matuoja mėginio klasės tikimybinę priklausomybę nuo $j$-ojo mato, naudodamas informacijos prieaugio metriką (angl. \textit{information gain}) \cite{Shannon:2001:MTC:584091.584093}:
 \begin{equation}
  ADC(Y, j) = \frac{MI(Y, X_j)}{H(Y)},
 \end{equation}
-kur $H(Y)$ -- klasės $Y$ entropija (angl. \textit{entropy}), o $MI(Y, X_j)$ -- yra tarpusavio informacija \cite{Shannon:2001:MTC:584091.584093} (angl. \textit{mutual information}) tarp mėginio grupės $Y$ ir $j$-ojo mato.
+kur $H(Y)$ -- klasės $Y$ entropija (angl. \textit{entropy}), o $MI(Y, X_j)$ -- yra tarpusavio informacija (angl. \textit{mutual information}) tarp mėginio klasės $Y$ ir $j$-ojo mato \cite{kent1983information}.
 \begin{equation}
  H(Y)=-\sum_y{p(Y=y)log{p(Y=y)}}, 
 \end{equation}
@@ -70,20 +62,20 @@ kur $H(Y)$ -- klasės $Y$ entropija (angl. \textit{entropy}), o $MI(Y, X_j)$ -- 
 \begin{equation}
  H(Y, X_j) = -\sum_{y,x_j}{p(y, x_j)log{p(y, x_j)}},
 \end{equation}
-Kuo didesni ADC įverčiai, tuo matas yra svarbesnis, nes turi daugiau informacijos apie mėginio priklausomybę grupei.
+Kuo didesni ADC įverčiai, tuo matas yra svarbesnis, nes turi daugiau informacijos apie mėginio priklausomybę klasei.
 
 \subsection{Absoliučių svorių SVM}
 
-Atraminių vektorių klasifikatorius (SVM) yra vienas populiariausių klasifikavimo algortimų, nes jis gerai susidoroja su daugiamačiais duomenimis \cite{guyon2002gene}. Yra keletas bazinių SVM variantų \cite{vapnik2000nature}, bet šiame darbe naudosime tiesinį SVM, nes jis demonstruoja gerus rezultatus analizuojant genų ekspresijos duomenimis. Tiesinis SVM yra hiperplokštuma apibrėžta kaip:
+Atraminių vektorių klasifikatoriai (SVM) yra vienas populiariausių klasifikavimo algortimų ir jis gerai susidoroja su daugiamačiais duomenimis \cite{guyon2002gene}. Yra keletas bazinių SVM variantų, bet šiame darbe naudosime tiesinį SVM, nes jis demonstruoja gerus rezultatus analizuojant genų ekspresijos duomenimis \cite{vapnik2000nature}. Tiesinis SVM yra hiperplokštuma apibrėžta kaip:
 \begin{equation}
  \sum_{j=1}^{p}{w_jx_j + b_0 = 0},
 \end{equation}
-kur $p$ -- matų kiekis, $w_j$ -- j-ojo mato svoris, $x_j$ -- j-ojo mato kintamasis, $b_0$ -- konstanta. Mato absoliutus svoris $w_j$ gali būti panaudotas
-matų reitingavimui. Svorį reikia imti absoliutaus dydžio, nes neigiamas svoris implikuoja priklausomybę vienai grupei, o teigiamas kitai grupei. Pastebėtina, kad svorių nustatymas yra atliekamas tik vieną kartą (SVM-RFE matų atrinkimo metodas svorius matams nustato daug kartų).
+kur $p$ -- matų kiekis, $w_j$ -- j-ojo mato svoris, $x_j$ -- j-ojo mato kintamasis, $b_0$ -- sisteminis nuokrypis. Mato absoliutus svoris $w_j$ gali būti panaudotas
+matų reitingavimui. Svorį reikia imti absoliutaus dydžio, nes neigiamas svoris implikuoja priklausomybę vienai grupei, o teigiamas kitai grupei. Todėl metodas ir vadinamas absoliučių svorių SVM (angl. \textit{Absolute Weight SVM}, AW-SVM). Pastebėtina, kad svorių nustatymas yra atliekamas tik vieną kartą (SVM-RFE matų atrinkimo metodas svorius matams nustato daug kartų).
 
 \subsection{Rekursyvus matų eliminavimas pagal SVM}
 
-Rekursyvus matų eliminavimas pagal SVM (angl. \textit{Support Vector Machines -- Recursive Feature Elimination}, SVM-RFE) yra vienas populiariausių matų atrinkimo algoritmų \cite{guyon2002gene}. Todėl, jis yra naudojamas kaip atskaitos taškas (angl. \textit{benchmark}) vertinant kitus matų atrankos metodus. Iš esmės šis metodas yra daugkartinis absoliučių svorių SVM metodo taikymas nuolat išmetinėjant matus su mažiausiais svoriais. Rekursyvus matų eliminavimas mums padeda surasti tinkamą matų poaibį, kas ne visada pavyksta su matų reitingavimo metodais. Bendroji rekursyvaus matų eliminavimo procedūra:
+Rekursyvus matų eliminavimas pagal SVM (angl. \textit{Support Vector Machines -- Recursive Feature Elimination}, SVM-RFE) yra vienas populiariausių matų atrinkimo algoritmų \cite{guyon2002gene}. Todėl, jis yra naudojamas kaip atskaitos taškas (angl. \textit{benchmark}) vertinant kitus matų atrankimo metodus. Iš esmės šis metodas yra daugkartinis absoliučių svorių SVM metodo taikymas nuolat išmetinėjant matus su mažiausiais svoriais. Rekursyvus matų eliminavimas mums padeda surasti tinkamą matų poaibį, kas ne visada pavyksta su matų reitingavimo metodais. Bendroji rekursyvaus matų eliminavimo procedūra:
 \begin{algorithm}
 \caption{Rekursyvus matų eliminavimas}
 \label{RFE}
@@ -94,47 +86,41 @@ Rekursyvus matų eliminavimas pagal SVM (angl. \textit{Support Vector Machines -
  \item Nustatome $i=i+1$ ir grįžtame į antrąjį žingsnį kol nėra patenkinta algoritmo pabaigos sąlyga.
 \end{enumerate}
 \end{algorithm}
-Jei trečiajame algoritmo žingsnyje iš matų aibės yra pašalinamas tik viena matas, tai gauname matų reitingavimą, o jei pašalinamas fiksuotas skaičius ar dalis (pvz. 50\%) matų, tai matų reitingavimo negauname. Pastebėtina, kad rekursyvus matų eliminavimas labai padidina algoritmo sudėtingumą. Algoritmo pabaigos sąlyga gali būti koks nors konkretus matų skaičius arba tiesiog matų aibę mažiname tol, kol matų visai nebeliks.
+Jei trečiajame algoritmo žingsnyje iš matų aibės yra pašalinamas tik viena matas, tai gaunamas matų reitingavimą, o jei pašalinamas fiksuotas skaičius ar dalis (pvz. 50\%) matų, tai matų reitingavimas negaunamas. Pastebėtina, kad rekursyvus matų eliminavimas labai padidina algoritmo sudėtingumą. Algoritmo pabaigos sąlyga gali būti koks nors konkretus matų skaičius arba tiesiog matų aibę mažinama tol, kol visi matai yra išmetami.
 
+\newpage
 \section{STABILIŲ MATŲ ATRINKIMO METODAI}
 \label{stabiliu_matu_atrinkimo_metodai}
 
-Naudodajant matų atrinkimo metodus, biomedicininius duomenis tiriantys mokslininkai susiduria su atrinktųjų matų aibės stabilumo problema - atrenkant matus pagal kitą mėginių poaibį, gaunamas kitas informatyviausių matų poaibis. Matų atrinkimo nestabilumas yra sąlygotas šių veiksnių:
+Naudodami matų atrinkimo metodus, biomedicininius duomenis tiriantys mokslininkai susiduria su atrinktųjų matų aibės stabilumo problema - atrenkant matus pagal kitą mėginių poaibį, gaunamas kitas informatyviausių matų poaibis. Matų atrinkimo nestabilumas yra sąlygotas šių veiksnių:
 \begin{enumerate}
  \item Duomenys yra triukšmingi ir kai kurie matai gali būti palaikyti informatyviais dėl atsitiktinių priežasčių;
- \item Daugiamačiuose duomenyse tikėtina, kad dalis matų koreliuoja, todėl, kuris iš koreliuojančių matų bus pasirinktas, priklauso nuo to, kuriuos mėginius pasirinksime klasifikatoriaus apmokymui;
+ \item Daugiamačiuose duomenyse dalis matų koreliuoja, todėl, kuris iš koreliuojančių matų bus pasirinktas, priklauso nuo to, kuriuos mėginius pasirinksime klasifikatoriaus apmokymui;
  \item Kiekvienas matų atrinkimo algoritmas daro skirtingas prielaidas apie tai, kurie matai yra informatyvūs.
 \end{enumerate}
 Skirtingi metodai tiems patiems duomenims gali atrinkti skirtingus matus. Taip pat, suskaidžius turimus duomenis į atskiras persidengiančias aibes ir atrinkus tą patį kiekį matų tuo pačiu metodu, gaunamos skirtingos matų aibės. Kuo triukšmingesni duomenys, kuo mažiau turima mėginių ir kuo daugiau yra matų, tuo ryškesnė yra ši problema \cite{loscalzo2009consensus}. 
 
 Vienas iš būdų didinti matų atrinkimo stabilumą yra naudoti multikriterinius matų atrinkimo metodus. Jų esmė yra panaudoti kelis matų atrinkimo metodus suliejant jų rezultatus į vieną bendrą rezultatą. Yra skiriamos trys priežastys, kodėl keletas agreguotų silpnų ir nestabilių matų atrinkimo metodų gali duoti stabilesnius matų atrinkimo rezultatus \cite{dietterich2000ensemble}:
 \begin{enumerate}
- \item Keletas skirtingų, bet vienodai optimalių hipotezių gali būti teisingos, ir kriterijų agregavimas sumažiną tikimybę, kad bus pasirinkta neteisinga  hipotezė;
+ \item Keletas skirtingų, bet vienodai optimalių hipotezių gali būti teisingos, ir kriterijų agregavimas sumažiną tikimybę, kad bus pasirinkta neteisinga hipotezė;
  \item Atskiri matų atrinkimo metodai gali dirbti skirtinguose lokaliuose optimumuose, tuo tarpu agregavimas gali geriau reprezentuoti tikrąją  duomenis generuojančią funkciją;
  \item Tikroji duomenų funkcija negali būti reprezentuojama jokia hipoteze paskiro algoritmo hipotezių erdvėje ir agreguojant pavienių metodų rezultatus galima praplėsti hipotezių erdvę.
 \end{enumerate}
 Suliejant keletą skirtingų matų atrinkimo metodų rezultatų suliejamos gerosios pavienių matų atrinkimo metodų savybės, taip kompensuojant metodų silpnybes.
 
-Šiame skyriuje aptariama stabilumo matavimų problematika bei matų atrinkimo stabilumą didinantys metodus:
-\begin{enumerate}
- \item Svoriais grįstas multikriterinis suliejimas;
- \item Reitingais grįstas multikriterinis suliejimas;
- \item Svoriais ir reitingais grįstas multikriterinis suliejimas;
- \item Multikriterinis rekursyvus matų eliminavimas;
- \item Konsensuso grupėmis grįstas stabilių matų atrinkimo metodas.
-\end{enumerate}
+Šiame skyriuje aptariama stabilumo matavimų problematika bei matų atrinkimo stabilumą didinantys metodai: svoriais grįstas multikriterinis suliejimas, reitingais grįstas multikriterinis suliejimas, svoriais ir reitingais grįstas multikriterinis suliejimas, multikriterinis rekursyvus matų eliminavimas, konsensuso grupėmis grįstas stabilių matų atrinkimo metodas.
 
 \subsection{Matų atrinkimo stabilumas}
 
 Matų atrinkimo metodų stabilumas gali būti apibrėžtas kaip matų atrinkimo rezultatų variacijos dėl mažų pakeitimo duomenų rinkinyje. Pekeitimai duomenų rinkinyje gali būti mėginių lygio (pvz. mėginiai pridedami arba atimami), matų lygio (pvz. pridedant matams triukšmo) ar abiejų lygių kombinacija.
 
-Stabilių matų atrinkimo problematika yra populiarėjanti tyrimų kryptis. Stabilumo aktualumas yra sąlygotas fakto, kad biomedicininiuose duomenyse konkrečiai problemai yra aktualūs tik tam tikri matai. Todėl dalykinės srities ekspertams yra svarbu naudoti tuos matų atrinkimo metodus, kurie yra stabilūs ir susiję su modeliuojama problema, nes tai atpigina duomenų analizę. 
+Stabilių matų atrinkimo problematika yra populiarėjanti tyrimų kryptis. Stabilumas aktualus, nes biomedicininiuose duomenyse konkrečiai problemai aktualūs yra tik tam tikri matai. Todėl dalykinės srities ekspertams yra svarbu naudoti tuos matų atrinkimo metodus, kurie atrenka stabilius ir susijusius su analizuojama problema matus. 
 
-Svarbu paminėti, kad matų stabilumas nėra matuojamas visiškai nepriklausomai -- jis yra matuojamas atsižvelgiant į klasifikavimo rezultatus. Matuoti stabilumą verta tada, kai atrinkami matai duoda gerus klasifikavimo rezultatus. Kitaip tariant, nėra naudingi tie matų atrinkimo metodai, kurie duoda labai stabilius rezultatus, bet jais remiantis atrinktais matais pavyksta sukurti tik atsitiktinius rezultatus duodančius klasifikatorius.
+Svarbu paminėti, kad matų stabilumas nėra matuojamas nepriklausomai -- jis yra matuojamas atsižvelgiant į klasifikavimo rezultatus. Matuoti stabilumą verta tada, kai pagal atrinktus matus sukuriamas tikslus klasifikatorius.
 
 \subsubsection{Stabilumo matavimas}
 
-Vertinant matų atrinkimo metodų stabilumą yra svarbu kaip panašiai yra atrenkami matai, kai yra atliekamas matų atrinkimas su vis kitu mėginių ar matų poaibiu. Kuo mažiau skiriasi atrinktoji matų aibė darant pakeitimus duomenyse, tuo matų atrinkimo stabilumas yra didesnis. Vidutinis matų atrinkimo stabilumas gali būti apibrėžtas kaip vidurkis visų reitingavimo metu gautų sąrašų porų tarpusavio panašumo įverčių \cite{kalousis2007stability}:
+Vertinant matų atrinkimo metodų stabilumą yra svarbu kaip panašiai yra atrenkami matai, kai yra atliekamas matų atrinkimas su vis kitu mėginių ar matų poaibiu. Kuo mažiau skiriasi atrinktoji matų aibė darant pakeitimus duomenyse, tuo matų atrinkimo stabilumas yra didesnis. Vidutinis matų atrinkimo stabilumas gali būti apibrėžtas kaip vidurkis visų reitingavimo metu gautų atrinktų matų poaibių porų tarpusavio panašumo įverčių \cite{kalousis2007stability}:
 \begin{equation}
  S_{tot}=\frac{2\sum_{i=1}^{k-1}\sum_{j=i+1}^{k} S(f_i, f_j)}{k*(k-1)},
 \end{equation} 
@@ -142,7 +128,7 @@ kur $k$ žymi kiek kartų buvo imtas skirtingas mėginių poaibis matų atrinkim
 $f_i$, $f_j$ -- matų atrinkimo rezultatas -- reitingai, 
 $S(f_i, f_j)$ -- yra aibių panašumo įvertinimo funkcija.
 
-Matų atrinkimo stabilumo įvertis priklauso nuo to, kokią aibių panašumo funkciją naudosime. Tradicinės panašumo funkcijos (persidengimo procentas, \textit{Pearson} koreliacija, \textit{Spearman} koreliacija) gali būti taikomos, bet jos yra linkusios priskirti didesnes panašumo reikšmes, kai pasirenkamas didesnis matų poaibis. Taip yra dėl padidėjusio sisteminio nuokrypio (ang. \textit{bias}), nes imant didesnį poaibį padidėja tikimybė tiesiog atsitiktinai pasirinkti matą.
+Matų atrinkimo stabilumo įvertis priklauso nuo to, kokią aibių panašumo funkciją naudosime. Tradicinės panašumo įvertinimo funkcijos (persidengimo procentas, \textit{Pearson} koreliacija, \textit{Spearman} koreliacija) yra linkusios priskirti didesnes panašumo reikšmes, kai pasirenkamas didesnis matų poaibis, nes imant didesnį matų poaibį padidėja tikimybė tiesiog atsitiktinai pasirinkti matą.
 
 \subsubsection{\textit{Kuncheva} indexas}
 
@@ -153,7 +139,7 @@ Matų atrinkimo stabilumo įvertis priklauso nuo to, kokią aibių panašumo fun
 \end{equation}		
 kur $s=|f_i|=|f_j|$ yra atrinktų matų aibės dydis, $r=|f_i \bigcap f_j|$ - abiems atrinktiems matų poaibiams bendrų matų skaičius, $N$ - bendras  duomenų aibės matų skaičius. Pastebėtina, kad formulėje esantis atėminys $s^2/N$ ištaiso sisteminį nuokrypį atsirandantį dėl galimybės atsitiktinai pasirinkti matus. 
 
-\textit{Kuncheva} indeksas gali įgyti reikšmes iš intervalo $[-1, 1]$, kur didesnė reikšmė reiškia didesnį panašumą, o artimos nuliui reikšmės reiškia, kad matai atrenkami daugiausia atsitiktinai. Kunchevos indekso ypatybė yra ta, kad jis atsižvelgia tik į persidengiančias, tačiau visiškai nekreipia dėmesio į koreliuojančius matus.
+\textit{Kuncheva} indeksas gali įgyti reikšmes iš intervalo $[-1, 1]$, kur didesnė reikšmė reiškia didesnį panašumą, o artimos nuliui reikšmės reiškia, kad matai atrenkami beveik atsitiktinai. Kunchevos indekso ypatybė yra ta, kad jis atsižvelgia tik į persidengiančius, tačiau visiškai nekreipia dėmesio į koreliuojančius matus.
 
 \subsubsection{\textit{Jaccard} indeksas}
 
@@ -173,7 +159,7 @@ Informacijos teorijoje \textit{Hamming} atstumas \cite{hamming1950error} tarp dv
 \end{equation}
 kur $\oplus$ - sumos moduliu 2 arba XOR operacija.
 
-Šiuo metodu matuojant matų atrinkimo stabilumą, prieš atstumo matavimą reikia atlikti pertvarkymus. Pirma, iš atrinktų matų vektorių padaryti bendro matų skaičiaus ilgio binarinius vektorius. Antra, vienetukus sudėti tose vektoriaus elementuose, kurių indeksai gaunani matų atrinkimo metodu. Tada jau galima matuoti atstumą tarp dviejų matų atrinkimo rezultatų.
+Šiuo metodu matuojant matų atrinkimo stabilumą, prieš atstumo matavimą reikia atlikti rezultatų pertvarkymą: pirma, iš atrinktų matų vektorių padaryti bendro matų skaičiaus ilgio binarinius vektorius; antra, vienetukus sudėti tose vektoriaus elementuose, kurių indeksai gaunani matų atrinkimo metodu. Tada jau galima matuoti atstumą tarp dviejų matų atrinkimo rezultatų.
 
 \subsection{Svoriais grįstas multikriterinis suliejimas}
 
@@ -201,7 +187,7 @@ Svoriais grįsto multikriterinio matų atrinkimo suliejimo pagal svorius algorit
 \end{minipage}
 \end{figure}
 
-Suliejant svorius svarbu yra užtikrinti, kad svoriai, gauti naudojant skirtingus bazinius kriterijus, būtų palyginami. Todėl svorių normalizavimas turi būti atliekamas prieš svorių kombinavimą. Kitu atveju matų įvertinimai bus nepalyginami. Paveikslėlyje ~\ref{fig:figure1} pav. nenormalizuotų pavienių matų vertinimo metodų skiriasi netgi suteiktų svorių intervalai. Paveikslėlyje ~\ref{fig:figure2} pav. matome, kad net ir normalizavus svorius skiriasi svorių kvartiliai -- į tai reikia atkreipti dėmesį interpretuojant galutinius matų vertinimo rezultatus. Šiame darbe svoriai yra normalizuoti intervale $[0, 1]$ pagal formulę:
+Suliejant svorius svarbu yra užtikrinti, kad svoriai, gauti naudojant skirtingus bazinius kriterijus, būtų palyginami. Todėl svorių normalizavimas turi būti atliekamas prieš svorių kombinavimą. Kitu atveju matų įvertinimai yra nepalyginami. Paveikslėlyje ~\ref{fig:figure1} pav. nenormalizuotų pavienių matų vertinimo metodų skiriasi suteiktų svorių intervalai. Paveikslėlyje ~\ref{fig:figure2} pav. matome, kad normalizavus matų svorius pastebskiriasi svorių kvartiliai -- į tai reikia atkreipti dėmesį interpretuojant galutinius matų vertinimo rezultatus. Svorių normalizavimas į intervalą $[0, 1]$ atliekamas pagal formulę:
 \begin{equation}
  u_i'=\frac{u_i - u_{i_{min}}}{u_{i_{max}} - u_{i_{min}}}, 
 \end{equation}
@@ -214,7 +200,7 @@ Sutarties svorių vektorius $u$ yra vidurkis normalizuotų svorių vektorių:
 \begin{equation}
  u = \frac{1}{m}\sum_{i=1}^m u_i',
 \end{equation}
-kur $m$ yra bazinių kriterijų skaičius. Reikia paminėti, kad didesnė svorio reikšmė reiškia, kad matas yra reikšmingesnis klasifikavimui.
+kur $m$ yra bazinių kriterijų skaičius. Didesnė svorio reikšmė reiškia, kad matas yra reikšmingesnis klasifikavimui.
 
 \subsection{Reitingais grįstas multikriterinis suliejimas}
 
@@ -228,7 +214,7 @@ pavaizduotas ~\ref{fig:figure5} pav.
 \end{figure}
 Suliejimo pagal reitingus metodas nereikalauja matų atrinkimo metodų rezultatų normalizavimo, todėl galima matams priskirtus reitingus kombinuoti iškart. Skirtingai nei suliejimo pagal svorius algoritme, baziniai matų atrinkimo kriterijai turi gražinti matų reitingus, o ne svorius.
 
-Matų reitingų kombinavimui yra keletas metodų\cite{dwork2001rank}, tačiau paprastumo dėlei šiame darbe naudosiu Borda balsavimą\footnote{Dar žinomas kaip ,,Pažymių metodas``. Jis buvo pasiūlytas prancūzų matematiko ir fiziko Jean-Charles de Borda 1770 metais.} (angl.\textit{ Borda count}). Tarkime, kad turime $m$ basuotojų ir $p$ kandidatų aibę. Tada Borda balsavimo metodas kiekvienam $i$-ajam balsuotojui sukuria balsų vektorių $v_i$ tokiu būdu: geriausiai įvertintam kandidatui suteikiama $p$ taškų, antrajam kandidatui $p-1$, ir t.t. Galutiniai taškai yra gaunami sudedant visų balsuotojų taškus
+Matų reitingų kombinavimui yra keletas metodų\cite{dwork2001rank}, tačiau dėl paprastumo naudojamas Borda balsavimas\footnote{Dar žinomas kaip ,,Pažymių metodas``. Jis buvo pasiūlytas prancūzų matematiko ir fiziko Jean-Charles de Borda 1770 metais.} (angl.\textit{ Borda count}). Tarkime, kad turime $m$ basuotojų ir $p$ kandidatų aibę. Tada Borda balsavimo metodas kiekvienam $i$-ajam balsuotojui sukuria balsų vektorių $v_i$ tokiu būdu: geriausiai įvertintam kandidatui suteikiama $p$ taškų, antrajam kandidatui $p-1$, ir t.t. Galutiniai taškai yra gaunami sudedant visų balsuotojų taškus
 \begin{equation}
  v = \sum_{i=1}^m v_i,
 \end{equation}
@@ -236,13 +222,12 @@ kur $v$ yra suminių taškų vektorius, o iš jo galime gauti ir galutinius mat�
 
 \subsection{Svoriais ir reitingais grįstas multikriterinis suliejimas}
 
-Svoriais ir reitingais grįsto multikriterinio suliejimo metodas nuo reitingais grįsto multikriterinio suliejimo metodo skiriasi tuo, kad kaip dar vienas matų reitingas yra panaudojamas svoriais grįsto multikriterinio matų atrinkimo metu gautas reitingas. Multikriterinio matų įverčių ir pagal svorius, ir pagal reitingus metodas vyksta trimis žingsniais:
+Svoriais ir reitingais grįsto multikriterinio suliejimo metodas nuo reitingais grįsto multikriterinio suliejimo metodo skiriasi tuo, kad kaip dar vienas matų reitingas yra panaudojamas svoriais grįsto multikriterinio matų atrinkimo metu gautas reitingas. Algoritmas pavaizduotas ~\ref{fig:figure3} pav. Multikriterinio matų įverčių pagal svorius ir pagal reitingus metodas atliekamas trimis etapais:
 \begin{enumerate}
   \item Gauname matų reitingus pagal $m$ pavienių matų atrinkimo motodų;
   \item Suliejame matų įverčius pagal svorius, taip gauname vieną matų reitingą;
   \item Reitinguojame matus pagal visus turimus $m+1$ pavienius reitingus.
 \end{enumerate} 
-Algoritmas yra pavaizduotas ~\ref{fig:figure3} pav.
 \begin{figure}
  \centering
  \includegraphics[width=1\textwidth]{images/score_and_ranking_based_fusion.pdf}
@@ -250,11 +235,11 @@ Algoritmas yra pavaizduotas ~\ref{fig:figure3} pav.
  \label{fig:figure3}
 \end{figure}
 
-Suliejami keletą mažai koreliuojančių matų reitingavimo metodų rezultatų, yra siekiama didesnio matų atrinkimo stabilumo, kai varijuoja treniravimosi duomenų poaibis (angl. \textit{subsampling}) \cite{yang2011robust}.
+Suliejant keletą mažai koreliuojančių matų reitingavimo metodų rezultatų, yra siekiama didesnio matų atrinkimo stabilumo, kai varijuoja treniravimosi duomenų poaibis (angl. \textit{subsampling}) \cite{yang2011robust}.
 
 \subsection{Multikriterinis rekursyvus matų eliminavimas}
 
-Jei matų atrinkimo tikslas yra pagerinti klasifikavimo rezultatus, tai taikymas multikriterinių matų atrinkimo metodų nebūtinai duos pageidaujamą rezultatą, nes yra pastebėta, kad vien matų reitingavimas nebūtinai suranda geriausią matų poaibį. Tam, kad būtų surastas geriausias matų poaibis reikia kombinuoti multikriterinį matų reitingavimą su matų paieškos strategija. Rekursyvus matų eliminavimas yra dažnai naudojama matų paieškos strategija matų atrinkimui. Todėl yra kombinuojamas multikriterinis matų reitingavimas ir rekursyvus matų eliminavimas.
+Jei matų atrinkimo tikslas yra pagerinti klasifikavimo rezultatus, tai taikant multikriterinius matų atrinkimo metodus nebūtinai surandamas geriausias matų poaibas. Tam, kad būtų surastas geriausias matų poaibis reikia kombinuoti multikriterinį matų reitingavimą su matų paieškos strategija. Rekursyvus matų eliminavimas yra dažnai naudojama matų paieškos strategija matų atrinkimui. Todėl yra kombinuojamas multikriterinis matų reitingavimas ir rekursyvus matų eliminavimas.
 
 Multikriterinis rekursyvus matų eliminavimas susideda iš dviejų dalių \cite{yang2011robust}: keletos matų atrinkimo kriterijų suliejimo pagal svorius ir pagal reitingus, ir rekursyvaus matų eliminavimo aprašyto algoritme nr. \ref{RFE}. Algoritmas pavaizduotas ~\ref{fig:figure6} pav.
 \begin{figure}
