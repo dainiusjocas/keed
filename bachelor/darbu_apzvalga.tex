@@ -135,7 +135,7 @@ Kombinuotasis mokymasis gali būti palygintas su keletos ekspertų apklausa, tod
 
 \subsection{Atraminių vektorių klasifikatoriai}
 
-Atraminių vektorių klasifikatoriai (angl. \textit{support vector machines}, SVM) - tai mokymosi su mokytoju algoritmas, kuris gali būti taikomas tiek klasifikavimui, tiek regresinei analizei \cite{vapnik2000nature}. Atraminiais vektoriais (angl. \textit{support vectors}) yra vadinami abiejų klasių mėginiai esantys arčiausiai atskiriančiosios hiperplokštumos (angl. \textit{decision boundary}). Atraminių vektorių klasifikatorių algoritmo tikslas yra mėginių erdvėje orientuoti atskiriančiąją hiperplokštumą tokiu būdu, galimai pašalinant triukšmą bei išimtis (angl. \textit{outlier}), kad atstumas tarp jos ir atraminių vektorių būtų didžiausias \cite{cortes1995support}. 
+Atraminių vektorių klasifikatoriai (angl. \textit{support vector machines}, SVM) - tai mokymosi su mokytoju algoritmas, kuris gali būti taikomas tiek klasifikavimui, tiek regresinei analizei \cite{vapnik2000nature}. Atraminiais vektoriais (angl. \textit{support vectors}) yra vadinami abiejų klasių mėginiai esantys arčiausiai atskiriančiosios hiperplokštumos (angl. \textit{decision boundary}). Atraminių vektorių klasifikatorių algoritmo tikslas yra mėginių erdvėje orientuoti atskiriančiąją hiperplokštumą, galimai pašalinant triukšmą bei išimtis (angl. \textit{outlier}), tokiu būdu, kad atstumas tarp jos ir atraminių vektorių būtų didžiausias \cite{cortes1995support}. 
 
 \subsubsection{Tiesiškai atskiriami duomenys}
 
@@ -143,7 +143,7 @@ Tarkime, kad turime $L$ mokymosi objektų, kurių kiekvienas objektas $x_i$ turi
 \begin{equation}
  \{x_i, y_i\}, kur\; i=1..L, y_i \in \{-1,1\}, x \in \Re^D
 \end{equation}
-Tarkime, kad duomenys yra tiesiškai atskiriami. Tai reiškia, kad galima nupiešti tiesę plokštumoje $x_1$ ir $x_2$, kuri atskiria dvi klases, kai $D=2$ ir hiperplokštumą erdvėje $x_1, x_2,...x_D$, kai $D > 2$. Atskiriančioji tiesė pavaizduota \ref{fig:support_vector_machines} pav. Hiperplokštuma apibrėžta $w\cdot x_i + b = 0$, kur $w$ -- hiperplokštumos normalės vektorius, $\frac{b}{||w||}$ -- statmens einančio nuo hiperplokštumos iki koordinačių pradžios taško ilgis (sisteminis nuokrypis (angl. \textit{bias})).
+Kai duomenys yra tiesiškai atskiriami, galima nupiešti tiesę plokštumoje $x_1$ ir $x_2$, kuri atskiria dvi klases, kai $D=2$ ir hiperplokštumą erdvėje $x_1, x_2,...x_D$, kai $D > 2$. Atskiriančioji tiesė pavaizduota \ref{fig:support_vector_machines} pav. Hiperplokštuma apibrėžta $w\cdot x_i + b = 0$, kur $w$ -- hiperplokštumos normalės vektorius, $\frac{b}{||w||}$ -- statmens einančio nuo hiperplokštumos iki koordinačių pradžios taško ilgis (sisteminis nuokrypis (angl. \textit{bias})).
 \begin{figure}
  \centering
  \includegraphics[width=.7\textwidth]{images/support_vector_machines.jpg}
@@ -194,11 +194,11 @@ Atraminių vektorių klasifikatorių algoritmo naudojimas dirbant su biomedicini
  \caption{\textit{Random Forest} klasifikavimo medžių konstravimas}
  \label{random_forest_algorithm}
  \begin{enumerate}
-  \item Turimas $N$ mėginių, kurie turi $M$ matų;
+  \item Turima $N$ mėginių, kurie turi $M$ matų;
   \item Pasirenkamas $m$ matų, kurie bus naudojami klasifikavimo medžių kūrimui; $m << M$;
-  \item Sudaroma treniravimosi mėginių aibė $n$ kartų pasirenkant mėginius su pasikartojimais iš visų $N$ mėginių. Visi nepasirinkti mėginiai paliekami klasifikatoriaus testavimui; 
+  \item Sudaroma treniravimosi mėginių aibė, $n$ kartų pasirenkant mėginius su pasikartojimais iš visų $N$ mėginių. Visi nepasirinkti mėginiai paliekami klasifikatoriaus testavimui; 
   \item Kiekvienam medžio mazgui atsitiktinai pasirenkama $m$ matų, kuries sudarys sąlygą tam mazgui. Randamas geriausia atskyrimo sąlyga treniravimos duomenims pagal tuos $m$ matų;
-  \item Pilnai užauginti medžiai nėra genėjami (angl. \textit{pruning}).
+  \item Pilnai užauginti medžiai nėra genėjami (angl. \textit{pruning}) taip stengiantis išlaikyti žemą sisteminį nuokrypį.
  \end{enumerate}
 \end{algorithm}
 
