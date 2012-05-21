@@ -79,11 +79,12 @@ Kai duomenys yra tiesiškai atskiriami, galima nupiešti tiesę plokštumoje $x_
  \label{fig:support_vector_machines}
 \end{figure}
 
- Taigi, atraminių vektorių klasifikatorių sukūrimas yra parametrų $w$ ir $b$, tenkinančių minėtas sąlygas, radimas. Klasifikatoriaus funkciją galima galima užrašyti šia nelygybe:
+ Taigi, atraminių vektorių klasifikatorių sukūrimas yra parametrų $w$ ir $b$, tenkinančių minėtas sąlygas, radimas. Klasifikavimo taisyklę $f$ testavimo duomenims $X$ apibrėžiama formule:
 \begin{equation}
  \label{svm_separable}
- y_i(x_i \cdot w + b) - 1 > 0
+ f(X) = sign(w^T X + b),
 \end{equation}
+kur $w^T$ yra transponuotas matų svorių vektorius.
 
 \paragraph{Tiesiškai neatskiriami duomenys}
 

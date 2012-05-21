@@ -1,7 +1,7 @@
 \section{EKSPERIMENTAI}
 \label{eksperimentai}
 
-Šiame skyriuje yra aprašyti daugiamačių duomenų klasifikavimo analizės metu atliktų eksperimentų rezultatai. Skyrius susideda iš eksperimentuose naudotų biomedicininių duomenų rinkinių aprašymo, eksperimentų nustatymų įvardinimo, matų atrinkimo metodų spartos matavimų įvertinimo, klasifikavimo tikslumo matavimų rezultatų pristatymo, bei stabilių matų atrinkimo rezultatų pristatymo. 
+Šiame skyriuje yra aprašyti eksperimentuose naudoti biomedicininių duomenų rinkiniai, įvardinti eksperimentų nustatymai, pateikti matų atrinkimo metodų spartos matavimai, pristatyti klasifikavimo tikslumo matavimai ir apžvelgti stabilių matų atrinkimo rezultatai. 
 
 \subsection{Eksperimentuose naudoti duomenys}
 \label{eksperimentuose_naudoti_duomenys}
@@ -70,7 +70,7 @@ Prostatos auglys
 &
 \cite{altara}
 &
-90 \newline (bp\footnote{bp (angl. \textit{Bipolar disorder}) - maniakine depresija sergantys pacientai.}:
+90 \newline (bp\footnote{bp (angl. \textit{Bipolar Disorder}) - maniakine depresija sergantys pacientai.}:
 sz\footnote{sz (angl. \textit{Schizophrenia}) - šizofrenija sergantys pacientai.}:
 cc\footnote{cc (angl. \textit{Control Crowd}) - kontrolinė grupė.} \newline =30:31:29)
 &
@@ -86,7 +86,7 @@ Mėginių rinkinius apibūdinantis dydis OMS (Objektų-Matų Santykis), kuris tu
 
 \subsection{Metodologija}
 
-Eksperimentuose buvo naudojami skyrelyje nr. \ref{eksperimentuose_naudoti_duomenys} aprašyti mėginių rinkiniai. Mėginių rinkiniai nebuvo atskirai normalizuojami, nes daryta prielaida, jog duomenys jau yra apdoroti. 
+Eksperimentuose buvo naudojami skyrelyje nr. \ref{eksperimentuose_naudoti_duomenys}. aprašyti mėginių rinkiniai. Mėginių rinkiniai nebuvo atskirai normalizuojami, nes daryta prielaida, jog duomenys jau yra apdoroti. 
 
 Klasifikavimui naudota atraminių vektorių klasifikatorių algoritmo R programavimo kalbos paketo ,,e1071`` implementacija. Naudotas tiesinis atraminių vektorių klasifikavimo algoritmas su parametro $C$ reikšme 0,01, kuri buvo nustatyta empiriškai.
 
@@ -96,12 +96,12 @@ Dėl to, kad turima mažai mėginių ir daug matų, klasifikavimas buvo kartojam
 
 \subsection{Matų atrinkimo metodų sparta}
 
-Matų atrinkimo metodų darbo laikas buvo palygintas naudojant vieną biomedicininių duomenų rinkinį - AltarA \cite{altara}. Skaičiavimai buvo atlikti kompiuteryje naudojant vieną procesoriaus branduolį veikiantį 2.66 GHz, bei 2 GB RAM atminties. ~\ref{fig:visu_laikas} pav. ir ~\ref{fig:cgs_laikas} pav. pavaizduota matų atrinkimo metodo darbo laiko priklausomybė nuo mėginius apibūdinančių matų skaičiaus. 
+Matų atrinkimo metodų darbo laikas buvo palygintas naudojant vieną biomedicininių duomenų rinkinį -- AltarA \cite{altara}. Skaičiavimai buvo atlikti kompiuteryje naudojant vieną procesoriaus branduolį veikiantį 2.66 GHz, bei 2 GB RAM atminties. \ref{fig:visu_laikas} pav. ir \ref{fig:cgs_laikas} pav. pavaizduota matų atrinkimo metodo darbo laiko priklausomybė nuo mėginius apibūdinančių matų skaičiaus. 
 \begin{figure}[hq]
 \begin{minipage}[b]{0.45\linewidth}
 \centering
 \includegraphics[width=1\textwidth]{images/all_performance.png}
- \caption{Pagrindini matų atrinkimo metodų darbo laikas.}
+ \caption{Pagrindinių matų atrinkimo metodų darbo laikas.}
  \label{fig:visu_laikas}
 \end{minipage}
 \hspace{0.2cm}
@@ -113,11 +113,12 @@ Matų atrinkimo metodų darbo laikas buvo palygintas naudojant vieną biomedicin
 \end{minipage}
 \end{figure}
 
-Matų atrinkimo metodų darbo laikas yra atvaizduotas dviem grafikais, nes pagal atliktų eksperimentų rezultatus buvo pastebėta, kad CGS matų atrinkimo metodas yra apie 1000 kartų lėtesnis už kitus suprogramuotus matų atrinkimo metodus, todėl viename grafike neįmanoma atvaizduoti visų turimų matų atrinkimo metodų. Pagal ~\ref{fig:visu_laikas} pav. galime daryti išvadą, kad sparčiausias matų atrinkimo metodas yra \textit{Fisher} įvertis. Pagal gautus matų darbo laiko priklausomybės nuo matų kiekio grafikus galime daryti išvadą, kad CGS algoritmas daugiamačių duomenų matų atrinkimui nėra tinkamas, nes jo skaičiavimų laikas yra per ilgas.
+Matų atrinkimo metodų darbo laikas yra atvaizduotas dviem grafikais, nes pagal atliktų eksperimentų rezultatus buvo pastebėta, kad CGS matų atrinkimo metodas yra apie 1000 kartų lėtesnis už kitus suprogramuotus matų atrinkimo metodus, todėl viename grafike neįmanoma atvaizduoti visų turimų matų atrinkimo metodų. Pagal \ref{fig:visu_laikas} pav. galime daryti išvadą, kad sparčiausias matų atrinkimo metodas yra \textit{Fisher} įvertis. Remiantis matų darbo laiko priklausomybės nuo matų kiekio grafikais galime daryti išvadą, kad CGS algoritmas daugiamačių duomenų matų atrinkimui nėra tinkamas, nes jo skaičiavimų laikas yra per ilgas.
 
 \subsection{Klasifikavimo pagal atrinktus matus tikslumas}
 
-Matų atrinkimo metodų įtaką klasifikavimo klasifikavimo tikslumui buvo matuojama naudojant tris biomedicininių duomenų rinkinius: Gaubtinės žarnos auglio (angl. Colon) \cite{alon1999broad}, Centrinės nervų sistemos (CNS) \cite{pomeroy2002prediction}, prostatos \cite{singh2002gene}. Klasifikavimui buvo naudojami tiesiniai atraminių vektorių klasifikatoriai (SVM) \cite{vapnik2000nature}, su parametru $C=0.01$, kurį nustačiau  empiriškai. Keičiant parametrus keičiasi ir klasifikavimo tikslumas. Klasifikatoriui apmokyti buvo naudojama 90\% atsitiktinai parinktų mėginių iš duomenų rinkinio. Likusiais 10\% mėginių buvo testuojamas klasifikatorius. Klasifikatorius buvo testuojamas po 300 kartų su įvairiu matų skaičiumi: nuo 10 iki 500. Klasifikavimo tikslumas pavaizduotas dviejų tipų grafikais: vidutinio klaidų procento priklausomybės nuo atrinktų matų skaičiaus, bei ROC kreivėmis, kurios buvo gautos pagal duomenis gautus klasifikuojant su tiek atrinktų matų su kiek klasifikavimo tikslumas buvo pats geriausias \cite{green1966signal}.
+Matų atrinkimo metodų įtaką klasifikavimo klasifikavimo tikslumui buvo matuojama naudojant tris biomedicininių duomenų rinkinius: gaubtinės žarnos auglio (angl. \textit{colon}), centrinės nervų sistemos (CNS), prostatos. Klasifikavimui buvo naudojami tiesiniai atraminių vektorių klasifikatoriai (SVM), su empiriškai nustatytu parametru $C=0.01$. Keičiant parametrus keičiasi ir klasifikavimo tikslumas.
+Klasifikatoriui apmokyti buvo naudojama 90\% atsitiktinai parinktų mėginių iš duomenų rinkinio. Likusiais 10\% mėginių buvo testuojamas klasifikatorius. Klasifikatorius buvo testuojamas po 300 kartų su įvairiu matų skaičiumi: nuo 10 iki 500. Klasifikavimo tikslumas pavaizduotas dviejų tipų grafikais: klasifikavimo nuostolio priklausomybės nuo atrinktų matų skaičiaus, bei ROC kreivėmis, kurios buvo apskaičiuotos pagal duomenis gautus klasifikuojant su tiek atrinktų matų, su kiek klasifikavimo tikslumas buvo pats geriausias \cite{green1966signal}.
 \begin{figure}[H]
 \begin{minipage}[b]{0.45\linewidth}
 \centering
@@ -161,16 +162,16 @@ Matų atrinkimo metodų įtaką klasifikavimo klasifikavimo tikslumui buvo matuo
 \label{fig:roc_prostate}
 \end{minipage}
 \end{figure}
-~\ref{fig:class_colon} pav. matome, kad gaubtinės žarnos auglio duomenų rinkinio matus geriausiai atrenka ADC metodas. Tik šiek tiek prasčiau pasirodo \textit{Fisher} įvertis. Blogiausiai su gaubtinės žarnos auglio mėginiais susidoroja absoliučių svorių SVM matų atrinkimo metodas.
+\ref{fig:class_colon} pav. matome, kad gaubtinės žarnos auglio duomenų rinkinio matus geriausiai atrenka ADC metodas. Tik šiek tiek prasčiau pasirodo \textit{Fisher} įvertis. Blogiausiai su gaubtinės žarnos auglio mėginiais susidoroja absoliučių svorių SVM matų atrinkimo metodas.
 
-Centrinės nervų sistemos duomenų rinkinys yra sunkiai klasifikuojamas, nes vidutinis klaidų skaičius yra apie 35\%, kai, pvz. gautinės žarnos auglio duomenų rinkinio vidutinis klaidų skaičius yra tik 15\%. ~\ref{fig:class_cns} pav. matome, kad šiam duomenų rinkiniui vidutiniškai geriausiai matus atrenka ADC ir multikriterinio rekursyvaus matų eliminavimo metodai. Prasčiausiai pasirodo \textit{Relief} metodas.
-~\ref{fig:class_prostate} pav. matome, kad prostatos duomenų rinkinio matus klasifikavimui geriausiai atrenka ADC absoliučių svorių SVM metodas. Prasčiausiai matus atrenka \textit{Relief}.
+Centrinės nervų sistemos duomenų rinkinys yra sunkiai klasifikuojamas, nes vidutinis klaidų skaičius yra apie 35\%, kai, pvz. gautinės žarnos auglio duomenų rinkinio vidutinis klaidų skaičius yra tik 15\%. \ref{fig:class_cns} pav. matome, kad šiam duomenų rinkiniui vidutiniškai geriausiai matus atrenka ADC ir multikriterinio rekursyvaus matų eliminavimo metodai. Prasčiausiai pasirodo \textit{Relief} metodas.
+\ref{fig:class_prostate} pav. parodyta, kad prostatos duomenų rinkinio matus klasifikavimui geriausiai atrenka ADC bei absoliučių svorių SVM metodas. Prasčiausiai matus atrenka \textit{Relief}.
 
 Apibendrindamas gautus klasifikavimo tikslumo matavimo rezultatus, galiu teigti, kad nėra vieno absoliučiai geriausio matų atrinkimo metodo. Reikia eksperimentuoti, kad būtų rastas konkrečiai problemai geriausiai tinkantis matų atrinkimo metodas. Tačiau rezultatai parodė, kad matų atrinkimas svariai prisideda prie geresnio klasifikatoriaus sukūrimo.
 
 \subsection{Matų atrinkimo stabilumas}
 
-Matų atrinkimo stabilumas buvo tiriamas naudojant tuos pačius biomedicininių duomenų rinkinius kaip ir tiriant klasifikavimo pagal atrinktus matus tikslumą. Matų atrinkimo stabilumas buvo matuojamas pagal \textit{Kuncheva} ir \textit{Jaccard} indeksus. Stabilumas pats savaime nėra svarbus, jis turi būti matuojamas atsižvelgiant į klasifikavimo tikslumą. Todėl šio skyrelio grafikus reikia nagrinėti atsižvelgiant į skyrelio, kuriame buvo nagrinėtas klasifikavimo pagal atrinktus matus tikslumas.
+Matų atrinkimo stabilumas buvo tiriamas naudojant tuos pačius biomedicininių duomenų rinkinius kaip ir tiriant klasifikavimo pagal atrinktus matus tikslumą. Matų atrinkimo stabilumas buvo matuojamas pagal \textit{Kuncheva} ir \textit{Jaccard} indeksus. Stabilumas pats savaime nėra svarbus, jis turi būti matuojamas atsižvelgiant į klasifikavimo tikslumą. Todėl šio poskyrio grafikus reikia nagrinėti atsižvelgiant į poskyrio, kuriame buvo nagrinėtas klasifikavimo pagal atrinktus matus tikslumas.
 
 \begin{figure}[H]
 \begin{minipage}[b]{0.47\linewidth}
@@ -215,8 +216,8 @@ Matų atrinkimo stabilumas buvo tiriamas naudojant tuos pačius biomedicininių 
 \label{fig:robj_prostate}
 \end{minipage}
 \end{figure}
-Pagal ~\ref{fig:robk_colon} pav. ir ~\ref{fig:robj_colon} pav. matome, kad gaubtinės žarnos auglio duomenų rinkinio matus stabiliausiai atrenka \textit{Fisher} įvertis. Mažiausiai stabiliai matus atrenka \textit{Relief} metodas.
+Pagal \ref{fig:robk_colon} pav. ir \ref{fig:robj_colon} pav. galima teigti, kad gaubtinės žarnos auglio duomenų rinkinio matus stabiliausiai atrenka \textit{Fisher} įvertis. Mažiausiai stabiliai matus atrenka \textit{Relief} metodas.
 
-Pagal ~\ref{fig:robk_prostate} pav. ir ~\ref{fig:robj_prostate} pav. matome, kad prostatos duomenų rinkinio matus stabiliausiai atrenka \textit{Fisher} įvertis. Mažiausiai stabiliai matus atrenka \textit{Relief} metodas.
+Pagal \ref{fig:robk_prostate} pav. ir \ref{fig:robj_prostate} pav. galima teigti, kad prostatos duomenų rinkinio matus stabiliausiai atrenka \textit{Fisher} įvertis. Mažiausiai stabiliai matus atrenka \textit{Relief} metodas.
 
-Apibendrindamas matų atrinkimo stabilumo matavimus galiu sakyti, kad matų atrinkimo stabilumas priklauso ne tik nuo matų atrinkimo metodo, bet ir nuo duomenų rinkinio, kurio matai yra atrinkinėjami. Lengvai klasifikuojamo prostatos duomenų rinkinio matų atrinkimo stabilumas vidutiniškai yra didesnis nei sunkiai klasifikuojamo CNS duomenų rinkinio. Eksperimentų rezultatai rodo, kad \textit{Relief} matų atrinkimo metodas yra nestabiliaus iš tirtųjų. Gana geru stabilumu pasižymi ADC metodas bei \textit{Fisher} įvertis.
+Apibendrinant matų atrinkimo stabilumo matavimus galima daryti išvadą, kad matų atrinkimo stabilumas priklauso ne tik nuo matų atrinkimo metodo, bet ir nuo duomenų rinkinio, kurio matai yra atrenkami. Lengvai klasifikuojamo prostatos duomenų rinkinio matų atrinkimo stabilumas vidutiniškai yra didesnis nei sunkiai klasifikuojamo CNS duomenų rinkinio. Eksperimentų rezultatai rodo, kad \textit{Relief} matų atrinkimo metodas yra nestabiliausias iš tirtųjų. Gana geru stabilumu pasižymi ADC metodas bei \textit{Fisher} įvertis.
