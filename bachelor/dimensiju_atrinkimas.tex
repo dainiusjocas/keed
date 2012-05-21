@@ -255,7 +255,7 @@ Nors SVM-RFE matų atrinkimo algoritmas ir yra labai populiarus, tačiau yra ži
 
 \subsection{Konsensuso grupėmis grįstas stabilių matų atrinkimo metodas}
 
-Konsensuso grupėmis grįstas stabilių matų atrinkimo metodas(angl. \textit{Consensus Group Stable feature selection}, CGS), pirma, identifikuoja panašių matų grupes, antra, pagal surastas grupes transformuoja matų aibę, trečia, transformuotoje matų aibėje atlieka matų atrinkimą \cite{loscalzo2009consensus}. Schematiškai šis algoritmas pavaizduotas ~\ref{fig:figure7} pav. 
+Konsensuso grupėmis grįstas stabilių matų atrinkimo metodas (angl. \textit{Consensus Group Stable feature selection}, CGS), pirma, identifikuoja tankias matų grupes, antra, pagal surastas grupes transformuoja matų aibę, trečia, transformuotoje matų aibėje atlieka matų atrinkimą \cite{loscalzo2009consensus}. Schematiškai šis algoritmas pavaizduotas ~\ref{fig:figure7} pav. 
 \begin{figure}
  \centering
  \includegraphics[width=\textwidth]{../bachelor/images/consensus_group_based_feature_selection_framework.pdf}
@@ -263,7 +263,7 @@ Konsensuso grupėmis grįstas stabilių matų atrinkimo metodas(angl. \textit{Co
  \label{fig:figure7}
 \end{figure}
 
-CGS metodo pagrindinė dalis yra panašių matų identifikavimas. Šio uždavinio sprendimui naudojamas \textit{Dense Group Finder} (DGF) algoritmas. DGF aprašytas algoritme nr. \ref{DGF}. CGS algoritme agal matai pagal DGF algoritmą yra sugrupuojami keletą kartų. Po pakartotinio grupavimo yra ieškoma stabilių grupių -- jei matas buvo sugrupuotas į konkrečią grupę daugiau nei pusėje grupavimų, tai matas ir priklausys tai konsensuso grupei. Matų aibės transformavimas vyksta iš kiekvienos konsensuso grupės išrenkant reprezentatyviausią matą -- konkretų matą esantį arčiausiai konsensuso grupės vidurkio. Išrinktieji reprezentatyviausieji matai ir sudaro transformuotą matų aibę. Transformuotoje matų aibėje vykdomas matų antrinkimas koriuo nors matų atrinkimo metodu $\Phi$, pavyzdžiui, \textit{Relief} matų atrinkimo metodu. 
+CGS metodo pagrindinė dalis yra tankių matų identifikavimas. Šio uždavinio sprendimui naudojamas \textit{Dense Group Finder} (DGF) algoritmas. DGF aprašytas algoritme nr. \ref{DGF}. CGS algoritme matai pagal DGF algoritmą yra sugrupuojami keletą kartų. Po pakartotinio grupavimo yra ieškoma stabilių grupių -- jei matas buvo sugrupuotas į konkrečią grupę daugiau nei pusėje grupavimų, tai matas ir priklausys tai konsensuso grupei. Matų aibės transformavimas vyksta iš kiekvienos konsensuso grupės išrenkant reprezentatyviausią matą -- konkretų matą esantį arčiausiai konsensuso grupės vidurkio. Išrinktieji reprezentatyviausieji matai ir sudaro transformuotą matų aibę. Transformuotoje matų aibėje vykdomas matų antrinkimas koriuo nors matų atrinkimo metodu $\Phi$, pavyzdžiui, \textit{Relief} matų atrinkimo metodu. 
 \begin{algorithm}
 \caption{DGF -- \textit{Dense Group Finder}}
 \label{DGF}
