@@ -98,16 +98,16 @@ Dėl to, kad turima mažai mėginių ir daug matų, klasifikavimas buvo kartojam
 
 Matų atrinkimo metodų darbo laikas buvo palygintas naudojant vieną biomedicininių duomenų rinkinį -- AltarA \cite{altara}. Skaičiavimai buvo atlikti kompiuteryje naudojant vieną procesoriaus branduolį veikiantį 2.66 GHz, bei 2 GB RAM atminties. \ref{fig:visu_laikas} pav. ir \ref{fig:cgs_laikas} pav. pavaizduota matų atrinkimo metodo darbo laiko priklausomybė nuo mėginius apibūdinančių matų skaičiaus. 
 \begin{figure}[hq]
-\begin{minipage}[b]{0.45\linewidth}
+\begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=1\textwidth]{images/all_performance.png}
+\includegraphics[width=1\textwidth]{images/all_performance.pdf}
  \caption{Pagrindinių matų atrinkimo metodų darbo laikas.}
  \label{fig:visu_laikas}
 \end{minipage}
 \hspace{0.2cm}
-\begin{minipage}[b]{0.45\linewidth}
+\begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=1\textwidth]{images/cgs_performance.png}
+\includegraphics[width=1\textwidth]{images/cgs_performance.pdf}
  \caption{Konsensuso grupėmis grįsto matų atrinkimo metodo darbo laikas.}
  \label{fig:cgs_laikas}
 \end{minipage}
@@ -120,44 +120,44 @@ Matų atrinkimo metodų darbo laikas yra atvaizduotas dviem grafikais, nes pagal
 Matų atrinkimo metodų įtaką klasifikavimo klasifikavimo tikslumui buvo matuojama naudojant tris biomedicininių duomenų rinkinius: gaubtinės žarnos auglio (angl. \textit{colon}), centrinės nervų sistemos (CNS), prostatos. Klasifikavimui buvo naudojami tiesiniai atraminių vektorių klasifikatoriai (SVM), su empiriškai nustatytu parametru $C=0.01$. Keičiant parametrus keičiasi ir klasifikavimo tikslumas.
 Klasifikatoriui apmokyti buvo naudojama 90\% atsitiktinai parinktų mėginių iš duomenų rinkinio. Likusiais 10\% mėginių buvo testuojamas klasifikatorius. Klasifikatorius buvo testuojamas po 300 kartų su įvairiu matų skaičiumi: nuo 10 iki 500. Klasifikavimo tikslumas pavaizduotas dviejų tipų grafikais: klasifikavimo nuostolio priklausomybės nuo atrinktų matų skaičiaus, bei ROC kreivėmis, kurios buvo apskaičiuotos pagal duomenis gautus klasifikuojant su tiek atrinktų matų, su kiek klasifikavimo tikslumas buvo pats geriausias \cite{green1966signal}.
 \begin{figure}[H]
-\begin{minipage}[b]{0.45\linewidth}
+\begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.9\textwidth]{../bachelor/images/nncolon_classification.pdf}
+\includegraphics[width=0.9\textwidth]{../bachelor/images/nncolon_classification.pdf}
 \caption{Gaubtinės žarnos auglio meginių klasifikatorių tikslumas.}
 \label{fig:class_colon}
 \end{minipage}
 \hspace{0.2cm}
-\begin{minipage}[b]{0.45\linewidth}
+\begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.85\textwidth]{../bachelor/images/nncolon_roc.pdf}
+\includegraphics[width=0.9\textwidth]{../bachelor/images/nncolon_roc.pdf}
 \caption{Gaubtinės žarnos auglio mėginių klasifikatorių ROC kreivės.}
 \label{fig:roc_colon}
 \end{minipage}
 \hspace{0.2cm}
-\begin{minipage}[b]{0.47\linewidth}
+\begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.85\textwidth]{../bachelor/images/nncns_classification.pdf}
+\includegraphics[width=.9\textwidth]{../bachelor/images/nncns_classification.pdf}
 \caption{Centrinės nervų sistemos meginių klasifikatorių tikslumas.}
 \label{fig:class_cns}
 \end{minipage}
 \hspace{0.2cm}
 \begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.85\textwidth]{../bachelor/images/nncns_roc.pdf}
+\includegraphics[width=.9\textwidth]{../bachelor/images/nncns_roc.pdf}
 \caption{Centrinės nervų sistemos mėginių klasifikatorių ROC kreivės.}
 \label{fig:roc_cns}
 \end{minipage}
 \hspace{0.2cm}
 \begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.85\textwidth]{../bachelor/images/prostate_classification.pdf}
+\includegraphics[width=.9\textwidth]{../bachelor/images/prostate_classification.pdf}
 \caption{Prostatos meginių klasifikatorių tikslumas.}
 \label{fig:class_prostate}
 \end{minipage}
 \hspace{0.2cm}
 \begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.85\textwidth]{../bachelor/images/prostate_roc.pdf}
+\includegraphics[width=.9\textwidth]{../bachelor/images/prostate_roc.pdf}
 \caption{Prostatos mėginių klasifikatorių ROC kreivės.}
 \label{fig:roc_prostate}
 \end{minipage}
