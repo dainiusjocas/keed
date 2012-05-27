@@ -1,34 +1,29 @@
 \addcontentsline{toc}{section}{SĄVOKŲ APIBRĖŽIMAI}
 \section*{SĄVOKŲ APIBRĖŽIMAI}
+\label{savoku_apibrezimai}
 
-Klasifikavimas -- procesas, kurio metu sukonstruota funkcija pagal mėginių nepriklausomus kintamuosius nuspėjami priklausomi kintamieji.
-
-Klasifikacija -- objektų skirstymas į klases (skyrius, grupes) pagal bendrus požymius, matmenis.
+Klasifikavimas -- procesas, kurio metu sukonstruojama funkcija, kuri pagal mėginių nepriklausomus kintamuosius apskaičiuoja priklausomus kintamuosius.
 
 Klasifikatorius -- funkcija, kuri pagal mėginių nepriklausomus kintamuosius apskaičiuoja priklausomus kintamuosius.
 
-Jautrumas -- įvertis, kuris parodo testo/modelio gebėjimą dignozuoti susirgimą, jeigu asmuo iš tikrųjų serga (ligonis identifikuojamas ligoniu).
+Jautrumas (angl. \textit{sensitivity}) -- įvertis, kuris parodo testo/modelio gebėjimą dignozuoti susirgimą, jeigu asmuo iš tikrųjų serga (ligonis identifikuojamas ligoniu).
 
-specifiškumas -- įvertis, parodantis testo/modelio gebėjimą nustatyti, jog susirgimo nėra, kai jo iš tikrųjų nėra (sveikas identifikuojamas sveiku).
+Specifiškumas (angl. \textit{specificity}) -- įvertis, parodantis testo/modelio gebėjimą nustatyti, jog susirgimo nėra, kai jo iš tikrųjų nėra (sveikas identifikuojamas sveiku).
 
-Persimokymas (angl. \textit{overfitting}) -- reiškinys, kai klasifikavimo algoritmas per daug prisitaiko prie treniravimosi duomenų. Kitaip tariant, sukurtas klasifikatorius pasižymi aukštu klasifikavimo tikslumu dirbant su treniravimosi duomenimis, tačiau klasifikavimo tikslumas yra žemas dirbant su testiniais duomenimis.
+Persimokymas (angl. \textit{overfitting}) -- reiškinys, kai klasifikavimo algoritmas per daug prisitaiko prie treniravimosi duomenų. Sukurtas klasifikatorius pasižymi aukštu klasifikavimo tikslumu dirbant su treniravimosi duomenimis, tačiau klasifikavimo tikslumas yra žemas dirbant su testiniais duomenimis.
 
-Genėjimas (klasifikavimo medžių)  (angl. \textit{pruning}) - technika, kuri iš klasifikavimo medžių pašalina mazgus, kurie turi salyginai mažą atskiriamąją galią.
+Genėjimas (klasifikavimo medžių)  (angl. \textit{pruning}) - mazgų, kurie turi sąlyginai mažą atskiriamąją galią, pašalinimas iš klasifikavimo medžio.
 
 Hiperplokštuma (angl. \textit{hyperplane}) -- plokštumos generalizacija daugiamatėje erdvėje.
 
-Normalės vektorius - vektorius, kuris yra statmenas tiesei arba plokštumai.
-
 Triukšmas (angl. \textit{noise}) -- pašaliniai atsitiktiniai signalai, patekę į informaciją nešančių signalų srautą.
 
-Išimtis (angl. \textit{outlier}) -- obejektas, kuris savo skaitine daug didesnis arba daug mažesnis už imties vidurkį.
+Išimtis (angl. \textit{outlier}) -- objektas, kuris savo skaitine reikšme daug didesnis arba daug mažesnis už imties vidurkį.
 
-Mašininis mokymasis (angl. \textit{machine learning}) yra dirbtinio intelekto šaka, kurios tyrėjai siekia įgalinti kompiuterius tobulinti savo elgseną (mokytis) empirinių duomenų atžvilgiu.
+Mašininis mokymasis (angl. \textit{machine learning}) -- dirbtinio intelekto šaka, kurios tyrėjai siekia įgalinti kompiuterius tobulinti savo elgseną (mokytis) empirinių duomenų atžvilgiu.
 
-Atraminių vektorių klasifikatoriai (angl. support vector machines, SVM) -- mokymosi su mokytoju metodas, taikomas ir klasifikavime, ir regresinei analizei.
+Regresija (lot. \textit{regressio} -- grįžimas, traukimasis) -- tikimybių teorijoje ir mat. statistikoje -- atsitiktinio dydžio vidurkio priklausomybės nuo kt. dydžio (kelių dydžių) išraiška.
 
-Regresija [lot. regressio –- grįžimas, traukimasis] -- tikimybių teorijoje ir mat. statistikoje – atsitiktinio dydžio vidurkio priklausomybės nuo kt. dydžio (kelių dydžių) išraiška \cite{tzz2010}.
-
-Mokymosi duomenys (angl. \textit{training data}) -- duomenys, su kuriais dirbs mašininio mokymosi algoritmai.
+Mokymosi duomenys (angl. \textit{training data}) -- duomenys, pagal kuriuos yra kuriamas klasifikatorius.
 
 Testavimo duomenys (angl. \textit{testing data}) -- duomenys, kuriais bus validuojamas sukurtas klasifikatorius.

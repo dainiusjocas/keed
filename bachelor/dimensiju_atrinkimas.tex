@@ -100,11 +100,13 @@ Naudodami matų atrinkimo metodus, biomedicininius duomenis tiriantys mokslinink
 \end{enumerate}
 Skirtingi metodai tiems patiems duomenims gali atrinkti skirtingus matus. Taip pat, suskaidžius turimus duomenis į atskiras persidengiančias aibes ir atrinkus tą patį kiekį matų tuo pačiu metodu, gaunamos skirtingos matų aibės. Kuo triukšmingesni duomenys, kuo mažiau turima mėginių ir kuo daugiau yra matų, tuo ryškesnė yra ši problema \cite{loscalzo2009consensus}. 
 
-Vienas iš būdų didinti matų atrinkimo stabilumą yra naudoti multikriterinius matų atrinkimo metodus. Jų esmė yra panaudoti kelis matų atrinkimo metodus suliejant jų rezultatus į vieną bendrą rezultatą. Yra skiriamos trys priežastys, kodėl keletas agreguotų silpnų ir nestabilių matų atrinkimo metodų gali duoti stabilesnius matų atrinkimo rezultatus \cite{dietterich2000ensemble}:
+Stabilių matų atrinkimo problematika yra populiarėjanti tyrimų kryptis. Stabilumas aktualus, nes biomedicininiuose duomenyse konkrečiai problemai aktualūs yra tik tam tikri matai. Todėl dalykinės srities ekspertams yra svarbu naudoti tuos matų atrinkimo metodus, kurie atrenka stabilius ir susijusius su analizuojama problema matus. 
+
+Vienas iš būdų didinti matų atrinkimo stabilumą galėtų būti multikriterinių matų atrinkimo metodų naudojimas. Multikriterinių matų atrinkimo metodų esmė yra panaudoti kelis matų atrinkimo metodus suliejant jų rezultatus į vieną bendrą rezultatą. Yra skiriamos trys priežastys, kodėl keletas agreguotų silpnų ir nestabilių matų atrinkimo metodų gali duoti stabilesnius matų atrinkimo rezultatus \cite{dietterich2000ensemble}:
 \begin{enumerate}
- \item Keletas skirtingų, bet vienodai optimalių hipotezių gali būti teisingos, ir kriterijų agregavimas sumažiną tikimybę, kad bus pasirinkta neteisinga hipotezė;
- \item Atskiri matų atrinkimo metodai gali dirbti skirtinguose lokaliuose optimumuose, tuo tarpu agregavimas gali geriau reprezentuoti tikrąją  duomenis generuojančią funkciją;
- \item Tikroji duomenų funkcija negali būti reprezentuojama jokia hipoteze paskiro algoritmo hipotezių erdvėje ir agreguojant pavienių metodų rezultatus galima praplėsti hipotezių erdvę.
+ \item Keletas skirtingų, bet vienodai gerų hipotezių gali būti teisingos, todėl kriterijų kombinavimas sumažiną tikimybę, kad bus pasirinkta neteisinga hipotezė;
+ \item Atskiri matų atrinkimo metodai gali dirbti skirtinguose lokaliuose optimumuose, o kombinavimas gali geriau reprezentuoti tikrąją duomenis generuojančią funkciją;
+ \item Kombinuojant keletą kriterijų praplečiama galimų hipotezių erdvė. Todėl, jei pavieniai pagal pavienius kriterijus nerandama teisinga hipotezė, tai kombinuojant keletą kriterijų didėja tikimybė pasirinkti teisingą hipotezę.
 \end{enumerate}
 Suliejant keletą skirtingų matų atrinkimo metodų rezultatų suliejamos gerosios pavienių matų atrinkimo metodų savybės, taip kompensuojant metodų silpnybes.
 
@@ -114,11 +116,9 @@ Suliejant keletą skirtingų matų atrinkimo metodų rezultatų suliejamos geros
 
 Matų atrinkimo metodų stabilumas gali būti apibrėžtas kaip matų atrinkimo rezultatų variacijų lygis dėl mažų pakeitimų duomenų rinkinyje. Pekeitimai duomenų rinkinyje gali būti mėginių lygio (pvz. mėginiai pridedami arba atimami), matų lygio (pvz. pridedant matams triukšmo) ar abiejų lygių kombinacija.
 
-Stabilių matų atrinkimo problematika yra populiarėjanti tyrimų kryptis. Stabilumas aktualus, nes biomedicininiuose duomenyse konkrečiai problemai aktualūs yra tik tam tikri matai. Todėl dalykinės srities ekspertams yra svarbu naudoti tuos matų atrinkimo metodus, kurie atrenka stabilius ir susijusius su analizuojama problema matus. 
+Svarbu tai, kad matų stabilumas nėra matuojamas nepriklausomai -- jis yra matuojamas atsižvelgiant į klasifikavimo rezultatus. Matuoti stabilumą verta tada, kai pagal atrinktus matus sukuriamas tikslus klasifikatorius.
 
-Svarbu paminėti, kad matų stabilumas nėra matuojamas nepriklausomai -- jis yra matuojamas atsižvelgiant į klasifikavimo rezultatus. Matuoti stabilumą verta tada, kai pagal atrinktus matus sukuriamas tikslus klasifikatorius.
-
-\subsubsection{Stabilumo matavimas}
+\subsubsection{Stabilumo vertinimas}
 
 Vertinant matų atrinkimo metodų stabilumą yra svarbu kaip panašiai yra atrenkami matai, kai yra atliekamas matų atrinkimas su vis kitu mėginių ar matų poaibiu. Kuo mažiau skiriasi atrinktoji matų aibė darant pakeitimus duomenyse, tuo matų atrinkimo stabilumas yra didesnis. Vidutinis matų atrinkimo stabilumas gali būti apibrėžtas kaip vidurkis visų reitingavimo metu gautų atrinktų matų poaibių porų tarpusavio panašumo įverčių \cite{kalousis2007stability}:
 \begin{equation}
@@ -243,7 +243,7 @@ Suliejant keletą silpnai koreliuojančių matų reitingavimo metodų rezultatų
 Jei matų atrinkimo tikslas yra pagerinti klasifikavimo rezultatus, tai taikant multikriterinius matų atrinkimo metodus nebūtinai surandamas geriausias matų poaibis. Tam, kad būtų surastas geriausias matų poaibis reikia kombinuoti multikriterinį matų reitingavimą su matų paieškos strategija. Rekursyvus matų eliminavimas yra dažnai naudojama paieškos strategija matų atrinkimui. 
 %% DJ: Todėl yra kombinuojamas multikriterinis matų reitingavimas ir rekursyvus matų eliminavimas.
 
-Multikriterinis rekursyvus matų eliminavimas susideda iš dviejų dalių \cite{yang2011robust}: keletos matų atrinkimo kriterijų suliejimo pagal svorius ir pagal reitingus, ir rekursyvaus matų eliminavimo aprašyto algoritme nr. \ref{RFE}. Algoritmas pavaizduotas ~\ref{fig:figure6} pav.
+Multikriterinis rekursyvus matų eliminavimas (angl. \textit{Multicriterion Fusion Based Recursive Feature Elimination}, MCF-RFE) susideda iš dviejų dalių \cite{yang2011robust}: keletos matų atrinkimo kriterijų suliejimo pagal svorius ir pagal reitingus, ir rekursyvaus matų eliminavimo aprašyto algoritme nr. \ref{RFE}. Algoritmas pavaizduotas ~\ref{fig:figure6} pav.
 \begin{figure}
  \centering
  \includegraphics[width=0.7\textwidth]{images/mcf-rfe_procedure.pdf}

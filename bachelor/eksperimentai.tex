@@ -1,12 +1,16 @@
 \section{EKSPERIMENTAI}
 \label{eksperimentai}
 
-Šiame skyriuje yra aprašyti eksperimentuose naudoti biomedicininių duomenų rinkiniai, įvardinti eksperimentų nustatymai, pateikti matų atrinkimo metodų spartos matavimai, pristatyti klasifikavimo tikslumo matavimai ir apžvelgti stabilių matų atrinkimo rezultatai. 
+Šiame skyriuje yra aprašyti naudoti biomedicininių duomenų rinkiniai, atlikti eksperimentai, įvardinti eksperimentų nustatymai, pateikti matų atrinkimo metodų spartos matavimai, pristatyti klasifikavimo tikslumo matavimai ir apžvelgti stabilių matų atrinkimo rezultatai. Eksperimentais siekiama išsiaiškinti pavienių ir kombinuotų matų atrinkimo metodų įtaką klasifikavimui bei matų atrinkimo stabilumui.
 
 \subsection{Eksperimentuose naudoti duomenys}
 \label{eksperimentuose_naudoti_duomenys}
 
-Šiame darbe eksperimentai buvo atliekami su biomedicininiais viešai prieinamais genų ekspresijos mėginių rinkiniais. Informacija apie mėginių rinkinius pateikta \ref{table:datasets} lentelėje.
+Šiame darbe eksperimentai buvo atliekami su biomedicininiais viešai prieinamais genų ekspresijos mėginių rinkiniais. Informacija apie mėginių rinkinius pateikta \ref{table:datasets} lentelėje. 
+
+Mėginių rinkinius apibūdinantis dydis OMS (Objektų-Matų Santykis), kuris turimiems mėginių rinkiniams yra nuo 0,403\% iki 3,01\% procento, reiškia, kad turimi mėginiai turi šimtus kartų daugiau matų nei mėginių. Tai apsunkina duomenų tyrimo procesą ir gali sukelti persimokymo (angl. \textit{overfitting}) problemą.
+
+Šizofrenijos ir maniakinės depresijos mėginių rinkinys ypatingas tuo, kad jis turi tris klases. Šiame darbe nagrinėjamas tik dviejų klasių atvejis, todėl šizofrenija sergančių pacientų mėginiai nebuvo naudojami.
 \begin{longtable}{|p{4.5cm}|p{2cm}|p{3.5cm}|p{2.3cm}|p{2cm}|}
 \captionsetup{labelsep=period}
 \caption{Darbe naudoti mėginių rinkiniai\label{table:datasets}}\\
@@ -80,10 +84,6 @@ cc\footnote{cc (angl. \textit{Control Crowd}) - kontrolinė grupė.} \newline =3
 \hline
 \end{longtable}
 
-Mėginių rinkinius apibūdinantis dydis OMS (Objektų-Matų Santykis), kuris turimiems mėginių rinkiniams yra nuo 0,403\% iki 3,01\% procento, reiškia, kad turimi mėginiai turi šimtus kartų daugiau matų nei mėginių. Tai apsunkina duomenų tyrimo procesą ir gali sukelti persimokymo (angl. \textit{overfitting}) problemą.
-
-Šizofrenijos ir maniakinės depresijos mėginių rinkinys ypatingas tuo, kad jis turi tris klases. Šiame darbe nagrinėjamas tik dviejų klasių atvejis, todėl šizofrenija sergančių pacientų mėginiai nebuvo naudojami.
-
 \subsection{Metodologija}
 
 Eksperimentuose buvo naudojami skyrelyje nr. \ref{eksperimentuose_naudoti_duomenys}. aprašyti mėginių rinkiniai. Mėginių rinkiniai nebuvo atskirai normalizuojami, nes daryta prielaida, jog duomenys jau yra apdoroti. 
@@ -96,8 +96,8 @@ Dėl to, kad turima mažai mėginių ir daug matų, klasifikavimas buvo kartojam
 
 \subsection{Matų atrinkimo metodų sparta}
 
-Matų atrinkimo metodų darbo laikas buvo palygintas naudojant vieną biomedicininių duomenų rinkinį -- AltarA \cite{altara}. Skaičiavimai buvo atlikti kompiuteryje naudojant vieną procesoriaus branduolį veikiantį 2.66 GHz, bei 2 GB RAM atminties. \ref{fig:visu_laikas} pav. ir \ref{fig:cgs_laikas} pav. pavaizduota matų atrinkimo metodo darbo laiko priklausomybė nuo mėginius apibūdinančių matų skaičiaus. 
-\begin{figure}[hq]
+Matų atrinkimo metodų darbo laikas buvo palygintas naudojant vieną šizofrenijos ir maniakinės depresijos duomenų rinkinį \cite{altara}. Skaičiavimai buvo atlikti kompiuteryje naudojant vieną 2.66GHz spartos procesoriaus branduolį, bei 2 GB RAM atminties. \ref{fig:visu_laikas} pav. ir \ref{fig:cgs_laikas} pav. pavaizduota matų atrinkimo metodo darbo laiko priklausomybė nuo mėginius apibūdinančių matų skaičiaus. 
+\begin{figure}[ht]
 \begin{minipage}[b]{0.5\linewidth}
 \centering
 \includegraphics[width=1\textwidth]{images/all_performance.pdf}
@@ -120,6 +120,7 @@ Matų atrinkimo metodų darbo laikas yra atvaizduotas dviem grafikais, nes pagal
 Matų atrinkimo metodų įtaką klasifikavimo klasifikavimo tikslumui buvo matuojama naudojant tris biomedicininių duomenų rinkinius: gaubtinės žarnos auglio (angl. \textit{colon}), centrinės nervų sistemos (CNS), prostatos. Klasifikavimui buvo naudojami tiesiniai atraminių vektorių klasifikatoriai (SVM), su empiriškai nustatytu parametru $C=0.01$. Keičiant parametrus keičiasi ir klasifikavimo tikslumas.
 Klasifikatoriui apmokyti buvo naudojama 90\% atsitiktinai parinktų mėginių iš duomenų rinkinio. Likusiais 10\% mėginių buvo testuojamas klasifikatorius. Klasifikatorius buvo testuojamas po 300 kartų su įvairiu matų skaičiumi: nuo 10 iki 500. Klasifikavimo tikslumas pavaizduotas dviejų tipų grafikais: klasifikavimo nuostolio priklausomybės nuo atrinktų matų skaičiaus, bei ROC kreivėmis, kurios buvo apskaičiuotos pagal duomenis gautus klasifikuojant su tiek atrinktų matų, su kiek klasifikavimo tikslumas buvo pats geriausias \cite{green1966signal}.
 \begin{figure}[H]
+\label{visu_klasifikavimas}
 \begin{minipage}[b]{0.5\linewidth}
 \centering
 \includegraphics[width=0.9\textwidth]{../bachelor/images/nncolon_classification.pdf}
@@ -167,52 +168,55 @@ Klasifikatoriui apmokyti buvo naudojama 90\% atsitiktinai parinktų mėginių i�
 Centrinės nervų sistemos duomenų rinkinys yra sunkiai klasifikuojamas, nes vidutinis klaidų skaičius yra apie 35\%, kai, pvz. gautinės žarnos auglio duomenų rinkinio vidutinis klaidų skaičius yra tik 15\%. \ref{fig:class_cns} pav. matome, kad šiam duomenų rinkiniui vidutiniškai geriausiai matus atrenka ADC ir multikriterinio rekursyvaus matų eliminavimo metodai. Prasčiausiai pasirodo \textit{Relief} metodas.
 \ref{fig:class_prostate} pav. parodyta, kad prostatos duomenų rinkinio matus klasifikavimui geriausiai atrenka ADC bei absoliučių svorių SVM metodas. Prasčiausiai matus atrenka \textit{Relief}.
 
-Apibendrindamas gautus klasifikavimo tikslumo matavimo rezultatus, galiu teigti, kad nėra vieno absoliučiai geriausio matų atrinkimo metodo. Reikia eksperimentuoti, kad būtų rastas konkrečiai problemai geriausiai tinkantis matų atrinkimo metodas. Tačiau rezultatai parodė, kad matų atrinkimas svariai prisideda prie geresnio klasifikatoriaus sukūrimo.
+Klasifikavimo nuostolio grafikuose matoma, kad pagal kombinuotojo mokymosi algoritmą, multikriterinį rekursyvų matų eliminavimą (MCF-RFE), nėra sukuriamas geriausias klasifikatorius. Taip yra, nes MCF-RFE sudarytas iš atskirų matų atrinkimo metodų, kurių rezultatai varijuoja. Tačiau pagal MCF-RFE matų atrinkimo metodas pasirodo sąlyginai gerai, kai yra taikomas sunkiai klasifikuojamiems duomenims, pvz., CNS. Kadangi biomedicininiai duomenys dažniausiai yra sunkiai klasifikuojami, todėl MCF-RFE metodo taikymas tokiems duomenims yra prasmingas.
+
+Apibendrindamas gautus klasifikavimo tikslumo matavimo rezultatus, galiu teigti, kad nėra vieno absoliučiai geriausio matų atrinkimo metodo. Reikia eksperimentuoti, kad būtų rastas konkrečiai problemai geriausiai tinkantis matų atrinkimo metodas. Rezultatai parodė, kad matų atrinkimas svariai prisideda prie geresnio klasifikatoriaus sukūrimo.
 
 \subsection{Matų atrinkimo stabilumas}
 
 Matų atrinkimo stabilumas buvo tiriamas naudojant tuos pačius biomedicininių duomenų rinkinius kaip ir tiriant klasifikavimo pagal atrinktus matus tikslumą. Matų atrinkimo stabilumas buvo matuojamas pagal \textit{Kuncheva} ir \textit{Jaccard} indeksus. Stabilumas pats savaime nėra svarbus, jis turi būti matuojamas atsižvelgiant į klasifikavimo tikslumą. Todėl šio poskyrio grafikus reikia nagrinėti atsižvelgiant į poskyrio, kuriame buvo nagrinėtas klasifikavimo pagal atrinktus matus tikslumas.
 
 \begin{figure}[H]
+\label{visi_stabilumas}
 \begin{minipage}[b]{0.47\linewidth}
 \centering
 \includegraphics[width=.85\textwidth]{../bachelor/images/nncolon_robustness_kuncheva.pdf}
-\caption{Matų atrinkimo gaubtinės žarnos auglio mėginiams stabilumo grafikas pagal Kuncheva indeksą.}
+\caption{Matų atrinkimo gaubtinės žarnos auglio mėginiams stabilumo grafikas pagal \textit{Kuncheva} indeksą.}
 \label{fig:robk_colon}
 \end{minipage}
 \hspace{0.2cm}
 \begin{minipage}[b]{0.47\linewidth}
 \centering
 \includegraphics[width=.85\textwidth]{../bachelor/images/nncolon_robustness_jaccard.pdf}
-\caption{Matų atrinkimo gaubtinės žarnos auglio mėginiams stabilumo grafikas pagal Jaccard indeksą.}
+\caption{Matų atrinkimo gaubtinės žarnos auglio mėginiams stabilumo grafikas pagal \textit{Jaccard} indeksą.}
 \label{fig:robj_colon}
 \end{minipage}
 \hspace{0.2cm}
 \begin{minipage}[b]{0.47\linewidth}
 \centering
 \includegraphics[width=.85\textwidth]{../bachelor/images/nncns_robustness_kuncheva.pdf}
-\caption{Matų atrinkimo CNS mėginiams stabilumo grafikas pagal Kuncheva indeksą.}
+\caption{Matų atrinkimo CNS mėginiams stabilumo grafikas pagal \textit{Kuncheva} indeksą.}
 \label{fig:robk_cns}
 \end{minipage}
 \hspace{0.2cm}
 \begin{minipage}[b]{0.47\linewidth}
 \centering
 \includegraphics[width=.85\textwidth]{../bachelor/images/nncns_robustness_jaccard.pdf}
-\caption{Matų atrinkimo CNS mėginiams stabilumo grafikas pagal Jaccard indeksą.}
+\caption{Matų atrinkimo CNS mėginiams stabilumo grafikas pagal \textit{Jaccard} indeksą.}
 \label{fig:robj_cns}
 \end{minipage}
 \hspace{0.2cm}
 \begin{minipage}[b]{0.47\linewidth}
 \centering
 \includegraphics[width=.85\textwidth]{../bachelor/images/prostate_robustness_kuncheva.pdf}
-\caption{Matų atrinkimo prostatos mėginiams stabilumo grafikas pagal Kuncheva indeksą.}
+\caption{Matų atrinkimo prostatos mėginiams stabilumo grafikas pagal \textit{Kuncheva} indeksą.}
 \label{fig:robk_prostate}
 \end{minipage}
 \hspace{0.2cm}
 \begin{minipage}[b]{0.47\linewidth}
 \centering
 \includegraphics[width=.85\textwidth]{../bachelor/images/prostate_robustness_jaccard.pdf}
-\caption{Matų atrinkimo prostatos mėginiams stabilumo grafikas pagal Jaccard indeksą.}
+\caption{Matų atrinkimo prostatos mėginiams stabilumo grafikas pagal \textit{Jaccard} indeksą.}
 \label{fig:robj_prostate}
 \end{minipage}
 \end{figure}
@@ -220,4 +224,7 @@ Pagal \ref{fig:robk_colon} pav. ir \ref{fig:robj_colon} pav. galima teigti, kad 
 
 Pagal \ref{fig:robk_prostate} pav. ir \ref{fig:robj_prostate} pav. galima teigti, kad prostatos duomenų rinkinio matus stabiliausiai atrenka \textit{Fisher} įvertis. Mažiausiai stabiliai matus atrenka \textit{Relief} metodas.
 
+Multikriterinio rekursyvus matų eliminavimo metodas neatrenka stabilių matų, nors teoriškai šis metodas yra skirtas matų atrinkimo stabilumui padidinti. Taip yra, nes kombinuojami ne tik stabilesni, pvz. \textit{Fisher} ar ADC, metodai bet ir nestabilumu pasižymintys metodai, pvz., \textit{relief}. Todėl galutiniam rezultatui įtakos turi labai varijuojantys veiksniai, dėl kurių nukenčia stabilumas. MCF-RFE algoritmo stabilumą padidintų dar keletos matų atrinkimo metodų pridėjimas ar svorių suteikimas pavieniams matų atrinkimo metodams.
+
 Apibendrinant matų atrinkimo stabilumo matavimus galima daryti išvadą, kad matų atrinkimo stabilumas priklauso ne tik nuo matų atrinkimo metodo, bet ir nuo duomenų rinkinio, kurio matai yra atrenkami. Lengvai klasifikuojamo prostatos duomenų rinkinio matų atrinkimo stabilumas vidutiniškai yra didesnis nei sunkiai klasifikuojamo CNS duomenų rinkinio. Eksperimentų rezultatai rodo, kad \textit{Relief} matų atrinkimo metodas yra nestabiliausias iš tirtųjų. Gana geru stabilumu pasižymi ADC metodas bei \textit{Fisher} įvertis.
+

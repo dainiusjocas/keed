@@ -5,7 +5,7 @@ Mašininis mokymasis (angl. \textit{machine learning}) yra dirbtinio intelekto �
 
 Biomedicinos kontekste mašininiu mokymusi siekiama atrasti dėsningumus turimuose duomenyse ir išmokti juos panaudoti. Biomedicininius duomenis sudaro mėginių aibė apibūdinama daugeliu matų. Mėginiai priklauso kelioms grupėms (klasėms), pvz., sergančių ir kontrolinių pacientų grupėms. Mašininio mokymosi su mokytoju tikslas -- išmokti funkciją atskiriančią mėginius į grupes ir pritaikyti ją dar nematytiems mėginiams. Mokymosi be mokytojo tikslas -- nustatyti mėginių grupes pagal turimus duomenis.
 
- Toliau šiame skyriuje apžvelgiami mašininio mokymosi teorijos pagrindai, kurie yra būtini analizuojant daugiamačius biomedicininius duomenis: mokymasis su mokytoju, mokymasis be mokytojo, atraminių vektorių klasifikatoriai, \textit{Random Forest} klasifikatorius.
+Toliau šiame skyriuje apžvelgiami mašininio mokymosi teorijos pagrindai, kurie yra būtini analizuojant daugiamačius biomedicininius duomenis: mokymasis su mokytoju, mokymasis be mokytojo, atraminių vektorių klasifikatoriai, \textit{Random Forest} klasifikatorius.
 
 \subsection{Mokymasis su mokytoju}
 
@@ -88,11 +88,11 @@ kur $w^T$ yra transponuotas matų svorių vektorius.
 
 \paragraph{Tiesiškai neatskiriami duomenys}
 
-Kai duomenys yra tiesiškai neatskiriami, matų erdvės transformavimas gali padėti duomenis padaryti tiesiškai atskiriamais. Branduolio metodai (angl. \textit{kernel methods}) transformuoja matų erdvę taip, kad jie tampa tiesiškai atskiriami \cite{aizerman1964theoretical}. Tokios transformacijos pavyzdys pateiktas \ref{fig:matu_erdves_transformavimas} pav\footnote{Nuoroda į šaltinį: http://omega.albany.edu:8008/machine-learning-dir/notes-dir/ker1/ker1-l.html}.
+Kai duomenys yra tiesiškai neatskiriami, matų erdvės transformavimas gali padėti duomenis padaryti tiesiškai atskiriamais. Branduolio metodai (angl. \textit{kernel methods}) transformuoja matų erdvę taip, kad jie tampa tiesiškai atskiriami \cite{aizerman1964theoretical}. Tokios transformacijos pavyzdys pateiktas \ref{fig:matu_erdves_transformavimas} pav. %\footnote{Nuoroda į šaltinį: http://omega.albany.edu:8008/machine-learning-dir/notes-dir/ker1/ker1-l.html}.
 \begin{figure}
  \centering
  \includegraphics[width=.7\textwidth]{images/matu_erdves_transformavimas.png}
- \caption{Tiesiškai neatskiriamos matų erdvės transformavimas į tiesiškai atskiriamą.}
+ \caption{Tiesiškai neatskiriamos matų erdvės transformavimas į tiesiškai atskiriamą \cite{non_separable}.}
  \label{fig:matu_erdves_transformavimas}
 \end{figure}
 
@@ -104,7 +104,7 @@ Branduoliu (angl. \textit{kernel}) vadinama funkcija:
 Branduolio funkcija naudojama tiesiškai neatskiriamų duomenų erdvės projektavimui į kitą erdvę, kurioje duomenys būtų tiesiškai atskiriami. 
 Branduolio savybė, kai jį galima išreikšti funkcija nuo pradinių kintamųjų skaliarinės sandaugos, vadinama ,,branduolio gudrybe`` (angl. \textit{kernel trick}). ,,Branduolio gudrybė`` dažniausiai naudojama norint tiesinį metodą paversti netiesiniu. 
 
-Pavyzdžiui, branduolys yra $K(X, Y)=\langle X \cdot Y \rangle ^ 2$, o $\phi(x_1, x_2)=(x_1^2, \sqrt{2}x_1x_2, x_2^2)^2$ transformuoja matų erdvę iš $R^2$ į $R^3$. Turime mėginius $X=(x_1, x_2),\; Y=(y_1, y_2)$. Branduolį taikome mėginiams $K(X, Y) = \langle X \cdot Y \rangle ^ 2 = \langle x_1y_1 + x_2y_2\rangle ^ 2 = \langle x_1^2y_1^2 + 2x_1y_1x_2y_2 + x_2^2y_2^2 \rangle = \langle (x_1^2, \sqrt{2}x_1x_2, x_2^2) \cdot (y_1^2, \sqrt{2}y_1y_2, y_2^2) \rangle = \langle \phi(X) \cdot \phi(Y) \rangle$.
+Pavyzdžiui, turime mėginius $X=(x_1, x_2),\; Y=(y_1, y_2)$, branduolys yra $K(X, Y)=\langle X \cdot Y \rangle ^ 2$, o $\phi(X)=\phi(x_1, x_2)=(x_1^2, \sqrt{2}x_1x_2, x_2^2)^2$ transformuoja matų erdvę iš $R^2$ į $R^3$. Branduolį taikome mėginiams $K(X, Y) = \langle X \cdot Y \rangle ^ 2 = \langle x_1y_1 + x_2y_2\rangle ^ 2 = \langle x_1^2y_1^2 + 2x_1y_1x_2y_2 + x_2^2y_2^2 \rangle = \langle (x_1^2, \sqrt{2}x_1x_2, x_2^2) \cdot (y_1^2, \sqrt{2}y_1y_2, y_2^2) \rangle = \langle \phi(X) \cdot \phi(Y) \rangle$.
 
 Atraminių vektorių klasifikatorių algoritmo naudojimas dirbant su biomedicininiais duomenimis populiarus, nes jis demonstruoja gerus rezultatus, kai turima maža daugiamačių mokymosi duomenų aibė. 
 
