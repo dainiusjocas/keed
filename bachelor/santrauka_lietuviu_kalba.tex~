@@ -1,5 +1,0 @@
-\section*{SANTRAUKA}
-
-Šiame bakauro baigiamajame darbe yra analizuojamas daugiamačių mažai mėginių turinčių biomedicininių duomenų klasifikavimas. Darbe pateikiama mašininio mokymosi teorijos, reikalingos atliekamai analizei, apžvalga. Daugiamačių duomenų analizė neapsieina be matų atrinkimo metodų taikymo, todėl darbe detaliai nagrinėjami pagrindiniai ir multikriteriniai matų atrinkimo metodai. Dirbant su daugiamačiais duomenims svarbus yra skaičiavimo laikas, todėl matų atrinkimo metodai lyginami spartos atžvilgiu. Daugiamačių duomenų klasifikavimas analizuotas pagal atrinktųjų matų įtaką klasifikavimo tikslumui bei pagal matų atrinkimo stabilumą. Analizės metu gauti duomenys rodo, kad nėra universaliai geriausios klasifikavimo strategijos skirtos daugiamačiams biomedicininiams duomenims. Todėl šis darbas yra įžanga į tolimesnius tyrimus.
-
-\textbf{Raktiniai žodžiai:} daugiamačiai duomenys, mašininis mokymasis, klasifikavimas, matų atrinkimas. 
