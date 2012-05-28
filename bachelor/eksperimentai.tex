@@ -11,7 +11,7 @@
 Mėginių rinkinius apibūdinantis dydis OMS (Objektų-Matų Santykis), kuris turimiems mėginių rinkiniams yra nuo 0,403\% iki 3,01\% procento, reiškia, kad turimi mėginiai turi šimtus kartų daugiau matų nei mėginių. Tai apsunkina duomenų tyrimo procesą ir gali sukelti persimokymo (angl. \textit{overfitting}) problemą.
 
 Šizofrenijos ir maniakinės depresijos mėginių rinkinys ypatingas tuo, kad jis turi tris klases. Šiame darbe nagrinėjamas tik dviejų klasių atvejis, todėl šizofrenija sergančių pacientų mėginiai nebuvo naudojami.
-\begin{longtable}{|p{4.5cm}|p{2cm}|p{3.5cm}|p{2.3cm}|p{2cm}|}
+\begin{longtable}{|p{4.5cm}|p{2cm}|p{3.9cm}|p{2.1cm}|p{1.8cm}|}
 \captionsetup{labelsep=period}
 \caption{Darbe naudoti mėginių rinkiniai\label{table:datasets}}\\
 %This is the header for the first page of the table...
@@ -74,7 +74,7 @@ Prostatos auglys
 &
 \cite{altara}
 &
-90 \newline (bp\footnote{bp (angl. \textit{Bipolar Disorder}) - maniakine depresija sergantys pacientai.}:
+90 (bp\footnote{bp (angl. \textit{Bipolar Disorder}) - maniakine depresija sergantys pacientai.}:
 sz\footnote{sz (angl. \textit{Schizophrenia}) - šizofrenija sergantys pacientai.}:
 cc\footnote{cc (angl. \textit{Control Crowd}) - kontrolinė grupė.} \newline =30:31:29)
 &
@@ -104,7 +104,7 @@ Matų atrinkimo metodų darbo laikas buvo palygintas naudojant vieną šizofreni
  \caption{Pagrindinių matų atrinkimo metodų darbo laikas.}
  \label{fig:visu_laikas}
 \end{minipage}
-\hspace{0.2cm}
+\hspace{0.1cm}
 \begin{minipage}[b]{0.5\linewidth}
 \centering
 \includegraphics[width=1\textwidth]{images/cgs_performance.pdf}
@@ -119,51 +119,55 @@ Matų atrinkimo metodų darbo laikas yra atvaizduotas dviem grafikais, nes pagal
 
 Matų atrinkimo metodų įtaką klasifikavimo klasifikavimo tikslumui buvo matuojama naudojant tris biomedicininių duomenų rinkinius: gaubtinės žarnos auglio (angl. \textit{colon}), centrinės nervų sistemos (CNS), prostatos. Klasifikavimui buvo naudojami tiesiniai atraminių vektorių klasifikatoriai (SVM), su empiriškai nustatytu parametru $C=0.01$. Keičiant parametrus keičiasi ir klasifikavimo tikslumas.
 Klasifikatoriui apmokyti buvo naudojama 90\% atsitiktinai parinktų mėginių iš duomenų rinkinio. Likusiais 10\% mėginių buvo testuojamas klasifikatorius. Klasifikatorius buvo testuojamas po 300 kartų su įvairiu matų skaičiumi: nuo 10 iki 500. Klasifikavimo tikslumas pavaizduotas dviejų tipų grafikais: klasifikavimo nuostolio priklausomybės nuo atrinktų matų skaičiaus, bei ROC kreivėmis, kurios buvo apskaičiuotos pagal duomenis gautus klasifikuojant su tiek atrinktų matų, su kiek klasifikavimo tikslumas buvo pats geriausias \cite{green1966signal}.
-\begin{figure}[H]
-\capstart
-\label{visu_klasifikavimas}
+\begin{figure}[!htb]
 \begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=0.9\textwidth]{../bachelor/images/nncolon_classification.pdf}
+\includegraphics[width=\textwidth]{../bachelor/images/nncolon_classification.pdf}
 \caption{Gaubtinės žarnos auglio meginių klasifikatorių tikslumas.}
 \label{fig:class_colon}
 \end{minipage}
-\hspace{0.2cm}
+\hspace{0.1cm}
 \begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=0.9\textwidth]{../bachelor/images/nncolon_roc.pdf}
+\includegraphics[width=\textwidth]{../bachelor/images/nncolon_roc.pdf}
 \caption{Gaubtinės žarnos auglio mėginių klasifikatorių ROC kreivės.}
 \label{fig:roc_colon}
 \end{minipage}
-\hspace{0.2cm}
+\end{figure}
+
+\begin{figure}[!htb]
 \begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.9\textwidth]{../bachelor/images/nncns_classification.pdf}
+\includegraphics[width=\textwidth]{../bachelor/images/nncns_classification.pdf}
 \caption{Centrinės nervų sistemos meginių klasifikatorių tikslumas.}
 \label{fig:class_cns}
 \end{minipage}
-\hspace{0.2cm}
+\hspace{0.1cm}
 \begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.9\textwidth]{../bachelor/images/nncns_roc.pdf}
+\includegraphics[width=\textwidth]{../bachelor/images/nncns_roc.pdf}
 \caption{Centrinės nervų sistemos mėginių klasifikatorių ROC kreivės.}
 \label{fig:roc_cns}
 \end{minipage}
-\hspace{0.2cm}
+\end{figure}
+
+\begin{figure}[ht]
 \begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.9\textwidth]{../bachelor/images/prostate_classification.pdf}
+\includegraphics[width=\textwidth]{../bachelor/images/prostate_classification.pdf}
 \caption{Prostatos meginių klasifikatorių tikslumas.}
 \label{fig:class_prostate}
 \end{minipage}
-\hspace{0.2cm}
+\hspace{0.1cm}
 \begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.9\textwidth]{../bachelor/images/prostate_roc.pdf}
+\includegraphics[width=\textwidth]{../bachelor/images/prostate_roc.pdf}
 \caption{Prostatos mėginių klasifikatorių ROC kreivės.}
 \label{fig:roc_prostate}
 \end{minipage}
 \end{figure}
+
+
 \ref{fig:class_colon} pav. matome, kad gaubtinės žarnos auglio duomenų rinkinio matus geriausiai atrenka ADC metodas. Tik šiek tiek prasčiau pasirodo \textit{Fisher} įvertis. Blogiausiai su gaubtinės žarnos auglio mėginiais susidoroja absoliučių svorių SVM matų atrinkimo metodas.
 
 Centrinės nervų sistemos duomenų rinkinys yra sunkiai klasifikuojamas, nes vidutinis klaidų skaičius yra apie 35\%, kai, pvz. gautinės žarnos auglio duomenų rinkinio vidutinis klaidų skaičius yra tik 15\%. \ref{fig:class_cns} pav. matome, kad šiam duomenų rinkiniui vidutiniškai geriausiai matus atrenka ADC ir multikriterinio rekursyvaus matų eliminavimo metodai. Prasčiausiai pasirodo \textit{Relief} metodas.
@@ -177,46 +181,50 @@ Apibendrindamas gautus klasifikavimo tikslumo matavimo rezultatus, galiu teigti,
 
 Matų atrinkimo stabilumas buvo tiriamas naudojant tuos pačius biomedicininių duomenų rinkinius kaip ir tiriant klasifikavimo pagal atrinktus matus tikslumą. Matų atrinkimo stabilumas buvo matuojamas pagal \textit{Kuncheva} ir \textit{Jaccard} indeksus. Stabilumas pats savaime nėra svarbus, jis turi būti matuojamas atsižvelgiant į klasifikavimo tikslumą. Todėl šio poskyrio grafikus reikia nagrinėti atsižvelgiant į poskyrio, kuriame buvo nagrinėtas klasifikavimo pagal atrinktus matus tikslumas.
 
-\begin{figure}[H]
+\begin{figure}[!htb]
 \capstart
-\begin{minipage}[b]{0.47\linewidth}
+\begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.85\textwidth]{../bachelor/images/nncolon_robustness_kuncheva.pdf}
+\includegraphics[width=\textwidth]{../bachelor/images/nncolon_robustness_kuncheva.pdf}
 \caption{Matų atrinkimo gaubtinės žarnos auglio mėginiams stabilumo grafikas pagal \textit{Kuncheva} indeksą.}
 \label{fig:robk_colon}
 \end{minipage}
-\hspace{0.2cm}
-\begin{minipage}[b]{0.47\linewidth}
+\hspace{0.1cm}
+\begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.85\textwidth]{../bachelor/images/nncolon_robustness_jaccard.pdf}
+\includegraphics[width=\textwidth]{../bachelor/images/nncolon_robustness_jaccard.pdf}
 \caption{Matų atrinkimo gaubtinės žarnos auglio mėginiams stabilumo grafikas pagal \textit{Jaccard} indeksą.}
 \label{fig:robj_colon}
 \end{minipage}
-\hspace{0.2cm}
-\begin{minipage}[b]{0.47\linewidth}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.85\textwidth]{../bachelor/images/nncns_robustness_kuncheva.pdf}
+\includegraphics[width=\textwidth]{../bachelor/images/nncns_robustness_kuncheva.pdf}
 \caption{Matų atrinkimo CNS mėginiams stabilumo grafikas pagal \textit{Kuncheva} indeksą.}
 \label{fig:robk_cns}
 \end{minipage}
-\hspace{0.2cm}
-\begin{minipage}[b]{0.47\linewidth}
+\hspace{0.1cm}
+\begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.85\textwidth]{../bachelor/images/nncns_robustness_jaccard.pdf}
+\includegraphics[width=\textwidth]{../bachelor/images/nncns_robustness_jaccard.pdf}
 \caption{Matų atrinkimo CNS mėginiams stabilumo grafikas pagal \textit{Jaccard} indeksą.}
 \label{fig:robj_cns}
 \end{minipage}
-\hspace{0.2cm}
-\begin{minipage}[b]{0.47\linewidth}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.85\textwidth]{../bachelor/images/prostate_robustness_kuncheva.pdf}
+\includegraphics[width=\textwidth]{../bachelor/images/prostate_robustness_kuncheva.pdf}
 \caption{Matų atrinkimo prostatos mėginiams stabilumo grafikas pagal \textit{Kuncheva} indeksą.}
 \label{fig:robk_prostate}
 \end{minipage}
-\hspace{0.2cm}
-\begin{minipage}[b]{0.47\linewidth}
+\hspace{0.1cm}
+\begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=.85\textwidth]{../bachelor/images/prostate_robustness_jaccard.pdf}
+\includegraphics[width=\textwidth]{../bachelor/images/prostate_robustness_jaccard.pdf}
 \caption{Matų atrinkimo prostatos mėginiams stabilumo grafikas pagal \textit{Jaccard} indeksą.}
 \label{fig:robj_prostate}
 \end{minipage}
