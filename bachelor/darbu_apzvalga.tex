@@ -28,8 +28,8 @@ Toliau šiame skyriuje apžvelgiami mašininio mokymosi teorijos pagrindai, kuri
 
 Mašinininio mokymosi kontekste klasifikavimu yra vadinama problema, kai naudojantis mokymosi duomenis reikia išmokti nustatyti, kuriai klasei priklauso mėginys. Klasifikavimo procesas trimis etapais pavaizduoti ~\ref{fig:classification_process} pav. srautų diagramoje. Klasifikavimo etapai:
 \begin{enumerate}
- \item Visa mokymosi duomenų aibė yra atsitiktinai padalinama į dvi nepersidengiančias aibes: treniravimos duomenys (pvz., 90\% visų mokymosi duomenų) ir testavimo duomenys(pvz., likę 10\%);
- \item Pagal turimus treniravimosi duomenis yra atrenkami informatyviausi matai, pvz., naudojant Relief metodą. Remiantis atrinktaisiais matais yra konstruojamas klasifikatorius - funkcija, pagal kurią nematyti mėginiai bus priskirti vienai iš klasių.
+ \item Visa mokymosi duomenų aibė yra atsitiktinai padalinama į dvi nepersidengiančias aibes: treniravimosi duomenys (pvz., 90\% visų mokymosi duomenų) ir testavimo duomenys(pvz., likę 10\%);
+ \item Pagal turimus treniravimosi duomenis yra atrenkami informatyviausi matai, pvz., naudojant \textit{Relief} metodą. Remiantis atrinktaisiais matais yra konstruojamas klasifikatorius - funkcija, pagal kurią nematyti mėginiai bus priskirti vienai iš klasių.
  \item Sukonstruotu klasifikatoriumi testavimo duomenys yra suskirstomi į klases. Pagal tai, kiek mėginių klasifikatorius priskyrė teisingoms klasėms yra vertinama klasifikatoriaus tikslumas. Klasifikatorius validuojamas naudojant tokius metodus kaip kryžminis patikrinimas (angl. \textit{cross validation})
 \end{enumerate}
 
@@ -57,7 +57,7 @@ Naudojant įkelčių metodą, iš $N$ dydžio mėginių aibės yra paimama tokio
 
 \subsubsection{Regresinė analizė}
 
-Mašininio mokymosi kontekste regresine analize yra vadinama problema, kai pagal patirtį apibūdinančius duomenis reikia nustatyti kiekybines duomenų charakteristikas. Regresinė analizė naudoja standartinius statistinius metodus, tokius kaip mažiausių kvadratų metodas (angl. \textit{least squares}). Regresinė analizė dažniausiai naudojama įvertinti (ang. \textit{forecast}) ateities duomenų vertes bei interpoliacijai -- tikėtinos reikšmės tarp keletos taškų įvertinimui. 
+Mašininio mokymosi kontekste regresine analize yra vadinama problema, kai pagal patirtį apibūdinančius duomenis reikia nustatyti kiekybines duomenų charakteristikas. Regresinė analizė naudoja standartinius statistinius metodus, tokius kaip mažiausių kvadratų metodas (angl. \textit{least squares}). Regresinė analizė dažniausiai naudojama įvertinti (ang. \textit{forecast}) ateities duomenų vertes bei interpoliacijai -- tikėtinos reikšmės tarp keleto taškų įvertinimui. 
 
 Dirbant su biomedicininiais duomenimis regresinė analizė taikoma nustatant, pvz., mėginio vėžio stadiją. Šiame darbe pagrindinis dėmesys skiriamas klasifikavimui. Daugiau informacijos apie regresiją galima rasti \cite{gelman2007data}.
 
@@ -132,7 +132,7 @@ Atraminių vektorių klasifikatorių algoritmo naudojimas dirbant su biomedicini
  \end{enumerate}
 \end{algorithm}
 
-\textit{Random forest} algoritmo tikslumas priklauso nuo koreliacijos tarp sukurtų klasifikavimo medžių ir atskirų klasifikavimo medžių skiriamosios galios. Didesnė koreliacija lemia mažesnį klasifikavimo tikslumą, o kuo didesnė atskiro klasisifikavimo medžio skiriamoji galia, tuo geresnis klasifikavimo tikslumas.
+\textit{Random forest} algoritmo tikslumas priklauso nuo koreliacijos tarp sukurtų klasifikavimo medžių ir atskirų klasifikavimo medžių skiriamosios galios. Didesnė koreliacija lemia mažesnį klasifikavimo tikslumą, o kuo didesnė atskiro klasifikavimo medžio skiriamoji galia, tuo geresnis klasifikavimo tikslumas.
 
 \textit{Randon forest} klasifikatoriai yra tikslūs, greiti, bei sugeba išvengti persimokymo (angl. \textit{overfitting}). Šios trys klasifikavimo algoritmo savybės yra labai svarbios dirbant su biomedicininiais duomenimis. 
 
@@ -212,10 +212,10 @@ Kombinuotasis mokymasis (angl. \textit{ensemble learning}) - tai toks mašininis
 
 Kombinuotasis mokymasis pirmiausia yra naudojamas tam, kad pagerintų kuriamo klasifikatoriaus tikslumą arba sumažintų prasto klasifikatoriaus sukūrimo tikimybę, nes dažniausiai nėra žinoma, kuris klasifikavimo algoritmas ir kokia jo konfigūracija geriausiai tinka nagrinėjamai problematikai. Tipinės situacijos, kai kombinuotojo mokymosi metodų taikymas pasiteisina \cite{polikar2006ensemble}:
 \begin{enumerate}
- \item Statistinis reikšmingumas -- imant keletos klasifikatorių vidutinį rezultatą, yra sumažinama rizika pasirinkti netinkamą klasifikatorių.
+ \item Statistinis reikšmingumas -- imant keleto klasifikatorių vidutinį rezultatą, yra sumažinama rizika pasirinkti netinkamą klasifikatorių.
  \item Dideli duomenų kiekiai -- kartais duomenų būna tiek, kad juos apdoroti vienam klasifikatoriui yra labai neefektyvu, o kombinuojant keletą klasifikatorių pasiekiamas geresnis efektyvumas.
  \item Mažas mėginių skaičius -- daugelio klasifikatorių apmokymas su vis kitu mėginių poaibiu padeda tiksliau nuspėti tikrąją duomenų funkciją.
  \item Skaldyk ir valdyk -- kai kurie duomenys yra per sudėtingi, kad jie būtų išmokti vienu klasifikatoriumi. Tačiau kombinuojant keletą klasifikatorių galima išmokti net ir labai komplikuotus duomenis. 
- \item Duomenų suliejimas -- kartais duomenys gaunami iš keletos šaltinių, vienam klasifikatoriui apdoroti tokius duomenimis gali būti per sunku, todėl pasiteisina skirtingų klasifikatorių naudojimas atskiriems duomenų rinkiniams, kombinuojant jų rezultatus.
+ \item Duomenų suliejimas -- kartais duomenys gaunami iš keleto šaltinių, vienam klasifikatoriui apdoroti tokius duomenimis gali būti per sunku, todėl pasiteisina skirtingų klasifikatorių naudojimas atskiriems duomenų rinkiniams, kombinuojant jų rezultatus.
 \end{enumerate}
-Kombinuotasis mokymasis gali būti palygintas su keletos ekspertų apklausa, todėl kombinuotojo mokymosi metodų naudojimas sudėtingose problemose, pvz., darbas su biomedicininiais duomenimis, pasiteisina.
+Kombinuotasis mokymasis gali būti palygintas su keleto ekspertų apklausa, todėl kombinuotojo mokymosi metodų naudojimas sudėtingose problemose, pvz., darbas su biomedicininiais duomenimis, pasiteisina.

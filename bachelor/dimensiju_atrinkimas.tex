@@ -114,7 +114,7 @@ Suliejant keletą skirtingų matų atrinkimo metodų rezultatų suliejamos geros
 
 \subsection{Matų atrinkimo stabilumas}
 
-Matų atrinkimo metodų stabilumas gali būti apibrėžtas kaip matų atrinkimo rezultatų variacijų lygis dėl mažų pakeitimų duomenų rinkinyje. Pekeitimai duomenų rinkinyje gali būti mėginių lygio (pvz. mėginiai pridedami arba atimami), matų lygio (pvz. pridedant matams triukšmo) ar abiejų lygių kombinacija.
+Matų atrinkimo metodų stabilumas gali būti apibrėžtas kaip matų atrinkimo rezultatų variacijų lygis dėl mažų pakeitimų duomenų rinkinyje. Pakeitimai duomenų rinkinyje gali būti mėginių lygio (pvz. mėginiai pridedami arba atimami), matų lygio (pvz. pridedant matams triukšmo) ar abiejų lygių kombinacija.
 
 Svarbu tai, kad matų stabilumas nėra matuojamas nepriklausomai -- jis yra matuojamas atsižvelgiant į klasifikavimo rezultatus. Matuoti stabilumą verta tada, kai pagal atrinktus matus sukuriamas tikslus klasifikatorius.
 
@@ -140,6 +140,7 @@ Matų atrinkimo stabilumo įvertis priklauso nuo to, kokią aibių panašumo fun
 kur $s=|f_i|=|f_j|$ yra atrinktų matų aibės dydis, $r=|f_i \bigcap f_j|$ - abiems atrinktiems matų poaibiams bendrų matų skaičius, $N$ - bendras  duomenų aibės matų skaičius. Pastebėtina, kad formulėje esantis atėminys $s^2/N$ ištaiso sisteminį nuokrypį atsirandantį dėl galimybės atsitiktinai pasirinkti matus. 
 
 \textit{Kuncheva} indeksas gali įgyti reikšmes iš intervalo $[-1, 1]$, kur didesnė reikšmė reiškia didesnį panašumą, o artimos nuliui reikšmės reiškia, kad matai atrenkami beveik atsitiktinai.
+
 %% DJ: Kunchevos indekso ypatybė yra ta, kad jis atsižvelgia tik į persidengiančius, tačiau visiškai nekreipia dėmesio į koreliuojančius matus.
 
 \subsubsection{\textit{Jaccard} indeksas}
@@ -160,7 +161,7 @@ Informacijos teorijoje \textit{Hamming} atstumas \cite{hamming1950error} tarp dv
 \end{equation}
 kur $\oplus$ - sumos moduliu 2 arba XOR operacija.
 
-Šiuo metodu matuojant matų atrinkimo stabilumą, prieš atstumo matavimą reikia atlikti rezultatų pertvarkymą: pirma, iš atrinktų matų vektorių padaryti bendro matų skaičiaus ilgio binarinius vektorius; antra, vektoriaus elementus, kurių indeksai gaunani matų atrinkimo metodu, nustatyti lygius vienetui. Atlikus tokius pertvarkymus galima matuoti atstumą tarp dviejų matų atrinkimo rezultatų.
+Šiuo metodu matuojant matų atrinkimo stabilumą, prieš atstumo matavimą reikia atlikti rezultatų pertvarkymą: pirma, iš atrinktų matų vektorių padaryti bendro matų skaičiaus ilgio binarinius vektorius; antra, vektoriaus elementus, kurių indeksai gaunami matų atrinkimo metodu, nustatyti lygius vienetui. Atlikus tokius pertvarkymus galima matuoti atstumą tarp dviejų matų atrinkimo rezultatų.
 
 \subsection{Svoriais grįstas multikriterinis suliejimas}
 
@@ -215,7 +216,7 @@ pavaizduotas ~\ref{fig:figure5} pav.
 \end{figure}
 Suliejimo pagal reitingus metodas nereikalauja matų atrinkimo metodų rezultatų normalizavimo, todėl galima matams priskirtus reitingus kombinuoti iškart. Skirtingai nei suliejimo pagal svorius algoritme, baziniai matų atrinkimo kriterijai turi gražinti matų reitingus, o ne svorius.
 
-Matų reitingų kombinavimui yra keletas metodų\cite{dwork2001rank}, tačiau dėl paprastumo naudojamas Borda balsavimas\footnote{Dar žinomas kaip ,,Pažymių metodas``. Jis buvo pasiūlytas prancūzų matematiko ir fiziko Jean-Charles de Borda 1770 metais.} (angl.\textit{ Borda count}). Tarkime, kad turime $m$ basuotojų ir $p$ kandidatų aibę. Tada Borda balsavimo metodas kiekvienam $i$-ajam balsuotojui sukuria balsų vektorių $v_i$ tokiu būdu: geriausiai įvertintam kandidatui suteikiama $p$ taškų, antrajam kandidatui $p-1$, ir t.t. Galutiniai taškai yra gaunami sudedant visų balsuotojų taškus
+Matų reitingų kombinavimui yra keletas metodų\cite{dwork2001rank}, tačiau dėl paprastumo naudojamas \textit{Borda} balsavimas\footnote{Dar žinomas kaip ,,Pažymių metodas``. Jis buvo pasiūlytas prancūzų matematiko ir fiziko \textit{Jean-Charles de Borda} 1770 metais.} (angl.\textit{ Borda count}). Tarkime, kad turime $m$ basuotojų ir $p$ kandidatų aibę. Tada Borda balsavimo metodas kiekvienam $i$-ajam balsuotojui sukuria balsų vektorių $v_i$ tokiu būdu: geriausiai įvertintam kandidatui suteikiama $p$ taškų, antrajam kandidatui $p-1$, ir t.t. Galutiniai taškai yra gaunami sudedant visų balsuotojų taškus
 \begin{equation}
  v = \sum_{i=1}^m v_i,
 \end{equation}
@@ -243,7 +244,7 @@ Suliejant keletą silpnai koreliuojančių matų reitingavimo metodų rezultatų
 Jei matų atrinkimo tikslas yra pagerinti klasifikavimo rezultatus, tai taikant multikriterinius matų atrinkimo metodus nebūtinai surandamas geriausias matų poaibis. Tam, kad būtų surastas geriausias matų poaibis reikia kombinuoti multikriterinį matų reitingavimą su matų paieškos strategija. Rekursyvus matų eliminavimas yra dažnai naudojama paieškos strategija matų atrinkimui. 
 %% DJ: Todėl yra kombinuojamas multikriterinis matų reitingavimas ir rekursyvus matų eliminavimas.
 
-Multikriterinis rekursyvus matų eliminavimas (angl. \textit{Multicriterion Fusion Based Recursive Feature Elimination}, MCF-RFE) susideda iš dviejų dalių \cite{yang2011robust}: keletos matų atrinkimo kriterijų suliejimo pagal svorius ir pagal reitingus, ir rekursyvaus matų eliminavimo aprašyto algoritme nr. \ref{RFE}. Algoritmas pavaizduotas ~\ref{fig:figure6} pav.
+Multikriterinis rekursyvus matų eliminavimas (angl. \textit{Multicriterion Fusion Based Recursive Feature Elimination}, MCF-RFE) susideda iš dviejų dalių \cite{yang2011robust}: keleto matų atrinkimo kriterijų suliejimo pagal svorius ir pagal reitingus, ir rekursyvaus matų eliminavimo aprašyto algoritme nr. \ref{RFE}. Algoritmas pavaizduotas ~\ref{fig:figure6} pav.
 \begin{figure}
  \centering
  \includegraphics[width=0.7\textwidth]{images/mcf-rfe_procedure.pdf}
@@ -265,7 +266,7 @@ Konsensuso grupėmis grįstas stabilių matų atrinkimo metodas (angl. \textit{C
  \label{fig:figure7}
 \end{figure}
 
-CGS metodo pagrindinė dalis yra tankių matų identifikavimas. Šio uždavinio sprendimui naudojamas \textit{Dense Group Finder} (DGF) algoritmas. DGF aprašytas algoritme nr. \ref{DGF}. CGS algoritme matai pagal DGF algoritmą yra sugrupuojami keletą kartų. Po pakartotinio grupavimo yra ieškoma stabilių grupių -- jei matas buvo sugrupuotas į konkrečią grupę daugiau nei pusėje grupavimų, tai matas ir priklausys tai konsensuso grupei. Matų aibės transformavimas vyksta iš kiekvienos konsensuso grupės išrenkant reprezentatyviausią matą -- konkretų matą esantį arčiausiai konsensuso grupės vidurkio. Išrinktieji reprezentatyviausieji matai ir sudaro transformuotą matų erdvę. Transformuotoje matų erdvėje vykdomas matų antrinkimas kuriuo nors matų atrinkimo metodu $\Phi$, pvz., \textit{Relief} matų atrinkimo metodu. 
+CGS metodo pagrindinė dalis yra tankių matų identifikavimas. Šio uždavinio sprendimui naudojamas \textit{Dense Group Finder} (DGF) algoritmas. DGF aprašytas algoritme nr. \ref{DGF}. CGS algoritme matai pagal DGF algoritmą yra sugrupuojami keletą kartų. Po pakartotinio grupavimo yra ieškoma stabilių grupių -- jei matas buvo sugrupuotas į konkrečią grupę daugiau nei pusėje grupavimų, tai matas ir priklausys tai konsensuso grupei. Matų aibės transformavimas vyksta iš kiekvienos konsensuso grupės išrenkant reprezentatyviausią matą -- konkretų matą esantį arčiausiai konsensuso grupės vidurkio. Išrinktieji reprezentatyviausieji matai ir sudaro transformuotą matų erdvę. Transformuotoje matų erdvėje vykdomas matų atrinkimas kuriuo nors matų atrinkimo metodu $\Phi$, pvz., \textit{Relief} matų atrinkimo metodu. 
 \begin{algorithm}
 \caption{DGF -- \textit{Dense Group Finder}}
 \label{DGF}

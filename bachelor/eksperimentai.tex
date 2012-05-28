@@ -120,6 +120,7 @@ Matų atrinkimo metodų darbo laikas yra atvaizduotas dviem grafikais, nes pagal
 Matų atrinkimo metodų įtaką klasifikavimo klasifikavimo tikslumui buvo matuojama naudojant tris biomedicininių duomenų rinkinius: gaubtinės žarnos auglio (angl. \textit{colon}), centrinės nervų sistemos (CNS), prostatos. Klasifikavimui buvo naudojami tiesiniai atraminių vektorių klasifikatoriai (SVM), su empiriškai nustatytu parametru $C=0.01$. Keičiant parametrus keičiasi ir klasifikavimo tikslumas.
 Klasifikatoriui apmokyti buvo naudojama 90\% atsitiktinai parinktų mėginių iš duomenų rinkinio. Likusiais 10\% mėginių buvo testuojamas klasifikatorius. Klasifikatorius buvo testuojamas po 300 kartų su įvairiu matų skaičiumi: nuo 10 iki 500. Klasifikavimo tikslumas pavaizduotas dviejų tipų grafikais: klasifikavimo nuostolio priklausomybės nuo atrinktų matų skaičiaus, bei ROC kreivėmis, kurios buvo apskaičiuotos pagal duomenis gautus klasifikuojant su tiek atrinktų matų, su kiek klasifikavimo tikslumas buvo pats geriausias \cite{green1966signal}.
 \begin{figure}[H]
+\capstart
 \label{visu_klasifikavimas}
 \begin{minipage}[b]{0.5\linewidth}
 \centering
@@ -177,7 +178,7 @@ Apibendrindamas gautus klasifikavimo tikslumo matavimo rezultatus, galiu teigti,
 Matų atrinkimo stabilumas buvo tiriamas naudojant tuos pačius biomedicininių duomenų rinkinius kaip ir tiriant klasifikavimo pagal atrinktus matus tikslumą. Matų atrinkimo stabilumas buvo matuojamas pagal \textit{Kuncheva} ir \textit{Jaccard} indeksus. Stabilumas pats savaime nėra svarbus, jis turi būti matuojamas atsižvelgiant į klasifikavimo tikslumą. Todėl šio poskyrio grafikus reikia nagrinėti atsižvelgiant į poskyrio, kuriame buvo nagrinėtas klasifikavimo pagal atrinktus matus tikslumas.
 
 \begin{figure}[H]
-\label{visi_stabilumas}
+\capstart
 \begin{minipage}[b]{0.47\linewidth}
 \centering
 \includegraphics[width=.85\textwidth]{../bachelor/images/nncolon_robustness_kuncheva.pdf}
