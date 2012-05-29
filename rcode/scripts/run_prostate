@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Visi COLON klasifikavimas"
+sbatch prostate_adc
+sbatch prostate_fisher
+sbatch prostate_mcf
+sbatch prostate_relief
+sbatch prostate_svm
+sbatch prostate_svm-rfe
+echo "Klasifikavimas pradetas! Po ~15 valandu bus rezultatai"
+q

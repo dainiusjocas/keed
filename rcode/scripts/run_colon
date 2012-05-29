@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Visi COLON klasifikavimas"
+sbatch colon_adc
+sbatch colon_fisher
+sbatch colon_mcf
+sbatch colon_relief
+sbatch colon_svm
+sbatch colon_svm-rfe
+echo "Klasifikavimas pradetas! Po 6 valandu bus rezultatai"
+q

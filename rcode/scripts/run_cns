@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Visi CNS klasifikavimas"
+sbatch cns_adc
+sbatch cns_fisher
+sbatch cns_mcf
+sbatch cns_relief
+sbatch cns_svm
+sbatch cns_svm-rfe
+echo "Klasifikavimas pradetas! Po ~12 valandu bus rezultatai"
+q

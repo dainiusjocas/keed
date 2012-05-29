@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Visi ALTARA klasifikavimas"
+sbatch altar_adc
+sbatch altar_fisher
+sbatch altar_mcf
+sbatch altar_relief
+sbatch altar_svm
+sbatch altar_svm-rfe
+echo "Klasifikavimas pradetas! Neaisku po kiek valandu, bet rezultatai bus"
+q
